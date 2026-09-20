@@ -1,4 +1,5 @@
 /vendor/
 /cache/*.json
+/tmp/*
 .DS_Store
 *.log
