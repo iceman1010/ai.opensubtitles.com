@@ -83,6 +83,17 @@ return [
 	'dashboard.recent' => 'Recent activities',
 	'dashboard.media' => 'Recent media',
 
+	'media.files' => 'file(s)',
+	'media.preview' => 'Preview',
+	'media.download' => 'Download',
+	'media.close' => 'Close',
+	'media.none' => 'Nothing here yet.',
+	'media.error' => 'Could not load recent media.',
+	'media.download_failed' => 'Download failed',
+	'media.preview_failed' => 'Preview failed',
+	'activities.none' => 'Nothing here yet.',
+	'activities.error' => 'Could not load activities.',
+
 	'job.new_title' => 'New job',
 	'job.new_h1' => 'New job',
 	'job.new_lead' => 'Drop a media file for transcription or a subtitle file (SRT/VTT) for translation — the format is detected automatically.',

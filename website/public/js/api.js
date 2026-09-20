@@ -324,6 +324,25 @@
 		setTimeout(() => URL.revokeObjectURL(link.href), 5000);
 	}
 
+	async function mediaFileText(mediaId, fileName) {
+		const res = await fetchWithRetry(aiUrl('/files/' + encodeURIComponent(mediaId) + '/' + encodeURIComponent(fileName)), {
+			method: 'GET',
+			headers: headers(true)
+		});
+		return res.text();
+	}
+
+	function downloadText(content, fileName) {
+		const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+		const link = document.createElement('a');
+		link.href = URL.createObjectURL(blob);
+		link.download = fileName || 'subtitles.srt';
+		document.body.appendChild(link);
+		link.click();
+		link.remove();
+		setTimeout(() => URL.revokeObjectURL(link.href), 5000);
+	}
+
 	window.AI = {
 		loggedIn: () => !!getValidToken(),
 		requireAuth: () => {
@@ -349,6 +368,8 @@
 		recentMedia: (page) => recent('recent_media', page),
 		recentActivities: (page) => recent('recent_activities', page),
 		creditPackages,
-		downloadFile
+		downloadFile,
+		mediaFileText,
+		downloadText
 	};
 })();

@@ -17,7 +17,7 @@ product — not a pile of data dumps.
 | `.page-head` | h1 + optional `.lead`. `padding-bottom: 0` — the NEXT section's top padding provides the gap. Never add extra margins under a page head. |
 | `.card` | surface bg, 1px line border, radius, shadow, 2rem padding. The standard content box. |
 | `.card + .card` | margin-top `--gap`. Stacked cards ALWAYS get this — never zero gap, never custom margins. |
-| Grids of cards (`.dashboard-grid`, `.packages`, `.services`, `.steps`) | `repeat(auto-fit\|auto-fill, minmax(Xrem, 1fr))`, gap `--gap`. **No horizontal padding on the grid itself** — card outer edges must align with full-width cards above/below. |
+| Grids of cards (`.dashboard-grid`, `.packages`, `.services`, `.steps`) | `repeat(auto-fit\|auto-fill, minmax(Xrem, 1fr))`, gap `--gap`. **No horizontal padding on the grid itself** — card outer edges must align with full-width cards above/below. **Grid children are siblings too**: any sibling-combinator rule like `.card + .card` also matches inside grids — always add the `margin-top: 0` override for `.card` children (exists for `.dashboard-grid`). Grid row stretch equalizes card heights; never rely on equal content. |
 
 ### Spacing scale (only these values between blocks)
 - `--gap` (1.5rem): between cards, inside grids, related small blocks.
@@ -107,3 +107,6 @@ cards go in a dedicated grid section (see §1), not nested `.card`s.
   column alignment, .detect-result panel, [hidden] guard, focus-visible,
   nav login/logout swap (pre-paint script + auth.js), dashboard-head removed
   in favor of plain page-head.
+- 2026-09-20 (fix): `.card + .card` hit grid children too → unequal card
+  heights in .dashboard-grid. Added `.dashboard-grid .card + .card { margin-top: 0 }`.
+  Lesson recorded in §1 grids row: sibling rules need grid-child overrides.

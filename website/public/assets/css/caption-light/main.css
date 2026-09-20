@@ -173,6 +173,7 @@ section { max-width: 64rem; margin: 0 auto; padding: 2.5rem 1.5rem; }
 .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--gap); padding: 2.5rem 0 var(--gap); }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); }
 .card + .card { margin-top: var(--gap); }
+.dashboard-grid .card + .card { margin-top: 0; }
 .card h2 { margin-top: 0; font-size: 1.1rem; color: var(--ink-soft); }
 
 .dropzone {
@@ -209,6 +210,27 @@ progress { width: 100%; height: 0.8rem; }
 .data-table td:first-child { color: var(--ink-soft); white-space: nowrap; }
 .data-table td:last-child { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
 .data-table tr:last-child td { border-bottom: none; }
+
+.media-list { display: grid; gap: 0.75rem; }
+.media-item { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+.media-item summary { display: flex; align-items: baseline; gap: 0.75rem; padding: 0.75rem 1rem; cursor: pointer; list-style: none; }
+.media-item summary::-webkit-details-marker { display: none; }
+.media-item summary::before { content: '▸'; color: var(--ink-soft); transition: transform 0.15s ease; }
+.media-item[open] summary::before { transform: rotate(90deg); }
+.media-id { font-weight: 700; }
+.media-time { color: var(--ink-soft); font-size: 0.9rem; }
+.media-count { margin-left: auto; font-size: 0.8rem; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.6rem; white-space: nowrap; }
+.media-files { padding: 0 1rem 0.75rem; display: grid; }
+.media-file { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0; border-top: 1px solid var(--line); }
+.media-files .media-file:first-child { border-top: none; }
+.file-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.9rem; }
+.media-file .btn { white-space: nowrap; }
+
+.modal-overlay { position: fixed; inset: 0; background: rgb(0 0 0 / 55%); display: flex; align-items: center; justify-content: center; padding: 1.5rem; z-index: 50; }
+.modal-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); width: 100%; max-width: 42rem; max-height: 80vh; display: flex; flex-direction: column; padding: 1.5rem; }
+.modal-card h3 { margin: 0 0 0.75rem; font-size: 1.05rem; overflow-wrap: anywhere; }
+.modal-pre { margin: 0; flex: 1; overflow: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 1rem; font-size: 0.85rem; font-family: ui-monospace, monospace; white-space: pre-wrap; word-break: break-word; }
+.modal-actions { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1rem; }
 
 #job-quality.quality-pass { color: rgb(21 128 61); font-weight: 600; }
 #job-quality.quality-fail { color: rgb(180 30 30); font-weight: 600; }
