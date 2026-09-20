@@ -9,10 +9,12 @@
 	function init() {
 		const navLogin = document.getElementById('nav-login');
 		const navLogout = document.getElementById('nav-logout');
+		const navDashboard = document.getElementById('nav-dashboard');
 		if (navLogin && navLogout) {
 			const loggedIn = window.AI.loggedIn();
 			navLogin.hidden = loggedIn;
 			navLogout.hidden = !loggedIn;
+			if (navDashboard) navDashboard.hidden = !loggedIn;
 			navLogout.addEventListener('click', () => {
 				window.AI.logout();
 				location.href = '/';

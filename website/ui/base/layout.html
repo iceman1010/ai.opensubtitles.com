@@ -25,6 +25,7 @@
 		<symbol id="icon-languages" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></symbol>
 		<symbol id="icon-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.83z"/><line x1="7" y1="7" x2="7.01" y2="7"/></symbol>
 		<symbol id="icon-log-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></symbol>
+		<symbol id="icon-dashboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></symbol>
 		<symbol id="icon-log-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
 		<symbol id="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 17 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
 		<symbol id="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
@@ -37,6 +38,7 @@
 			<a class="nav-pill" href="/transcribe"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-mic"/></svg></span><span class="btn-label">{{ @nav.transcribe }}</span></a>
 			<a class="nav-pill" href="/translate"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-languages"/></svg></span><span class="btn-label">{{ @nav.translate }}</span></a>
 			<a class="nav-pill" href="/pricing"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-tag"/></svg></span><span class="btn-label">{{ @nav.pricing }}</span></a>
+			<a class="nav-pill" href="/dashboard" id="nav-dashboard" hidden><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-dashboard"/></svg></span><span class="btn-label">{{ @nav.dashboard }}</span></a>
 			<a class="nav-pill" href="/login" id="nav-login"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-in"/></svg></span><span class="btn-label">{{ @nav.login }}</span></a>
 			<button class="nav-pill" id="nav-logout" type="button" hidden><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-out"/></svg></span><span class="btn-label">{{ @nav.logout }}</span></button>
 			<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">◐</button>
@@ -49,7 +51,9 @@
 			var on = !!(t && e > Date.now());
 			var li = document.getElementById('nav-login');
 			var lo = document.getElementById('nav-logout');
+			var nd = document.getElementById('nav-dashboard');
 			if (li && lo) { li.hidden = on; lo.hidden = !on; }
+			if (nd) nd.hidden = !on;
 		})();
 	</script>
 	<main>

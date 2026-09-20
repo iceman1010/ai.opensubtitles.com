@@ -4,6 +4,7 @@ return [
 	'nav.transcribe' => 'Transkribieren',
 	'nav.translate' => 'Übersetzen',
 	'nav.pricing' => 'Preise',
+	'nav.dashboard' => 'Dashboard',
 	'nav.login' => 'Anmelden',
 	'nav.logout' => 'Abmelden',
 
