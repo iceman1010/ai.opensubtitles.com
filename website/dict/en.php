@@ -83,6 +83,8 @@ return [
 	'dashboard.new_job_cta' => 'Upload a file',
 	'dashboard.recent' => 'Recent activities',
 	'dashboard.media' => 'Recent media',
+	'dashboard.show_more' => 'Show more',
+	'dashboard.more_error' => 'Could not load more.',
 
 	'media.files' => 'file(s)',
 	'media.preview' => 'Preview',

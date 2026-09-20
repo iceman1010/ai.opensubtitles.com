@@ -74,6 +74,7 @@ a { color: inherit; }
 }
 
 .btn-small { padding: 0.35rem 0.9rem; }
+.btn-block-show { width: 100%; justify-content: center; margin-top: 0.5rem; }
 .btn-primary { background: var(--accent); color: var(--accent-ink); }
 .btn-primary:hover { filter: brightness(1.05); }
 .btn-ghost { border-color: var(--ink); color: var(--ink); }

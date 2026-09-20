@@ -3,6 +3,8 @@
 
 	const SUBTITLE_EXT = /\.(srt|vtt|ass|ssa)$/i;
 	const T = window.DASH_I18N || {};
+	const CHUNK = 10;
+	const API_PAGE = 20;
 
 	function el(tag, className, text) {
 		const node = document.createElement(tag);
@@ -43,28 +45,35 @@
 	async function loadActivities() {
 		const container = document.getElementById('recent-activities');
 		if (!container) return;
-		try {
-			const items = await window.AI.recentActivities(1);
-			renderRows(container, items.map((item) => ({
-				id: item.id,
-				col1: item.time_str,
-				col2: item.type_name,
-				col3: item.credits
-			})));
-		} catch (e) {
-			container.textContent = T.activities_error || 'Could not load activities.';
-		}
+		pagedList(container, {
+			fetch: (page) => window.AI.recentActivities(page),
+			empty: T.activities_none || 'Nothing here yet.',
+			error: T.activities_error || 'Could not load activities.',
+			more: T.show_more,
+			buildContainer: () => el('table', 'data-table'),
+			row: (item) => {
+				const tr = el('tr');
+				for (const cell of [item.time_str, item.type_name, item.credits]) {
+					const td = el('td');
+					td.textContent = cell;
+					tr.appendChild(td);
+				}
+				return tr;
+			}
+		});
 	}
 
 	async function loadMedia() {
 		const container = document.getElementById('recent-media');
 		if (!container) return;
-		try {
-			const items = await window.AI.recentMedia(1);
-			renderMedia(container, items);
-		} catch (e) {
-			container.textContent = T.media_error || 'Could not load recent media.';
-		}
+		pagedList(container, {
+			fetch: (page) => window.AI.recentMedia(page),
+			empty: T.media_none || 'Nothing here yet.',
+			error: T.media_error || 'Could not load recent media.',
+			more: T.show_more,
+			buildContainer: () => el('div', 'media-list'),
+			row: (item) => renderMediaItem(item)
+		});
 	}
 
 	function renderRows(container, rows) {
@@ -87,15 +96,64 @@
 		container.appendChild(table);
 	}
 
-	function renderMedia(container, items) {
-		container.innerHTML = '';
-		if (!items.length) {
-			container.appendChild(el('p', 'empty', T.media_none || 'Nothing here yet.'));
-			return;
+	function pagedList(container, opts) {
+		let page = 1;
+		let buffer = [];
+		let rendered = 0;
+		let done = false;
+
+		const list = opts.buildContainer();
+		const moreBtn = el('button', 'btn btn-ghost btn-block-show', opts.more || 'Show more');
+		moreBtn.type = 'button';
+		moreBtn.addEventListener('click', loadMore);
+
+		async function fillBuffer() {
+			while (buffer.length < CHUNK && !done) {
+				const items = await opts.fetch(page++);
+				buffer = buffer.concat(items);
+				if (!items.length || items.length < API_PAGE) done = true;
+			}
 		}
-		const list = el('div', 'media-list');
-		for (const item of items) list.appendChild(renderMediaItem(item));
-		container.appendChild(list);
+
+		async function loadMore() {
+			moreBtn.disabled = true;
+			try {
+				await fillBuffer();
+				append();
+			} catch (e) {
+				container.querySelectorAll('.form-error').forEach((n) => n.remove());
+				const box = el('p', 'form-error', T.more_error || 'Could not load more.');
+				container.prepend(box);
+				setTimeout(() => box.remove(), 6000);
+			} finally {
+				moreBtn.disabled = false;
+			}
+		}
+
+		function append() {
+			if (!rendered && !buffer.length) {
+				container.innerHTML = '';
+				container.appendChild(el('p', 'empty', opts.empty));
+				return;
+			}
+			if (rendered === 0) {
+				container.innerHTML = '';
+				container.appendChild(list);
+				container.appendChild(moreBtn);
+			}
+			const take = buffer.splice(0, CHUNK);
+			for (const item of take) list.appendChild(opts.row(item));
+			rendered += take.length;
+			if (done && !buffer.length) moreBtn.hidden = true;
+		}
+
+		fillBuffer().then(() => {
+			append();
+			if (rendered === 0) moreBtn.hidden = true;
+		}).catch(() => {
+			container.innerHTML = '';
+			container.appendChild(el('p', 'form-error', opts.error));
+		});
 	}
 
 	function renderMediaItem(item) {

@@ -70,17 +70,22 @@ const document = {
 
 const state = {
 	media: [],
+	mediaPages: {},
 	mediaFiles: {},
 	downloads: [],
 	mediaTextError: null,
+	activityPages: {},
 };
 
 const window = {
 	AI: {
 		requireAuth: () => true,
 		getCredits: async () => ({ credits: 12.5 }),
-		recentActivities: async () => [],
-		recentMedia: async () => state.media,
+		recentActivities: async (page) => state.activityPages[page] || [],
+		recentMedia: async (page) => {
+			if (state.mediaPages[page]) return state.mediaPages[page];
+			return page === 1 ? state.media : [];
+		},
 		mediaFileText: async (mediaId, fileName) => {
 			if (state.mediaTextError) throw state.mediaTextError;
 			return state.mediaFiles[mediaId + '/' + fileName];
@@ -180,6 +185,28 @@ const tick = () => new Promise((r) => setTimeout(r, 0));
 	await tick();
 	assert.strictEqual(containers['recent-media'].children[0].className, 'form-error', 'error box prepended');
 	assert.ok(containers['recent-media'].children[0].textContent.includes('Download failed'), 'error message shown');
+
+	state.mediaPages = {
+		1: Array.from({ length: 20 }, (_, i) => ({ id: 100 + i, time_str: '', files: ['a.srt'] })),
+		2: Array.from({ length: 3 }, (_, i) => ({ id: 200 + i, time_str: '', files: ['a.srt'] })),
+	};
+	loadDashboard();
+	await tick();
+	await tick();
+	assert.strictEqual(containers['recent-media'].children[0].className, 'media-list', 'paginated list container');
+	assert.strictEqual(containers['recent-media'].children[0].children.length, 10, 'first chunk is 10 items');
+	const actBtn = containers['recent-media'].children[1];
+	assert.strictEqual(actBtn.className.includes('btn-block-show'), true, 'show more button present');
+	assert.strictEqual(actBtn.hidden, false, 'show more button visible when more data');
+	actBtn.click();
+	await tick();
+	await tick();
+	assert.strictEqual(containers['recent-media'].children[0].children.length, 20, 'second chunk appends 10 more');
+	actBtn.click();
+	await tick();
+	await tick();
+	assert.strictEqual(containers['recent-media'].children[0].children.length, 23, 'last short page appends remaining 3');
+	assert.strictEqual(actBtn.hidden, true, 'show more button hidden after last page');
 
 	console.log('render-media: all assertions passed');
 })().catch((e) => { console.error(e); process.exit(1); });
