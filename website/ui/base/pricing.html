@@ -1,0 +1,44 @@
+<section class="page-head">
+	<h1>{{ @pricing.h1 }}</h1>
+	<p class="lead">{{ @pricing.lead }}</p>
+</section>
+
+<check if="{{ @services.Transcription }}">
+	<section>
+		<h2>{{ @pricing.transcription }}</h2>
+		<div class="packages">
+			<repeat group="{{ @services.Transcription }}" value="{{ @svc }}">
+				<div class="package-card">
+					<h3>{{ @svc.display_name | esc }}</h3>
+					<p class="muted svc-desc">{{ @svc.description | esc }}</p>
+					<div class="svc-meta">
+						<p class="muted">{{ count(@svc.languages_supported) }} {{ @pricing.languages }} · {{ @svc.reliability | esc }} · {{ @svc.speed | esc }}</p>
+						<p class="price">{{ @svc.price }} <span>{{ @svc.pricing | esc }}</span></p>
+					</div>
+				</div>
+			</repeat>
+		</div>
+	</section>
+</check>
+
+<check if="{{ @services.Translation }}">
+	<section>
+		<h2>{{ @pricing.translation }}</h2>
+		<div class="packages">
+			<repeat group="{{ @services.Translation }}" value="{{ @svc }}">
+				<div class="package-card">
+					<h3>{{ @svc.display_name | esc }}</h3>
+					<p class="muted svc-desc">{{ @svc.description | esc }}</p>
+					<div class="svc-meta">
+						<p class="muted">{{ count(@svc.languages_supported) }} {{ @pricing.languages }} · {{ @svc.reliability | esc }} · {{ @svc.speed | esc }}</p>
+						<p class="price">{{ @svc.price }} <span>{{ @svc.pricing | esc }}</span></p>
+					</div>
+				</div>
+			</repeat>
+		</div>
+	</section>
+</check>
+
+<check if="{{ !@services }}">
+	<section><p class="empty">{{ @pricing.empty }}</p></section>
+</check>

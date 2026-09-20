@@ -1,0 +1,21 @@
+{
+    "name": "opensubtitles/ai-website",
+    "description": "SEO-first demo & marketing site for ai.opensubtitles.com",
+    "type": "project",
+    "require": {
+        "php": ">=8.2",
+        "bcosca/fatfree-core": "^3.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "app/Controllers/",
+            "Services\\": "app/Services/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "scripts": {
+        "serve": "php -S localhost:8080 -t public -d upload_max_filesize=200M -d post_max_size=210M public/index.php"
+    }
+}

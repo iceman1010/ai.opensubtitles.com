@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="{{ @locale }}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ @page_title }} · {{ @site_name }}</title>
+	<meta name="description" content="{{ @page_description }}">
+	<meta name="api-base" content="{{ @APP.api_base }}">
+	<meta name="api-key" content="{{ @APP.api_key }}">
+	<meta name="api-user-agent" content="{{ @APP.user_agent }}">
+	<link rel="canonical" href="https://ai.opensubtitles.com{{ @canonical }}">
+	<check if="{{ @noindex }}"><true><meta name="robots" content="noindex, nofollow"></true></check>
+	<repeat group="{{ @alternates }}" key="{{ @hl }}" value="{{ @url }}"><link rel="alternate" hreflang="{{ @hl }}" href="https://ai.opensubtitles.com{{ @url }}">
+	</repeat>
+	<link rel="stylesheet" href="/assets/css/caption-light/tokens.css">
+	<link rel="stylesheet" href="/assets/css/caption-light/main.css">
+	<script>document.documentElement.dataset.theme=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');</script>
+	<script src="/js/config.js"></script>
+	<script src="/js/api.js"></script>
+	<script src="/js/auth.js"></script>
+</head>
+<body>
+	<header class="site-header">
+		<a class="brand" href="/">AI<span>Opensubtitles</span></a>
+		<nav>
+			<a href="/transcribe">{{ @nav.transcribe }}</a>
+			<a href="/translate">{{ @nav.translate }}</a>
+			<a href="/pricing">{{ @nav.pricing }}</a>
+			<a href="/login" id="nav-login" class="btn btn-small">{{ @nav.login }}</a>
+			<button id="nav-logout" class="btn btn-small" type="button" hidden>{{ @nav.logout }}</button>
+			<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">◐</button>
+		</nav>
+	</header>
+	<script>
+		(function () {
+			var t = localStorage.getItem('ai_opensubtitles_token');
+			var e = Number(localStorage.getItem('ai_opensubtitles_token_expiry'));
+			var on = !!(t && e > Date.now());
+			var li = document.getElementById('nav-login');
+			var lo = document.getElementById('nav-logout');
+			if (li && lo) { li.hidden = on; lo.hidden = !on; }
+		})();
+	</script>
+	<main>
+		<include href="{{ @page }}">
+	</main>
+	<footer class="site-footer">
+		<p>© {{ date('Y') }} {{ @site_name }} · <a href="https://www.opensubtitles.com">{{ @footer.main_site }}</a></p>
+	</footer>
+	<script src="/js/theme-toggle.js"></script>
+</body>
+</html>

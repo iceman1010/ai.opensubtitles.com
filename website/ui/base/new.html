@@ -1,0 +1,39 @@
+<section class="page-head">
+	<h1>{{ @job.new_h1 }}</h1>
+	<p class="lead">{{ @job.new_lead }}</p>
+</section>
+<section class="upload-zone">
+	<div id="dropzone" class="dropzone">
+		<p>{{ @job.drop_hint }}</p>
+		<input type="file" id="file-input" hidden>
+	</div>
+	<div id="detect-result" class="detect-result" hidden></div>
+
+	<div id="options-panel" hidden>
+		<div id="transcribe-options" hidden>
+			<h2>{{ @job.transcription_options }}</h2>
+			<label>{{ @job.model }}<select name="model"></select></label>
+			<label>{{ @job.language }}<select data-role="language"></select></label>
+		</div>
+		<div id="translate-options" hidden>
+			<h2>{{ @job.translation_options }}</h2>
+			<label>{{ @job.model }}<select name="model"></select></label>
+			<label>{{ @job.from }}<select data-role="language"></select></label>
+			<label>{{ @job.to }}<select data-role="language"></select></label>
+		</div>
+		<button id="job-submit" class="btn btn-primary" type="button">{{ @job.submit }}</button>
+	</div>
+
+	<div id="convert-progress" hidden>
+		<p>{{ @job.converting }}</p>
+		<progress id="convert-bar" max="100" value="0"></progress>
+	</div>
+	<div id="upload-progress" hidden>
+		<p>{{ @job.uploading }}</p>
+		<progress id="upload-bar" max="100" value="0"></progress>
+	</div>
+	<p id="job-error" class="form-error" hidden></p>
+</section>
+<script src="/js/detect.js"></script>
+<script src="/js/ffmpeg-service.js"></script>
+<script src="/js/new-job.js"></script>

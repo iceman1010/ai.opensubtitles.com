@@ -1,0 +1,42 @@
+<section class="hero">
+	<h1><span class="caption-bar line-1">{{ @home.hero_line1 }}</span>
+		<span class="caption-bar line-2">{{ @home.hero_line2 }}</span></h1>
+	<p class="hero-sub">{{ @home.hero_sub }}</p>
+	<div class="hero-actions">
+		<a class="btn btn-primary" href="/new">{{ @home.cta_try }}</a>
+		<a class="btn btn-ghost" href="#apps">{{ @home.cta_apps }}</a>
+	</div>
+</section>
+
+<section class="services">
+	<a class="service-card" href="/transcribe">
+		<h2>{{ @nav.transcribe }}</h2>
+		<p>{{ @home.transcribe_card }}</p>
+	</a>
+	<a class="service-card" href="/translate">
+		<h2>{{ @nav.translate }}</h2>
+		<p>{{ @home.translate_card }}</p>
+	</a>
+</section>
+
+<section class="how">
+	<h2>{{ @home.how_title }}</h2>
+	<ol class="steps">
+		<li><strong>1</strong>{{ @home.how_step1 }}</li>
+		<li><strong>2</strong>{{ @home.how_step2 }}</li>
+		<li><strong>3</strong>{{ @home.how_step3 }}</li>
+	</ol>
+</section>
+
+<section class="apps" id="apps">
+	<h2>{{ @home.apps_title }}</h2>
+	<p>{{ @home.apps_text }}</p>
+	<a class="btn btn-primary" href="https://www.opensubtitles.com">{{ @home.apps_cta }}</a>
+</section>
+
+<section class="faq">
+	<h2>{{ @home.faq_title }}</h2>
+	<details><summary>{{ @home.faq_q1 }}</summary><p>{{ @home.faq_a1 }}</p></details>
+	<details><summary>{{ @home.faq_q2 }}</summary><p>{{ @home.faq_a2 }}</p></details>
+	<details><summary>{{ @home.faq_q3 }}</summary><p>{{ @home.faq_a3 }}</p></details>
+</section>

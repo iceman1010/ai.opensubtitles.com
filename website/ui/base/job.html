@@ -1,0 +1,42 @@
+<section class="page-head">
+	<h1>{{ @job.status_h1 }}</h1>
+</section>
+<section class="card" id="job-status-card" data-job-type="{{ @job_type }}" data-job-id="{{ @job_id }}">
+	<p id="job-state">…</p>
+	<div id="job-detail" hidden>
+		<p>{{ @job.file }}: <strong id="job-file"></strong></p>
+		<p>{{ @job.credits_used }}: <strong id="job-price"></strong></p>
+		<p>{{ @job.credits_left }}: <strong id="job-credits-left"></strong></p>
+	</div>
+	<p id="job-quality" hidden></p>
+	<p id="job-errors" class="form-error" hidden></p>
+	<button id="job-download" class="btn btn-primary" type="button" hidden>{{ @job.download }}</button>
+</section>
+<section class="card" id="readability-card" hidden>
+	<h2>{{ @job.readability }}</h2>
+	<div id="readability-stats" class="stat-row"></div>
+	<p id="readability-limits" class="muted"></p>
+	<div id="readability-summary"></div>
+	<div id="readability-problems"></div>
+</section>
+<script>
+window.JOB_I18N = {
+	captions: '{{ @read.captions }}',
+	analyzed: '{{ @read.analyzed }}',
+	avg_speed: '{{ @read.avg_speed }}',
+	max_speed: '{{ @read.max_speed }}',
+	longest_line: '{{ @read.longest_line }}',
+	limits: '{{ @read.limits }}',
+	chars: '{{ @read.chars }}',
+	chars_line: '{{ @read.chars_line }}',
+	lines: '{{ @read.lines }}',
+	no_problems: '{{ @read.no_problems }}',
+	issues_total: '{{ @read.issues_total }}',
+	more_not_shown: '{{ @read.more_not_shown }}',
+	limit: '{{ @read.limit }}',
+	reading_speed: '{{ @read.reading_speed }}',
+	line_length: '{{ @read.line_length }}',
+	line_count: '{{ @read.line_count }}'
+};
+</script>
+<script src="/js/job.js"></script>

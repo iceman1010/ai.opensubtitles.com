@@ -1,0 +1,12 @@
+<section class="auth-card">
+	<h1>{{ @login.h1 }}</h1>
+	<p id="login-notice" class="notice" hidden>{{ @login.expired }}</p>
+	<form id="login-form" method="post" action="#">
+		<label>{{ @login.username }}<input type="text" name="username" autocomplete="username" required></label>
+		<label>{{ @login.password }}<input type="password" name="password" autocomplete="current-password" required></label>
+		<label class="checkbox"><input type="checkbox" name="remember"> {{ @login.remember }}</label>
+		<p id="login-error" class="form-error" hidden></p>
+		<button class="btn btn-primary" type="submit">{{ @login.submit }}</button>
+	</form>
+	<p class="muted">{{ @login.register_hint }} <a href="https://www.opensubtitles.com">{{ @login.register_link }}</a></p>
+</section>

@@ -1,0 +1,16 @@
+<section class="page-head">
+	<h1>{{ @dashboard.h1 }}</h1>
+</section>
+<section class="dashboard-grid">
+	<div class="card"><h2>{{ @dashboard.credits }}</h2><p id="credits-value" class="big-number">–</p></div>
+	<div class="card"><h2>{{ @dashboard.new_job }}</h2><a class="btn btn-primary" href="/new">{{ @dashboard.new_job_cta }}</a></div>
+</section>
+<section class="card">
+	<h2>{{ @dashboard.recent }}</h2>
+	<div id="recent-activities"><p class="empty">…</p></div>
+</section>
+<section class="card">
+	<h2>{{ @dashboard.media }}</h2>
+	<div id="recent-media"><p class="empty">…</p></div>
+</section>
+<script src="/js/dashboard.js"></script>
