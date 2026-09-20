@@ -6,7 +6,7 @@
 		<label>{{ @login.password }}<input type="password" name="password" autocomplete="current-password" required></label>
 		<label class="checkbox"><input type="checkbox" name="remember"> {{ @login.remember }}</label>
 		<p id="login-error" class="form-error" hidden></p>
-		<button class="btn btn-primary" type="submit">{{ @login.submit }}</button>
+		<button class="btn btn-primary" type="submit"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-in"/></svg><span class="btn-label">{{ @login.submit }}</span></button>
 	</form>
 	<p class="muted">{{ @login.register_hint }} <a href="https://www.opensubtitles.com">{{ @login.register_link }}</a></p>
 </section>

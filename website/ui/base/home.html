@@ -3,8 +3,8 @@
 		<span class="caption-bar line-2">{{ @home.hero_line2 }}</span></h1>
 	<p class="hero-sub">{{ @home.hero_sub }}</p>
 	<div class="hero-actions">
-		<a class="btn btn-primary" href="/new">{{ @home.cta_try }}</a>
-		<a class="btn btn-ghost" href="#apps">{{ @home.cta_apps }}</a>
+		<a class="btn btn-primary" href="/new"><svg class="btn-icon" aria-hidden="true"><use href="#icon-upload"/></svg><span class="btn-label">{{ @home.cta_try }}</span></a>
+		<a class="btn btn-ghost" href="#apps"><svg class="btn-icon" aria-hidden="true"><use href="#icon-eye"/></svg><span class="btn-label">{{ @home.cta_apps }}</span></a>
 	</div>
 </section>
 
@@ -31,7 +31,7 @@
 <section class="apps" id="apps">
 	<h2>{{ @home.apps_title }}</h2>
 	<p>{{ @home.apps_text }}</p>
-	<a class="btn btn-primary" href="https://www.opensubtitles.com">{{ @home.apps_cta }}</a>
+	<a class="btn btn-primary" href="https://www.opensubtitles.com"><svg class="btn-icon" aria-hidden="true"><use href="#icon-tag"/></svg><span class="btn-label">{{ @home.apps_cta }}</span></a>
 </section>
 
 <section class="faq">

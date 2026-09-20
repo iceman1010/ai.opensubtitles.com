@@ -11,6 +11,24 @@
 		return node;
 	}
 
+	function icon(name) {
+		const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+		svg.setAttribute('class', 'btn-icon');
+		svg.setAttribute('aria-hidden', 'true');
+		const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+		use.setAttribute('href', '#icon-' + name);
+		svg.appendChild(use);
+		return svg;
+	}
+
+	function iconBtn(classes, label, iconName) {
+		const btn = el('button', classes);
+		btn.type = 'button';
+		btn.appendChild(icon(iconName));
+		btn.appendChild(el('span', 'btn-label', label));
+		return btn;
+	}
+
 	async function loadCredits() {
 		const el = document.getElementById('credits-value');
 		if (!el) return;
@@ -102,14 +120,12 @@
 		row.appendChild(el('span', 'file-name', fileName));
 
 		if (SUBTITLE_EXT.test(fileName)) {
-			const previewBtn = el('button', 'btn btn-small', T.preview || 'Preview');
-			previewBtn.type = 'button';
+			const previewBtn = iconBtn('btn btn-small', T.preview || 'Preview', 'eye');
 			previewBtn.addEventListener('click', () => previewMedia(mediaId, fileName, previewBtn));
 			row.appendChild(previewBtn);
 		}
 
-		const dlBtn = el('button', 'btn btn-small', T.download || 'Download');
-		dlBtn.type = 'button';
+		const dlBtn = iconBtn('btn btn-small', T.download || 'Download', 'download');
 		dlBtn.addEventListener('click', () => downloadMedia(mediaId, fileName, dlBtn));
 		row.appendChild(dlBtn);
 		return row;
@@ -165,10 +181,8 @@
 		const title = el('h3', null, '');
 		const pre = el('pre', 'modal-pre', '');
 		const actions = el('div', 'modal-actions');
-		const download = el('button', 'btn btn-small btn-primary', T.download || 'Download');
-		download.type = 'button';
-		const close = el('button', 'btn btn-small btn-ghost', T.close || 'Close');
-		close.type = 'button';
+		const download = iconBtn('btn btn-small btn-primary', T.download || 'Download', 'download');
+		const close = iconBtn('btn btn-small btn-ghost', T.close || 'Close', 'x');
 		close.addEventListener('click', closePreview);
 		overlay.addEventListener('click', (e) => {
 			if (e.target === overlay) closePreview();

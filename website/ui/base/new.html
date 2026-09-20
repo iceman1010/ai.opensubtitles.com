@@ -21,7 +21,7 @@
 			<label>{{ @job.from }}<select data-role="language"></select></label>
 			<label>{{ @job.to }}<select data-role="language"></select></label>
 		</div>
-		<button id="job-submit" class="btn btn-primary" type="button">{{ @job.submit }}</button>
+		<button id="job-submit" class="btn btn-primary" type="button"><svg class="btn-icon" aria-hidden="true"><use href="#icon-upload"/></svg><span class="btn-label">{{ @job.submit }}</span></button>
 	</div>
 
 	<div id="convert-progress" hidden>

@@ -22,7 +22,7 @@ function makeElement(tag) {
 	const node = {
 		tagName: tag,
 		className: '',
-		textContent: '',
+		_hiddenText: undefined,
 		hidden: false,
 		type: '',
 		disabled: false,
@@ -30,9 +30,15 @@ function makeElement(tag) {
 		children: [],
 		handlers: {},
 		get childNodes() { return this.children; },
+		get textContent() {
+			if (node._hiddenText !== undefined) return node._hiddenText;
+			return node.children.map((c) => (c.textContent !== undefined ? c.textContent : '')).join('');
+		},
+		set textContent(v) { node._hiddenText = v; },
 		appendChild(child) { this.children.push(child); return child; },
 		prepend(child) { this.children.unshift(child); return child; },
 		querySelectorAll() { return []; },
+		setAttribute() {},
 		remove() {},
 		classList: { add() {}, remove() {} },
 		addEventListener(type, fn) { (node.handlers[type] = node.handlers[type] || []).push(fn); },
@@ -56,6 +62,7 @@ const document = {
 		return containers[id];
 	},
 	createElement: (tag) => makeElement(tag),
+	createElementNS: () => makeElement('svg'),
 	addEventListener(type, fn) { if (type === 'keydown') document.keydownHandlers.push(fn); },
 	removeEventListener() {},
 	querySelectorAll() { return []; },

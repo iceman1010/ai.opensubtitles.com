@@ -10,7 +10,7 @@
 	</div>
 	<p id="job-quality" hidden></p>
 	<p id="job-errors" class="form-error" hidden></p>
-	<button id="job-download" class="btn btn-primary" type="button" hidden>{{ @job.download }}</button>
+	<button id="job-download" class="btn btn-primary" type="button" hidden><svg class="btn-icon" aria-hidden="true"><use href="#icon-download"/></svg><span class="btn-label">{{ @job.download }}</span></button>
 </section>
 <section class="card" id="readability-card" hidden>
 	<h2>{{ @job.readability }}</h2>
