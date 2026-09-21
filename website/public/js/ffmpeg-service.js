@@ -72,66 +72,27 @@
 		}
 
 		return enqueue(async () => {
-			const inputName = file.name;
+			const inputPath = '/input/' + file.name;
 			const outputName = baseName(file.name) + '_converted.mp3';
-			await instance.writeFile(inputName, new Uint8Array(await file.arrayBuffer()));
-
-			const args = ['-i', inputName];
-			if (durationSeconds) args.push('-t', String(Math.ceil(durationSeconds)));
-			args.push('-vn', '-acodec', 'libmp3lame', '-ac', '1', '-ar', '16000', outputName);
-
-			const ret = await instance.exec(args);
-			const data = await instance.readFile(outputName);
-			await instance.deleteFile(inputName).catch(() => undefined);
-			await instance.deleteFile(outputName).catch(() => undefined);
-
-			if (ret !== 0) throw new Error('Conversion failed (exit code ' + ret + ')');
-			return new File([data.buffer || data], outputName, { type: 'audio/mpeg' });
-		});
-	}
-
-	async function probe(file) {
-		const instance = await initialize();
-		const maxProbe = 10 * 1024 * 1024;
-		const slice = file.slice(0, Math.min(file.size, maxProbe));
-
-		return enqueue(async () => {
-			await instance.writeFile(file.name, new Uint8Array(await slice.arrayBuffer()));
-
-			let logOutput = '';
-			const handler = ({ message }) => {
-				logOutput += message + '\n';
-			};
-			instance.on('log', handler);
+			await instance.createDir('/input').catch(() => undefined);
+			await instance.mount('WORKERFS', { files: [file] }, '/input');
 			try {
-				await instance.exec(['-i', file.name, '-f', 'null', '-']);
-			} catch (e) {
+				const args = ['-i', inputPath];
+				if (durationSeconds) args.push('-t', String(Math.ceil(durationSeconds)));
+				args.push('-vn', '-acodec', 'libmp3lame', '-ac', '1', '-ar', '16000', outputName);
+				const ret = await instance.exec(args);
+				if (ret !== 0) throw new Error('Conversion failed (exit code ' + ret + ')');
+				const data = await instance.readFile(outputName);
+				const out = new File([data.buffer || data], outputName, { type: 'audio/mpeg' });
+				await instance.deleteFile(outputName).catch(() => undefined);
+				return out;
+			} finally {
+				await instance.unmount('/input').catch(() => undefined);
 			}
-			instance.off('log', handler);
-			await instance.deleteFile(file.name).catch(() => undefined);
-
-			const result = {
-				hasAudio: /Audio:/.test(logOutput),
-				hasVideo: /Video:/.test(logOutput),
-				duration: undefined,
-				format: undefined
-			};
-			const durationMatch = logOutput.match(/Duration:\s*(\d{2}):(\d{2}):(\d{2})\.(\d{2})/);
-			if (durationMatch) {
-				result.duration =
-					parseInt(durationMatch[1]) * 3600 +
-					parseInt(durationMatch[2]) * 60 +
-					parseInt(durationMatch[3]) +
-					parseInt(durationMatch[4]) / 100;
-			}
-			const formatMatch = logOutput.match(/Input #0,\s*(\w+)/);
-			if (formatMatch) result.format = formatMatch[1];
-			return result;
 		});
 	}
 
 	window.FFmpegService = {
-		convertToMonoMp3,
-		probe
+		convertToMonoMp3
 	};
 })();

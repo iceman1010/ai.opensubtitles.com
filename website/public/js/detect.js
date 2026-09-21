@@ -1,20 +1,10 @@
 (function () {
 	const SUBTITLE = ['srt', 'vtt'];
-	const VIDEO = ['mp4', 'mkv', 'avi', 'mov', 'wmv', 'flv', 'webm', 'm4v', 'mpg', 'mpeg', 'mp2', 'mpe', 'mpv', 'm2v', '3gp', '3g2', 'f4v', 'f4p', 'f4a', 'f4b', 'mxf', 'roq', 'nsv', 'vob', 'dv', 'ts', 'mts', 'm2ts', 'asf'];
-	const AUDIO = ['mp3', 'wav', 'flac', 'aac', 'ogg', 'wma', 'm4a', 'aiff', 'au', 'raw', 'pcm', 'opus', 'vorbis', 'ac3', 'dts', 'ape', 'wv', 'amr', 'awb', 'gsm', 'spx'];
-
 	const WASM_WARNING = 500 * 1024 * 1024;
 	const WASM_LIMIT = 2 * 1024 * 1024 * 1024;
 
 	function extOf(file) {
 		return (file.name.split('.').pop() || '').toLowerCase();
-	}
-
-	function byExtension(file) {
-		const ext = extOf(file);
-		if (SUBTITLE.includes(ext)) return { kind: 'subtitle', ext: ext };
-		if (VIDEO.includes(ext) || AUDIO.includes(ext)) return { kind: 'media', ext: ext };
-		return { kind: 'unknown', ext: ext };
 	}
 
 	function sizeCheck(file) {
@@ -34,23 +24,27 @@
 		return (bytes / 1073741824).toFixed(2) + ' GB';
 	}
 
-	async function detect(file, probeFn) {
-		const result = byExtension(file);
-		if (result.kind !== 'unknown' || typeof probeFn !== 'function') return result;
+	async function detect(file) {
+		const ext = extOf(file);
+		if (SUBTITLE.includes(ext)) return { kind: 'subtitle', ext: ext };
 
+		let info;
 		try {
-			const info = await probeFn(file);
-			if (info && (info.hasAudio || info.hasVideo)) {
-				return { kind: 'media', ext: result.ext, duration: info.duration };
-			}
+			info = await window.MediaInfoService.analyze(file);
 		} catch (e) {
+			return { kind: 'unknown', ext: ext, message: 'Could not read this file (' + (e.message || 'unknown error') + ').' };
 		}
-		return result;
+
+		if (info.hasAudio) return { kind: 'media', ext: ext, duration: info.duration };
+		if (info.hasVideo) return { kind: 'unsupported', ext: ext, message: 'This file has no audio track — nothing to transcribe.' };
+		if (info.hasImage) return { kind: 'unsupported', ext: ext, message: 'Images cannot be transcribed — please provide a video or audio file.' };
+		if (info.hasText) return { kind: 'unsupported', ext: ext, message: 'Subtitle content is handled by the translation flow — please use .srt or .vtt.' };
+		return { kind: 'unsupported', ext: ext, message: 'Unsupported file type: .' + ext };
 	}
 
 	window.FileDetect = {
 		detect,
-		sizeCheck,
-		extOf
+		extOf,
+		sizeCheck
 	};
 })();

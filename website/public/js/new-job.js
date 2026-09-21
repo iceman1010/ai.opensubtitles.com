@@ -66,12 +66,12 @@
 		detectResult.textContent = 'Inspecting ' + file.name + ' …';
 
 		try {
-			const detection = await window.FileDetect.detect(file, window.FFmpegService.probe);
-			currentKind = detection.kind;
+			const detection = await window.FileDetect.detect(file);
+			currentKind = detection.kind === 'subtitle' || detection.kind === 'media' ? detection.kind : null;
 			if (detection.duration) duration = detection.duration;
 
-			if (detection.kind === 'unknown') {
-				detectResult.textContent = 'Unsupported file type: .' + detection.ext;
+			if (currentKind === null) {
+				showError(detection.message || ('Unsupported file type: .' + detection.ext));
 				return;
 			}
 
