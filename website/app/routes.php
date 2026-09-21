@@ -8,6 +8,7 @@ return [
     'GET /login' => 'Controllers\Auth->login',
     'GET /dashboard' => 'Controllers\Dashboard->index',
     'GET /new' => 'Controllers\Job->create',
+    'GET /search' => 'Controllers\Search->index',
     'GET /jobs' => 'Controllers\Job->index',
     'GET /jobs/@type/@id' => 'Controllers\Job->show',
 ];

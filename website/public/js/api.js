@@ -368,6 +368,51 @@
 		setTimeout(() => URL.revokeObjectURL(link.href), 5000);
 	}
 
+	async function searchSubtitles(params) {
+		const qs = new URLSearchParams();
+		for (const [key, value] of Object.entries(params)) {
+			if (value !== undefined && value !== null && value !== '') qs.append(key, value);
+		}
+		const data = await jsonCall(aiUrl('/proxy/subtitles' + (qs.toString() ? '?' + qs.toString() : '')), {
+			method: 'GET',
+			headers: headers(true)
+		});
+		return data;
+	}
+
+	async function searchFeatures(params) {
+		const qs = new URLSearchParams();
+		for (const [key, value] of Object.entries(params)) {
+			if (value !== undefined && value !== null && value !== '') qs.append(key, value);
+		}
+		const data = await jsonCall(aiUrl('/proxy/features' + (qs.toString() ? '?' + qs.toString() : '')), {
+			method: 'GET',
+			headers: headers(true)
+		});
+		return data;
+	}
+
+	async function searchLanguages() {
+		const cached = infoCacheGet('ai_search_languages');
+		if (cached) return cached;
+		const res = await fetchWithRetry(SITE.base + '/infos/languages', {
+			method: 'GET',
+			headers: headers(false)
+		});
+		const data = await res.json();
+		const list = data.data || [];
+		infoCacheSet('ai_search_languages', list);
+		return list;
+	}
+
+	async function downloadSubtitleFile(fileId) {
+		return jsonCall(aiUrl('/proxy/download'), {
+			method: 'POST',
+			headers: headers(true, 'application/json'),
+			body: JSON.stringify({ file_id: fileId })
+		});
+	}
+
 	window.AI = {
 		loggedIn: () => !!getValidToken(),
 		requireAuth: () => {
@@ -397,6 +442,10 @@
 		creditPackages,
 		downloadFile,
 		mediaFileText,
-		downloadText
+		downloadText,
+		searchSubtitles,
+		searchFeatures,
+		searchLanguages,
+		downloadSubtitleFile
 	};
 })();

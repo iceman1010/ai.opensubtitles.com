@@ -1,0 +1,93 @@
+<section class="page-head">
+	<h1>{{ @search.h1 }}</h1>
+	<p class="lead">{{ @search.lead }}</p>
+</section>
+<section class="search-page">
+	<div class="card search-card">
+		<div class="seg" role="tablist">
+			<button id="tab-subtitles" class="seg-btn" type="button" role="tab" aria-selected="true">{{ @search.tab_subtitles }}</button>
+			<button id="tab-features" class="seg-btn" type="button" role="tab" aria-selected="false">{{ @search.tab_features }}</button>
+		</div>
+		<form id="search-form">
+			<div class="search-row">
+				<input type="search" id="search-query" placeholder="{{ @search.placeholder_subtitles }}" autocomplete="off">
+				<button id="search-submit" class="btn btn-primary" type="submit"><svg class="btn-icon" aria-hidden="true"><use href="#icon-search"/></svg><span class="btn-label">{{ @search.submit }}</span></button>
+			</div>
+			<div class="search-filters">
+				<label>{{ @search.language }}<select id="search-language"></select></label>
+				<label>{{ @search.type }}<select id="search-type">
+					<option value="">{{ @search.type_all }}</option>
+					<option value="movie">{{ @search.type_movie }}</option>
+					<option value="episode">{{ @search.type_episode }}</option>
+				</select></label>
+				<button id="search-advanced-toggle" class="link-btn" type="button">{{ @search.advanced }} ▾</button>
+			</div>
+			<div id="search-advanced" class="search-advanced" hidden>
+				<label>{{ @search.imdb_id }}<input type="text" id="search-imdb" placeholder="tt0133093" autocomplete="off"></label>
+				<label>{{ @search.year }}<input type="number" id="search-year" min="1900" max="2100" inputmode="numeric"></label>
+			</div>
+		</form>
+		<p id="search-error" class="form-error" hidden></p>
+	</div>
+
+	<div id="search-results" hidden>
+		<div class="results-head">
+			<h2 id="results-title"></h2>
+			<span id="results-meta"></span>
+		</div>
+		<div id="results-grid" class="results-grid"></div>
+		<div class="pagination" id="pagination" hidden>
+			<button id="page-prev" class="btn btn-ghost btn-small" type="button">← {{ @search.prev }}</button>
+			<span id="page-info"></span>
+			<button id="page-next" class="btn btn-ghost btn-small" type="button">{{ @search.next }} →</button>
+		</div>
+	</div>
+</section>
+
+<div id="preview-overlay" class="modal-overlay" hidden>
+	<div class="modal-card">
+		<h3 id="preview-title"></h3>
+		<pre id="preview-content" class="modal-pre"></pre>
+		<div class="modal-actions">
+			<button id="preview-download" class="btn btn-primary btn-small" type="button"><svg class="btn-icon" aria-hidden="true"><use href="#icon-download"/></svg><span class="btn-label">{{ @search.download }}</span></button>
+			<button id="preview-close" class="btn btn-ghost btn-small" type="button">{{ @search.close }}</button>
+		</div>
+	</div>
+</div>
+
+<div id="lightbox-overlay" class="lightbox-overlay" hidden>
+	<img id="lightbox-img" alt="">
+</div>
+
+<script>
+window.SEARCH_I18N = {
+	results_for: '{{ @search.results_for }}',
+	results_title_subtitles: '{{ @search.results_title_subtitles }}',
+	results_title_features: '{{ @search.results_title_features }}',
+	found: '{{ @search.found }}',
+	page_of: '{{ @search.page_of }}',
+	of: '{{ @search.of }}',
+	empty: '{{ @search.empty }}',
+	error: '{{ @search.error }}',
+	find_subtitles: '{{ @search.find_subtitles }}',
+	episodes_count: '{{ @search.episodes_count }}',
+	subtitles_count: '{{ @search.subtitles_count }}',
+	preview: '{{ @search.preview }}',
+	download: '{{ @search.download }}',
+	downloading: '{{ @search.downloading }}',
+	loading_preview: '{{ @search.loading_preview }}',
+	login_required: '{{ @search.login_required }}',
+	download_failed: '{{ @search.download_failed }}',
+	release: '{{ @search.release }}',
+	downloads: '{{ @search.downloads }}',
+	uploaded: '{{ @search.uploaded }}',
+	by: '{{ @search.by }}',
+	on_demand: '{{ @search.on_demand }}',
+	hearing_impaired: '{{ @search.hearing_impaired }}',
+	ai_translated: '{{ @search.ai_translated }}',
+	foreign_parts: '{{ @search.foreign_parts }}',
+	trusted: '{{ @search.trusted }}',
+	on_demand_uploader: 'AI.OpenSubtitles.com'
+};
+</script>
+<script src="/js/search-page.js"></script>

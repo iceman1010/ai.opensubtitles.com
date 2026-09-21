@@ -32,6 +32,8 @@
 		<symbol id="icon-log-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
 		<symbol id="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 17 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
 		<symbol id="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+		<symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+		<symbol id="icon-film" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></symbol>
 		<symbol id="icon-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></symbol>
 		<symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
 	</svg>
@@ -40,6 +42,7 @@
 		<nav>
 			<a class="nav-pill" href="/transcribe"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-mic"/></svg></span><span class="btn-label">{{ @nav.transcribe }}</span></a>
 			<a class="nav-pill" href="/translate"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-languages"/></svg></span><span class="btn-label">{{ @nav.translate }}</span></a>
+			<a class="nav-pill" href="/search"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-search"/></svg></span><span class="btn-label">{{ @nav.search }}</span></a>
 			<a class="nav-pill" href="/pricing"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-tag"/></svg></span><span class="btn-label">{{ @nav.pricing }}</span></a>
 			<a class="nav-pill" href="/dashboard" id="nav-dashboard" hidden><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-dashboard"/></svg></span><span class="btn-label">{{ @nav.dashboard }}</span></a>
 			<a class="nav-pill" href="/login" id="nav-login"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-in"/></svg></span><span class="btn-label">{{ @nav.login }}</span></a>

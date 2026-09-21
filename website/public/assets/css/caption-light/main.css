@@ -315,3 +315,48 @@ progress { width: 100%; height: 0.8rem; }
 .read-text { font-family: ui-monospace, monospace; white-space: pre-wrap; margin-top: 0.5rem; font-size: 0.9rem; }
 .read-issues { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
 .read-issues .issue-chip { margin: 0; }
+
+.search-page { max-width: 56rem; margin: 0 auto; padding-bottom: 3rem; }
+.search-card { padding: 1.25rem; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; margin-bottom: 1rem; }
+.seg-btn { border: none; background: transparent; color: var(--ink-soft); padding: 0.45rem 1.1rem; font: inherit; font-size: 0.9rem; cursor: pointer; }
+.seg-btn[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); }
+.search-row { display: flex; gap: 0.6rem; }
+.search-row input[type="search"] { flex: 1; padding: 0.65rem 0.9rem; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); font: inherit; }
+.search-filters { display: flex; gap: 0.75rem; align-items: end; flex-wrap: wrap; margin-top: 0.75rem; }
+.search-filters label, .search-advanced label { display: grid; gap: 0.25rem; font-size: 0.8rem; color: var(--ink-soft); }
+.search-filters select, .search-advanced input { padding: 0.5rem 0.7rem; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); font: inherit; }
+.link-btn { border: none; background: none; color: var(--accent); cursor: pointer; font: inherit; font-size: 0.85rem; text-decoration: underline; padding: 0.5rem 0; }
+.search-advanced { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.75rem; }
+.search-advanced input { width: 12rem; }
+.results-head { display: flex; align-items: baseline; gap: 0.75rem; margin: 1.5rem 0 0.75rem; }
+.results-head h2 { margin: 0; font-size: 1.1rem; }
+.results-head span { color: var(--ink-soft); font-size: 0.85rem; }
+.results-grid { display: grid; gap: var(--gap); }
+.results-empty { color: var(--ink-soft); text-align: center; padding: 2rem 0; }
+.sub-card { padding: 1.1rem 1.25rem; }
+.sub-card h3 { margin: 0; font-size: 1rem; overflow-wrap: anywhere; }
+.sub-year { color: var(--ink-soft); font-weight: 400; }
+.sub-card-head { display: flex; justify-content: space-between; align-items: start; gap: 0.75rem; }
+.lang-badge { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 0.15rem 0.55rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; white-space: nowrap; }
+.sub-release { margin: 0.5rem 0 0; color: var(--ink-soft); font-size: 0.9rem; overflow-wrap: anywhere; }
+.sub-meta { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; margin: 0.6rem 0 0; color: var(--ink-soft); font-size: 0.85rem; }
+.sub-chips { margin: 0.5rem 0 0; }
+.sub-chips .issue-chip { margin: 0 0.4rem 0.4rem 0; }
+.sub-uploader { margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ink-soft); }
+.sub-ondemand { font-weight: 700; color: var(--accent); cursor: help; }
+.sub-imdb { color: var(--accent); }
+.sub-actions { display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
+.pagination { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.5rem; }
+.pagination span { color: var(--ink-soft); font-size: 0.9rem; }
+@media (max-width: 640px) { .search-row { flex-direction: column; } }
+.feature-card { display: flex; gap: 1rem; }
+.sub-card.has-poster { display: flex; gap: 1rem; }
+.feature-poster { width: 64px; aspect-ratio: 2 / 3; border-radius: 6px; border: 1px solid var(--line); flex-shrink: 0; align-self: flex-start; background: var(--paper); overflow: hidden; }
+.feature-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.feature-poster.poster-empty { display: flex; align-items: center; justify-content: center; color: var(--ink-soft); opacity: 0.6; }
+.feature-poster.poster-empty svg { width: 1.6rem; height: 1.6rem; }
+.feature-body { flex: 1; min-width: 0; }
+.feature-poster.has-img { cursor: zoom-in; }
+.lightbox-overlay { position: fixed; inset: 0; background: rgb(0 0 0 / 80%); display: flex; align-items: center; justify-content: center; padding: 1.5rem; z-index: 60; cursor: zoom-out; }
+.lightbox-overlay img { max-width: 92vw; max-height: 88vh; width: auto; height: auto; border-radius: 8px; box-shadow: var(--shadow); }
