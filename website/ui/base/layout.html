@@ -14,6 +14,9 @@
 	</repeat>
 	<link rel="stylesheet" href="/assets/css/caption-light/tokens.css">
 	<link rel="stylesheet" href="/assets/css/caption-light/main.css">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
+	<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 	<script>document.documentElement.dataset.theme=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');</script>
 	<script src="/js/config.js"></script>
 	<script src="/js/api.js"></script>
@@ -33,7 +36,7 @@
 		<symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
 	</svg>
 	<header class="site-header">
-		<a class="brand" href="/">AI<span>Opensubtitles</span></a>
+		<a class="brand" href="/"><img src="/assets/img/logo-64.png" alt="{{ @site_name }}" width="32" height="32"></a>
 		<nav>
 			<a class="nav-pill" href="/transcribe"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-mic"/></svg></span><span class="btn-label">{{ @nav.transcribe }}</span></a>
 			<a class="nav-pill" href="/translate"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-languages"/></svg></span><span class="btn-label">{{ @nav.translate }}</span></a>

@@ -80,10 +80,20 @@
 
 	const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+	function pulseBrand() {
+		const img = document.querySelector('.brand img');
+		if (!img) return;
+		img.classList.remove('brand-pulse');
+		void img.offsetWidth;
+		img.classList.add('brand-pulse');
+		img.addEventListener('animationend', () => img.classList.remove('brand-pulse'), { once: true });
+	}
+
 	async function fetchWithRetry(url, options, label) {
 		let lastError;
 		for (let attempt = 0; attempt < 3; attempt++) {
 			try {
+				pulseBrand();
 				const res = await fetch(url, options);
 				if (res.status === 401 || res.status === 403) {
 					const body = await res.text().catch(() => '');
@@ -266,6 +276,7 @@
 				resolve(xhr.response);
 			});
 			xhr.addEventListener('error', () => reject(new Error('Network error during upload')));
+			pulseBrand();
 			xhr.send(formData);
 		});
 	}
