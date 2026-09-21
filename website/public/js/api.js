@@ -324,6 +324,20 @@
 		setTimeout(() => URL.revokeObjectURL(link.href), 5000);
 	}
 
+	async function detectLanguage(file, duration) {
+		const form = new FormData();
+		form.append('file', file, file.name || 'audio.mp3');
+		if (duration) form.append('duration', String(duration));
+		return upload(aiUrl('/detect_language'), form);
+	}
+
+	async function languageDetectionStatus(correlationId) {
+		return jsonCall(aiUrl('/detectLanguage/' + encodeURIComponent(correlationId)), {
+			method: 'POST',
+			headers: headers(true, 'application/json')
+		});
+	}
+
 	async function mediaFileText(mediaId, fileName) {
 		const res = await fetchWithRetry(aiUrl('/files/' + encodeURIComponent(mediaId) + '/' + encodeURIComponent(fileName)), {
 			method: 'GET',
@@ -367,6 +381,8 @@
 		status,
 		recentMedia: (page) => recent('recent_media', page),
 		recentActivities: (page) => recent('recent_activities', page),
+		detectLanguage,
+		languageDetectionStatus,
 		creditPackages,
 		downloadFile,
 		mediaFileText,

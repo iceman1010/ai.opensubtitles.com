@@ -5,9 +5,12 @@
 	let currentKind = null;
 	let duration = undefined;
 
+	const DETECT_SECONDS = 240;
+
 	const dropzone = document.getElementById('dropzone');
 	const fileInput = document.getElementById('file-input');
 	const detectResult = document.getElementById('detect-result');
+	const langDetect = document.getElementById('lang-detect');
 	const optionsPanel = document.getElementById('options-panel');
 	const transcribeOptions = document.getElementById('transcribe-options');
 	const translateOptions = document.getElementById('translate-options');
@@ -17,6 +20,8 @@
 	const uploadBar = document.getElementById('upload-bar');
 	const errorBox = document.getElementById('job-error');
 	const submitButton = document.getElementById('job-submit');
+
+	const I18N = window.NEWJOB_I18N || {};
 
 	function showError(message) {
 		errorBox.textContent = message;
@@ -29,6 +34,8 @@
 		convertBox.hidden = true;
 		uploadBox.hidden = true;
 		submitButton.disabled = false;
+		langDetect.hidden = true;
+		langDetect.classList.remove('ok', 'fail');
 	}
 
 	function wireDropzone() {
@@ -79,6 +86,7 @@
 				: 'Media file detected — configure the transcription below.' + (size.warning ? ' ' + size.warning : '');
 
 			await showOptions(detection.kind);
+			detectSourceLanguage();
 		} catch (e) {
 			showError(e.message || 'Could not process this file.');
 		}
@@ -142,6 +150,85 @@
 		const selects = scope.querySelectorAll('select[data-role="language"]');
 		for (const select of selects) {
 			fillSelect(select, languages, 'language_code', 'language_name', preferred);
+		}
+	}
+
+	function setLangStatus(text, state) {
+		langDetect.textContent = text;
+		langDetect.hidden = false;
+		langDetect.classList.remove('ok', 'fail');
+		if (state) langDetect.classList.add(state);
+	}
+
+	function baseLanguage(code) {
+		return String(code || '').split(/[-_]/)[0].toLowerCase();
+	}
+
+	function applyDetectedLanguage(lang) {
+		if (!lang || !lang.ISO_639_1) {
+			setLangStatus(I18N.language_detect_failed, 'fail');
+			return;
+		}
+		const scope = currentKind === 'subtitle' ? translateOptions : transcribeOptions;
+		const select = currentKind === 'subtitle'
+			? scope.querySelectorAll('select[data-role="language"]')[0]
+			: scope.querySelector('select[data-role="language"]');
+		if (!select || !select.options.length) {
+			setLangStatus(I18N.language_detect_failed, 'fail');
+			return;
+		}
+
+		const base = baseLanguage(lang.ISO_639_1);
+		let match = null;
+		for (const option of select.options) {
+			if (baseLanguage(option.value) === base) { match = option; break; }
+		}
+		if (match) {
+			select.value = match.value;
+			setLangStatus(I18N.language_detected + ' ' + (lang.name || match.textContent) + ' (' + match.value + ')', 'ok');
+		} else {
+			setLangStatus(I18N.language_detected + ' ' + (lang.name || lang.ISO_639_1) + ' (' + lang.ISO_639_1 + ')', 'ok');
+		}
+	}
+
+	async function pollDetection(correlationId) {
+		const started = Date.now();
+		while (Date.now() - started < 120000) {
+			const response = await window.AI.languageDetectionStatus(correlationId);
+			if (response.status === 'COMPLETED' && response.data && response.data.language) {
+				return response.data.language;
+			}
+			if (response.status === 'ERROR' || response.status === 'TIMEOUT') {
+				throw new Error((response.errors && response.errors.join(', ')) || 'Language detection failed');
+			}
+			await new Promise((r) => setTimeout(r, 3000));
+		}
+		throw new Error('Language detection timed out');
+	}
+
+	async function detectSourceLanguage() {
+		if (!currentFile || !currentKind) return;
+
+		try {
+			setLangStatus(I18N.detecting_language);
+
+			let payload = currentFile;
+			if (currentKind === 'media') {
+				payload = await window.FFmpegService.convertToMonoMp3(currentFile, null, DETECT_SECONDS);
+			}
+
+			const response = await window.AI.detectLanguage(payload, DETECT_SECONDS);
+			let lang = null;
+			if (response && response.data && response.data.language) {
+				lang = response.data.language;
+			} else if (response && response.correlation_id) {
+				lang = await pollDetection(response.correlation_id);
+			} else {
+				throw new Error((response && response.errors && response.errors.join(', ')) || 'Language detection failed');
+			}
+			applyDetectedLanguage(lang);
+		} catch (e) {
+			setLangStatus(I18N.language_detect_failed, 'fail');
 		}
 	}
 

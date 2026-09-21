@@ -39,6 +39,8 @@ auth headers to download), `characters_count`, `unit_price`, `total_price`,
 | Transcription languages | POST `/ai/info/transcription_languages` | `{}` or `{api}` |
 | Translation models | POST `/ai/info/translation_apis` | `{}` |
 | Translation languages | POST `/ai/info/translation_languages` | `{}` or `{api}` (shape: array OR keyed object) |
+| Detect language | POST `/ai/detect_language` | FormData `file` (+ optional `duration` secs) → `data.language` sync OR `correlation_id` |
+| Detection status | POST `/ai/detectLanguage/{id}` | `{}` (match language codes by ISO_639_1 base) |
 | Start transcription | POST `/ai/transcribe` | FormData `file`,`language`,`api`,`return_content`? |
 | Transcription status | POST `/ai/transcribe/{id}` | `{}` (NOTE: transcribe) |
 | Start translation | POST `/ai/translate` | FormData `file`,`translate_from`,`translate_to`,`api`,`return_content`? |
@@ -73,8 +75,8 @@ Output name: `<base>_converted.mp3`.
 - `js/auth.js` — login form, auto-login w/ getCredits verification, logout.
 - `js/detect.js` — extension routing + optional ffmpeg probe fallback.
 - `js/ffmpeg-worker.js` — self-hosted core (public/vendor/ffmpeg/), mono 16k MP3.
-- `js/new-job.js` — smart page: detect → options form (model+language selects
-  from info endpoints) → convert (if media) → upload → redirect to job page.
+- `js/new-job.js` — smart page: detect → auto language detect → options form (model+language
+  selects from info endpoints) → convert (if media) → upload → redirect to job page.
 - `js/job.js` — poll correct endpoint per type; COMPLETED → download btn (authed
   GET), credits used, quality verdict for translations.
 - `js/dashboard.js` — credits + recent activities + recent media.

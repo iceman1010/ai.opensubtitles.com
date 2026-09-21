@@ -243,6 +243,10 @@ progress { width: 100%; height: 0.8rem; }
 .big-number { font-size: 2rem; font-weight: 800; margin: 0; font-variant-numeric: tabular-nums; }
 
 .detect-result { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.25rem; margin-top: var(--gap); }
+.lang-detect { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.8rem 1.25rem; margin-top: var(--gap); font-size: 0.9rem; }
+.lang-detect .spinner { display: inline-block; vertical-align: -2px; }
+.lang-detect.ok { border-color: var(--ok, #2e7d32); }
+.lang-detect.fail { border-color: var(--danger, #c62828); }
 
 .data-table { width: 100%; border-collapse: collapse; }
 .data-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--line); font-size: 0.95rem; }

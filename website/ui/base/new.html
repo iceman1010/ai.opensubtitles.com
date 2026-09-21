@@ -8,6 +8,7 @@
 		<input type="file" id="file-input" hidden>
 	</div>
 	<div id="detect-result" class="detect-result" hidden></div>
+	<div id="lang-detect" class="lang-detect" hidden></div>
 
 	<div id="options-panel" hidden>
 		<div id="transcribe-options" hidden>
@@ -34,6 +35,13 @@
 	</div>
 	<p id="job-error" class="form-error" hidden></p>
 </section>
+<script>
+window.NEWJOB_I18N = {
+	detecting_language: '{{ @job.detecting_language }}',
+	language_detected: '{{ @job.language_detected }}',
+	language_detect_failed: '{{ @job.language_detect_failed }}'
+};
+</script>
 <script src="/js/detect.js"></script>
 <script src="/js/ffmpeg-service.js"></script>
 <script src="/js/new-job.js"></script>
