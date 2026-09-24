@@ -403,7 +403,13 @@ progress { width: 100%; height: 0.8rem; }
 .tool-links { margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .tool-links .btn { flex: 1; justify-content: center; }
 
-.nav-more { position: relative; }
-.nav-menu { position: absolute; right: 0; top: calc(100% + 0.5rem); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); display: flex; flex-direction: column; align-items: stretch; padding: 0.4rem; gap: 0.25rem; min-width: 11rem; z-index: 50; }
-.nav-menu[hidden] { display: none; }
+.nav-more { position: relative; transition: padding 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.nav-menu { position: absolute; top: 0; left: 0; width: max-content; min-width: 10rem; display: flex; flex-direction: column; align-items: stretch; gap: 0.2rem; padding: 0.45rem 0.55rem; background: var(--surface); border: 1px solid var(--line); border-radius: 1.1rem; box-shadow: var(--shadow); opacity: 0; visibility: hidden; pointer-events: none; transform: scale(0.6); transform-origin: center top; transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.45s; z-index: 50; }
+.nav-more.open .nav-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+.nav-menu .nav-pill { border: none; background: none; padding: 0.45rem 0.9rem; }
+.nav-menu .nav-pill:hover { background: var(--paper); }
 .site-header .nav-menu .btn-label { position: static; width: auto; height: auto; margin: 0; padding: 0; overflow: visible; clip: auto; white-space: nowrap; }
+
+@media (max-width: 640px) {
+	.nav-menu { left: auto; right: 0; }
+}
