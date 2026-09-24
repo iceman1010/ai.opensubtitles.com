@@ -1,0 +1,20 @@
+<section class="page-head">
+	<h1>{{ @tools.h1 }}</h1>
+	<p class="lead">{{ @tools.lead }}</p>
+</section>
+<section>
+	<div class="packages">
+		<div class="package-card">
+			<h3>{{ @tools.web_name | esc }}</h3>
+			<p class="muted svc-desc">{{ @tools.web_text | esc }}</p>
+		</div>
+		<div class="package-card">
+			<h3>{{ @tools.desktop_name | esc }}</h3>
+			<p class="muted svc-desc">{{ @tools.desktop_text | esc }}</p>
+		</div>
+		<div class="package-card">
+			<h3>{{ @tools.custom_name | esc }}</h3>
+			<p class="muted svc-desc">{{ @tools.custom_text | esc }}</p>
+		</div>
+	</div>
+</section>

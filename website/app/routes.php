@@ -5,6 +5,7 @@ return [
     'GET /transcribe' => 'Controllers\Marketing->transcribe',
     'GET /translate' => 'Controllers\Marketing->translate',
     'GET /pricing' => 'Controllers\Pricing->index',
+    'GET /tools' => 'Controllers\Tools->index',
     'GET /login' => 'Controllers\Auth->login',
     'GET /dashboard' => 'Controllers\Dashboard->index',
     'GET /buy' => 'Controllers\Credits->index',
