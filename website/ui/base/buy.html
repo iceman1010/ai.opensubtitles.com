@@ -1,0 +1,17 @@
+<section class="page-head">
+	<h1>{{ @credits.h1 }}</h1>
+</section>
+<section>
+	<div id="credit-packages"><p class="empty">…</p></div>
+</section>
+<script>
+window.BUY_I18N = {
+	loading: '{{ @credits.loading }}',
+	error: '{{ @credits.error }}',
+	empty: '{{ @credits.empty }}',
+	retry: '{{ @credits.retry }}',
+	purchase: '{{ @credits.purchase }}',
+	discount_off: '{{ @credits.discount_off }}'
+};
+</script>
+<script src="/js/buy.js"></script>

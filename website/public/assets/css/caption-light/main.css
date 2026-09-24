@@ -229,6 +229,12 @@ section { max-width: 64rem; margin: 0 auto; padding: 2.5rem 1.5rem; }
 .card + .card { margin-top: var(--gap); }
 .dashboard-grid .card + .card { margin-top: 0; }
 .card h2 { margin-top: 0; font-size: 1.1rem; color: var(--ink-soft); }
+.dashboard-grid .card { display: flex; flex-direction: column; align-items: center; }
+.dashboard-grid .card .btn { margin-top: auto; }
+.package-card .btn { justify-content: center; }
+.discount-badge { align-self: flex-start; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; border-radius: 4px; padding: 0.15rem 0.5rem; background: rgb(46 125 50 / 15%); color: var(--ok, #2e7d32); }
+.discount-placeholder { visibility: hidden; }
+[data-theme="dark"] .discount-badge { color: rgb(140 200 150); }
 
 .dropzone {
 	border: 2px dashed var(--line);

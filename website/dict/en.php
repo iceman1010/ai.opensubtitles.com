@@ -82,6 +82,7 @@ return [
 	'dashboard.credits' => 'Your credits',
 	'dashboard.new_job' => 'New job',
 	'dashboard.new_job_cta' => 'Upload a file',
+	'dashboard.buy_cta' => 'Buy credits',
 	'dashboard.recent' => 'Recent activities',
 	'dashboard.media' => 'Recent media',
 	'dashboard.show_more' => 'Show more',
@@ -89,6 +90,15 @@ return [
 	'dashboard.payments' => 'Payment history',
 	'payments.none' => 'No payments recorded yet.',
 	'payments.error' => 'Could not load payment history.',
+
+	'credits.title' => 'Buy credits',
+	'credits.h1' => 'Buy credits',
+	'credits.loading' => 'Loading packages…',
+	'credits.error' => 'Could not load credit packages.',
+	'credits.empty' => 'No credit packages available at the moment.',
+	'credits.retry' => 'Retry',
+	'credits.purchase' => 'Purchase now',
+	'credits.discount_off' => '% OFF',
 
 	'media.files' => 'file(s)',
 	'media.preview' => 'Preview',

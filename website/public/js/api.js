@@ -315,9 +315,12 @@
 	}
 
 	async function creditPackages() {
+		const h = { 'Accept': 'application/json', 'Api-Key': SITE.apiKey, 'User-Agent': SITE.userAgent, 'X-User-Agent': SITE.userAgent };
+		const token = getValidToken();
+		if (token) h['Authorization'] = 'Bearer ' + token;
 		const res = await fetchWithRetry(aiUrl('/credits/buy'), {
 			method: 'POST',
-			headers: { 'Accept': 'application/json', 'Api-Key': SITE.apiKey, 'User-Agent': SITE.userAgent, 'X-User-Agent': SITE.userAgent }
+			headers: h
 		});
 		const data = await res.json();
 		return data.data || [];

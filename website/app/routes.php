@@ -7,6 +7,7 @@ return [
     'GET /pricing' => 'Controllers\Pricing->index',
     'GET /login' => 'Controllers\Auth->login',
     'GET /dashboard' => 'Controllers\Dashboard->index',
+    'GET /buy' => 'Controllers\Credits->index',
     'GET /new' => 'Controllers\Job->create',
     'GET /search' => 'Controllers\Search->index',
     'GET /jobs' => 'Controllers\Job->index',

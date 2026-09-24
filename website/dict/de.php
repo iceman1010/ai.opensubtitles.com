@@ -15,6 +15,16 @@ return [
 	'payments.none' => 'Noch keine Zahlungen erfasst.',
 	'payments.error' => 'Zahlungshistorie konnte nicht geladen werden.',
 
+	'dashboard.buy_cta' => 'Credits kaufen',
+	'credits.title' => 'Credits kaufen',
+	'credits.h1' => 'Credits kaufen',
+	'credits.loading' => 'Pakete werden geladen…',
+	'credits.error' => 'Credit-Pakete konnten nicht geladen werden.',
+	'credits.empty' => 'Zurzeit sind keine Credit-Pakete verfügbar.',
+	'credits.retry' => 'Erneut versuchen',
+	'credits.purchase' => 'Jetzt kaufen',
+	'credits.discount_off' => '% Rabatt',
+
 	'job.detecting_language' => 'Sprache wird erkannt…',
 	'job.language_detected' => 'Sprache erkannt:',
 	'job.language_detect_failed' => 'Die Sprache konnte nicht automatisch erkannt werden. Bitte wähle sie manuell aus.',
