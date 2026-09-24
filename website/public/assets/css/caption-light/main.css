@@ -402,3 +402,8 @@ progress { width: 100%; height: 0.8rem; }
 .tool-badge { align-self: flex-start; margin: -0.25rem 0 0.75rem; padding: 0.15rem 0.6rem; border: 1px solid var(--line); border-radius: 999px; font-size: 0.72rem; color: var(--ink-soft); }
 .tool-links { margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .tool-links .btn { flex: 1; justify-content: center; }
+
+.nav-more { position: relative; }
+.nav-menu { position: absolute; right: 0; top: calc(100% + 0.5rem); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); display: flex; flex-direction: column; align-items: stretch; padding: 0.4rem; gap: 0.25rem; min-width: 11rem; z-index: 50; }
+.nav-menu[hidden] { display: none; }
+.site-header .nav-menu .btn-label { position: static; width: auto; height: auto; margin: 0; padding: 0; overflow: visible; clip: auto; white-space: nowrap; }

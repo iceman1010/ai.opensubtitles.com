@@ -17,7 +17,7 @@ class Seo
     public function sitemap(\Base $f3): void
     {
         header('Content-Type: application/xml; charset=utf-8');
-        $pages = ['/', '/transcribe', '/translate', '/pricing', '/login'];
+        $pages = ['/', '/transcribe', '/translate', '/pricing', '/tools', '/login'];
         $locales = $f3->get('APP.locales');
         $default = $f3->get('APP.default_locale');
         $base = 'https://ai.opensubtitles.com';
