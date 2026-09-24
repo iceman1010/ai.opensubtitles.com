@@ -1,0 +1,56 @@
+{
+	"categories": [
+		{ "id": "web", "label_key": "tools.cat.web" },
+		{ "id": "desktop", "label_key": "tools.cat.desktop" },
+		{ "id": "cli", "label_key": "tools.cat.cli" },
+		{ "id": "plugin", "label_key": "tools.cat.plugin" }
+	],
+	"tools": [
+		{
+			"id": "web-client",
+			"category": "web",
+			"name_key": "tools.web_client.name",
+			"desc_key": "tools.web_client.desc",
+			"github": "https://github.com/iceman1010/ai-opensubtitles-web-client",
+			"website": "https://ai.opensubtitles.com/ai-web",
+			"badge_key": "tools.badge.open_source",
+			"published": true
+		},
+		{
+			"id": "desktop-client",
+			"category": "desktop",
+			"name_key": "tools.desktop_client.name",
+			"desc_key": "tools.desktop_client.desc",
+			"github": "https://github.com/iceman1010/ai-opensubtitles-desktop-client",
+			"badge_key": "tools.badge.open_source",
+			"published": true
+		},
+		{
+			"id": "srt-validator",
+			"category": "cli",
+			"name_key": "tools.srt_validator.name",
+			"desc_key": "tools.srt_validator.desc",
+			"github": "https://github.com/iceman1010/srt-translation-validator",
+			"badge_key": "tools.badge.open_source",
+			"published": true
+		},
+		{
+			"id": "srt-compare",
+			"category": "cli",
+			"name_key": "tools.srt_compare.name",
+			"desc_key": "tools.srt_compare.desc",
+			"github": "https://github.com/iceman1010/srt-compare",
+			"badge_key": "tools.badge.open_source",
+			"published": true
+		},
+		{
+			"id": "se5-translator",
+			"category": "plugin",
+			"name_key": "tools.se5_translator.name",
+			"desc_key": "tools.se5_translator.desc",
+			"github": "https://github.com/iceman1010/se5-ai-translator",
+			"badge_key": "tools.badge.open_source",
+			"published": true
+		}
+	]
+}

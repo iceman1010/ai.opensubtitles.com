@@ -31,7 +31,10 @@
 <section class="apps" id="apps">
 	<h2>{{ @home.apps_title }}</h2>
 	<p>{{ @home.apps_text }}</p>
-	<a class="btn btn-primary" href="https://www.opensubtitles.com"><svg class="btn-icon" aria-hidden="true"><use href="#icon-tag"/></svg><span class="btn-label">{{ @home.apps_cta }}</span></a>
+	<div class="hero-actions">
+		<a class="btn btn-primary" href="https://www.opensubtitles.com"><svg class="btn-icon" aria-hidden="true"><use href="#icon-tag"/></svg><span class="btn-label">{{ @home.apps_cta }}</span></a>
+		<a class="btn btn-ghost" href="https://ai.opensubtitles.com/ai-web" target="_blank" rel="noopener noreferrer"><svg class="btn-icon" aria-hidden="true"><use href="#icon-film"/></svg><span class="btn-label">{{ @home.apps_cta_web }}</span></a>
+	</div>
 </section>
 
 <section class="faq">

@@ -395,3 +395,10 @@ progress { width: 100%; height: 0.8rem; }
 .feature-poster.has-img { cursor: zoom-in; }
 .lightbox-overlay { position: fixed; inset: 0; background: rgb(0 0 0 / 80%); display: flex; align-items: center; justify-content: center; padding: 1.5rem; z-index: 60; cursor: zoom-out; }
 .lightbox-overlay img { max-width: 92vw; max-height: 88vh; width: auto; height: auto; border-radius: 8px; box-shadow: var(--shadow); }
+
+.tools-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0 0.5rem; }
+.tools-section { margin-top: 0; }
+.tools-section h2 { margin: 0 0 1rem; font-size: 1.3rem; }
+.tool-badge { align-self: flex-start; margin: -0.25rem 0 0.75rem; padding: 0.15rem 0.6rem; border: 1px solid var(--line); border-radius: 999px; font-size: 0.72rem; color: var(--ink-soft); }
+.tool-links { margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tool-links .btn { flex: 1; justify-content: center; }
