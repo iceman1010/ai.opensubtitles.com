@@ -218,6 +218,13 @@ section { max-width: 64rem; margin: 0 auto; padding: 2.5rem 1.5rem; }
 .muted { color: var(--ink-soft); font-size: 0.9rem; }
 
 .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--gap); padding: 2.5rem 0 var(--gap); }
+.dash-cols { display: flex; gap: var(--gap); align-items: stretch; padding: 0; }
+.dash-cols > .card { flex: 1 1 0; min-width: 0; margin-top: 0; display: flex; flex-direction: column; }
+.dash-cols > .card + .card { margin-top: 0; }
+.dash-cols .card > div { flex: 1; display: flex; flex-direction: column; }
+.dash-cols .media-list { flex: 1; }
+.page-head + .dash-cols { padding-top: 0; }
+@media (max-width: 64em) { .dash-cols { flex-direction: column; } .dash-cols > .card + .card { margin-top: var(--gap); } }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); }
 .card + .card { margin-top: var(--gap); }
 .dashboard-grid .card + .card { margin-top: 0; }
@@ -260,19 +267,34 @@ progress { width: 100%; height: 0.8rem; }
 .data-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--line); font-size: 0.95rem; }
 .data-table td:first-child { color: var(--ink-soft); white-space: nowrap; }
 .data-table td:last-child { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.act-row { display: flex; align-items: baseline; gap: 0.75rem; padding: 0.5rem 0.75rem; font-size: 0.95rem; }
+.act-row .act-type { flex: 1; min-width: 0; display: inline-flex; align-items: center; gap: 0.4rem; }
+.act-row .act-type .btn-icon { width: 1rem; height: 1rem; color: var(--ink-soft); flex: none; }
+.act-credits { font-weight: 600; font-variant-numeric: tabular-nums; }
+#payment-history .act-row { align-items: center; }
+.pay-date { margin-right: auto; color: var(--ink-soft); line-height: 1.3; }
+.pay-date span { display: block; white-space: nowrap; }
+.pay-usd { font-variant-numeric: tabular-nums; }
+.pay-credits { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+.dash-cols + .card { margin-top: var(--gap); }
+.media-time span { display: block; white-space: nowrap; }
 .data-table tr:last-child td { border-bottom: none; }
 
-.media-list { display: grid; gap: 0.75rem; }
-.media-item { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
-.media-item summary { display: flex; align-items: baseline; gap: 0.75rem; padding: 0.75rem 1rem; cursor: pointer; list-style: none; }
+.media-list { display: grid; gap: 0; }
+.media-list > .media-item { min-width: 0; }
+.media-item { background: transparent; border: none; border-bottom: 1px solid var(--line); border-radius: 0; }
+.media-item:last-child { border-bottom: none; }
+.media-item summary { display: flex; align-items: baseline; gap: 0.75rem; padding: 0.5rem 0.75rem; font-size: 0.95rem; cursor: pointer; list-style: none; }
 .media-item summary::-webkit-details-marker { display: none; }
 .media-item summary::before { content: '▸'; color: var(--ink-soft); transition: transform 0.15s ease; }
 .media-item[open] summary::before { transform: rotate(90deg); }
 .media-id { font-weight: 700; }
 .media-time { color: var(--ink-soft); font-size: 0.9rem; }
-.media-count { margin-left: auto; font-size: 0.8rem; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.6rem; white-space: nowrap; }
-.media-files { padding: 0 1rem 0.75rem; display: grid; }
+.media-count { font-size: 0.8rem; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.6rem; white-space: nowrap; }
+.media-files { padding: 0 0.75rem 0.5rem; display: grid; }
 .media-file { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0; border-top: 1px solid var(--line); }
+.media-file-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.media-time { margin-left: auto; text-align: right; color: var(--ink-soft); font-size: 0.9rem; line-height: 1.3; }
 .media-files .media-file:first-child { border-top: none; }
 .file-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.9rem; }
 .media-file .btn { white-space: nowrap; }

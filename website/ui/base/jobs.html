@@ -1,13 +1,15 @@
 <section class="page-head">
 	<h1>{{ @job.list_h1 }}</h1>
 </section>
-<section class="card">
-	<h2>{{ @dashboard.recent }}</h2>
-	<div id="recent-activities"><p class="empty">…</p></div>
-</section>
-<section class="card">
-	<h2>{{ @dashboard.media }}</h2>
-	<div id="recent-media"><p class="empty">…</p></div>
+<section class="dash-cols">
+	<section class="card">
+		<h2>{{ @dashboard.recent }}</h2>
+		<div id="recent-activities"><p class="empty">…</p></div>
+	</section>
+	<section class="card">
+		<h2>{{ @dashboard.media }}</h2>
+		<div id="recent-media"><p class="empty">…</p></div>
+	</section>
 </section>
 <script>
 window.DASH_I18N = {

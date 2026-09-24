@@ -11,6 +11,9 @@ return [
 
 	'dashboard.show_more' => 'Mehr anzeigen',
 	'dashboard.more_error' => 'Weitere konnten nicht geladen werden.',
+	'dashboard.payments' => 'Zahlungshistorie',
+	'payments.none' => 'Noch keine Zahlungen erfasst.',
+	'payments.error' => 'Zahlungshistorie konnte nicht geladen werden.',
 
 	'job.detecting_language' => 'Sprache wird erkannt…',
 	'job.language_detected' => 'Sprache erkannt:',

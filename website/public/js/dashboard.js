@@ -36,7 +36,7 @@
 		if (!el) return;
 		try {
 			const result = await window.AI.getCredits();
-			el.textContent = result.credits.toFixed(2);
+			el.textContent = String(result.credits);
 		} catch (e) {
 			el.textContent = '–';
 		}
@@ -50,17 +50,35 @@
 			empty: T.activities_none || 'Nothing here yet.',
 			error: T.activities_error || 'Could not load activities.',
 			more: T.show_more,
-			buildContainer: () => el('table', 'data-table'),
-			row: (item) => {
-				const tr = el('tr');
-				for (const cell of [item.time_str, item.type_name, item.credits]) {
-					const td = el('td');
-					td.textContent = cell;
-					tr.appendChild(td);
-				}
-				return tr;
-			}
+			buildContainer: () => el('div', 'media-list'),
+			row: activityRow
 		});
+	}
+
+	function typeIconName(typeName) {
+		if (typeName === 'translation') return 'languages';
+		if (typeName === 'transcription') return 'mic';
+		return 'tag';
+	}
+
+	function timeBlock(className, timeStr) {
+		const box = el('span', className, '');
+		box.title = timeStr || '';
+		const s = timeStr || '';
+		const i = s.indexOf(' ');
+		for (const line of (i < 0 ? [s] : [s.slice(0, i), s.slice(i + 1)])) box.appendChild(el('span', null, line));
+		return box;
+	}
+
+	function activityRow(item) {
+		const row = el('div', 'media-item act-row');
+		const type = el('span', 'act-type');
+		type.appendChild(icon(typeIconName(item.type_name)));
+		type.appendChild(el('span', null, item.type_name));
+		row.appendChild(type);
+		row.appendChild(el('span', 'act-credits', String(item.credits)));
+		row.appendChild(timeBlock('media-time', item.time_str));
+		return row;
 	}
 
 	async function loadMedia() {
@@ -160,16 +178,17 @@
 		const details = el('details', 'media-item');
 		const summary = el('summary', 'media-summary');
 		summary.appendChild(el('span', 'media-id', '#' + item.id));
-		summary.appendChild(el('span', 'media-time', item.time_str || ''));
-		const count = item.files ? item.files.length : 0;
-		summary.appendChild(el('span', 'media-count', count + ' ' + (T.files || 'file(s)')));
+		const files = item.files || [];
+		if (files.length) summary.appendChild(el('span', 'media-file-name', files[0]));
+		if (files.length > 1) summary.appendChild(el('span', 'media-count', '+' + (files.length - 1)));
+		summary.appendChild(timeBlock('media-time', item.time_str));
 		details.appendChild(summary);
 
-		const files = el('div', 'media-files');
-		for (const fileName of item.files || []) {
-			files.appendChild(renderFileRow(item.id, fileName));
+		const filesBox = el('div', 'media-files');
+		for (const fileName of files) {
+			filesBox.appendChild(renderFileRow(item.id, fileName));
 		}
-		details.appendChild(files);
+		details.appendChild(filesBox);
 		return details;
 	}
 
@@ -264,7 +283,29 @@
 		setTimeout(() => box.remove(), 6000);
 	}
 
+	async function loadPayments() {
+		const container = document.getElementById('payment-history');
+		if (!container) return;
+		pagedList(container, {
+			fetch: (page) => window.AI.paymentHistory(page),
+			empty: T.payments_none || 'No payments recorded yet.',
+			error: T.payments_error || 'Could not load payment history.',
+			more: T.show_more,
+			buildContainer: () => el('div', 'media-list'),
+			row: paymentRow
+		});
+	}
+
+	function paymentRow(item) {
+		const row = el('div', 'media-item act-row');
+		row.appendChild(timeBlock('pay-date', item.date));
+		row.appendChild(el('span', 'pay-usd', '$' + item.usd));
+		row.appendChild(el('span', 'pay-credits', '+' + item.credits));
+		return row;
+	}
+
 	loadCredits();
 	loadActivities();
 	loadMedia();
+	loadPayments();
 })();

@@ -5,13 +5,19 @@
 	<div class="card"><h2>{{ @dashboard.credits }}</h2><p id="credits-value" class="big-number">–</p></div>
 	<div class="card"><h2>{{ @dashboard.new_job }}</h2><a class="btn btn-primary" href="/new"><svg class="btn-icon" aria-hidden="true"><use href="#icon-upload"/></svg><span class="btn-label">{{ @dashboard.new_job_cta }}</span></a></div>
 </section>
-<section class="card">
-	<h2>{{ @dashboard.recent }}</h2>
-	<div id="recent-activities"><p class="empty">…</p></div>
+<section class="dash-cols">
+	<section class="card">
+		<h2>{{ @dashboard.recent }}</h2>
+		<div id="recent-activities"><p class="empty">…</p></div>
+	</section>
+	<section class="card">
+		<h2>{{ @dashboard.media }}</h2>
+		<div id="recent-media"><p class="empty">…</p></div>
+	</section>
 </section>
-<section class="card">
-	<h2>{{ @dashboard.media }}</h2>
-	<div id="recent-media"><p class="empty">…</p></div>
+<section class="card payments-card">
+	<h2>{{ @dashboard.payments }}</h2>
+	<div id="payment-history"><p class="empty">…</p></div>
 </section>
 <script>
 window.DASH_I18N = {
@@ -23,6 +29,8 @@ window.DASH_I18N = {
 	media_error: '{{ @media.error }}',
 	activities_none: '{{ @activities.none }}',
 	activities_error: '{{ @activities.error }}',
+	payments_none: '{{ @payments.none }}',
+	payments_error: '{{ @payments.error }}',
 	download_failed: '{{ @media.download_failed }}',
 	preview_failed: '{{ @media.preview_failed }}',
 	show_more: '{{ @dashboard.show_more }}',

@@ -86,6 +86,9 @@ return [
 	'dashboard.media' => 'Recent media',
 	'dashboard.show_more' => 'Show more',
 	'dashboard.more_error' => 'Could not load more.',
+	'dashboard.payments' => 'Payment history',
+	'payments.none' => 'No payments recorded yet.',
+	'payments.error' => 'Could not load payment history.',
 
 	'media.files' => 'file(s)',
 	'media.preview' => 'Preview',

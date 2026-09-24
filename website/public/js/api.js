@@ -437,6 +437,7 @@
 		status,
 		recentMedia: (page) => recent('recent_media', page),
 		recentActivities: (page) => recent('recent_activities', page),
+		paymentHistory: (page) => recent('payment_history', page).then((items) => (items || []).filter((i) => i.usd || i.credits || i.orderid || i.reference)),
 		detectLanguage,
 		languageDetectionStatus,
 		creditPackages,
