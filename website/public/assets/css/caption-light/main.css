@@ -121,7 +121,14 @@ a { color: inherit; }
 	font-size: 0.95rem;
 }
 
-.nav-pill:hover { border-color: var(--ink-soft); }
+.nav-pill:hover { border-color: var(--ink-soft); background: color-mix(in srgb, var(--surface) 88%, var(--ink) 12%); }
+.nav-pill { transition: background-color 0.45s ease, border-color 0.45s ease; }
+.nav-pill:hover .btn-label, .nav-pill:hover .btn-icon { animation: nav-glow-pulse 0.9s ease-out 1; }
+
+@keyframes nav-glow-pulse {
+	0%, 100% { text-shadow: 0 0 0 rgb(0 0 0 / 0%); filter: drop-shadow(0 0 0 rgb(0 0 0 / 0%)); }
+	45% { text-shadow: 0 0 5px var(--nav-glow), 0 0 11px var(--nav-glow); filter: drop-shadow(0 0 2px var(--nav-glow)); }
+}
 
 .nav-icon {
 	width: 1.8em;
@@ -404,10 +411,10 @@ progress { width: 100%; height: 0.8rem; }
 .tool-links .btn { flex: 1; justify-content: center; }
 
 .nav-more { position: relative; transition: padding 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
-.nav-menu { position: absolute; top: 0; left: 0; width: max-content; min-width: 10rem; display: flex; flex-direction: column; align-items: stretch; gap: 0.2rem; padding: 0.45rem 0.55rem; background: var(--surface); border: 1px solid var(--line); border-radius: 1.1rem; box-shadow: var(--shadow); opacity: 0; visibility: hidden; pointer-events: none; transform: scale(0.6); transform-origin: center top; transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.45s; z-index: 50; }
+.nav-menu { position: absolute; top: 0; left: 0; width: max-content; min-width: 10rem; display: flex; flex-direction: column; align-items: stretch; gap: 0.2rem; padding: 0.45rem 0.55rem; background: var(--surface); border: 1px solid var(--line); border-radius: 1.1rem; box-shadow: var(--shadow); opacity: 0; visibility: hidden; pointer-events: none; transform: scale(0.6); transform-origin: center top; transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.45s, background-color 0.45s ease, border-color 0.45s ease; z-index: 50; }
 .nav-more.open .nav-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+.nav-menu:hover { background: color-mix(in srgb, var(--surface) 88%, var(--ink) 12%); border-color: var(--ink-soft); }
 .nav-menu .nav-pill { border: none; background: none; padding: 0.45rem 0.9rem; }
-.nav-menu .nav-pill:hover { background: var(--paper); }
 .site-header .nav-menu .btn-label { position: static; width: auto; height: auto; margin: 0; padding: 0; overflow: visible; clip: auto; white-space: nowrap; }
 
 @media (max-width: 640px) {

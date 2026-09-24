@@ -10,6 +10,7 @@
 	--caption-bg: #000000;
 	--caption-fg: #ffffff;
 	--brand-glow: rgb(37 99 235 / 45%);
+	--nav-glow: rgb(37 99 235 / 55%);
 	--radius: 14px;
 	--shadow: 0 5px 15px rgb(17 20 24 / 8%);
 	--font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -27,5 +28,6 @@
 	--caption-bg: #f5f2ea;
 	--caption-fg: #101216;
 	--brand-glow: rgb(59 130 246 / 55%);
+	--nav-glow: rgb(59 130 246 / 65%);
 	--shadow: 0 3px 10px rgb(0 0 0 / 45%);
 }
