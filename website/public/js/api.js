@@ -326,6 +326,45 @@
 		return data.data || [];
 	}
 
+	async function createSupportTicket(description, email, name) {
+		const form = new FormData();
+		form.append('problem_description', description);
+		form.append('email', email);
+		form.append('name', name);
+		const h = { 'Accept': 'application/json', 'Api-Key': SITE.apiKey, 'User-Agent': SITE.userAgent, 'X-User-Agent': SITE.userAgent };
+		const token = getValidToken();
+		if (token) h['Authorization'] = 'Bearer ' + token;
+		let res;
+		try {
+			pulseBrand();
+			res = await fetch(aiUrl('/osticket'), { method: 'POST', headers: h, body: form });
+		} catch (e) {
+			return { success: false, error: 'Network error: ' + e.message };
+		}
+		const text = await res.text().catch(() => '');
+		if (res.status === 401 || res.status === 403) {
+			if (getValidToken()) authExpired();
+			return { success: false, error: parseErrorMessage(text, res.status) };
+		}
+		if (!res.ok) return { success: false, error: parseErrorMessage(text, res.status) };
+		try {
+			const data = JSON.parse(text);
+			if (data.status === 'error' || data.error) {
+				const msg = data.error
+					|| (Array.isArray(data.errors) && data.errors[0])
+					|| (data.error_details && data.error_details.response_body)
+					|| 'Failed to create support ticket';
+				return { success: false, error: msg };
+			}
+			const id = data.ticket_id !== undefined ? data.ticket_id : (data.data && data.data.ticket_id);
+			return { success: true, ticketId: id !== undefined ? id : null };
+		} catch (e) {
+			const missing = text.match(/missing key parameter: (\w+)/);
+			if (missing) return { success: false, missingField: missing[1] };
+			return { success: true, ticketId: null };
+		}
+	}
+
 	async function downloadFile(url, fileName) {
 		const res = await fetchWithRetry(url, { method: 'GET', headers: headers(true) });
 		const blob = await res.blob();
@@ -444,6 +483,7 @@
 		detectLanguage,
 		languageDetectionStatus,
 		creditPackages,
+		createSupportTicket,
 		downloadFile,
 		mediaFileText,
 		downloadText,

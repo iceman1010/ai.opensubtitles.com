@@ -1,0 +1,60 @@
+<section class="page-head">
+	<h1>{{ @support.h1 }}</h1>
+	<p class="lead">{{ @support.intro }}</p>
+</section>
+<section>
+	<div class="auth-card support-card">
+		<form id="support-form" novalidate>
+		
+		<label>{{ @support.name }} <span class="req">*</span><input type="text" name="name" autocomplete="name"></label>
+		<p class="field-error" id="support-error-name" hidden></p>
+		<label>{{ @support.email }} <span class="req">*</span><input type="email" name="email" autocomplete="email"></label>
+		<p class="field-error" id="support-error-email" hidden></p>
+		<p class="hint">{{ @support.email_hint }}</p>
+		<fieldset class="support-scope">
+			<legend>{{ @support.scope }} <span class="req">*</span></legend>
+			<p class="hint">{{ @support.scope_hint }}</p>
+			<label class="support-option"><input type="radio" name="scope" value="ai" checked><span class="support-option-body"><strong>{{ @support.scope_ai }}</strong><span>{{ @support.scope_ai_desc }}</span></span></label>
+			<label class="support-option"><input type="radio" name="scope" value="other"><span class="support-option-body"><strong>{{ @support.scope_other }}</strong><span>{{ @support.scope_other_desc }}</span></span></label>
+		</fieldset>
+		<div id="support-other-wrap" hidden>
+			<label>{{ @support.other_service }} <span class="req">*</span><input type="text" name="other_service"></label>
+			<p class="field-error" id="support-error-other" hidden></p>
+		</div>
+		<label>{{ @support.description }} <span class="req">*</span><textarea name="description" rows="6"></textarea></label>
+		<p class="field-error" id="support-error-description" hidden></p>
+		<p class="form-error" id="support-submit-error" hidden></p>
+		<button class="btn btn-primary" type="submit"><svg class="btn-icon" aria-hidden="true"><use href="#icon-upload"/></svg><span class="btn-label">{{ @support.submit }}</span></button>
+		</form>
+	</div>
+	<div id="support-modal" class="modal-overlay" hidden>
+		<div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="support-modal-title">
+			<p id="support-modal-title" class="modal-title">{{ @support.modal_title }}</p>
+			<p class="muted">{{ @support.modal_text }}</p>
+			<div class="modal-actions">
+				<a class="btn btn-primary" id="support-modal-login" href="/login"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-in"/></svg><span class="btn-label">{{ @support.login_cta }}</span></a>
+				<button class="btn" type="button" id="support-modal-close"><span class="btn-label">{{ @support.modal_cancel }}</span></button>
+			</div>
+		</div>
+	</div>
+	<div id="support-success" class="auth-card support-card" hidden>
+		<p class="form-success">{{ @support.success }}</p>
+		<p id="support-ticket-id" class="support-ticket-id" hidden></p>
+		<p>{{ @support.reply_email }}</p>
+		<button class="btn" type="button" id="support-again"><svg class="btn-icon" aria-hidden="true"><use href="#icon-upload"/></svg><span class="btn-label">{{ @support.submit_another }}</span></button>
+	</div>
+</section>
+<script>
+window.SUPPORT_I18N = {
+	required_name: '{{ @support.required_name }}',
+	required_email: '{{ @support.required_email }}',
+	invalid_email: '{{ @support.invalid_email }}',
+	required_other: '{{ @support.required_other }}',
+	required_description: '{{ @support.required_description }}',
+	missing_field: '{{ @support.missing_field }}',
+	error_generic: '{{ @support.error_generic }}',
+	submitting: '{{ @support.submitting }}',
+	submit: '{{ @support.submit }}'
+};
+</script>
+<script src="/js/support.js"></script>

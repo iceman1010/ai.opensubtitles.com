@@ -178,7 +178,7 @@ a { color: inherit; }
 .hero-sub { color: var(--ink-soft); font-size: 1.15rem; max-width: 40rem; margin: 1rem auto 2rem; }
 .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-section { max-width: 64rem; margin: 0 auto; padding: 2.5rem 1.5rem; }
+section { max-width: 64rem; margin: 0 auto; padding: 1.5rem 1.5rem; }
 
 .services {
 	display: grid;
@@ -214,7 +214,7 @@ section { max-width: 64rem; margin: 0 auto; padding: 2.5rem 1.5rem; }
 .page-head { padding-top: 4rem; padding-bottom: 0; text-align: center; }
 .page-head .lead { margin-bottom: 0; }
 .lead { color: var(--ink-soft); max-width: 44rem; margin: 0 auto 1.5rem; }
-
+.page-head .btn { margin-top: 1.5rem; }
 .packages { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: var(--gap); }
 .package-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.75rem; box-shadow: var(--shadow); display: flex; flex-direction: column; }
 .package-card h3 { margin: 0 0 0.75rem; font-size: 1.05rem; line-height: 1.3; min-height: 2.6em; overflow-wrap: anywhere; }
@@ -420,3 +420,26 @@ progress { width: 100%; height: 0.8rem; }
 @media (max-width: 640px) {
 	.nav-menu { left: auto; right: 0; }
 }
+
+.support-card { max-width: 36rem; }
+.support-card textarea { display: block; width: 100%; margin-top: 0.3rem; padding: 0.6rem 0.8rem; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); font: inherit; resize: vertical; }
+.req { color: rgb(220 38 38); }
+.field-error { margin: -0.5rem 0 0.75rem; font-size: 0.85rem; color: rgb(180 30 30); }
+.hint { margin: 0 0 0.75rem; font-size: 0.85rem; font-style: italic; color: var(--ink-soft); }
+.support-scope { margin: 0 0 1rem; padding: 0; border: 0; }
+.support-scope legend { padding: 0; font-weight: 600; }
+.support-option { display: flex; gap: 0.6rem; align-items: flex-start; margin-bottom: 0.5rem; padding: 0.75rem; border: 1px solid var(--line); border-radius: 8px; font-weight: 400 !important; cursor: pointer; transition: border-color 0.2s, background-color 0.2s; }
+.support-option:hover { border-color: var(--ink-soft); }
+.support-option:has(input:checked) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.support-option input { width: auto; flex-shrink: 0; margin: 0.2rem 0 0; }
+.support-option-body { display: flex; flex-direction: column; gap: 0.25rem; }
+.support-option-body span { font-size: 0.85rem; color: var(--ink-soft); }
+.form-success { background: rgb(22 163 74 / 12%); border: 1px solid rgb(22 163 74 / 40%); color: rgb(21 128 61); border-radius: 8px; padding: 0.6rem 1rem; font-size: 0.9rem; }
+.support-ticket-id { margin: 0.75rem 0 0; font-size: 1.15rem; font-weight: 700; }
+#support-success .btn { margin-top: 1.25rem; }
+
+.modal-overlay { position: fixed; inset: 0; background: rgb(0 0 0 / 60%); display: flex; align-items: center; justify-content: center; padding: 1.5rem; z-index: 70; }
+.modal-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.75rem; max-width: 24rem; }
+.modal-title { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.5rem; }
+.modal-actions { display: flex; gap: 0.5rem; margin-top: 1.25rem; }
+.modal-actions .btn { flex: 1; justify-content: center; }

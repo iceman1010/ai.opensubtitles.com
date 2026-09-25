@@ -39,6 +39,7 @@
 		<symbol id="icon-coin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="6" x2="12" y2="18"/><path d="M14.7 8.2H10.6a1.9 1.9 0 0 0 0 3.8h2.7a1.9 1.9 0 0 1 0 3.8H8.7"/></symbol>
 		<symbol id="icon-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
 		<symbol id="icon-more" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></symbol>
+		<symbol id="icon-help" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
 	</svg>
 	<header class="site-header">
 		<a class="brand" href="/"><img src="/assets/img/logo-64.png" alt="{{ @site_name }}" width="32" height="32"></a>
@@ -52,6 +53,7 @@
 					<a class="nav-pill" href="/pricing"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-tag"/></svg></span><span class="btn-label">{{ @nav.pricing }}</span></a>
 					<a class="nav-pill" href="/tools"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-tool"/></svg></span><span class="btn-label">{{ @nav.tools }}</span></a>
 					<a class="nav-pill" href="/dashboard" data-auth="in" hidden><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-dashboard"/></svg></span><span class="btn-label">{{ @nav.dashboard }}</span></a>
+					<a class="nav-pill" href="/support"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-help"/></svg></span><span class="btn-label">{{ @nav.support }}</span></a>
 				</div>
 			</div>
 			<a class="nav-pill" href="/login" id="nav-login" data-auth="out"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-in"/></svg></span><span class="btn-label">{{ @nav.login }}</span></a>
