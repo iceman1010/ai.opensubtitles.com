@@ -312,12 +312,15 @@ progress { width: 100%; height: 0.8rem; }
 .media-time { color: var(--ink-soft); font-size: 0.9rem; }
 .media-count { font-size: 0.8rem; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.6rem; white-space: nowrap; }
 .media-files { padding: 0 0.75rem 0.5rem; display: grid; }
-.media-file { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0; border-top: 1px solid var(--line); }
-.media-file-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.media-file { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0; border-top: 1px solid var(--line); min-width: 0; }
+.media-file-name { flex: 1; min-width: 0; display: flex; overflow: hidden; }
 .media-time { margin-left: auto; text-align: right; color: var(--ink-soft); font-size: 0.9rem; line-height: 1.3; }
 .media-files .media-file:first-child { border-top: none; }
-.file-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.9rem; }
-.media-file .btn { white-space: nowrap; }
+.file-name { flex: 1; min-width: 0; display: flex; overflow: hidden; font-size: 0.9rem; }
+.fn-start { flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fn-end { flex: 0 0 auto; white-space: nowrap; }
+.media-file .btn { flex: 0 0 auto; white-space: nowrap; }
+.media-icon-btn { padding: 0.35rem 0.5rem; }
 
 .modal-overlay { position: fixed; inset: 0; background: rgb(0 0 0 / 55%); display: flex; align-items: center; justify-content: center; padding: 1.5rem; z-index: 50; }
 .modal-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); width: 90vw; height: 90vh; display: flex; flex-direction: column; padding: 1.5rem; }

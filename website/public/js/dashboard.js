@@ -23,11 +23,16 @@
 		return svg;
 	}
 
-	function iconBtn(classes, label, iconName) {
+	function iconBtn(classes, label, iconName, iconOnly) {
 		const btn = el('button', classes);
 		btn.type = 'button';
 		btn.appendChild(icon(iconName));
-		btn.appendChild(el('span', 'btn-label', label));
+		if (iconOnly) {
+			btn.setAttribute('aria-label', label);
+			btn.title = label;
+		} else {
+			btn.appendChild(el('span', 'btn-label', label));
+		}
 		return btn;
 	}
 
@@ -174,12 +179,25 @@
 		});
 	}
 
+	function fileNameSpan(fileName, className) {
+		const wrap = el('span', className);
+		wrap.title = fileName;
+		const tail = 10;
+		if (fileName.length > tail) {
+			wrap.appendChild(el('span', 'fn-start', fileName.slice(0, -tail)));
+			wrap.appendChild(el('span', 'fn-end', fileName.slice(-tail)));
+		} else {
+			wrap.appendChild(el('span', 'fn-start', fileName));
+		}
+		return wrap;
+	}
+
 	function renderMediaItem(item) {
 		const details = el('details', 'media-item');
 		const summary = el('summary', 'media-summary');
 		summary.appendChild(el('span', 'media-id', '#' + item.id));
 		const files = item.files || [];
-		if (files.length) summary.appendChild(el('span', 'media-file-name', files[0]));
+		if (files.length) summary.appendChild(fileNameSpan(files[0], 'media-file-name'));
 		if (files.length > 1) summary.appendChild(el('span', 'media-count', '+' + (files.length - 1)));
 		summary.appendChild(timeBlock('media-time', item.time_str));
 		details.appendChild(summary);
@@ -194,15 +212,15 @@
 
 	function renderFileRow(mediaId, fileName) {
 		const row = el('div', 'media-file');
-		row.appendChild(el('span', 'file-name', fileName));
+		row.appendChild(fileNameSpan(fileName, 'file-name'));
 
 		if (SUBTITLE_EXT.test(fileName)) {
-			const previewBtn = iconBtn('btn btn-small', T.preview || 'Preview', 'eye');
+			const previewBtn = iconBtn('btn btn-small media-icon-btn', T.preview || 'Preview', 'eye', true);
 			previewBtn.addEventListener('click', () => previewMedia(mediaId, fileName, previewBtn));
 			row.appendChild(previewBtn);
 		}
 
-		const dlBtn = iconBtn('btn btn-small', T.download || 'Download', 'download');
+		const dlBtn = iconBtn('btn btn-small media-icon-btn', T.download || 'Download', 'download', true);
 		dlBtn.addEventListener('click', () => downloadMedia(mediaId, fileName, dlBtn));
 		row.appendChild(dlBtn);
 		return row;
