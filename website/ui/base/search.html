@@ -44,6 +44,12 @@
 	</div>
 </section>
 
+<check if="{{ @search_content }}">
+	<section class="search-content">
+		<include href="{{ @search_content }}">
+	</section>
+</check>
+
 <div id="preview-overlay" class="modal-overlay" hidden>
 	<div class="modal-card">
 		<h3 id="preview-title"></h3>

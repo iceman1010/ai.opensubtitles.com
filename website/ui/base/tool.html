@@ -1,0 +1,23 @@
+<section class="page-head tool-head">
+	<p class="tool-back"><a class="btn btn-primary" href="/tools">← {{ @tools.back | esc }}</a></p>
+	<check if="{{ @tool_badge }}">
+		<span class="tool-badge">{{ @tool_badge | esc }}</span>
+	</check>
+	<h1>{{ @tool_name | esc }}</h1>
+</section>
+<section class="tool-detail card">
+	<check if="{{ @tool_image }}">
+		<img class="tool-image" src="{{ @tool_image | esc }}" alt="{{ @tool_name | esc }}" loading="lazy">
+	</check>
+	<div class="tool-content">
+		<include href="{{ @tool_content }}">
+	</div>
+	<div class="tool-links">
+		<check if="{{ @tool_website }}">
+			<a class="btn btn-small btn-ghost" href="{{ @tool_website | esc }}" target="_blank" rel="noopener noreferrer">{{ @tools.btn_website | esc }}</a>
+		</check>
+		<check if="{{ @tool_github }}">
+			<a class="btn btn-ghost btn-small" href="{{ @tool_github | esc }}" target="_blank" rel="noopener noreferrer">{{ @tools.btn_github | esc }}</a>
+		</check>
+	</div>
+</section>
