@@ -50,17 +50,6 @@
 	</section>
 </check>
 
-<div id="preview-overlay" class="modal-overlay" hidden>
-	<div class="modal-card">
-		<h3 id="preview-title"></h3>
-		<pre id="preview-content" class="modal-pre"></pre>
-		<div class="modal-actions">
-			<button id="preview-download" class="btn btn-primary btn-small" type="button"><svg class="btn-icon" aria-hidden="true"><use href="#icon-download"/></svg><span class="btn-label">{{ @search.download }}</span></button>
-			<button id="preview-close" class="btn btn-ghost btn-small" type="button">{{ @search.close }}</button>
-		</div>
-	</div>
-</div>
-
 <div id="lightbox-overlay" class="lightbox-overlay" hidden>
 	<img id="lightbox-img" alt="">
 </div>
@@ -80,6 +69,9 @@ window.SEARCH_I18N = {
 	subtitles_count: '{{ @search.subtitles_count }}',
 	preview: '{{ @search.preview }}',
 	download: '{{ @search.download }}',
+	close: '{{ @search.close }}',
+	font_smaller: '{{ @search.font_smaller }}',
+	font_larger: '{{ @search.font_larger }}',
 	downloading: '{{ @search.downloading }}',
 	loading_preview: '{{ @search.loading_preview }}',
 	login_required: '{{ @search.login_required }}',
@@ -96,4 +88,5 @@ window.SEARCH_I18N = {
 	on_demand_uploader: 'AI.OpenSubtitles.com'
 };
 </script>
+<script src="/js/preview-modal.js"></script>
 <script src="/js/search-page.js"></script>

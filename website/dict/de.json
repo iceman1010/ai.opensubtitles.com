@@ -80,6 +80,8 @@
     "search.foreign_parts": "Nur fremdsprachige Teile",
     "search.trusted": "Vertrauenswürdig",
     "search.close": "Schließen",
+    "search.font_smaller": "Kleinerer Text",
+    "search.font_larger": "Größerer Text",
     "tools.cat.web": "Web",
     "tools.cat.desktop": "Desktop",
     "tools.cat.cli": "Kommandozeile",

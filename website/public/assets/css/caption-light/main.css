@@ -94,6 +94,7 @@ a { color: inherit; }
 .btn-primary:hover { filter: brightness(1.05); }
 .btn-ghost { border-color: var(--ink); color: var(--ink); }
 .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
 
 .theme-toggle {
 	background: none;
@@ -324,7 +325,10 @@ progress { width: 100%; height: 0.8rem; }
 
 .modal-overlay { position: fixed; inset: 0; background: rgb(0 0 0 / 55%); display: flex; align-items: center; justify-content: center; padding: 1.5rem; z-index: 50; }
 .modal-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); width: 90vw; height: 90vh; display: flex; flex-direction: column; padding: 1.5rem; }
-.modal-card h3 { margin: 0 0 0.75rem; font-size: 1.05rem; overflow-wrap: anywhere; }
+.modal-card h3 { font-size: 1.05rem; overflow-wrap: anywhere; min-width: 0; }
+.modal-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 0 0 0.75rem; }
+.modal-font { display: flex; align-items: center; gap: 0.3rem; flex: 0 0 auto; }
+.modal-font .btn-icon { width: 1.1rem; height: 1.1rem; color: var(--ink-soft); }
 .modal-pre { margin: 0; flex: 1; overflow: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 1rem; font-size: 0.85rem; font-family: ui-monospace, monospace; white-space: pre-wrap; word-break: break-word; }
 .modal-actions { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1rem; }
 

@@ -252,7 +252,12 @@
 			setButtonBusy(button, true, i18n.loading_preview);
 			try {
 				const content = await fetchSubtitleContent(fileId);
-				openPreview(fileName.endsWith('.srt') ? fileName : fileName + '.srt', content);
+				PreviewModal.open(fileName.endsWith('.srt') ? fileName : fileName + '.srt', content, {
+					download: i18n.download,
+					close: i18n.close,
+					font_smaller: i18n.font_smaller,
+					font_larger: i18n.font_larger
+				});
 			} catch (e) {
 				showError(i18n.download_failed + ' ' + e.message);
 			} finally {
@@ -269,17 +274,6 @@
 				setButtonBusy(button, false);
 			}
 		}
-	}
-
-	function openPreview(title, content) {
-		el('preview-title').textContent = title;
-		el('preview-content').textContent = content;
-		el('preview-overlay').hidden = false;
-	}
-
-	function closePreview() {
-		el('preview-overlay').hidden = true;
-		el('preview-content').textContent = '';
 	}
 
 	function setMode(mode) {
@@ -356,15 +350,7 @@
 			}
 			handleCardAction(card, action, button);
 		});
-		el('preview-close').addEventListener('click', closePreview);
-		el('preview-overlay').addEventListener('click', (e) => {
-			if (e.target === el('preview-overlay')) closePreview();
-		});
-		el('preview-download').addEventListener('click', () => {
-			AI.downloadText(el('preview-content').textContent, el('preview-title').textContent || 'subtitles.srt');
-		});
 		document.addEventListener('keydown', (e) => {
-			if (e.key === 'Escape' && !el('preview-overlay').hidden) closePreview();
 			if (e.key === 'Escape' && !el('lightbox-overlay').hidden) {
 				el('lightbox-overlay').hidden = true;
 				el('lightbox-img').src = '';

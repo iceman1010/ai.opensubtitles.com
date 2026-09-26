@@ -23,16 +23,12 @@
 		return svg;
 	}
 
-	function iconBtn(classes, label, iconName, iconOnly) {
+	function iconBtn(classes, label, iconName) {
 		const btn = el('button', classes);
 		btn.type = 'button';
+		btn.setAttribute('aria-label', label);
+		btn.title = label;
 		btn.appendChild(icon(iconName));
-		if (iconOnly) {
-			btn.setAttribute('aria-label', label);
-			btn.title = label;
-		} else {
-			btn.appendChild(el('span', 'btn-label', label));
-		}
 		return btn;
 	}
 
@@ -215,12 +211,12 @@
 		row.appendChild(fileNameSpan(fileName, 'file-name'));
 
 		if (SUBTITLE_EXT.test(fileName)) {
-			const previewBtn = iconBtn('btn btn-small media-icon-btn', T.preview || 'Preview', 'eye', true);
+			const previewBtn = iconBtn('btn btn-small media-icon-btn', T.preview || 'Preview', 'eye');
 			previewBtn.addEventListener('click', () => previewMedia(mediaId, fileName, previewBtn));
 			row.appendChild(previewBtn);
 		}
 
-		const dlBtn = iconBtn('btn btn-small media-icon-btn', T.download || 'Download', 'download', true);
+		const dlBtn = iconBtn('btn btn-small media-icon-btn', T.download || 'Download', 'download');
 		dlBtn.addEventListener('click', () => downloadMedia(mediaId, fileName, dlBtn));
 		row.appendChild(dlBtn);
 		return row;
@@ -242,54 +238,17 @@
 		btn.disabled = true;
 		try {
 			const content = await window.AI.mediaFileText(mediaId, fileName);
-			openPreview(fileName, content);
+			PreviewModal.open(fileName, content, {
+				download: T.download || 'Download',
+				close: T.close || 'Close',
+				font_smaller: T.font_smaller || 'Smaller text',
+				font_larger: T.font_larger || 'Larger text'
+			});
 		} catch (e) {
 			if (!e.auth) showMediaError((T.preview_failed || 'Preview failed') + ': ' + e.message);
 		} finally {
 			btn.disabled = false;
 		}
-	}
-
-	let previewModal;
-	function openPreview(fileName, content) {
-		if (!previewModal) previewModal = buildPreviewModal();
-		previewModal.title.textContent = fileName;
-		previewModal.pre.textContent = content;
-		previewModal.download.onclick = () => window.AI.downloadText(content, fileName);
-		previewModal.overlay.hidden = false;
-		document.addEventListener('keydown', escListener);
-	}
-
-	function closePreview() {
-		if (!previewModal) return;
-		previewModal.overlay.hidden = true;
-		document.removeEventListener('keydown', escListener);
-	}
-
-	function escListener(e) {
-		if (e.key === 'Escape') closePreview();
-	}
-
-	function buildPreviewModal() {
-		const overlay = el('div', 'modal-overlay');
-		const card = el('div', 'modal-card');
-		const title = el('h3', null, '');
-		const pre = el('pre', 'modal-pre', '');
-		const actions = el('div', 'modal-actions');
-		const download = iconBtn('btn btn-small btn-primary', T.download || 'Download', 'download');
-		const close = iconBtn('btn btn-small btn-ghost', T.close || 'Close', 'x');
-		close.addEventListener('click', closePreview);
-		overlay.addEventListener('click', (e) => {
-			if (e.target === overlay) closePreview();
-		});
-		actions.appendChild(download);
-		actions.appendChild(close);
-		card.appendChild(title);
-		card.appendChild(pre);
-		card.appendChild(actions);
-		overlay.appendChild(card);
-		document.body.appendChild(overlay);
-		return { overlay, title, pre, download };
 	}
 
 	function showMediaError(message) {
