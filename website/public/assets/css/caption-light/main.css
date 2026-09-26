@@ -327,8 +327,8 @@ progress { width: 100%; height: 0.8rem; }
 .modal-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); width: 90vw; height: 90vh; display: flex; flex-direction: column; padding: 1.5rem; }
 .modal-card h3 { font-size: 1.05rem; overflow-wrap: anywhere; min-width: 0; }
 .modal-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 0 0 0.75rem; }
-.modal-font { display: flex; align-items: center; gap: 0.3rem; flex: 0 0 auto; }
-.modal-font .btn-icon { width: 1.1rem; height: 1.1rem; color: var(--ink-soft); }
+.modal-font { display: flex; align-items: center; gap: 0.5rem; flex: 0 0 auto; }
+.modal-font > .btn-icon { width: 2.6rem; height: 2.6rem; color: var(--ink-soft); }
 .modal-pre { margin: 0; flex: 1; overflow: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 1rem; font-size: 0.85rem; font-family: ui-monospace, monospace; white-space: pre-wrap; word-break: break-word; }
 .modal-actions { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1rem; }
 
@@ -427,6 +427,7 @@ progress { width: 100%; height: 0.8rem; }
 .tool-image { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); }
 .tool-content { display: flex; flex-direction: column; gap: 1rem; }
 .search-content { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.search-page:has(#search-results:not([hidden])) + .search-content { display: none; }
 
 .nav-more { position: relative; transition: padding 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
 .nav-menu { position: absolute; top: 0; left: 0; width: max-content; min-width: 10rem; display: flex; flex-direction: column; align-items: stretch; gap: 0.2rem; padding: 0.45rem 0.55rem; background: var(--surface); border: 1px solid var(--line); border-radius: 1.1rem; box-shadow: var(--shadow); opacity: 0; visibility: hidden; pointer-events: none; transform: scale(0.6); transform-origin: center top; transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.45s, background-color 0.45s ease, border-color 0.45s ease; z-index: 50; }
