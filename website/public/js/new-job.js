@@ -22,6 +22,7 @@
 	const submitButton = document.getElementById('job-submit');
 
 	const I18N = window.NEWJOB_I18N || {};
+	const SELECT_LANGUAGE = I18N.select_language || 'Select Language';
 
 	function showError(message) {
 		errorBox.textContent = message;
@@ -92,8 +93,14 @@
 		}
 	}
 
-	function fillSelect(select, items, valueKey, labelKey, preferred) {
+	function fillSelect(select, items, valueKey, labelKey, preferred, placeholder) {
 		select.innerHTML = '';
+		if (placeholder) {
+			const ph = document.createElement('option');
+			ph.value = '';
+			ph.textContent = placeholder;
+			select.appendChild(ph);
+		}
 		for (const item of items) {
 			const option = document.createElement('option');
 			option.value = item[valueKey];
@@ -101,6 +108,7 @@
 			select.appendChild(option);
 		}
 		if (preferred && select.querySelector('option[value="' + preferred + '"]')) select.value = preferred;
+		else if (placeholder) select.value = '';
 	}
 
 	function apiIds(apis) {
@@ -126,7 +134,8 @@
 			await loadLanguages(modelSelect.value, lastLanguage);
 
 			modelSelect.onchange = async () => {
-				await loadLanguages(modelSelect.value, null);
+				const previous = Array.from(translateOptions.querySelectorAll('select[data-role="language"]')).map((s) => s.value);
+				await loadLanguages(modelSelect.value, null, previous);
 			};
 		} else {
 			translateOptions.hidden = true;
@@ -136,21 +145,22 @@
 			await loadLanguages(modelSelect.value, lastLanguage);
 
 			modelSelect.onchange = async () => {
-				await loadLanguages(modelSelect.value, null);
+				const select = transcribeOptions.querySelector('select[data-role="language"]');
+				await loadLanguages(modelSelect.value, null, [select.value]);
 			};
 		}
 
 		optionsPanel.hidden = false;
 	}
 
-	async function loadLanguages(apiId, preferred) {
+	async function loadLanguages(apiId, preferred, previous) {
 		const kind = currentKind === 'subtitle' ? 'translation' : 'transcription';
 		const languages = await window.AI.languagesFor(kind, apiId);
 		const scope = currentKind === 'subtitle' ? translateOptions : transcribeOptions;
 		const selects = scope.querySelectorAll('select[data-role="language"]');
-		for (const select of selects) {
-			fillSelect(select, languages, 'language_code', 'language_name', preferred);
-		}
+		selects.forEach((select, i) => {
+			fillSelect(select, languages, 'language_code', 'language_name', remapLanguage((previous && previous[i]) || preferred, languages), SELECT_LANGUAGE);
+		});
 	}
 
 	function setLangStatus(text, state) {
@@ -162,6 +172,14 @@
 
 	function baseLanguage(code) {
 		return String(code || '').split(/[-_]/)[0].toLowerCase();
+	}
+
+	function remapLanguage(code, languages) {
+		if (!code) return '';
+		if (languages.some((l) => l.language_code === code)) return code;
+		const base = baseLanguage(code);
+		const hit = languages.find((l) => baseLanguage(l.language_code) === base);
+		return hit ? hit.language_code : '';
 	}
 
 	function applyDetectedLanguage(lang) {
@@ -234,6 +252,12 @@
 
 	submitButton.addEventListener('click', async () => {
 		if (!currentFile || !currentKind) return;
+		const langScope = currentKind === 'media' ? transcribeOptions : translateOptions;
+		const missingLanguage = Array.from(langScope.querySelectorAll('select[data-role="language"]')).some((s) => !s.value);
+		if (missingLanguage) {
+			showError(SELECT_LANGUAGE);
+			return;
+		}
 		submitButton.disabled = true;
 		errorBox.hidden = true;
 

@@ -246,7 +246,7 @@
 
 		let list = data.data !== undefined ? data.data : data;
 		if (!Array.isArray(list)) {
-			if (list && typeof list === 'object') list = list[apiId] || Object.values(list)[0] || [];
+			if (list && typeof list === 'object') list = list[apiId] || [];
 			else list = [];
 		}
 		infoCacheSet(cacheKey, list);
