@@ -279,8 +279,20 @@ progress { width: 100%; height: 0.8rem; }
 .big-number { font-size: 2rem; font-weight: 800; margin: 0; font-variant-numeric: tabular-nums; }
 
 .detect-result { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.25rem; margin-top: var(--gap); }
+.file-details { margin-top: 0.5rem; }
+.file-details-toggle { display: inline-flex; align-items: center; gap: 0.4rem; background: none; border: 0; padding: 0.25rem 0; color: var(--ink-soft); font-size: 0.875rem; font-family: inherit; cursor: pointer; }
+.file-details-toggle:hover { color: var(--ink); }
+.file-details-toggle .btn-icon { width: 1rem; height: 1rem; transition: transform 0.15s ease; }
+.file-details-toggle.open .btn-icon { transform: rotate(180deg); }
+.file-details-body { margin-top: 0.5rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.85rem 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+.fd-group h4 { margin: 0 0 0.4rem; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+.fd-group dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; column-gap: 1.5rem; row-gap: 0.2rem; }
+.fd-row { display: contents; }
+.fd-row dt { color: var(--ink-soft); font-size: 0.9rem; }
+.fd-row dd { margin: 0; font-size: 0.9rem; overflow-wrap: anywhere; }
 .lang-detect { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.8rem 1.25rem; margin-top: var(--gap); font-size: 0.9rem; }
-.lang-detect .spinner { display: inline-block; vertical-align: -2px; }
+.lang-detect .spinner { display: inline-block; vertical-align: -2px; width: 0.9rem; height: 0.9rem; margin-right: 0.45rem; border: 2px solid var(--line); border-top-color: var(--ink-soft); border-radius: 50%; animation: lang-detect-spin 0.7s linear infinite; }
+@keyframes lang-detect-spin { to { transform: rotate(360deg); } }
 .lang-detect.ok { border-color: var(--ok, #2e7d32); }
 .lang-detect.fail { border-color: var(--danger, #c62828); }
 

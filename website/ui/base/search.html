@@ -54,39 +54,38 @@
 	<img id="lightbox-img" alt="">
 </div>
 
-<script>
-window.SEARCH_I18N = {
-	results_for: '{{ @search.results_for }}',
-	results_title_subtitles: '{{ @search.results_title_subtitles }}',
-	results_title_features: '{{ @search.results_title_features }}',
-	found: '{{ @search.found }}',
-	page_of: '{{ @search.page_of }}',
-	of: '{{ @search.of }}',
-	empty: '{{ @search.empty }}',
-	error: '{{ @search.error }}',
-	find_subtitles: '{{ @search.find_subtitles }}',
-	episodes_count: '{{ @search.episodes_count }}',
-	subtitles_count: '{{ @search.subtitles_count }}',
-	preview: '{{ @search.preview }}',
-	download: '{{ @search.download }}',
-	close: '{{ @search.close }}',
-	font_smaller: '{{ @search.font_smaller }}',
-	font_larger: '{{ @search.font_larger }}',
-	downloading: '{{ @search.downloading }}',
-	loading_preview: '{{ @search.loading_preview }}',
-	login_required: '{{ @search.login_required }}',
-	download_failed: '{{ @search.download_failed }}',
-	release: '{{ @search.release }}',
-	downloads: '{{ @search.downloads }}',
-	uploaded: '{{ @search.uploaded }}',
-	by: '{{ @search.by }}',
-	on_demand: '{{ @search.on_demand }}',
-	hearing_impaired: '{{ @search.hearing_impaired }}',
-	ai_translated: '{{ @search.ai_translated }}',
-	foreign_parts: '{{ @search.foreign_parts }}',
-	trusted: '{{ @search.trusted }}',
-	on_demand_uploader: 'AI.OpenSubtitles.com'
-};
-</script>
+<div id="search-i18n" hidden
+	data-results_for="{{ @search.results_for }}"
+	data-results_title_subtitles="{{ @search.results_title_subtitles }}"
+	data-results_title_features="{{ @search.results_title_features }}"
+	data-found="{{ @search.found }}"
+	data-page_of="{{ @search.page_of }}"
+	data-of="{{ @search.of }}"
+	data-empty="{{ @search.empty }}"
+	data-error="{{ @search.error }}"
+	data-find_subtitles="{{ @search.find_subtitles }}"
+	data-episodes_count="{{ @search.episodes_count }}"
+	data-subtitles_count="{{ @search.subtitles_count }}"
+	data-preview="{{ @search.preview }}"
+	data-download="{{ @search.download }}"
+	data-close="{{ @search.close }}"
+	data-font_smaller="{{ @search.font_smaller }}"
+	data-font_larger="{{ @search.font_larger }}"
+	data-downloading="{{ @search.downloading }}"
+	data-loading_preview="{{ @search.loading_preview }}"
+	data-login_required="{{ @search.login_required }}"
+	data-download_failed="{{ @search.download_failed }}"
+	data-release="{{ @search.release }}"
+	data-downloads="{{ @search.downloads }}"
+	data-uploaded="{{ @search.uploaded }}"
+	data-by="{{ @search.by }}"
+	data-on_demand="{{ @search.on_demand }}"
+	data-hearing_impaired="{{ @search.hearing_impaired }}"
+	data-ai_translated="{{ @search.ai_translated }}"
+	data-foreign_parts="{{ @search.foreign_parts }}"
+	data-trusted="{{ @search.trusted }}"
+	data-on_demand_uploader="AI.OpenSubtitles.com"
+></div>
+
 <script src="/js/preview-modal.js"></script>
 <script src="/js/search-page.js"></script>

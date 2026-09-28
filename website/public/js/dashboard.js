@@ -2,7 +2,7 @@
 	if (!window.AI.requireAuth()) return;
 
 	const SUBTITLE_EXT = /\.(srt|vtt|ass|ssa)$/i;
-	const T = window.DASH_I18N || {};
+	const T = Object.assign({}, document.getElementById('dash-i18n').dataset);
 	const CHUNK = 10;
 	const API_PAGE = 20;
 

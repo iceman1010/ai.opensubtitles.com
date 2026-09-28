@@ -10,7 +10,7 @@
 	};
 
 	const el = (id) => document.getElementById(id);
-	const i18n = window.SEARCH_I18N || {};
+	const i18n = Object.assign({}, document.getElementById('search-i18n').dataset);
 	const i18n_placeholder_subtitles = i18n.placeholder_subtitles || 'Search…';
 	const i18n_placeholder_features = i18n.placeholder_features || 'Search…';
 

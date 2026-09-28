@@ -11,20 +11,18 @@
 		<div id="recent-media"><p class="empty">…</p></div>
 	</section>
 </section>
-<script>
-window.DASH_I18N = {
-	files: '{{ @media.files }}',
-	preview: '{{ @media.preview }}',
-	download: '{{ @media.download }}',
-	close: '{{ @media.close }}',
-	media_none: '{{ @media.none }}',
-	media_error: '{{ @media.error }}',
-	activities_none: '{{ @activities.none }}',
-	activities_error: '{{ @activities.error }}',
-	download_failed: '{{ @media.download_failed }}',
-	preview_failed: '{{ @media.preview_failed }}',
-	show_more: '{{ @dashboard.show_more }}',
-	more_error: '{{ @dashboard.more_error }}'
-};
-</script>
+<div id="dash-i18n" hidden
+	data-files="{{ @media.files }}"
+	data-preview="{{ @media.preview }}"
+	data-download="{{ @media.download }}"
+	data-close="{{ @media.close }}"
+	data-media_none="{{ @media.none }}"
+	data-media_error="{{ @media.error }}"
+	data-activities_none="{{ @activities.none }}"
+	data-activities_error="{{ @activities.error }}"
+	data-download_failed="{{ @media.download_failed }}"
+	data-preview_failed="{{ @media.preview_failed }}"
+	data-show_more="{{ @dashboard.show_more }}"
+	data-more_error="{{ @dashboard.more_error }}"
+></div>
 <script src="/js/dashboard.js"></script>

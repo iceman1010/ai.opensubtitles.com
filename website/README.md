@@ -37,6 +37,6 @@ Then open http://localhost:8080 (German pages under /de/...).
   localStorage, defaults to `prefers-color-scheme`.
 - Pricing page renders from `cache/pricing.json`, refreshed from
   `api_proxy_base` (config) when older than 6h. Empty until configured.
-- ffmpeg.wasm + mediainfo.js are self-hosted (to be placed in
-  `public/vendor/ffmpeg/` and `public/vendor/mediainfo/`).
+- ffmpeg.wasm + mediainfo.js + subsrt-ts are self-hosted in `public/lib/`
+  (`ffmpeg/`, `mediainfo/`, `subsrt-ts/`).
 - Local dev runs on whatever PHP is installed; production target is PHP 8.3+.

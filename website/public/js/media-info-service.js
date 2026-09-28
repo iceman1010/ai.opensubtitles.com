@@ -1,5 +1,5 @@
 (function () {
-	const VENDOR = '/vendor/mediainfo/';
+	const VENDOR = '/lib/mediainfo/';
 	const WASM = VENDOR + 'MediaInfoModule.wasm';
 
 	function loadScript(src) {
@@ -18,6 +18,41 @@
 	function factory() {
 		const ns = window.MediaInfo;
 		return ns && (ns.mediaInfoFactory || ns.default);
+	}
+
+	function num(value) {
+		const n = parseFloat(value);
+		return isFinite(n) ? n : undefined;
+	}
+
+	function extractDetails(tracks) {
+		const general = tracks.find((t) => t['@type'] === 'General') || {};
+		return {
+			container: {
+				format: general.Format || undefined,
+				profile: general.Format_Profile || undefined,
+				duration: num(general.Duration),
+				size: num(general.FileSize),
+				bitrate: num(general.OverallBitRate)
+			},
+			video: tracks.filter((t) => t['@type'] === 'Video').map((t) => ({
+				format: t.Format || undefined,
+				profile: t.Format_Profile || undefined,
+				width: num(t.Width),
+				height: num(t.Height),
+				frameRate: num(t.FrameRate),
+				bitrate: num(t.BitRate)
+			})),
+			audio: tracks.filter((t) => t['@type'] === 'Audio').map((t) => ({
+				format: t.Format || undefined,
+				profile: t.Format_Profile || t.Format_AdditionalFeatures || undefined,
+				channels: num(t.Channels),
+				layout: t.ChannelLayout || undefined,
+				sampleRate: num(t.SamplingRate),
+				bitrate: num(t.BitRate),
+				language: t.Language || undefined
+			}))
+		};
 	}
 
 	async function analyze(file) {
@@ -48,7 +83,8 @@
 				hasImage: tracks.some((t) => t['@type'] === 'Image'),
 				hasText: tracks.some((t) => t['@type'] === 'Text'),
 				duration: isFinite(duration) ? duration : undefined,
-				format: general.Format || undefined
+				format: general.Format || undefined,
+				details: extractDetails(tracks)
 			};
 		} finally {
 			if (mi.close) mi.close();

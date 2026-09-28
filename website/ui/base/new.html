@@ -8,6 +8,13 @@
 		<input type="file" id="file-input" hidden>
 	</div>
 	<div id="detect-result" class="detect-result" hidden></div>
+	<div id="file-details" class="file-details" hidden>
+		<button id="file-details-toggle" class="file-details-toggle" type="button" aria-expanded="false" aria-controls="file-details-body">
+			<svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
+			<span class="btn-label">{{ @job.file_details }}</span>
+		</button>
+		<div id="file-details-body" class="file-details-body" hidden></div>
+	</div>
 	<div id="lang-detect" class="lang-detect" hidden></div>
 
 	<div id="options-panel" hidden>
@@ -34,16 +41,44 @@
 		<progress id="upload-bar" max="100" value="0"></progress>
 	</div>
 	<p id="job-error" class="form-error" hidden></p>
+
+	<div id="detect-modal" class="modal-overlay" hidden>
+		<div class="modal-login-card" role="dialog" aria-modal="true" aria-labelledby="detect-modal-title">
+			<p id="detect-modal-title" class="modal-title">{{ @job.detect_consent_title }}</p>
+			<p class="muted">{{ @job.detect_consent_text }}</p>
+			<div class="modal-actions">
+				<button class="btn btn-primary" type="button" id="detect-modal-yes"><svg class="btn-icon" aria-hidden="true"><use href="#icon-mic"/></svg><span class="btn-label">{{ @job.detect_consent_yes }}</span></button>
+				<button class="btn" type="button" id="detect-modal-no"><span class="btn-label">{{ @job.detect_consent_no }}</span></button>
+			</div>
+		</div>
+	</div>
+	<div id="newjob-i18n" hidden
+		data-detecting_language="{{ @job.detecting_language }}"
+		data-language_detected="{{ @job.language_detected }}"
+		data-language_detect_failed="{{ @job.language_detect_failed }}"
+		data-select_language="{{ @job.select_language }}"
+		data-details_container="{{ @job.details_container }}"
+		data-details_video="{{ @job.details_video }}"
+		data-details_audio="{{ @job.details_audio }}"
+		data-details_format="{{ @job.details_format }}"
+		data-details_duration="{{ @job.details_duration }}"
+		data-details_size="{{ @job.details_size }}"
+		data-details_bitrate="{{ @job.details_bitrate }}"
+		data-details_resolution="{{ @job.details_resolution }}"
+		data-details_frame_rate="{{ @job.details_frame_rate }}"
+		data-details_channels="{{ @job.details_channels }}"
+		data-details_sample_rate="{{ @job.details_sample_rate }}"
+		data-details_language="{{ @job.details_language }}"
+		data-details_subtitles="{{ @job.details_subtitles }}"
+		data-details_captions="{{ @job.details_captions }}"
+		data-details_characters="{{ @job.details_characters }}"
+		data-details_words="{{ @job.details_words }}"
+		data-details_avg_length="{{ @job.details_avg_length }}"
+		data-detect_skipped="{{ @job.detect_skipped }}"
+	></div>
 </section>
-<script>
-window.NEWJOB_I18N = {
-	detecting_language: '{{ @job.detecting_language }}',
-	language_detected: '{{ @job.language_detected }}',
-	language_detect_failed: '{{ @job.language_detect_failed }}',
-	select_language: '{{ @job.select_language }}'
-};
-</script>
 <script src="/js/detect.js"></script>
+<script type="module" src="/js/subsrt-global.js"></script>
 <script src="/js/ffmpeg-service.js"></script>
 <script src="/js/media-info-service.js"></script>
 <script src="/js/new-job.js"></script>

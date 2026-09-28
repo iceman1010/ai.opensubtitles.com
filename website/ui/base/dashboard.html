@@ -19,25 +19,23 @@
 	<h2>{{ @dashboard.payments }}</h2>
 	<div id="payment-history"><p class="empty">…</p></div>
 </section>
-<script>
-window.DASH_I18N = {
-	files: '{{ @media.files }}',
-	preview: '{{ @media.preview }}',
-	download: '{{ @media.download }}',
-	close: '{{ @media.close }}',
-	font_smaller: '{{ @media.font_smaller }}',
-	font_larger: '{{ @media.font_larger }}',
-	media_none: '{{ @media.none }}',
-	media_error: '{{ @media.error }}',
-	activities_none: '{{ @activities.none }}',
-	activities_error: '{{ @activities.error }}',
-	payments_none: '{{ @payments.none }}',
-	payments_error: '{{ @payments.error }}',
-	download_failed: '{{ @media.download_failed }}',
-	preview_failed: '{{ @media.preview_failed }}',
-	show_more: '{{ @dashboard.show_more }}',
-	more_error: '{{ @dashboard.more_error }}'
-};
-</script>
+<div id="dash-i18n" hidden
+	data-files="{{ @media.files }}"
+	data-preview="{{ @media.preview }}"
+	data-download="{{ @media.download }}"
+	data-close="{{ @media.close }}"
+	data-font_smaller="{{ @media.font_smaller }}"
+	data-font_larger="{{ @media.font_larger }}"
+	data-media_none="{{ @media.none }}"
+	data-media_error="{{ @media.error }}"
+	data-activities_none="{{ @activities.none }}"
+	data-activities_error="{{ @activities.error }}"
+	data-payments_none="{{ @payments.none }}"
+	data-payments_error="{{ @payments.error }}"
+	data-download_failed="{{ @media.download_failed }}"
+	data-preview_failed="{{ @media.preview_failed }}"
+	data-show_more="{{ @dashboard.show_more }}"
+	data-more_error="{{ @dashboard.more_error }}"
+></div>
 <script src="/js/preview-modal.js"></script>
 <script src="/js/dashboard.js"></script>

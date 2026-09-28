@@ -1,0 +1,57 @@
+/**
+ * Handler class.
+ */
+export class Handler {
+    /**
+     * Creates a new handler.
+     * @param args The handler properties (`name`, `build`, `detect`, `helper` and `parse`)
+     * @see
+     * - {@link BaseHandler}
+     * - {@link BuildFunction}
+     * - {@link DetectFunction}
+     * - {@link Helper}
+     * - {@link ParseFunction}
+     * - {@link ParseOptions}
+     * @example
+     * ```ts
+     * const handler = new Handler({
+     *     name: "ext",
+     *     build: (captions: Caption[], options: BuildOptions): string => {
+     *         // ...
+     *     },
+     *     detect: (content: string): boolean | string => {
+     *         // ...
+     *     },
+     *     parse: (content: string, options: ParseOptions): Caption[] => {
+     *         // ...
+     *     },
+     * });
+     * ```
+     */
+    constructor({ name, build, detect, helper, parse }) {
+        this.name = name;
+        this.helper = helper;
+        this.build = build;
+        this.detect = (content) => {
+            if (typeof content !== "string") {
+                throw new TypeError(`Expected string, got ${typeof content}!`);
+            }
+            return detect(content);
+        };
+        this.parse = (content, _options) => {
+            if (typeof content !== "string") {
+                throw new TypeError(`Expected string, got ${typeof content}!`);
+            }
+            return parse(content, _options);
+        };
+    }
+}
+/**
+ * Build a handler.
+ * @param args The handler properties
+ * @returns The handler
+ * @see {@link Handler}
+ */
+export const buildHandler = (args) => {
+    return new Handler(args);
+};

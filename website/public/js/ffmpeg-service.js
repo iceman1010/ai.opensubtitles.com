@@ -1,5 +1,5 @@
 (function () {
-	const VENDOR = '/vendor/ffmpeg/';
+	const VENDOR = '/lib/ffmpeg/';
 	let ffmpeg = null;
 	let loadPromise = null;
 	let opQueue = Promise.resolve();
