@@ -71,6 +71,11 @@
 	data-close="{{ @search.close }}"
 	data-font_smaller="{{ @search.font_smaller }}"
 	data-font_larger="{{ @search.font_larger }}"
+	data-find_placeholder="{{ @search.find_placeholder }}"
+	data-find="{{ @search.find }}"
+	data-cues="{{ @search.cues }}"
+	data-prev_match="{{ @search.prev_match }}"
+	data-next_match="{{ @search.next_match }}"
 	data-downloading="{{ @search.downloading }}"
 	data-loading_preview="{{ @search.loading_preview }}"
 	data-login_required="{{ @search.login_required }}"
@@ -87,5 +92,7 @@
 	data-on_demand_uploader="AI.OpenSubtitles.com"
 ></div>
 
+<script type="module" src="/js/subsrt-global.js"></script>
+<script src="/js/subtitle-viewer.js"></script>
 <script src="/js/preview-modal.js"></script>
 <script src="/js/search-page.js"></script>

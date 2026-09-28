@@ -256,7 +256,12 @@
 					download: i18n.download,
 					close: i18n.close,
 					font_smaller: i18n.font_smaller,
-					font_larger: i18n.font_larger
+					font_larger: i18n.font_larger,
+					find_placeholder: i18n.find_placeholder,
+					find: i18n.find,
+					cues: i18n.cues,
+					prev_match: i18n.prev_match,
+					next_match: i18n.next_match
 				});
 			} catch (e) {
 				showError(i18n.download_failed + ' ' + e.message);

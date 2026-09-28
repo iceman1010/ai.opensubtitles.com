@@ -242,7 +242,12 @@
 				download: T.download || 'Download',
 				close: T.close || 'Close',
 				font_smaller: T.font_smaller || 'Smaller text',
-				font_larger: T.font_larger || 'Larger text'
+				font_larger: T.font_larger || 'Larger text',
+				find_placeholder: T.find_placeholder || 'Find text or cue number…',
+				find: T.find || 'Search',
+				cues: T.cues || 'cues',
+				prev_match: T.prev_match || 'Previous match',
+				next_match: T.next_match || 'Next match'
 			});
 		} catch (e) {
 			if (!e.auth) showMediaError((T.preview_failed || 'Preview failed') + ': ' + e.message);

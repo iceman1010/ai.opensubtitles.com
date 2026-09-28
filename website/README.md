@@ -39,4 +39,9 @@ Then open http://localhost:8080 (German pages under /de/...).
   `api_proxy_base` (config) when older than 6h. Empty until configured.
 - ffmpeg.wasm + mediainfo.js + subsrt-ts are self-hosted in `public/lib/`
   (`ffmpeg/`, `mediainfo/`, `subsrt-ts/`).
+- Subtitle previews (search results, dashboard/job files) open in a modal with
+  a virtualized cue list (`public/js/subtitle-viewer.js`, parsed with
+  subsrt-ts): format badge, cue count, duration, text/cue-number search.
+  Non-subtitle content falls back to the raw text view. The font-size buttons
+  scale both views.
 - Local dev runs on whatever PHP is installed; production target is PHP 8.3+.

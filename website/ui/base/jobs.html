@@ -22,7 +22,15 @@
 	data-activities_error="{{ @activities.error }}"
 	data-download_failed="{{ @media.download_failed }}"
 	data-preview_failed="{{ @media.preview_failed }}"
+	data-find_placeholder="{{ @media.find_placeholder }}"
+	data-find="{{ @media.find }}"
+	data-cues="{{ @media.cues }}"
+	data-prev_match="{{ @media.prev_match }}"
+	data-next_match="{{ @media.next_match }}"
 	data-show_more="{{ @dashboard.show_more }}"
 	data-more_error="{{ @dashboard.more_error }}"
 ></div>
+<script type="module" src="/js/subsrt-global.js"></script>
+<script src="/js/subtitle-viewer.js"></script>
+<script src="/js/preview-modal.js"></script>
 <script src="/js/dashboard.js"></script>
