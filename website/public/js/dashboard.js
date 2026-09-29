@@ -43,6 +43,14 @@
 		}
 	}
 
+	function listHead(cells) {
+		const list = el('div', 'media-list');
+		const head = el('div', 'list-head');
+		for (const [cls, label] of cells) head.appendChild(el('span', cls, label));
+		list.appendChild(head);
+		return list;
+	}
+
 	async function loadActivities() {
 		const container = document.getElementById('recent-activities');
 		if (!container) return;
@@ -51,7 +59,11 @@
 			empty: T.activities_none || 'Nothing here yet.',
 			error: T.activities_error || 'Could not load activities.',
 			more: T.show_more,
-			buildContainer: () => el('div', 'media-list'),
+			buildContainer: () => listHead([
+				['lh-main', T.activities_type || 'Type'],
+				['act-credits', T.activities_credits || 'Credits'],
+				['media-time', T.activities_date || 'Date']
+			]),
 			row: activityRow
 		});
 	}
@@ -90,7 +102,10 @@
 			empty: T.media_none || 'Nothing here yet.',
 			error: T.media_error || 'Could not load recent media.',
 			more: T.show_more,
-			buildContainer: () => el('div', 'media-list'),
+			buildContainer: () => listHead([
+				['lh-main', T.media_head || 'Media'],
+				['media-time', T.media_date || 'Date']
+			]),
 			row: (item) => renderMediaItem(item)
 		});
 	}
@@ -273,7 +288,11 @@
 			empty: T.payments_none || 'No payments recorded yet.',
 			error: T.payments_error || 'Could not load payment history.',
 			more: T.show_more,
-			buildContainer: () => el('div', 'media-list'),
+			buildContainer: () => listHead([
+				['pay-date', T.payments_date || 'Date'],
+				['pay-usd', T.payments_usd || 'USD'],
+				['pay-credits', T.payments_credits || 'Credits']
+			]),
 			row: paymentRow
 		});
 	}
