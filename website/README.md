@@ -35,6 +35,14 @@ Then open http://localhost:8080 (German pages under /de/...).
   `ui/themes/<name>/` override `ui/base/`, CSS in `public/assets/css/<name>/`.
 - Dark/light toggle rides CSS tokens (`data-theme` attribute), preference in
   localStorage, defaults to `prefers-color-scheme`.
+- Locale: URLs are `/` (en) and `/de/...`; `app/config.php` `languages` map
+  (locale => native label) is the single source of truth for available
+  languages. First visit without a `site_locale` cookie is auto-forwarded
+  (302) when `Accept-Language` matches a configured language; afterwards
+  bare URLs always serve en. Header `<select id="lang-select">` overrides:
+  sets the cookie (1y) and navigates via the page's hreflang alternates;
+  option labels are re-rendered in the current UI language through the
+  browser-native `Intl.DisplayNames` (no library).
 - Pricing page renders from `cache/pricing.json`, refreshed from
   `api_proxy_base` (config) when older than 6h. Empty until configured.
 - ffmpeg.wasm + mediainfo.js + subsrt-ts are self-hosted in `public/lib/`

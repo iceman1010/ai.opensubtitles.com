@@ -64,6 +64,7 @@
 			</div>
 			<a class="nav-pill" href="/login" id="nav-login" data-auth="out"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-in"/></svg></span><span class="btn-label">{{ @nav.login }}</span></a>
 			<button class="nav-pill" id="nav-logout" type="button" data-auth="in" hidden><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-out"/></svg></span><span class="btn-label">{{ @nav.logout }}</span></button>
+			<select id="lang-select" class="lang-select" aria-label="{{ @nav.language }}" data-alternates='{{ json_encode(@alternates) }}' data-current="{{ @locale }}"><repeat group="{{ @APP.languages }}" key="{{ @code }}" value="{{ @label }}"><option value="{{ @code }}">{{ @label }}</option></repeat></select>
 			<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">◐</button>
 		</nav>
 	</header>
@@ -85,5 +86,6 @@
 	</footer>
 	<script src="/js/theme-toggle.js"></script>
 	<script src="/js/nav-menu.js"></script>
+	<script src="/js/lang-select.js"></script>
 </body>
 </html>

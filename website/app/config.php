@@ -3,7 +3,7 @@
 return [
     'theme' => 'caption-light',
     'default_locale' => 'en',
-    'locales' => ['en', 'de'],
+    'languages' => ['en' => 'English', 'de' => 'Deutsch'],
     'site_name' => 'AI Opensubtitles',
     'api_key' => '5MGRBWO9lHA023KPmVMaa0PoRYHqQKpK',
     'api_base' => '/ai-web/api/v1',

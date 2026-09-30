@@ -10,6 +10,7 @@ class App
         foreach ($config as $key => $value) {
             $f3->set('APP.' . $key, $value);
         }
+        $f3->set('APP.locales', array_keys($config['languages']));
 
         $root = dirname(__DIR__);
 
