@@ -14,6 +14,9 @@ class Base
         $f3->set('page', $page);
         $f3->set('canonical', $prefix . $path);
         $f3->set('alternates', \Services\Locale::alternates($f3, $path));
+        $f3->set('lang_rows', \Services\Locale::menu($f3, $path));
+        $f3->set('lang_flags', \Services\Locale::flagsJson($f3));
+        $f3->set('lang_flag_current', $f3->get('APP.languages')[$locale]['flag'] ?? '');
         $f3->set('noindex', false);
         echo \Template::instance()->render('layout.html');
     }

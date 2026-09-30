@@ -64,7 +64,12 @@
 			</div>
 			<a class="nav-pill" href="/login" id="nav-login" data-auth="out"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-in"/></svg></span><span class="btn-label">{{ @nav.login }}</span></a>
 			<button class="nav-pill" id="nav-logout" type="button" data-auth="in" hidden><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-out"/></svg></span><span class="btn-label">{{ @nav.logout }}</span></button>
-			<select id="lang-select" class="lang-select" aria-label="{{ @nav.language }}" data-alternates='{{ json_encode(@alternates) }}' data-current="{{ @locale }}"><repeat group="{{ @APP.languages }}" key="{{ @code }}" value="{{ @label }}"><option value="{{ @code }}">{{ @label }}</option></repeat></select>
+			<div class="nav-more" id="lang-nav" data-current="{{ @locale }}" data-languages='{{ @lang_flags }}'>
+				<button class="nav-pill" id="lang-btn" type="button" aria-label="{{ @nav.language }}" aria-haspopup="true" aria-expanded="false"><img class="lang-flag" src="/lib/circle-flags/{{ @lang_flag_current }}.svg" alt="" width="18" height="18" data-lang="{{ @locale }}"><span class="btn-label">{{ strtoupper(@locale) }}</span></button>
+				<div class="nav-menu" id="lang-menu">
+					<repeat group="{{ @lang_rows }}" value="{{ @row }}"><a class="nav-pill lang-option" href="{{ @row.url }}" data-lang="{{ @row.code }}"{{ @row.aria }}><img class="lang-flag" src="/lib/circle-flags/{{ @row.flag }}.svg" alt="" width="18" height="18" data-lang="{{ @row.code }}"><span class="btn-label">{{ @row.label }}</span></a></repeat>
+				</div>
+			</div>
 			<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">◐</button>
 		</nav>
 	</header>

@@ -108,19 +108,9 @@ a { color: inherit; }
 	line-height: 1;
 }
 
-.lang-select {
-	appearance: none;
-	background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 0.55rem center / 0.55rem;
-	border: 1px solid var(--line);
-	border-radius: 999px;
-	height: 2.1rem;
-	padding: 0 1.5rem 0 0.9rem;
-	cursor: pointer;
-	color: var(--ink);
-	font: inherit;
-	font-size: 0.9rem;
-	line-height: 1;
-}
+.lang-flag { width: 1.15rem; height: 1.15rem; display: block; }
+.lang-option { justify-content: flex-start; }
+.lang-option[aria-current] { color: var(--ink); font-weight: 600; }
 
 .nav-pill {
 	display: inline-flex;

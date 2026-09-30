@@ -36,13 +36,25 @@ Then open http://localhost:8080 (German pages under /de/...).
 - Dark/light toggle rides CSS tokens (`data-theme` attribute), preference in
   localStorage, defaults to `prefers-color-scheme`.
 - Locale: URLs are `/` (en) and `/de/...`; `app/config.php` `languages` map
-  (locale => native label) is the single source of truth for available
-  languages. First visit without a `site_locale` cookie is auto-forwarded
-  (302) when `Accept-Language` matches a configured language; afterwards
-  bare URLs always serve en. Header `<select id="lang-select">` overrides:
-  sets the cookie (1y) and navigates via the page's hreflang alternates;
-  option labels are re-rendered in the current UI language through the
-  browser-native `Intl.DisplayNames` (no library).
+  (locale => label + flag + optional `flag_overrides`) is the single source of
+  truth for available languages. First visit without a `site_locale` cookie is
+  auto-forwarded (302) when `Accept-Language` matches a configured language;
+  afterwards bare URLs always serve en. The header language popover
+  (`public/js/lang-select.js`, nav-menu pattern) overrides: sets the cookie
+  (1y) and navigates via the page's hreflang alternates; labels render in the
+  current UI language via browser-native `Intl.DisplayNames` (no library).
+- Language flags: circular SVGs vendored in `public/lib/circle-flags/`
+  (source: github.com/HatScripts/circle-flags, gh-pages snapshot 2026-09-30,
+  MIT, subset: referenced flags only, ~1 KB each). Each language has a default
+  flag plus optional per-country overrides (visitor country -> flag) for
+  politically ambiguous languages (en: gb default, us/ca/au/nz/in overrides —
+  user-approved 2026-09-30; future language->flag mappings are delegated to
+  the agent, recorded in plan.md). The visitor country is detected
+  **client-side** via Cloudflare's edge endpoint `/cdn-cgi/trace`
+  (`loc=XX`, all plans, proxied zones only), cached in `localStorage`
+  (`cf_country`), and swaps default flags after render — the HTML stays
+  identical for every visitor, so Cloudflare full-page caching stays safe.
+  Without Cloudflare (dev) flags fall back to the defaults.
 - Pricing page renders from `cache/pricing.json`, refreshed from
   `api_proxy_base` (config) when older than 6h. Empty until configured.
 - ffmpeg.wasm + mediainfo.js + subsrt-ts are self-hosted in `public/lib/`

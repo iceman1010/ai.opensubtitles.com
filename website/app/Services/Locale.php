@@ -44,6 +44,32 @@ class Locale
         return $links;
     }
 
+    public static function menu(\Base $f3, string $path): array
+    {
+        $current = (string) $f3->get('locale');
+        $urls = self::alternates($f3, $path);
+        $rows = [];
+        foreach ($f3->get('APP.languages') as $code => $lang) {
+            $rows[] = [
+                'code' => $code,
+                'label' => $lang['label'],
+                'flag' => $lang['flag'],
+                'url' => $urls[$code],
+                'aria' => $code === $current ? ' aria-current="true"' : '',
+            ];
+        }
+        return $rows;
+    }
+
+    public static function flagsJson(\Base $f3): string
+    {
+        $out = [];
+        foreach ($f3->get('APP.languages') as $code => $lang) {
+            $out[$code] = ['flag' => $lang['flag'], 'overrides' => $lang['flag_overrides'] ?? []];
+        }
+        return json_encode($out, JSON_UNESCAPED_SLASHES);
+    }
+
     private static function negotiate(array $locales, string $header): ?string
     {
         if ($header === '') {
