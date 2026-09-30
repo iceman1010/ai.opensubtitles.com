@@ -24,7 +24,7 @@ Then open http://localhost:8080 (German pages under /de/...).
     ui/
       base/          shared base templates (fallback layer)
       themes/        theme packs; templates here override base
-    dict/            F3 lexicon: en.php, de.php (missing DE keys fall back to EN)
+    dict/            F3 lexicon: en.json, de.json (missing DE keys fall back to EN)
     js/              vanilla JS: api client, mediainfo/ffmpeg glue, upload, polling
     vendor/          composer packages (fatfree core)
     cache/           pricing cache (file-based)
@@ -55,6 +55,20 @@ Then open http://localhost:8080 (German pages under /de/...).
   (`cf_country`), and swaps default flags after render — the HTML stays
   identical for every visitor, so Cloudflare full-page caching stays safe.
   Without Cloudflare (dev) flags fall back to the defaults.
+- Adding a language: add one entry to the `languages` map in
+  `app/config.php` (`label` + `flag` + optional `flag_overrides`) —
+  routing, auto-forward, menu row, JS flags map, and hreflang all derive
+  from it. Vendor the needed SVGs into `public/lib/circle-flags/`
+  (lowercase ISO names matching the config values). Create
+  `dict/<locale>.json` (FALLBACK=en covers missing keys; translations
+  land in one batch later). Extend `tests/locale-redirect.sh` and this
+  README's language list.
+- Auth handoff: the site and the web client (`/ai-web`, same origin) share
+  localStorage keys (`ai_opensubtitles_token*`, `ai_opensubtitles_config`);
+  a login on the site carries over — the client verifies the cached token
+  (`tokenLogin()`) without a second login, and "remember me" also stores the
+  public Api-Key in the shared config so the client can auto-relogin after
+  token expiry. Logout on either side logs out both.
 - Pricing page renders from `cache/pricing.json`, refreshed from
   `api_proxy_base` (config) when older than 6h. Empty until configured.
 - ffmpeg.wasm + mediainfo.js + subsrt-ts are self-hosted in `public/lib/`

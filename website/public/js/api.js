@@ -128,7 +128,7 @@
 
 	async function login(username, password, rememberMe) {
 		if (!username || !password) return { success: false, error: 'Username and password are required' };
-		if (rememberMe) saveConfig({ username: username, password: password });
+		if (rememberMe) saveConfig({ username: username, password: password, apiKey: SITE.apiKey });
 		else saveConfig({ username: username, password: undefined });
 
 		try {
