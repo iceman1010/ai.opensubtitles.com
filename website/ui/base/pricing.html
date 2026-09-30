@@ -14,6 +14,7 @@
 					<div class="svc-meta">
 						<p class="muted">{{ count(@svc.languages_supported) }} {{ @pricing.languages }} · {{ @svc.reliability | esc }} · {{ @svc.speed | esc }}</p>
 						<p class="price">{{ @svc.price }} <span>{{ @svc.pricing | esc }}</span></p>
+						<p class="muted price-usd">≈ ${{ @svc.price_usd | esc }} / {{ @pricing.per_min }}</p>
 					</div>
 				</div>
 			</repeat>
@@ -32,6 +33,7 @@
 					<div class="svc-meta">
 						<p class="muted">{{ count(@svc.languages_supported) }} {{ @pricing.languages }} · {{ @svc.reliability | esc }} · {{ @svc.speed | esc }}</p>
 						<p class="price">{{ @svc.price }} <span>{{ @svc.pricing | esc }}</span></p>
+						<p class="muted price-usd">≈ ${{ @svc.price_usd | esc }} / {{ @pricing.per_kchars }}</p>
 					</div>
 				</div>
 			</repeat>
@@ -39,6 +41,32 @@
 	</section>
 </check>
 
+<check if="{{ @packages }}">
+	<section>
+		<h2>{{ @pricing.packages }}</h2>
+		<div class="packages">
+			<repeat group="{{ @packages }}" value="{{ @pkg }}">
+				<div class="package-card">
+					<h3>{{ @pkg.name | esc }}</h3>
+					<div class="svc-meta">
+						<p class="price">{{ @pkg.value | esc }}</p>
+						<check if="{{ @pkg.discount_percent > 0 }}">
+							<p class="discount-badge">+{{ @pkg.discount_percent }}% {{ @credits.bonus }}</p>
+						<false>
+							<p class="discount-badge discount-placeholder">&nbsp;</p>
+						</false>
+						</check>
+					</div>
+					<button type="button" class="btn btn-primary" data-pkg="{{ @pkg.name | esc }}">{{ @credits.purchase }}</button>
+				</div>
+			</repeat>
+		</div>
+		<p class="muted pricing-note">{{ @pricing.credits_note }}</p>
+	</section>
+</check>
+
 <check if="{{ !@services }}">
 	<section><p class="empty">{{ @pricing.empty }}</p></section>
 </check>
+
+<script src="/js/pricing.js"></script>

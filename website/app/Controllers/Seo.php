@@ -29,6 +29,7 @@ class Seo
             '/' => 'home.html',
             '/transcribe' => 'transcribe.html',
             '/translate' => 'translate.html',
+            '/faq' => 'faq.html',
             '/pricing' => 'pricing.html',
             '/tools' => 'tools.html',
             '/support' => 'support.html',

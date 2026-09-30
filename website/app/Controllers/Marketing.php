@@ -17,4 +17,11 @@ class Marketing extends Base
         $f3->set('page_description', $f3->get('translate.meta_description'));
         $this->render($f3, 'translate.html', '/translate');
     }
+
+    public function faq(\Base $f3): void
+    {
+        $f3->set('page_title', $f3->get('faq.title'));
+        $f3->set('page_description', $f3->get('faq.meta_description'));
+        $this->render($f3, 'faq.html', '/faq');
+    }
 }

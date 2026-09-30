@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenSubtitles Credit Package Checkout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .checkout-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        .summary-box {
+            background: #ffffff;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+        }
+
+
+        .summary-box li:hover {
+            background-color: beige;
+            border-radius: 0.75rem;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .summary-box li:hover img {
+            transform: scale(1.20);
+            transition: transform 1.2s ease;
+            position: relative;
+            /* Needed for z-index to take effect */
+            z-index: 99;
+            /* Higher than surrounding elements */
+            filter: drop-shadow(0 0 7px rgba(233, 218, 4, 0.493));
+        }
+
+        .summary-box li img {
+            transform: scale(1);
+            transition: transform 1.2s ease;
+            position: relative;
+        }
+
+        @media (max-width: 599px) {
+            .summary-box li img {
+                display: none;
+            }
+        }
+
+        .summary-box li button {
+            z-index: 999;
+        }
+
+        .summary-box li:hover button {
+            background-color: #ffffff;
+            color: black;
+        }
+
+        .summary-box li:hover button .outlined-text {
+            color: beige;
+            text-shadow:
+                -1px -1px 0 rgba(0, 0, 0, 0.6),
+                1px -1px 0 rgba(0, 0, 0, 0.6),
+                -1px 1px 0 rgba(0, 0, 0, 0.6),
+                1px 1px 0 rgba(0, 0, 0, 0.6);
+
+            /* filter: drop-shadow(0 0 7px rgba(233, 218, 4, 0.493));  */
+
+        }
+
+        .summary-box li {
+            cursor: pointer;
+        }
+
+        .product-list li {
+            position: relative;
+            display: inline-block;
+
+            /* or block, depending on your layout */
+            margin: 10px;
+            overflow: hidden;
+            max-height: 8em;
+        }
+
+
+
+        .product-list li img {
+            display: block;
+            width: 100%;
+            /* or a specific size */
+            height: auto;
+        }
+
+        #page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        #page-loader .loader-content {
+            text-align: center;
+            color: #333333;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #333333;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 599px) {
+            .product-list li img {
+                display: none;
+            }
+        }
+
+        .corner-ribbon {
+            position: absolute;
+            width: calc(100%);
+            top: calc(100% - 50px);
+            /* Adjust to bring it slightly into view */
+            left: -30px;
+            background: rgba(255, 0, 0, 0.63);
+            color: white;
+            padding: 5px 40px;
+            font-size: 12px;
+            font-weight: bold;
+            transform: rotate(-45deg);
+            transform-origin: top left;
+            z-index: 99;
+            text-indent: 20px;
+        }
+
+        .outlined-text {
+            color: white;
+            text-shadow:
+                -1px -1px 0 rgba(0, 0, 0, 0.6),
+                1px -1px 0 rgba(0, 0, 0, 0.6),
+                -1px 1px 0 rgba(0, 0, 0, 0.6),
+                1px 1px 0 rgba(0, 0, 0, 0.6);
+        }
+
+        #login_name_wrap {
+            display: block;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        #login_name_wrap.d-none {
+            display: none;
+        }
+
+
+        @media (max-width: 599px) {
+            .corner-ribbon {
+                display: none;
+            }
+
+            .product-list li {
+                display: block;
+            }
+        }
+    </style>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2TZC59HYN4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-2TZC59HYN4');
+    </script>
+</head>
+
+<body>
+    <div id="page-loader" aria-live="polite">
+        <div class="loader-content">
+            <div class="spinner" aria-hidden="true"></div>
+            <span>Loading...</span>
+        </div>
+    </div>
+
+    <div class="checkout-container">
+        <div id="welcome_txt" class="text-center mb-4 fade d-none">
+            <div class="logo">OpenSubtitles</div>
+            <p class="text-muted mb-1">Credits Package Checkout</p>
+            <div id="login_name_wrap" class="fade d-none">
+                <strong id="login_name"></strong>
+            </div>
+        </div>
+
+        <!-- PRODUCTION -->
+
+        <script id="fsc-api" src="https://sbl.onfastspring.com/sbl/0.9.2/fastspring-builder.min.js"
+            data-popup-closed="dataPopupClosed" type="text/javascript" data-decorate-callback="decorateURL"
+            data-storefront="opensubtitles.onfastspring.com/popup-credits">
+            </script>
+
+        <!-- TEST -->
+
+        <!-- <script id="fsc-api" src="https://sbl.onfastspring.com/sbl/0.9.2/fastspring-builder.min.js"
+                data-popup-closed="dataPopupClosed" type="text/javascript" data-decorate-callback="decorateURL"
+                data-storefront="opensubtitles.test.onfastspring.com/popup-credits">
+            </script> -->
+
+        <script>
+
+            var tags = {};
+
+            var ga_client_ID = false;
+
+            function getGaSessionId() {
+                const measurementId = 'G-2TZC59HYN4';
+                const gaCookie = document.cookie
+                    .split('; ')
+                    .find(row => row.startsWith('_ga_' + measurementId.replace('G-', '')));
+                if (!gaCookie) return null;
+
+                const parts = gaCookie.split('.');
+                return parts.length > 2 ? parts[2] : null;
+            }
+
+            function dataPopupClosed(event) {
+
+                gtag('event', 'check_out_complete');
+
+            }
+
+            fetch("https://api.opensubtitles.com/api/v1/ai/info/credits", {
+                headers: {
+                    "Accept": "application/json"
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok: " + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+
+                    const encryptedTag = urlParams.get('tag');
+                    const iframe = urlParams.get('iframe');
+
+                    if (!iframe) {
+                        document.getElementById('welcome_txt').classList.add('show');
+                        document.getElementById('welcome_txt').classList.remove('d-none');
+                    }
+
+                    if (encryptedTag) {
+                        document.getElementById('summary-box').classList.add('show');
+                        document.getElementById('warning').remove();
+                        decryptTag(encryptedTag, 'opensubtitles').then(data2 => {
+
+                            // Set username
+                            document.getElementById('login_name').innerHTML = data2.login;
+                            document.getElementById('login_name_wrap').classList.add('show');
+                            document.getElementById('login_name_wrap').classList.remove('d-none');
+                            tags = data2;
+                            const creditsArray = data.data; // <-- use the 'data' key
+                            const listGroup = document.getElementById('credits_package_selector');
+
+                            const ga_id = tags.gtag;
+
+                            gtag('get', ga_id, 'client_id', (clientId) => {
+                                console.log('GA Client ID:', clientId);
+                                tags.cid = clientId;
+                                tags.session_id = getGaSessionId();
+                                tags.timestamp_micros = Date.now() * 1000;
+                            });
+
+                            creditsArray.forEach(item => {
+
+                                const li = document.createElement("li");
+                                li.className = "list-group-item d-flex justify-content-between";
+
+                                const button = document.createElement("button");
+                                button.className = "btn btn-secondary w-100";
+                                button.setAttribute("data-toggle", "tooltip");
+                                button.setAttribute("title", `${item.discount_percent}% discount`);
+                                button.setAttribute("data-popup-closed", "orderCompleted");
+                                button.setAttribute("data-fsc-item-path-value", item.label);
+                                button.setAttribute("data-fsc-action", "Add,ViewCart,CheckOut");
+                                button.setAttribute("onclick", "add_tags(tags);");
+                                button.setAttribute("id", item.label);
+
+                                button.innerHTML = "<b class=\"outlined-text\">" + toTitleCase(item.name) + "</b>" + `<br>for ${item.value}`;
+
+
+                                const img = document.createElement("img");
+                                img.src = "https://ai.opensubtitles.com/ui/assets/images/credits/" + item.label + ".png";
+                                img.addEventListener('click', () => {
+                                    const l = item.label;
+                                    document.getElementById(l).click();
+                                });
+
+                                li.appendChild(img);
+
+
+                                if (item.discount_percent > 0) {
+                                    const div = document.createElement('div');
+                                    div.innerText = " " + item.discount_percent + "%";
+                                    div.classList.add('corner-ribbon', 'outlined-text');
+                                    li.appendChild(div);
+
+                                }
+
+                                li.appendChild(button);
+
+                                listGroup.appendChild(li);
+
+
+                            });
+                            // add_tags(tags);
+                        }).catch(err => {
+                            console.error("Decryption failed:", err);
+                        });
+                    } else {
+                        // No tag submitted
+                        document.getElementById('warning').classList.add('show');
+                    }
+
+                    creditsReady = true;
+
+                })
+                .catch(error => {
+                    console.error("Failed to fetch JSON:", error);
+                });
+
+        </script>
+        <div id="warning" class="fade">
+            <h1 class="text-warning">Error</h1>
+            <p>This URL is not supposed to be accessed like this. You need an valid 'tag' parameter.</p>
+        </div>
+
+        <div id="summary-box" class="summary-box mb-4 fade">
+            <h5>Please choose a package:</h5>
+            <ul id="credits_package_selector" class="list-group list-group-flush product-list">
+
+            </ul>
+        </div>
+
+
+        <p class="text-center text-muted mt-4 small">
+            Payments processed securely. No card data stored.
+        </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+
+    let creditsReady = false;
+    let overlayHidden = false;
+
+    function onPageReady() {
+        // If URL was call with a GET parameter 'choice', then automatically click the corresponding button
+        const choice = urlParams.get('choice');
+        if (choice) {
+
+            setTimeout(() => {
+
+                console.log("Auto-clicking button for choice:", choice);
+                const button = document.getElementById(choice);
+                if (button) {
+                    button.click();
+                }
+
+            }, 1000); // Delay to ensure buttons are rendered
+
+        } else {
+            console.log("No 'choice' parameter found in URL.");
+        }
+    }
+
+    function hidePageLoader() {
+        const loader = document.getElementById('page-loader');
+        if (loader) loader.remove();
+        overlayHidden = true;
+        onPageReady();
+    }
+
+    function checkPageReady() {
+        if (overlayHidden) return;
+
+        const fastspringReady = typeof window.fastspring !== 'undefined' &&
+            window.fastspring !== null &&
+            typeof window.fastspring.builder !== 'undefined';
+
+        if (fastspringReady && creditsReady) {
+            hidePageLoader();
+            return;
+        }
+        setTimeout(checkPageReady, 100);
+    }
+
+    checkPageReady();
+
+    function add_tags(override = {}) {
+        // Parse URL query parameters
+        var data = {};
+
+        if (!override) {
+            urlParams.forEach((value, key) => {
+                data[key] = value;
+            });
+        } else {
+            data = override;
+        }
+
+        if (ga_client_ID) data.cid = ga_client_ID;
+
+        const result = {};
+        const valid_keys = ['login', 'loginid', 'email', 'cid', 'token'];
+
+        // Filter only valid keys
+        for (const key in data) {
+            if (typeof data[key] === "string" && valid_keys.includes(key)) {
+                result[key] = data[key];
+            }
+        }
+        console.log('added tags:', result);
+        fastspring.builder.tag(result);
+        if (result.email !== undefined) {
+            fastspring.builder.recognize({
+                'email': result.email,
+            });
+        };
+
+
+    }
+
+    async function decryptTag(encryptedParam, password) {
+        try {
+            // Function to add padding to base64
+            function addBase64Padding(base64) {
+                const padding = '='.repeat((4 - base64.length % 4) % 4);
+                return base64 + padding;
+            }
+
+            // Split the encrypted param into IV and ciphertext
+            const [ivB64, ctB64] = encryptedParam.split(':');
+
+            // Add padding before decoding
+            const paddedIvB64 = addBase64Padding(ivB64);
+            const paddedCtB64 = addBase64Padding(ctB64);
+
+            // Decode the base64 values to get the actual binary data
+            const iv = Uint8Array.from(atob(paddedIvB64), c => c.charCodeAt(0));
+            const ciphertext = Uint8Array.from(atob(paddedCtB64), c => c.charCodeAt(0));
+
+
+            // Derive the AES key from the password using SHA-256
+            const keyBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(password));
+
+            // Import the key for AES-CBC decryption
+            const key = await crypto.subtle.importKey(
+                'raw',
+                keyBuffer,
+                { name: 'AES-CBC' },
+                false,
+                ['decrypt']
+            );
+
+            console.log("Imported Key:", key);
+
+            // Decrypt the ciphertext using AES-CBC and the derived key
+            const decrypted = await crypto.subtle.decrypt(
+                { name: 'AES-CBC', iv },
+                key,
+                ciphertext
+            );
+            console.log("Decrypted Data (Buffer):", decrypted);
+
+            // Decode the decrypted data into a string and parse the JSON
+            const decryptedText = new TextDecoder().decode(decrypted);
+            console.log("Decrypted Text:", decryptedText);
+
+            // Return the parsed data (assuming it's a JSON object)
+            return JSON.parse(decryptedText);
+        } catch (err) {
+            console.error('Decryption failed:', err.message);
+            return null;
+        }
+    }
+
+    function toTitleCase(str) {
+        return str
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join(' ');
+    }
+
+
+</script>
+
+</html>

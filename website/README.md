@@ -71,6 +71,16 @@ Then open http://localhost:8080 (German pages under /de/...).
   token expiry. Logout on either side logs out both.
 - Pricing page renders from `cache/pricing.json`, refreshed from
   `api_proxy_base` (config) when older than 6h. Empty until configured.
+  Model cards show credit prices (max 5 decimals) plus a computed USD line
+  (1 credit = $0.01, config `credit_usd_rate`; per 1,000 chars / per minute).
+  A "Credit packages" card grid (from POST `/ai/info/credits`, public, no
+  Api-Key, same cache) is rendered server-side for anonymous visitors and
+  crawlers; `/buy` stays the logged-in purchase flow. Each card has a
+  "Purchase now" button (`public/js/pricing.js`): anonymous -> /login with
+  return redirect to /pricing; logged in -> fetches checkout URLs from
+  `/ai/credits/buy` (matched by package name) and opens checkout in a new
+  tab. (In-page iframe modal was tried and reverted: shop sends
+  frame-blocking headers.)
 - ffmpeg.wasm + mediainfo.js + subsrt-ts are self-hosted in `public/lib/`
   (`ffmpeg/`, `mediainfo/`, `subsrt-ts/`).
 - Subtitle previews (search results, dashboard/job files) open in a modal with

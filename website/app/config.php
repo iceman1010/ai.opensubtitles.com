@@ -14,5 +14,6 @@ return [
     'dev_proxy_upstream' => 'https://ai.opensubtitles.com',
     'user_agent' => 'aios v1',
     'pricing_cache_ttl' => 21600,
+    'credit_usd_rate' => 0.01,
     'cache_dir' => dirname(__DIR__) . '/cache',
 ];

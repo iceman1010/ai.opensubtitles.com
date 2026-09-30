@@ -4,6 +4,7 @@ return [
     'GET /' => 'Controllers\Home->index',
     'GET /transcribe' => 'Controllers\Marketing->transcribe',
     'GET /translate' => 'Controllers\Marketing->translate',
+    'GET /faq' => 'Controllers\Marketing->faq',
     'GET /pricing' => 'Controllers\Pricing->index',
     'GET /tools' => 'Controllers\Tools->index',
     'GET /tools/@tool' => 'Controllers\Tools->show',

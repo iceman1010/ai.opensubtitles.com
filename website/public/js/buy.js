@@ -52,7 +52,7 @@
 		const card = el('div', 'package-card');
 		card.appendChild(el('h3', null, pkg.name));
 		card.appendChild(el('p', 'price', pkg.value));
-		const badge = el('p', 'discount-badge' + (pkg.discount_percent > 0 ? '' : ' discount-placeholder'), pkg.discount_percent > 0 ? pkg.discount_percent + (T.discount_off || '% OFF') : '\u00A0');
+		const badge = el('p', 'discount-badge' + (pkg.discount_percent > 0 ? '' : ' discount-placeholder'), pkg.discount_percent > 0 ? '+' + pkg.discount_percent + '% ' + (T.bonus || 'credits') : '\u00A0');
 		card.appendChild(badge);
 		const btn = el('button', 'btn btn-primary', T.purchase || 'Purchase now');
 		btn.type = 'button';
