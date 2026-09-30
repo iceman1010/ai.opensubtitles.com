@@ -13,6 +13,7 @@
 	const i18n = Object.assign({}, document.getElementById('search-i18n').dataset);
 	const i18n_placeholder_subtitles = i18n.placeholder_subtitles || 'Search…';
 	const i18n_placeholder_features = i18n.placeholder_features || 'Search…';
+	let langNames = {};
 
 	function esc(value) {
 		return String(value === undefined || value === null ? '' : value)
@@ -57,8 +58,11 @@
 			select.innerHTML = list.map((lang) =>
 				'<option value="' + esc(lang.language_code) + '">' + esc(lang.language_name) + '</option>'
 			).join('');
+			langNames = {};
+			list.forEach((lang) => { langNames[lang.language_code] = lang.language_name; });
 		} catch (e) {
 			select.innerHTML = '<option value="en">English</option>';
+			langNames = { en: 'English' };
 		}
 		const saved = AI.getConfig().lastSearchLanguage;
 		const codes = Array.from(select.options).map((o) => o.value);
@@ -94,6 +98,50 @@
 			: '<div class="feature-poster poster-empty" aria-hidden="true"><svg class="btn-icon"><use href="#icon-film"/></svg></div>';
 	}
 
+	const FLAGS = '/lib/circle-flags/';
+	const LANG_COUNTRY = {
+		ab: 'ge', af: 'za', sq: 'al', am: 'et', ar: 'sa', an: 'es', hy: 'am', as: 'in', at: 'es',
+		'az-az': 'az', eu: 'es', be: 'by', bn: 'bd', bs: 'ba', br: 'fr', bg: 'bg', my: 'mm', ca: 'es',
+		ze: 'cn', 'zh-ca': 'hk', 'zh-cn': 'cn', 'zh-tw': 'tw', hr: 'hr', cs: 'cz', da: 'dk', pr: 'af',
+		nl: 'nl', en: 'gb', et: 'ee', ex: 'es', fi: 'fi', fr: 'fr', gd: 'gb-sct', gl: 'es', ka: 'ge',
+		de: 'de', el: 'gr', he: 'il', hi: 'in', hu: 'hu', is: 'is', ig: 'ng', id: 'id', ga: 'ie',
+		it: 'it', ja: 'jp', kn: 'in', kk: 'kz', km: 'kh', ko: 'kr', lv: 'lv', lt: 'lt', lb: 'lu',
+		mk: 'mk', ms: 'my', ml: 'in', ma: 'in', mr: 'in', mn: 'mn', me: 'me', nv: 'us', ne: 'np',
+		se: 'sami', no: 'no', oc: 'fr', or: 'in', fa: 'ir', pl: 'pl', 'pt-pt': 'pt', 'pt-br': 'br',
+		pm: 'mz', ps: 'af', ro: 'ro', ru: 'ru', sx: 'in', sr: 'rs', sd: 'pk', si: 'lk', sk: 'sk',
+		sl: 'si', so: 'so', 'az-zb': 'ir', es: 'es', sp: 'es', ea: 'mx', sw: 'tz', sv: 'se', sy: 'sy',
+		tl: 'ph', ta: 'in', tt: 'ru', te: 'in', 'tm-td': 'tl', th: 'th', tr: 'tr', tk: 'tm', uk: 'ua',
+		ur: 'pk', uz: 'uz', vi: 'vn', cy: 'gb-wls'
+	};
+
+	function langFlagSrc(code) {
+		const key = String(code || '').toLowerCase();
+		const nf = window.LangFlag;
+		if (nf) {
+			const flag = nf.flagFor(key, nf.country());
+			if (flag) return FLAGS + flag + '.svg';
+		}
+		return LANG_COUNTRY[key] ? FLAGS + LANG_COUNTRY[key] + '.svg' : null;
+	}
+
+	function langName(code) {
+		const key = String(code || '').toLowerCase();
+		if (langNames[key]) return langNames[key];
+		if (window.Intl && Intl.DisplayNames) {
+			try {
+				const name = new Intl.DisplayNames(['en'], { type: 'language' }).of(key);
+				if (name && name !== key) return name;
+			} catch (e) {}
+		}
+		return key.toUpperCase();
+	}
+
+	function langBadge(code) {
+		const key = String(code || '').toLowerCase();
+		const src = langFlagSrc(key) || FLAGS + 'xx.svg';
+		return '<span class="lang-badge"><img class="lang-flag" src="' + esc(src) + '" alt="" width="15" height="15" data-lang="' + esc(key) + '">' + esc(langName(key)) + '</span>';
+	}
+
 	function renderSubtitles(data) {
 		const grid = el('results-grid');
 		const items = data.data || [];
@@ -122,7 +170,7 @@
 				'<div class="sub-card-head">' +
 					'<h3><svg class="btn-icon" aria-hidden="true"><use href="' + typeIcon + '"/></svg> ' + esc(fd.title || a.release || '?') +
 					(fd.year ? ' <span class="sub-year">(' + esc(fd.year) + ')</span>' : '') + '</h3>' +
-					'<span class="lang-badge">' + esc((a.language || '').toUpperCase()) + '</span>' +
+					langBadge(a.language) +
 				'</div>' +
 				(a.release ? '<p class="sub-release">' + esc(i18n.release) + ': ' + esc(a.release) + '</p>' : '') +
 				'<p class="sub-meta">' +

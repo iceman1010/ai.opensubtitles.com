@@ -91,4 +91,6 @@
 		if (!row) return;
 		document.cookie = 'site_locale=' + encodeURIComponent(row.getAttribute('data-lang')) + '; max-age=31536000; path=/; samesite=lax';
 	});
+
+	window.LangFlag = { flagFor: flagFor, country: function () { return stored || ''; } };
 })();
