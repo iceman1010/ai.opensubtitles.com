@@ -20,6 +20,7 @@ class App
         $routes = require $root . '/app/routes.php';
         foreach ($routes as $pattern => $handler) {
             [$methods, $path] = explode(' ', $pattern, 2);
+            $handler = self::localized($handler);
             $f3->route($methods . ' ' . $path, $handler);
             $f3->route($methods . ' /@locale' . $path, $handler);
             if ($path === '/') {
@@ -39,5 +40,14 @@ class App
         }
 
         return $f3;
+    }
+
+    private static function localized(string $handler): callable
+    {
+        [$class, $method] = explode('->', $handler);
+        return function (\Base $f3) use ($class, $method): void {
+            \Services\Locale::apply($f3);
+            (new $class())->$method($f3);
+        };
     }
 }

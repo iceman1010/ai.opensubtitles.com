@@ -37,7 +37,10 @@ Then open http://localhost:8080 (German pages under /de/...).
   localStorage, defaults to `prefers-color-scheme`.
 - Locale: URLs are `/` (en) and `/de/...`; `app/config.php` `languages` map
   (locale => label + flag + optional `flag_overrides`) is the single source of
-  truth for available languages. First visit without a `site_locale` cookie is
+  truth for available languages. `App::boot()` wraps all main route handlers
+  so `Services\Locale::apply()` runs before each controller — dict lookups in
+  controllers (e.g. `page_title`) resolve the request's locale. First visit
+  without a `site_locale` cookie is
   auto-forwarded (302) when `Accept-Language` matches a configured language;
   afterwards bare URLs always serve en. The header language popover
   (`public/js/lang-select.js`, nav-menu pattern) overrides: sets the cookie
