@@ -198,5 +198,11 @@
   "apidocs.title": "API-Referenz",
   "apidocs.meta_description": "Die vollständige REST-API-Referenz von ai.opensubtitles.com: Endpoints, Parameter und Beispiele.",
   "apidocs.h1": "API-Referenz",
-  "apidocs.lead": "Die vollständige Referenz aller Endpunkte – Parameter sowie Request- und Response-Beispiele."
+  "apidocs.lead": "Die vollständige Referenz aller Endpunkte – Parameter sowie Request- und Response-Beispiele.",
+  "faq.quality_q": "Was passiert, wenn eine Übersetzung die Qualitätskontrolle nicht besteht?",
+  "faq.quality_a": "Jede Übersetzung wird automatisch mit der ursprünglichen Untertiteldatei verglichen: Vollständigkeit, Timing, unübersetzte Passagen, fremde Schriftsysteme und Lesegeschwindigkeit. Besteht eine Übersetzung die Prüfung nicht, bekommst du die Datei trotzdem – die Credits werden automatisch zurückerstattet, ganz ohne Support-Ticket. Die Prüfung gilt nur für Übersetzungen; Transkriptionen sind nicht betroffen.",
+  "translate.quality_note": "Jede Übersetzung wird vor der Auslieferung automatisch geprüft – über 99 % bestehen die Kontrolle. Schafft es eine nicht, bekommst du sie trotzdem – kostenlos.",
+  "pricing.quality_note": "Nur Übersetzungen, die die automatische Qualitätskontrolle bestehen, werden berechnet – nicht bestandene werden trotzdem geliefert und automatisch zurückerstattet.",
+  "job.quality_pass": "Qualitätsprüfung bestanden",
+  "job.quality_fail": "Qualitätsprüfung fehlgeschlagen – {n} Credits zurückerstattet"
 }

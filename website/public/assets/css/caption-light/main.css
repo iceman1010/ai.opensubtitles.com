@@ -544,3 +544,5 @@ progress { width: 100%; height: 0.8rem; }
 .api-resp { margin: 0.75rem 0; }
 .api-resp-line { margin: 0.25rem 0; font-size: 0.95rem; }
 .api-code { font-weight: 700; color: var(--accent); }
+
+.trust-note { color: var(--ink-soft); font-size: 0.9rem; max-width: 44rem; margin: 1.25rem auto 0; }

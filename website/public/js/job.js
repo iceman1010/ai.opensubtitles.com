@@ -97,8 +97,8 @@
 			qualityEl.hidden = false;
 			const passed = data.quality.valid === true;
 			qualityEl.textContent = passed
-				? 'Quality check passed'
-				: 'Quality check failed — ' + (data.quality_refund || 0) + ' credits refunded';
+				? JOB_I18N.quality_pass
+				: JOB_I18N.quality_fail.replace('{n}', String(data.quality_refund || 0));
 			qualityEl.classList.add(passed ? 'quality-pass' : 'quality-fail');
 		}
 

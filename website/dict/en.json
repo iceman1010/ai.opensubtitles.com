@@ -323,5 +323,11 @@
   "apidocs.title": "API Reference",
   "apidocs.meta_description": "Full REST API reference for the ai.opensubtitles.com API: endpoints, parameters and examples.",
   "apidocs.h1": "API Reference",
-  "apidocs.lead": "Complete reference for all endpoints — parameters, request and response examples."
+  "apidocs.lead": "Complete reference for all endpoints — parameters, request and response examples.",
+  "faq.quality_q": "What happens if a translation fails the quality check?",
+  "faq.quality_a": "Every translation is checked automatically against the original subtitle file: completeness, timing, untranslated passages, wrong alphabets and reading speed. If a translation fails, you still receive the file — and the credits are refunded automatically, no support ticket needed. The check applies to translations only; transcription jobs are not affected.",
+  "translate.quality_note": "Every translation is checked automatically before delivery — over 99% pass the check. If one doesn’t, you still receive it, free of charge.",
+  "pricing.quality_note": "Only translations that pass the automatic quality check are charged — failed translations are delivered anyway and refunded automatically.",
+  "job.quality_pass": "Quality check passed",
+  "job.quality_fail": "Quality check failed — {n} credits refunded"
 }
