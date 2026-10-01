@@ -193,5 +193,10 @@
   "support.error_generic": "Support-Ticket konnte nicht gesendet werden",
   "support.modal_title": "Anmeldung erforderlich",
   "support.modal_text": "Bitte melde dich mit deinem opensubtitles.com-Konto an, um ein Support-Ticket zu senden.",
-  "support.modal_cancel": "Abbrechen"
+  "support.modal_cancel": "Abbrechen",
+  "nav.api_docs": "API-Docs",
+  "apidocs.title": "API-Referenz",
+  "apidocs.meta_description": "Die vollständige REST-API-Referenz von ai.opensubtitles.com: Endpoints, Parameter und Beispiele.",
+  "apidocs.h1": "API-Referenz",
+  "apidocs.lead": "Die vollständige Referenz aller Endpunkte – Parameter sowie Request- und Response-Beispiele."
 }

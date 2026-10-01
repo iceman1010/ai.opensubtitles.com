@@ -60,6 +60,20 @@ Then open http://localhost:8080 (German pages under /de/...).
   the subtitle card's language pill shows the circle flag plus the full
   language name (API list first, `Intl.DisplayNames` fallback); languages
   without a mapped flag use the generic gray `xx.svg`.
+
+### API reference page (`/api-docs`)
+- Generated from the OpenAPI spec `assets/opensubtitles_openapi.json` (single
+  source of truth). After editing the JSON run
+  `python3 assets/generate_api_docs.py` (rewrites `ui/base/api.html`) and
+  `php tests/clear_f3_cache.php`.
+- The generator validates its own output: well-formed XML (F3 requirement),
+  exactly 2 F3 tokens, no broken internal anchors. Spec descriptions may
+  contain `{{...}}` placeholders — these are entity-encoded so F3 never sees
+  them. The spec's `..open_api.json/paths/...` cross-links become same-page
+  anchors.
+- Served by `Controllers\ApiDocs` + `ui/base/api.html`; page chrome wording
+  lives in the `apidocs.*` dict keys (en + de). Content itself is English-only
+  (it is the spec's text).
 - Adding a language: add one entry to the `languages` map in
   `app/config.php` (`label` + `flag` + optional `flag_overrides`) —
   routing, auto-forward, menu row, JS flags map, and hreflang all derive

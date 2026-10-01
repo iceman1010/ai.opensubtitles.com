@@ -318,5 +318,10 @@
   "support.error_generic": "Failed to submit support ticket",
   "support.modal_title": "Login required",
   "support.modal_text": "Please log in with your opensubtitles.com account to submit a support ticket.",
-  "support.modal_cancel": "Cancel"
+  "support.modal_cancel": "Cancel",
+  "nav.api_docs": "API Docs",
+  "apidocs.title": "API Reference",
+  "apidocs.meta_description": "Full REST API reference for the ai.opensubtitles.com API: endpoints, parameters and examples.",
+  "apidocs.h1": "API Reference",
+  "apidocs.lead": "Complete reference for all endpoints — parameters, request and response examples."
 }

@@ -507,3 +507,40 @@ progress { width: 100%; height: 0.8rem; }
 .modal-title { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.5rem; }
 .modal-actions { display: flex; gap: 0.5rem; margin-top: 1.25rem; }
 .modal-actions .btn { flex: 1; justify-content: center; }
+
+.api-docs { padding-bottom: 3rem; }
+.api-meta { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+.api-meta p { margin: 0.25rem 0; font-size: 0.95rem; }
+.api-meta ul { margin: 0.25rem 0; padding-left: 1.25rem; font-size: 0.9rem; }
+.api-meta li { margin: 0.25rem 0; }
+.api-h2 { margin: 2rem 0 0.75rem; }
+.api-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.api-table th, .api-table td { text-align: left; padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.api-table th { color: var(--ink-soft); font-weight: 600; }
+.api-table code { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 0.1rem 0.35rem; font-size: 0.85em; font-family: ui-monospace, monospace; }
+.api-overview { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.api-overview td { border-bottom: 1px solid var(--line); }
+.api-overview tr:last-child td { border-bottom: none; }
+.api-op { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 1rem 1.25rem; margin: 1rem 0; }
+.api-op h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 0 0 0.5rem; font-size: 1.05rem; }
+.api-method { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; border-radius: 6px; padding: 0.1rem 0.5rem; white-space: nowrap; }
+.m-get { color: var(--accent); border: 1px solid var(--accent); }
+.m-post { background: var(--accent); color: var(--accent-ink); border: 1px solid var(--accent); }
+.m-put, .m-patch { color: var(--accent-ink); background: var(--ink-soft); border: 1px solid var(--ink-soft); }
+.m-delete { color: var(--accent-ink); background: var(--ink); border: 1px solid var(--ink); }
+.api-path { font-family: ui-monospace, monospace; font-size: 0.95rem; word-break: break-all; }
+.api-summary { color: var(--ink-soft); font-weight: 400; font-size: 0.9rem; }
+.api-desc { font-size: 0.95rem; }
+.api-desc p { margin: 0.4rem 0; }
+.api-auth { font-size: 0.85rem; color: var(--ink-soft); margin: 0.5rem 0; }
+.api-chip { border: 1px solid var(--line); border-radius: 999px; padding: 0.05rem 0.5rem; white-space: nowrap; }
+.api-sub { font-size: 0.95rem; margin: 1rem 0 0.4rem; }
+.api-required { color: var(--accent); font-size: 0.8rem; font-weight: 600; }
+.api-ct { margin: 0.5rem 0 0.3rem; font-size: 0.85rem; color: var(--ink-soft); }
+.api-schema, .api-example { margin: 0.4rem 0; }
+.api-schema summary { cursor: pointer; color: var(--accent); font-size: 0.85rem; }
+.api-type { color: var(--ink-soft); font-size: 0.85rem; }
+.api-json { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 0.75rem 1rem; overflow-x: auto; font-size: 0.8rem; line-height: 1.5; font-family: ui-monospace, monospace; margin: 0.4rem 0 0; }
+.api-resp { margin: 0.75rem 0; }
+.api-resp-line { margin: 0.25rem 0; font-size: 0.95rem; }
+.api-code { font-weight: 700; color: var(--accent); }
