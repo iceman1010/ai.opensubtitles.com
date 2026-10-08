@@ -25,7 +25,7 @@ Then open http://localhost:8080 (German pages under /de/...).
       base/          shared base templates (fallback layer)
       themes/        theme packs; templates here override base
     dict/            F3 lexicon: en.json (source of truth), de.json, es.json,
-                     fr.json, pt-BR.json, tr.json, it.json, ar.json (all keys
+                     fr.json, pt-BR.json, tr.json, it.json, ar.json, ru.json, pl.json, ja.json, ko.json, id.json, vi.json, th.json, hi.json (all keys
                      present in each; missing
                      keys would fall back to EN. NOTE: multi-part filenames
                      must uppercase the region — F3 turns LANGUAGE "pt-br"

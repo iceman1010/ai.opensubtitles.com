@@ -45,9 +45,12 @@
 			Array.prototype.forEach.call(rows, function (row) {
 				var code = row.getAttribute('data-lang');
 				var name = names.of(code);
-				if (name && name !== code) {
-					var label = row.querySelector('.btn-label');
-					label.textContent = name.charAt(0).toUpperCase() + name.slice(1);
+				var primary = row.querySelector('.lang-primary');
+				var alt = row.querySelector('.lang-alt');
+				if (!name || name === code || !primary || !alt) return;
+				var value = name.charAt(0).toUpperCase() + name.slice(1);
+				if (value.toLowerCase() !== primary.textContent.trim().toLowerCase()) {
+					alt.textContent = value;
 				}
 			});
 		} catch (e) {}
