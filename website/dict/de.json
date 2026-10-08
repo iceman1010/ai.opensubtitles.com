@@ -9,6 +9,8 @@
   "nav.login": "Anmelden",
   "nav.logout": "Abmelden",
   "nav.language": "Sprache",
+  "nav.scroll_up": "Nach oben scrollen",
+  "nav.scroll_down": "Nach unten scrollen",
   "common.faq_title": "Häufig gestellte Fragen",
   "common.app_cta": "Web-App öffnen",
   "common.theme_toggle": "Dunkelmodus umschalten",

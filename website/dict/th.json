@@ -9,6 +9,8 @@
   "nav.login": "เข้าสู่ระบบ",
   "nav.logout": "ออกจากระบบ",
   "nav.language": "ภาษา",
+  "nav.scroll_up": "เลื่อนขึ้น",
+  "nav.scroll_down": "เลื่อนลง",
   "common.faq_title": "คำถามที่พบบ่อย",
   "common.app_cta": "เปิดเว็บแอป",
   "common.theme_toggle": "เปลี่ยนธีม",

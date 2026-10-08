@@ -9,6 +9,8 @@
   "nav.login": "Masuk",
   "nav.logout": "Keluar",
   "nav.language": "Bahasa",
+  "nav.scroll_up": "Gulir ke atas",
+  "nav.scroll_down": "Gulir ke bawah",
   "common.faq_title": "Pertanyaan Umum",
   "common.app_cta": "Buka aplikasi web",
   "common.theme_toggle": "Ganti tema",

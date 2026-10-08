@@ -9,6 +9,8 @@
   "nav.login": "Giriş yap",
   "nav.logout": "Çıkış yap",
   "nav.language": "Dil",
+  "nav.scroll_up": "Yukarı kaydır",
+  "nav.scroll_down": "Aşağı kaydır",
   "common.faq_title": "Sıkça sorulan sorular",
   "common.app_cta": "Web uygulamasını aç",
   "common.theme_toggle": "Karanlık modu değiştir",

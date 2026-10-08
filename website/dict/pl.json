@@ -9,6 +9,8 @@
   "nav.login": "Zaloguj",
   "nav.logout": "Wyloguj",
   "nav.language": "Język",
+  "nav.scroll_up": "Przewiń w górę",
+  "nav.scroll_down": "Przewiń w dół",
   "common.faq_title": "Najczęściej zadawane pytania",
   "common.app_cta": "Otwórz aplikację webową",
   "common.theme_toggle": "Przełącz tryb ciemny",

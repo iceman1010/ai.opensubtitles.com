@@ -9,6 +9,8 @@
   "nav.login": "Войти",
   "nav.logout": "Выйти",
   "nav.language": "Язык",
+  "nav.scroll_up": "Прокрутить вверх",
+  "nav.scroll_down": "Прокрутить вниз",
   "common.faq_title": "Часто задаваемые вопросы",
   "common.app_cta": "Открыть веб-приложение",
   "common.theme_toggle": "Переключить тёмную тему",

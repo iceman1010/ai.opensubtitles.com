@@ -9,6 +9,8 @@
   "nav.login": "लॉगिन",
   "nav.logout": "लॉगआउट",
   "nav.language": "भाषा",
+  "nav.scroll_up": "ऊपर स्क्रॉल करें",
+  "nav.scroll_down": "नीचे स्क्रॉल करें",
   "common.faq_title": "अक्सर पूछे जाने वाले प्रश्न",
   "common.app_cta": "वेब ऐप खोलें",
   "common.theme_toggle": "थीम बदलें",

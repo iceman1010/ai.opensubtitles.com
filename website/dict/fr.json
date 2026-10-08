@@ -9,6 +9,8 @@
   "nav.login": "Connexion",
   "nav.logout": "Déconnexion",
   "nav.language": "Langue",
+  "nav.scroll_up": "Faire défiler vers le haut",
+  "nav.scroll_down": "Faire défiler vers le bas",
   "common.faq_title": "Questions fréquentes",
   "common.app_cta": "Ouvrir l’application web",
   "common.theme_toggle": "Basculer le mode sombre",

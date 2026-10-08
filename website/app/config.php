@@ -20,6 +20,8 @@ return [
         'vi' => ['label' => 'Tiếng Việt', 'flag' => 'vn'],
         'th' => ['label' => 'ไทย', 'flag' => 'th'],
         'hi' => ['label' => 'हिन्दी', 'flag' => 'in'],
+        'uk' => ['label' => 'Українська', 'flag' => 'ua'],
+        'sk' => ['label' => 'Slovenčina', 'flag' => 'sk'],
     ],
     'site_name' => 'AI Opensubtitles',
     'api_key' => '5MGRBWO9lHA023KPmVMaa0PoRYHqQKpK',

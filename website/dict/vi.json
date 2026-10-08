@@ -9,6 +9,8 @@
   "nav.login": "Đăng nhập",
   "nav.logout": "Đăng xuất",
   "nav.language": "Ngôn ngữ",
+  "nav.scroll_up": "Cuộn lên",
+  "nav.scroll_down": "Cuộn xuống",
   "common.faq_title": "Câu hỏi thường gặp",
   "common.app_cta": "Mở ứng dụng web",
   "common.theme_toggle": "Chuyển giao diện",

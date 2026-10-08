@@ -9,6 +9,8 @@
   "nav.login": "ログイン",
   "nav.logout": "ログアウト",
   "nav.language": "言語",
+  "nav.scroll_up": "上へスクロール",
+  "nav.scroll_down": "下へスクロール",
   "common.faq_title": "よくある質問",
   "common.app_cta": "Webアプリを開く",
   "common.theme_toggle": "テーマ切替",

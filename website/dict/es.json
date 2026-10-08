@@ -9,6 +9,8 @@
   "nav.login": "Iniciar sesión",
   "nav.logout": "Cerrar sesión",
   "nav.language": "Idioma",
+  "nav.scroll_up": "Desplazar hacia arriba",
+  "nav.scroll_down": "Desplazar hacia abajo",
   "common.faq_title": "Preguntas frecuentes",
   "common.app_cta": "Abrir la aplicación web",
   "common.theme_toggle": "Cambiar modo oscuro",

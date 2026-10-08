@@ -36,6 +36,48 @@
 				? Math.max(0, menu.offsetWidth - btn.offsetWidth) + 'px'
 				: '0px';
 		}
+		if (open) {
+			scrollToCurrent();
+			updateScrollButtons();
+		}
+	}
+
+	var scroller = document.getElementById('lang-scroll');
+	var scrollUp = document.getElementById('lang-scroll-up');
+	var scrollDown = document.getElementById('lang-scroll-down');
+
+	function scrollToCurrent() {
+		if (!scroller) return;
+		var row = scroller.querySelector('.lang-option[aria-current]');
+		if (!row) return;
+		var target = row.offsetTop - scroller.offsetTop - (scroller.clientHeight - row.offsetHeight) / 2;
+		scroller.scrollTop = Math.max(0, Math.min(target, scroller.scrollHeight - scroller.clientHeight));
+	}
+
+	function updateScrollButtons() {
+		if (!scroller || !scrollUp || !scrollDown) return;
+		var max = scroller.scrollHeight - scroller.clientHeight;
+		if (max <= 8) {
+			scrollUp.hidden = true;
+			scrollDown.hidden = true;
+			return;
+		}
+		scrollDown.hidden = scroller.scrollTop >= max - 8;
+		scrollUp.hidden = scroller.scrollTop <= 8;
+	}
+
+	function scrollPage(direction) {
+		if (!scroller) return;
+		var row = scroller.querySelector('.lang-option');
+		var step = scroller.clientHeight - (row ? row.offsetHeight + 4 : 56);
+		scroller.scrollBy({ top: direction * step, behavior: 'smooth' });
+	}
+
+	if (scroller && scrollUp && scrollDown) {
+		scroller.addEventListener('scroll', updateScrollButtons, { passive: true });
+		scrollUp.addEventListener('click', function () { scrollPage(-1); });
+		scrollDown.addEventListener('click', function () { scrollPage(1); });
+		window.addEventListener('resize', updateScrollButtons);
 	}
 
 	if (window.Intl && Intl.DisplayNames) {

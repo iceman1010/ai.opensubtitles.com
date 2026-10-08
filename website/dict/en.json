@@ -9,6 +9,8 @@
   "nav.login": "Log in",
   "nav.logout": "Log out",
   "nav.language": "Language",
+  "nav.scroll_up": "Scroll up",
+  "nav.scroll_down": "Scroll down",
   "common.faq_title": "Frequently asked questions",
   "common.app_cta": "Open the web app",
   "common.theme_toggle": "Toggle dark mode",

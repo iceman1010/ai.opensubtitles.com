@@ -9,6 +9,8 @@
   "nav.login": "로그인",
   "nav.logout": "로그아웃",
   "nav.language": "언어",
+  "nav.scroll_up": "위로 스크롤",
+  "nav.scroll_down": "아래로 스크롤",
   "common.faq_title": "자주 묻는 질문",
   "common.app_cta": "웹 앱 열기",
   "common.theme_toggle": "테마 전환",
