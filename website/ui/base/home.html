@@ -3,17 +3,17 @@
 		<span class="caption-bar line-2">{{ @home.hero_line2 }}</span></h1>
 	<p class="hero-sub">{{ @home.hero_sub }}</p>
 	<div class="hero-actions">
-		<a class="btn btn-primary" href="/new"><svg class="btn-icon" aria-hidden="true"><use href="#icon-upload"/></svg><span class="btn-label">{{ @home.cta_try }}</span></a>
+		<a class="btn btn-primary" href="{{ @lp }}/new"><svg class="btn-icon" aria-hidden="true"><use href="#icon-upload"/></svg><span class="btn-label">{{ @home.cta_try }}</span></a>
 		<a class="btn btn-ghost" href="#apps"><svg class="btn-icon" aria-hidden="true"><use href="#icon-eye"/></svg><span class="btn-label">{{ @home.cta_apps }}</span></a>
 	</div>
 </section>
 
 <section class="services">
-	<a class="service-card" href="/transcribe">
+	<a class="service-card" href="{{ @lp }}/transcribe">
 		<h2>{{ @nav.transcribe }}</h2>
 		<p>{{ @home.transcribe_card }}</p>
 	</a>
-	<a class="service-card" href="/translate">
+	<a class="service-card" href="{{ @lp }}/translate">
 		<h2>{{ @nav.translate }}</h2>
 		<p>{{ @home.translate_card }}</p>
 	</a>

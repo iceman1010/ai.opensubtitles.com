@@ -24,7 +24,10 @@ Then open http://localhost:8080 (German pages under /de/...).
     ui/
       base/          shared base templates (fallback layer)
       themes/        theme packs; templates here override base
-    dict/            F3 lexicon: en.json, de.json (missing DE keys fall back to EN)
+    dict/            F3 lexicon: en.json (source of truth), de.json, es.json
+                     (all keys present in both; missing keys would fall back
+                     to EN) + _context.json (key notes for translators; not
+                     loaded by F3)
     js/              vanilla JS: api client, mediainfo/ffmpeg glue, upload, polling
     vendor/          composer packages (fatfree core)
     cache/           pricing cache (file-based)
@@ -42,7 +45,12 @@ Then open http://localhost:8080 (German pages under /de/...).
   controllers (e.g. `page_title`) resolve the request's locale. First visit
   without a `site_locale` cookie is
   auto-forwarded (302) when `Accept-Language` matches a configured language;
-  afterwards bare URLs always serve en. The header language popover
+  with a pinned cookie, locale-less URLs 302 to the pinned locale (bots carry
+  no cookie and never see that redirect — one language per URL for crawlers).
+  All internal `<a href>` page links in templates are locale-aware via the
+  `lp` hive var (`{{ @lp }}/faq`; empty for en) — new templates must use it
+  on page links, never on assets. JS `location.href` navigations stay plain
+  and rely on the cookie redirect. The header language popover
   (`public/js/lang-select.js`, nav-menu pattern) overrides: sets the cookie
   (1y) and navigates via the page's hreflang alternates; labels render in the
   current UI language via browser-native `Intl.DisplayNames` (no library).
@@ -81,10 +89,15 @@ Then open http://localhost:8080 (German pages under /de/...).
   `app/config.php` (`label` + `flag` + optional `flag_overrides`) —
   routing, auto-forward, menu row, JS flags map, and hreflang all derive
   from it. Vendor the needed SVGs into `public/lib/circle-flags/`
-  (lowercase ISO names matching the config values). Create
-  `dict/<locale>.json` (FALLBACK=en covers missing keys; translations
-  land in one batch later). Extend `tests/locale-redirect.sh` and this
-  README's language list.
+  (lowercase ISO names matching the config values). Translate the dict via
+  `docs/scripts/dict_tools.py` (`init` → merge batches → `check`/`leftover`;
+  it catches duplicate keys, key drift vs en.json and lost `{n}` 
+  placeholders — never hand-write a full dict file in one go). Every key
+  needs a translator note in `dict/_context.json` (same key set as
+  en.json; F3 never loads it — lexicon only loads `dict/<locale>.json`).
+  Long-form `ui/base/content/<section>/<locale>.html` blocks are optional
+  per locale and fall back to EN. Extend `tests/locale-redirect.sh` and
+  this README's language list.
 - Auth handoff: the site and the web client (`/ai-web`, same origin) share
   localStorage keys (`ai_opensubtitles_token*`, `ai_opensubtitles_config`);
   a login on the site carries over — the client verifies the cached token

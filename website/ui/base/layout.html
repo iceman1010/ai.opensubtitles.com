@@ -51,24 +51,24 @@
 		<symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></symbol>
 	</svg>
 	<header class="site-header">
-		<a class="brand" href="/"><img src="/assets/img/logo-64.png" alt="{{ @site_name }}" width="32" height="32"></a>
+		<a class="brand" href="{{ @lp }}/"><img src="/assets/img/logo-64.png" alt="{{ @site_name }}" width="32" height="32"></a>
 		<nav>
-			<a class="nav-pill" href="/transcribe"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-mic"/></svg></span><span class="btn-label">{{ @nav.transcribe }}</span></a>
-			<a class="nav-pill" href="/translate"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-languages"/></svg></span><span class="btn-label">{{ @nav.translate }}</span></a>
-			<a class="nav-pill" href="/search"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-search"/></svg></span><span class="btn-label">{{ @nav.search }}</span></a>
+			<a class="nav-pill" href="{{ @lp }}/transcribe"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-mic"/></svg></span><span class="btn-label">{{ @nav.transcribe }}</span></a>
+			<a class="nav-pill" href="{{ @lp }}/translate"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-languages"/></svg></span><span class="btn-label">{{ @nav.translate }}</span></a>
+			<a class="nav-pill" href="{{ @lp }}/search"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-search"/></svg></span><span class="btn-label">{{ @nav.search }}</span></a>
 			<div class="nav-more">
 				<button class="nav-pill" id="nav-more-btn" type="button" aria-haspopup="true" aria-expanded="false"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-more"/></svg></span><span class="btn-label">{{ @nav.more }}</span></button>
 				<div class="nav-menu" id="nav-menu">
-					<a class="nav-pill" href="/pricing"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-tag"/></svg></span><span class="btn-label">{{ @nav.pricing }}</span></a>
+					<a class="nav-pill" href="{{ @lp }}/pricing"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-tag"/></svg></span><span class="btn-label">{{ @nav.pricing }}</span></a>
 					<!-- TEMP-beta: Tools hidden for beta launch. Siblings of this comment: app/routes.php (routes) and app/Controllers/Seo.php (sitemap). Re-enable: change the check condition to true. -->
-					<check if="{{ false }}"><a class="nav-pill" href="/tools"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-tool"/></svg></span><span class="btn-label">{{ @nav.tools }}</span></a></check>
-					<a class="nav-pill" href="/dashboard" data-auth="in" hidden><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-dashboard"/></svg></span><span class="btn-label">{{ @nav.dashboard }}</span></a>
-					<a class="nav-pill" href="/faq"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-help"/></svg></span><span class="btn-label">{{ @nav.faq }}</span></a>
-				<a class="nav-pill" href="/support"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-lifebuoy"/></svg></span><span class="btn-label">{{ @nav.support }}</span></a>
-					<a class="nav-pill" href="/api-docs"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-code"/></svg></span><span class="btn-label">{{ @nav.api_docs }}</span></a>
+					<check if="{{ false }}"><a class="nav-pill" href="{{ @lp }}/tools"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-tool"/></svg></span><span class="btn-label">{{ @nav.tools }}</span></a></check>
+					<a class="nav-pill" href="{{ @lp }}/dashboard" data-auth="in" hidden><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-dashboard"/></svg></span><span class="btn-label">{{ @nav.dashboard }}</span></a>
+					<a class="nav-pill" href="{{ @lp }}/faq"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-help"/></svg></span><span class="btn-label">{{ @nav.faq }}</span></a>
+				<a class="nav-pill" href="{{ @lp }}/support"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-lifebuoy"/></svg></span><span class="btn-label">{{ @nav.support }}</span></a>
+					<a class="nav-pill" href="{{ @lp }}/api-docs"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-code"/></svg></span><span class="btn-label">{{ @nav.api_docs }}</span></a>
 				</div>
 			</div>
-			<a class="nav-pill" href="/login" id="nav-login" data-auth="out"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-in"/></svg></span><span class="btn-label">{{ @nav.login }}</span></a>
+			<a class="nav-pill" href="{{ @lp }}/login" id="nav-login" data-auth="out"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-in"/></svg></span><span class="btn-label">{{ @nav.login }}</span></a>
 			<button class="nav-pill" id="nav-logout" type="button" data-auth="in" hidden><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-out"/></svg></span><span class="btn-label">{{ @nav.logout }}</span></button>
 			<div class="nav-more" id="lang-nav" data-current="{{ @locale }}" data-languages='{{ @lang_flags }}'>
 				<button class="nav-pill" id="lang-btn" type="button" aria-label="{{ @nav.language }}" aria-haspopup="true" aria-expanded="false"><img class="lang-flag" src="/lib/circle-flags/{{ @lang_flag_current }}.svg" alt="" width="18" height="18" data-lang="{{ @locale }}"><span class="btn-label">{{ strtoupper(@locale) }}</span></button>

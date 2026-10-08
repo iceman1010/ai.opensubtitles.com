@@ -10,13 +10,23 @@ class Locale
         $locales = $f3->get('APP.locales');
         $requested = $f3->get('PARAMS.locale');
 
-        if ($requested === null && $f3->get('VERB') === 'GET' && !$f3->exists('COOKIE.site_locale')) {
-            $match = self::negotiate($locales, (string) ($_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? ''));
-            if ($match !== null && $match !== $default) {
-                setcookie('site_locale', $match, ['expires' => time() + 31536000, 'path' => '/', 'samesite' => 'Lax']);
+        if ($requested === null && $f3->get('VERB') === 'GET') {
+            $cookie = (string) ($f3->get('COOKIE.site_locale') ?? '');
+            if ($cookie === '') {
+                $match = self::negotiate($locales, (string) ($_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? ''));
+                if ($match !== null && $match !== $default) {
+                    setcookie('site_locale', $match, ['expires' => time() + 31536000, 'path' => '/', 'samesite' => 'Lax']);
+                    $path = (string) $f3->get('PATH');
+                    $query = (string) $f3->get('QUERY');
+                    $f3->reroute('/' . $match . ($path === '/' ? '' : $path) . ($query !== '' ? '?' . $query : ''));
+                    return;
+                }
+            } elseif (in_array($cookie, $locales, true) && $cookie !== $default) {
+                // Pinned visitor on a locale-less path: keep their language.
+                // Bots carry no cookie and never see this redirect.
                 $path = (string) $f3->get('PATH');
                 $query = (string) $f3->get('QUERY');
-                $f3->reroute('/' . $match . ($path === '/' ? '' : $path) . ($query !== '' ? '?' . $query : ''));
+                $f3->reroute('/' . $cookie . ($path === '/' ? '' : $path) . ($query !== '' ? '?' . $query : ''));
                 return;
             }
         }
@@ -30,6 +40,7 @@ class Locale
 
         $f3->set('LANGUAGE', $locale === $default ? $default : $locale);
         $f3->set('locale', $locale);
+        $f3->set('lp', $locale === $default ? '' : '/' . $locale);
         $f3->set('locales', $locales);
         $f3->set('site_name', $f3->get('APP.site_name'));
     }

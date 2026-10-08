@@ -6,6 +6,7 @@ return [
     'languages' => [
         'en' => ['label' => 'English', 'flag' => 'gb', 'flag_overrides' => ['us' => 'us', 'ca' => 'us', 'au' => 'au', 'nz' => 'nz', 'in' => 'in']],
         'de' => ['label' => 'Deutsch', 'flag' => 'de'],
+        'es' => ['label' => 'Español', 'flag' => 'es'],
     ],
     'site_name' => 'AI Opensubtitles',
     'api_key' => '5MGRBWO9lHA023KPmVMaa0PoRYHqQKpK',
