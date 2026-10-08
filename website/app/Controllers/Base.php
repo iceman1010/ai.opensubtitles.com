@@ -17,6 +17,7 @@ class Base
         $f3->set('lang_rows', \Services\Locale::menu($f3, $path));
         $f3->set('lang_flags', \Services\Locale::flagsJson($f3));
         $f3->set('lang_flag_current', $f3->get('APP.languages')[$locale]['flag'] ?? '');
+        $f3->set('lang_dir', $f3->get('APP.languages')[$locale]['dir'] ?? 'ltr');
         $f3->set('noindex', false);
         echo \Template::instance()->render('layout.html');
     }

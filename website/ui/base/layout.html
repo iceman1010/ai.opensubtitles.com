@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ @locale }}">
+<html lang="{{ @locale }}" dir="{{ @lang_dir }}">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -76,7 +76,7 @@
 					<repeat group="{{ @lang_rows }}" value="{{ @row }}"><a class="nav-pill lang-option" href="{{ @row.url }}" data-lang="{{ @row.code }}"{{ @row.aria }}><img class="lang-flag" src="/lib/circle-flags/{{ @row.flag }}.svg" alt="" width="18" height="18" data-lang="{{ @row.code }}"><span class="btn-label">{{ @row.label }}</span></a></repeat>
 				</div>
 			</div>
-			<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">◐</button>
+			<button id="theme-toggle" class="theme-toggle" type="button" aria-label="{{ @common.theme_toggle }}">◐</button>
 		</nav>
 	</header>
 	<script>

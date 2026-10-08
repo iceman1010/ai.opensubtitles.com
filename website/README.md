@@ -24,10 +24,14 @@ Then open http://localhost:8080 (German pages under /de/...).
     ui/
       base/          shared base templates (fallback layer)
       themes/        theme packs; templates here override base
-    dict/            F3 lexicon: en.json (source of truth), de.json, es.json
-                     (all keys present in both; missing keys would fall back
-                     to EN) + _context.json (key notes for translators; not
-                     loaded by F3)
+    dict/            F3 lexicon: en.json (source of truth), de.json, es.json,
+                     fr.json, pt-BR.json, tr.json, it.json, ar.json (all keys
+                     present in each; missing
+                     keys would fall back to EN. NOTE: multi-part filenames
+                     must uppercase the region — F3 turns LANGUAGE "pt-br"
+                     into file "pt-BR.json"; URL prefix stays lowercase
+                     /pt-br/) + _context.json (key notes for translators;
+                     not loaded by F3)
     js/              vanilla JS: api client, mediainfo/ffmpeg glue, upload, polling
     vendor/          composer packages (fatfree core)
     cache/           pricing cache (file-based)

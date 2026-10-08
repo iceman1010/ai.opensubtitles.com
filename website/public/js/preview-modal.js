@@ -76,6 +76,7 @@
 		const search = el('input', 'pv-search');
 		search.type = 'search';
 		search.autocomplete = 'off';
+		search.dir = 'auto';
 		const findBtn = iconBtn('btn btn-small btn-ghost media-icon-btn', 'Search', 'search', true);
 		const prevBtn = iconBtn('btn btn-small btn-ghost media-icon-btn', 'Previous match', 'chevron-left', true);
 		prevBtn.classList.add('pv-nav-btn', 'pv-off');
@@ -131,7 +132,9 @@
 		nextBtn.addEventListener('click', () => applyResult(viewer.step(1)));
 
 		const pre = el('pre', 'modal-pre', '');
+		pre.dir = 'auto';
 		const view = el('div', 'pv-view');
+		view.dir = 'auto';
 		view.hidden = true;
 
 		const actions = el('div', 'modal-actions');
@@ -171,8 +174,15 @@
 		}
 	}
 
+	const RTL_LANGS = ['ar', 'he', 'fa', 'ur', 'ps', 'sd', 'ug', 'yi', 'dv', 'ckb', 'nqo'];
+	function dirFor(lang) {
+		const l = String(lang || '').toLowerCase();
+		if (!l) return 'auto';
+		return RTL_LANGS.indexOf(l) !== -1 ? 'rtl' : 'ltr';
+	}
+
 	const PreviewModal = {
-		open(fileName, content, labels) {
+		open(fileName, content, labels, lang) {
 			const L = labels || {};
 			if (!modal) build({
 				download: L.download || 'Download',
@@ -180,6 +190,9 @@
 				font_smaller: L.font_smaller || 'Smaller text',
 				font_larger: L.font_larger || 'Larger text'
 			});
+			const dir = dirFor(lang);
+			modal.pre.dir = dir;
+			modal.view.dir = dir;
 			modal.labels = L;
 			modal.search.placeholder = L.find_placeholder || 'Find text or cue number…';
 			modal.find.setAttribute('aria-label', L.find || 'Search');
@@ -193,6 +206,7 @@
 			modal.prev.disabled = modal.next.disabled = true;
 			currentContent = String(content || '');
 			modal.title.textContent = fileName;
+			modal.title.dir = 'auto';
 			if (viewer) {
 				viewer.destroy();
 				viewer = null;

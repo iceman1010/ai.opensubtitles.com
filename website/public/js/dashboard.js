@@ -193,6 +193,7 @@
 	function fileNameSpan(fileName, className) {
 		const wrap = el('span', className);
 		wrap.title = fileName;
+		wrap.dir = 'auto';
 		const tail = 10;
 		if (fileName.length > tail) {
 			wrap.appendChild(el('span', 'fn-start', fileName.slice(0, -tail)));

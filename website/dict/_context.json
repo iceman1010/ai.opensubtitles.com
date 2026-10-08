@@ -14,6 +14,7 @@
   "nav.api_docs": "Nav entry inside More dropdown: /api-docs generated reference. Short.",
   "common.faq_title": "H2 heading of the shared FAQ teaser section on transcribe + translate pages.",
   "common.app_cta": "Button in the FAQ teaser opening the web app. Short button label.",
+  "common.theme_toggle": "aria-label of the dark-mode toggle button in the header. Not visible text. Short.",
   "footer.main_site": "Footer link text to opensubtitles.com. Do not translate the domain.",
   "home.title": "Browser tab <title> of the home page (SEO, ~50-60 chars).",
   "home.meta_description": "<meta name=description> of home (SEO, ~150-160 chars, one sentence or two).",

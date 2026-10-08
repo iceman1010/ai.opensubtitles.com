@@ -56,12 +56,12 @@
 		try {
 			const list = await AI.searchLanguages();
 			select.innerHTML = list.map((lang) =>
-				'<option value="' + esc(lang.language_code) + '">' + esc(lang.language_name) + '</option>'
+				'<option value="' + esc(lang.language_code) + '">' + esc(displayName(lang.language_code) || lang.language_name) + '</option>'
 			).join('');
 			langNames = {};
 			list.forEach((lang) => { langNames[lang.language_code] = lang.language_name; });
 		} catch (e) {
-			select.innerHTML = '<option value="en">English</option>';
+			select.innerHTML = '<option value="en">' + esc(displayName('en') || 'English') + '</option>';
 			langNames = { en: 'English' };
 		}
 		const saved = AI.getConfig().lastSearchLanguage;
@@ -124,16 +124,21 @@
 		return LANG_COUNTRY[key] ? FLAGS + LANG_COUNTRY[key] + '.svg' : null;
 	}
 
-	function langName(code) {
+	function displayName(code) {
 		const key = String(code || '').toLowerCase();
-		if (langNames[key]) return langNames[key];
+		const loc = document.documentElement.lang || 'en';
 		if (window.Intl && Intl.DisplayNames) {
 			try {
-				const name = new Intl.DisplayNames(['en'], { type: 'language' }).of(key);
+				const name = new Intl.DisplayNames([loc], { type: 'language' }).of(key);
 				if (name && name !== key) return name;
 			} catch (e) {}
 		}
-		return key.toUpperCase();
+		return null;
+	}
+
+	function langName(code) {
+		const key = String(code || '').toLowerCase();
+		return displayName(key) || langNames[key] || key.toUpperCase();
 	}
 
 	function langBadge(code) {
@@ -164,15 +169,15 @@
 			const size = formatSize(file.file_name);
 			const uploaded = formatDate(a.upload_date);
 			const poster = fd.feature_id ? posterBox(posterUrlFor(fd.feature_id)) : posterBox(null);
-			return '<article class="card sub-card has-poster" data-file-id="' + esc(file.file_id || '') + '" data-file-name="' + esc(file.file_name || '') + '">' +
+			return '<article class="card sub-card has-poster" data-file-id="' + esc(file.file_id || '') + '" data-file-name="' + esc(file.file_name || '') + '" data-lang="' + esc(a.language || '') + '">' +
 				poster +
 				'<div class="feature-body">' +
 				'<div class="sub-card-head">' +
-					'<h3><svg class="btn-icon" aria-hidden="true"><use href="' + typeIcon + '"/></svg> ' + esc(fd.title || a.release || '?') +
+					'<h3 dir="auto"><svg class="btn-icon" aria-hidden="true"><use href="' + typeIcon + '"/></svg> ' + esc(fd.title || a.release || '?') +
 					(fd.year ? ' <span class="sub-year">(' + esc(fd.year) + ')</span>' : '') + '</h3>' +
 					langBadge(a.language) +
 				'</div>' +
-				(a.release ? '<p class="sub-release">' + esc(i18n.release) + ': ' + esc(a.release) + '</p>' : '') +
+				(a.release ? '<p class="sub-release" dir="auto">' + esc(i18n.release) + ': ' + esc(a.release) + '</p>' : '') +
 				'<p class="sub-meta">' +
 					'<span>' + esc(String(a.download_count || 0)) + ' ' + esc(i18n.downloads) + '</span>' +
 					(size ? '<span>' + esc(size) + '</span>' : '') +
@@ -211,10 +216,10 @@
 				poster +
 				'<div class="feature-body">' +
 					'<div class="sub-card-head">' +
-						'<h3>' + esc(a.title || '?') + (a.year ? ' <span class="sub-year">(' + esc(a.year) + ')</span>' : '') + '</h3>' +
+						'<h3 dir="auto">' + esc(a.title || '?') + (a.year ? ' <span class="sub-year">(' + esc(a.year) + ')</span>' : '') + '</h3>' +
 						'<span class="lang-badge">' + esc(a.feature_type || '') + '</span>' +
 					'</div>' +
-					(a.parent_title ? '<p class="sub-release">' + esc(a.parent_title) + '</p>' : '') +
+					(a.parent_title ? '<p class="sub-release" dir="auto">' + esc(a.parent_title) + '</p>' : '') +
 					'<p class="sub-meta">' +
 						(counts !== undefined && counts !== null ? '<span>' + esc(String(counts)) + ' ' + esc(countLabel) + '</span>' : '') +
 						(imdbId ? '<span>IMDb ' + esc(String(imdbId)) + '</span>' : '') +
@@ -310,7 +315,7 @@
 					cues: i18n.cues,
 					prev_match: i18n.prev_match,
 					next_match: i18n.next_match
-				});
+				}, card.dataset.lang);
 			} catch (e) {
 				showError(i18n.download_failed + ' ' + e.message);
 			} finally {

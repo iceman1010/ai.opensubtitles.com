@@ -178,14 +178,20 @@
 
 		meta.appendChild(el('strong', null, '#' + p.caption));
 		meta.appendChild(el('span', 'sev-badge ' + (p.severity === 'critical' ? 'sev-critical' : 'sev-minor'), p.severity));
-		meta.appendChild(el('span', 'read-time', timecode(p.start_seconds) + ' → ' + timecode(p.end_seconds)));
+		const rt = el('span', 'read-time', timecode(p.start_seconds) + ' → ' + timecode(p.end_seconds));
+		rt.dir = 'ltr';
+		meta.appendChild(rt);
 		if (typeof p.duration_seconds === 'number') meta.appendChild(el('span', null, fmt(p.duration_seconds) + 's'));
 		if (typeof p.chars === 'number') meta.appendChild(el('span', null, p.chars + ' ' + JOB_I18N.chars));
 		if (typeof p.cps === 'number') meta.appendChild(el('span', null, fmt(p.cps) + ' cps'));
 
 		row.appendChild(meta);
 
-		if (p.text) row.appendChild(el('div', 'read-text', p.text));
+		if (p.text) {
+			const rt = el('div', 'read-text', p.text);
+			rt.dir = 'auto';
+			row.appendChild(rt);
+		}
 
 		const issues = el('div', 'read-issues');
 		for (const issue of p.issues || []) {
