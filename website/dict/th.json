@@ -9,6 +9,8 @@
   "nav.login": "เข้าสู่ระบบ",
   "nav.logout": "ออกจากระบบ",
   "nav.language": "ภาษา",
+  "nav.search_language": "ค้นหาภาษา…",
+  "nav.no_matches": "ไม่พบผลลัพธ์",
   "nav.scroll_up": "เลื่อนขึ้น",
   "nav.scroll_down": "เลื่อนลง",
   "common.faq_title": "คำถามที่พบบ่อย",

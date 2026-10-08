@@ -74,11 +74,15 @@
 			<div class="nav-more" id="lang-nav" data-current="{{ @locale }}" data-languages='{{ @lang_flags }}'>
 				<button class="nav-pill" id="lang-btn" type="button" aria-label="{{ @nav.language }}" aria-haspopup="true" aria-expanded="false"><img class="lang-flag" src="/lib/circle-flags/{{ @lang_flag_current }}.svg" alt="" width="18" height="18" data-lang="{{ @locale }}"><span class="btn-label">{{ strtoupper(@locale) }}</span></button>
 				<div class="nav-menu" id="lang-menu">
+					<check if="{{ @lang_search_show }}"><true><div class="lang-search"><svg class="btn-icon" aria-hidden="true"><use href="#icon-search"/></svg><input type="search" id="lang-search" placeholder="{{ @nav.search_language }}" aria-label="{{ @nav.search_language }}" autocomplete="off" spellcheck="false"></div></true></check>
+					<div class="lang-list">
 					<button class="lang-scroll-btn lang-scroll-up" id="lang-scroll-up" type="button" aria-label="{{ @nav.scroll_up }}" hidden><svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"/></svg></button>
 					<div class="lang-scroll" id="lang-scroll">
 						<repeat group="{{ @lang_rows }}" value="{{ @row }}"><a class="nav-pill lang-option" href="{{ @row.url }}" data-lang="{{ @row.code }}"{{ @row.aria }}><img class="lang-flag" src="/lib/circle-flags/{{ @row.flag }}.svg" alt="" width="18" height="18" data-lang="{{ @row.code }}"><span class="btn-label"><span class="lang-primary">{{ @row.label }}</span><span class="lang-alt"></span></span><svg class="lang-check" aria-hidden="true"><use href="#icon-check"/></svg></a></repeat>
+						<div class="lang-empty" id="lang-empty" hidden>{{ @nav.no_matches }}</div>
 					</div>
 					<button class="lang-scroll-btn lang-scroll-down" id="lang-scroll-down" type="button" aria-label="{{ @nav.scroll_down }}" hidden><svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"/></svg></button>
+					</div>
 				</div>
 			</div>
 			<button id="theme-toggle" class="theme-toggle" type="button" aria-label="{{ @common.theme_toggle }}">◐</button>

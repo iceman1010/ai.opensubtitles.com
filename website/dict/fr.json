@@ -9,6 +9,8 @@
   "nav.login": "Connexion",
   "nav.logout": "Déconnexion",
   "nav.language": "Langue",
+  "nav.search_language": "Rechercher une langue…",
+  "nav.no_matches": "Aucun résultat",
   "nav.scroll_up": "Faire défiler vers le haut",
   "nav.scroll_down": "Faire défiler vers le bas",
   "common.faq_title": "Questions fréquentes",

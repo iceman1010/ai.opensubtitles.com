@@ -9,6 +9,8 @@
   "nav.login": "Iniciar sesión",
   "nav.logout": "Cerrar sesión",
   "nav.language": "Idioma",
+  "nav.search_language": "Buscar idioma…",
+  "nav.no_matches": "Sin coincidencias",
   "nav.scroll_up": "Desplazar hacia arriba",
   "nav.scroll_down": "Desplazar hacia abajo",
   "common.faq_title": "Preguntas frecuentes",

@@ -9,6 +9,8 @@
   "nav.login": "Accedi",
   "nav.logout": "Esci",
   "nav.language": "Lingua",
+  "nav.search_language": "Cerca lingua…",
+  "nav.no_matches": "Nessun risultato",
   "nav.scroll_up": "Scorri verso l'alto",
   "nav.scroll_down": "Scorri verso il basso",
   "common.faq_title": "Domande frequenti",

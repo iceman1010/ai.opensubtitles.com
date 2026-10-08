@@ -9,6 +9,8 @@
   "nav.login": "ログイン",
   "nav.logout": "ログアウト",
   "nav.language": "言語",
+  "nav.search_language": "言語を検索…",
+  "nav.no_matches": "見つかりません",
   "nav.scroll_up": "上へスクロール",
   "nav.scroll_down": "下へスクロール",
   "common.faq_title": "よくある質問",

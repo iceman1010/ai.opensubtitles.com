@@ -9,6 +9,8 @@
   "nav.login": "Đăng nhập",
   "nav.logout": "Đăng xuất",
   "nav.language": "Ngôn ngữ",
+  "nav.search_language": "Tìm ngôn ngữ…",
+  "nav.no_matches": "Không có kết quả",
   "nav.scroll_up": "Cuộn lên",
   "nav.scroll_down": "Cuộn xuống",
   "common.faq_title": "Câu hỏi thường gặp",

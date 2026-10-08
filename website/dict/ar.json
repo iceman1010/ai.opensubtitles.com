@@ -9,6 +9,8 @@
   "nav.login": "تسجيل الدخول",
   "nav.logout": "تسجيل الخروج",
   "nav.language": "اللغة",
+  "nav.search_language": "ابحث عن لغة…",
+  "nav.no_matches": "لا توجد نتائج",
   "nav.scroll_up": "تمرير لأعلى",
   "nav.scroll_down": "تمرير لأسفل",
   "common.faq_title": "الأسئلة الشائعة",

@@ -9,6 +9,8 @@
   "nav.login": "Anmelden",
   "nav.logout": "Abmelden",
   "nav.language": "Sprache",
+  "nav.search_language": "Sprache suchen…",
+  "nav.no_matches": "Keine Treffer",
   "nav.scroll_up": "Nach oben scrollen",
   "nav.scroll_down": "Nach unten scrollen",
   "common.faq_title": "Häufig gestellte Fragen",

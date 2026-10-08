@@ -9,6 +9,8 @@
   "nav.login": "Увійти",
   "nav.logout": "Вийти",
   "nav.language": "Мова",
+  "nav.search_language": "Пошук мови…",
+  "nav.no_matches": "Нічого не знайдено",
   "nav.scroll_up": "Прокрутити вгору",
   "nav.scroll_down": "Прокрутити вниз",
   "common.faq_title": "Поширені запитання",

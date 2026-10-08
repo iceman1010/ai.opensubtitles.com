@@ -9,6 +9,8 @@
   "nav.login": "Prihlásiť sa",
   "nav.logout": "Odhlásiť sa",
   "nav.language": "Jazyk",
+  "nav.search_language": "Hľadať jazyk…",
+  "nav.no_matches": "Žádné výsledky",
   "nav.scroll_up": "Scroll up",
   "nav.scroll_down": "Scroll down",
   "common.faq_title": "Časté otázky",

@@ -9,6 +9,8 @@
   "nav.login": "로그인",
   "nav.logout": "로그아웃",
   "nav.language": "언어",
+  "nav.search_language": "언어 검색…",
+  "nav.no_matches": "일치 항목 없음",
   "nav.scroll_up": "위로 스크롤",
   "nav.scroll_down": "아래로 스크롤",
   "common.faq_title": "자주 묻는 질문",

@@ -9,6 +9,8 @@
   "nav.login": "लॉगिन",
   "nav.logout": "लॉगआउट",
   "nav.language": "भाषा",
+  "nav.search_language": "भाषा खोजें…",
+  "nav.no_matches": "कोई मेल नहीं",
   "nav.scroll_up": "ऊपर स्क्रॉल करें",
   "nav.scroll_down": "नीचे स्क्रॉल करें",
   "common.faq_title": "अक्सर पूछे जाने वाले प्रश्न",

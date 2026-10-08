@@ -9,6 +9,8 @@
   "nav.login": "Giriş yap",
   "nav.logout": "Çıkış yap",
   "nav.language": "Dil",
+  "nav.search_language": "Dil ara…",
+  "nav.no_matches": "Sonuç yok",
   "nav.scroll_up": "Yukarı kaydır",
   "nav.scroll_down": "Aşağı kaydır",
   "common.faq_title": "Sıkça sorulan sorular",
