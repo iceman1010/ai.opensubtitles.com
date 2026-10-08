@@ -6,8 +6,9 @@ return [
     'GET /translate' => 'Controllers\Marketing->translate',
     'GET /faq' => 'Controllers\Marketing->faq',
     'GET /pricing' => 'Controllers\Pricing->index',
-    'GET /tools' => 'Controllers\Tools->index',
-    'GET /tools/@tool' => 'Controllers\Tools->show',
+    // TEMP-beta: Tools hidden for beta launch. Siblings of this comment: ui/base/layout.html (nav pill) and app/Controllers/Seo.php (sitemap).
+    // 'GET /tools' => 'Controllers\Tools->index',
+    // 'GET /tools/@tool' => 'Controllers\Tools->show',
     'GET /support' => 'Controllers\Support->index',
     'GET /api-docs' => 'Controllers\ApiDocs->index',
     'GET /login' => 'Controllers\Auth->login',

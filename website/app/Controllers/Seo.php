@@ -31,7 +31,8 @@ class Seo
             '/translate' => 'translate.html',
             '/faq' => 'faq.html',
             '/pricing' => 'pricing.html',
-            '/tools' => 'tools.html',
+            // TEMP-beta: Tools hidden for beta launch. Siblings of this comment: app/routes.php (routes) and ui/base/layout.html (nav pill).
+            // '/tools' => 'tools.html',
             '/support' => 'support.html',
             '/login' => 'login.html',
         ];
@@ -45,9 +46,10 @@ class Seo
             $entries['/search'] = filemtime($uiContent . 'search/' . $default . '.html');
         }
 
-        foreach (glob($uiContent . 'tools/' . $default . '/*.html') ?: [] as $file) {
-            $entries['/tools/' . basename($file, '.html')] = filemtime($file);
-        }
+        // TEMP-beta: Tools hidden for beta launch. Siblings of this comment: app/routes.php (routes) and ui/base/layout.html (nav pill).
+        // foreach (glob($uiContent . 'tools/' . $default . '/*.html') ?: [] as $file) {
+        //     $entries['/tools/' . basename($file, '.html')] = filemtime($file);
+        // }
 
         echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
         echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">' . "\n";

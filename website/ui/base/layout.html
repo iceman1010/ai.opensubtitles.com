@@ -60,7 +60,8 @@
 				<button class="nav-pill" id="nav-more-btn" type="button" aria-haspopup="true" aria-expanded="false"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-more"/></svg></span><span class="btn-label">{{ @nav.more }}</span></button>
 				<div class="nav-menu" id="nav-menu">
 					<a class="nav-pill" href="/pricing"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-tag"/></svg></span><span class="btn-label">{{ @nav.pricing }}</span></a>
-					<a class="nav-pill" href="/tools"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-tool"/></svg></span><span class="btn-label">{{ @nav.tools }}</span></a>
+					<!-- TEMP-beta: Tools hidden for beta launch. Siblings of this comment: app/routes.php (routes) and app/Controllers/Seo.php (sitemap). Re-enable: change the check condition to true. -->
+					<check if="{{ false }}"><a class="nav-pill" href="/tools"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-tool"/></svg></span><span class="btn-label">{{ @nav.tools }}</span></a></check>
 					<a class="nav-pill" href="/dashboard" data-auth="in" hidden><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-dashboard"/></svg></span><span class="btn-label">{{ @nav.dashboard }}</span></a>
 					<a class="nav-pill" href="/faq"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-help"/></svg></span><span class="btn-label">{{ @nav.faq }}</span></a>
 				<a class="nav-pill" href="/support"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-lifebuoy"/></svg></span><span class="btn-label">{{ @nav.support }}</span></a>
