@@ -7,6 +7,9 @@ class App
         $f3 = \Base::instance();
 
         $config = require dirname(__DIR__) . '/app/config.php';
+        if (is_file(__DIR__ . '/config.local.php')) {
+            $config = array_replace($config, require __DIR__ . '/config.local.php');
+        }
         foreach ($config as $key => $value) {
             $f3->set('APP.' . $key, $value);
         }

@@ -8,16 +8,24 @@ full brainstorm/decision record.
 ## Run (dev)
 
     composer install
+    cp app/config.local.php.example app/config.local.php   # then set your Api-Key in it
     php -S localhost:8080 -t public public/index.php
 
 Then open http://localhost:8080 (German pages under /de/...).
+
+`app/config.local.php` is git-ignored and holds deployment-local values
+(currently the public Api-Key). `app/config.php` ships with `'api_key' => ''`;
+`App::boot()` merges the local file over it when present. Missing local file =
+site renders but API calls fail with empty Api-Key. Production needs the same
+file deployed next to `config.php` (not via git).
 
 ## Structure
 
     public/          webroot: index.php bootstrap, .htaccess, css/ + js assets
     app/
-      App.php        boot: config, theme UI paths, locale, routes
-      config.php     theme, locales, api proxy base, cache TTL
+      App.php        boot: config (+ git-ignored config.local.php overrides),
+                     theme UI paths, locale, routes
+      config.php     theme, locales, api proxy base, cache TTL (no secrets)
       routes.php     route table (plain PHP array)
       Controllers/   one class per page group (render-only)
       Services/      Locale, PricingCache
