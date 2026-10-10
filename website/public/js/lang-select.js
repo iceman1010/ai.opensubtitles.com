@@ -40,6 +40,9 @@
 			clearSearch();
 			scrollToCurrent();
 			updateScrollButtons();
+			if (searchInput) requestAnimationFrame(function () {
+				requestAnimationFrame(function () { searchInput.focus({ preventScroll: true }); });
+			});
 		}
 	}
 
