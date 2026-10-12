@@ -1,0 +1,136 @@
+<script>
+(function () {
+	"use strict";
+
+	if (window.aiosbwLoaded) return;
+	window.aiosbwLoaded = true;
+
+	var BETA_URL = "https://beta-ai.opensubtitles.com/";
+	var STORE_KEY = "aiosbw-dismissed";
+
+	var CSS = ""
+		+ ".aiosbw-root{position:fixed;bottom:16px;right:16px;z-index:2147483000;text-align:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}"
+		+ ".aiosbw-panel{position:relative;display:none;width:280px;max-width:calc(100vw - 32px);margin:0 0 10px;padding:16px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:#1d1d20;box-shadow:0 12px 32px rgba(0,0,0,.4);box-sizing:border-box;text-align:left}"
+		+ ".aiosbw-open .aiosbw-panel{display:block;animation:aiosbw-in .18s ease-out}"
+		+ ".aiosbw-head{margin:0 0 6px;padding-right:18px;color:#fff;font-size:15px;font-weight:600;line-height:1.3}"
+		+ ".aiosbw-text{margin:0 0 14px;color:rgba(255,255,255,.72);font-size:13px;line-height:1.5}"
+		+ ".aiosbw-cta{display:inline-block;padding:9px 14px;border-radius:8px;background:#fff;color:#17171a;font-size:13px;font-weight:600;line-height:1;text-decoration:none;white-space:nowrap;transition:background .15s ease}"
+		+ ".aiosbw-cta:hover,.aiosbw-cta:focus{background:#e4e4e8;outline:0}"
+		+ ".aiosbw-x{position:absolute;top:6px;right:6px;margin:0;padding:6px;border:0;background:none;border-radius:6px;color:rgba(255,255,255,.45);font-family:inherit;font-size:14px;line-height:1;cursor:pointer}"
+		+ ".aiosbw-x:hover,.aiosbw-x:focus{color:#fff;outline:0}"
+		+ ".aiosbw-pill{display:inline-block;margin:0;padding:9px 18px;border:0;border-radius:999px;background:#232326;color:#fff;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.02em;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25);transition:background .15s ease}"
+		+ ".aiosbw-pill:hover,.aiosbw-pill:focus{background:#313136;outline:0}"
+		+ ".aiosbw-pulsing{animation:aiosbw-pulse .6s ease-in-out 2}"
+		+ "@keyframes aiosbw-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}"
+		+ "@keyframes aiosbw-pulse{0%{transform:scale(1)}50%{transform:scale(1.07)}100%{transform:scale(1)}}"
+		+ "@media (prefers-reduced-motion:reduce){.aiosbw-open .aiosbw-panel,.aiosbw-pulsing{animation:none}}";
+
+	var root, pill, panel;
+	var open = false;
+	var gone = false;
+	var pulseTimer = null;
+	var pulseInterval = null;
+
+	function dismissed() {
+		try { return window.sessionStorage.getItem(STORE_KEY) === "1"; } catch (e) { return false; }
+	}
+
+	function setDismissed() {
+		try { window.sessionStorage.setItem(STORE_KEY, "1"); } catch (e) {}
+	}
+
+	function make(tag, cls, html) {
+		var node = document.createElement(tag);
+		node.className = cls;
+		if (html) node.innerHTML = html;
+		return node;
+	}
+
+	function stopPulse() {
+		clearTimeout(pulseTimer);
+		if (pill) pill.className = "aiosbw-pill";
+	}
+
+	function pulse() {
+		if (gone || open || !pill) return;
+		stopPulse();
+		pill.className = "aiosbw-pill aiosbw-pulsing";
+		pulseTimer = setTimeout(function () {
+			if (pill && !gone && !open) pill.className = "aiosbw-pill";
+		}, 1400);
+	}
+
+	function toggle() {
+		open = !open;
+		if (open) {
+			root.className = "aiosbw-root aiosbw-open";
+			pill.setAttribute("aria-expanded", "true");
+			panel.setAttribute("aria-hidden", "false");
+			stopPulse();
+		} else {
+			root.className = "aiosbw-root";
+			pill.setAttribute("aria-expanded", "false");
+			panel.setAttribute("aria-hidden", "true");
+		}
+	}
+
+	function hide() {
+		gone = true;
+		open = false;
+		stopPulse();
+		if (pulseInterval) clearInterval(pulseInterval);
+		setDismissed();
+		if (root && root.parentNode) root.parentNode.removeChild(root);
+	}
+
+	function init() {
+		if (!document.body || !document.body.addEventListener || dismissed()) return;
+
+		var style = document.createElement("style");
+		if (style.styleSheet) style.styleSheet.cssText = CSS;
+		else style.appendChild(document.createTextNode(CSS));
+		(document.getElementsByTagName("head")[0] || document.documentElement).appendChild(style);
+
+		root = make("div", "aiosbw-root");
+
+		panel = make("div", "aiosbw-panel");
+		panel.setAttribute("role", "dialog");
+		panel.setAttribute("aria-hidden", "true");
+
+		var x = make("button", "aiosbw-x", "&times;");
+		x.setAttribute("type", "button");
+		x.setAttribute("aria-label", "Close");
+
+		var head = make("div", "aiosbw-head", "Try the new Beta");
+		var text = make("div", "aiosbw-text", "A redesigned version of this site is in beta &mdash; faster and easier to use. Come take a look.");
+
+		var cta = make("a", "aiosbw-cta", "Open the Beta");
+		cta.href = BETA_URL;
+		cta.target = "_blank";
+		cta.rel = "noopener";
+
+		panel.appendChild(x);
+		panel.appendChild(head);
+		panel.appendChild(text);
+		panel.appendChild(cta);
+
+		pill = make("button", "aiosbw-pill", "Beta");
+		pill.setAttribute("type", "button");
+		pill.setAttribute("aria-expanded", "false");
+
+		root.appendChild(panel);
+		root.appendChild(pill);
+		document.body.appendChild(root);
+
+		pill.addEventListener("click", toggle, false);
+		x.addEventListener("click", hide, false);
+
+		setTimeout(pulse, 2000);
+		pulseInterval = setInterval(pulse, 120000);
+	}
+
+	if (document.body) init();
+	else if (document.addEventListener) document.addEventListener("DOMContentLoaded", init, false);
+	else setTimeout(function () { if (document.body) init(); }, 100);
+})();
+</script>

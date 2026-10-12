@@ -165,10 +165,73 @@
 		} catch (e) {}
 	}
 
+	var POPULAR = ['en', 'de', 'es', 'fr', 'pt-br', 'ru', 'ja', 'zh-cn'];
+	var COUNTRY_LANG = {};
+	(function () {
+		var m = {
+			'de,at,li,lu': 'de', 'us,gb,au,nz,ie': 'en', 'ch': 'de,fr,it', 'be': 'nl,fr',
+			'ca': 'en,fr', 'in': 'hi,en', 'fi': 'fi,sv', 'sg': 'zh-cn,en', 'by': 'be,ru',
+			'es,mx,ar,cl,co,pe,ve,uy,ec,bo,py,cr,gt,hn,ni,pa,sv,do,cu': 'es',
+			'fr,mc,sn,ci,ml,ne,bf,tg,cd,cg,ga,cm,mg,ht': 'fr',
+			'br': 'pt-br', 'pt,ao,mz': 'pt',
+			'ru,kz,kg': 'ru', 'ua': 'uk', 'md': 'ro', 'pk': 'ur', 'ir': 'fa', 'af': 'fa',
+			'il': 'he', 'gr,cy': 'el', 'tr': 'tr', 'pl': 'pl', 'cz': 'cs', 'sk': 'sk',
+			'hu': 'hu', 'ro': 'ro', 'bg': 'bg', 'hr': 'hr', 'rs,me': 'sr', 'ba': 'bs',
+			'si': 'sl', 'lt': 'lt', 'lv': 'lv', 'et': 'et', 'al,xk': 'sq', 'mk': 'mk',
+			'ad': 'ca', 'is': 'is', 'my,bn': 'ms', 'cn,tw,hk,mo': 'zh-cn',
+			'jp': 'ja', 'kr': 'ko', 'vn': 'vi', 'th': 'th', 'id': 'id', 'za': 'af',
+			'az': 'az', 'uz': 'uz', 'se': 'sv', 'dk': 'da', 'no': 'no',
+			'sa,eg,ae,ma,dz,tn,jo,ps,lb,iq,kw,qa,bh,om,ye,sy,ly,sd,mr,dj,km,so': 'ar'
+		};
+		Object.keys(m).forEach(function (k) {
+			k.split(',').forEach(function (cc) { COUNTRY_LANG[cc] = m[k].split(','); });
+		});
+	})();
+
+	function matchLocale(tag) {
+		var t = String(tag || '').toLowerCase();
+		if (languages[t]) return t;
+		if (t.indexOf('zh') === 0) return 'zh-cn';
+		var base = t.split('-')[0];
+		if (languages[base]) return base;
+		if (base === 'nb' || base === 'nn') return 'no';
+		if (base === 'pt' && /^pt-pt/.test(t)) return 'pt';
+		return null;
+	}
+
+	function labelText(row) {
+		var el = row.querySelector('.lang-primary');
+		return el ? el.textContent : row.getAttribute('data-lang');
+	}
+
+	var coll = (window.Intl && Intl.Collator) ? new Intl.Collator([current, 'en'], { sensitivity: 'base' }) : null;
+
+	function applySort() {
+		if (!scroller) return;
+		var rows = {};
+		Array.prototype.forEach.call(scroller.querySelectorAll('.lang-option'), function (row) {
+			rows[row.getAttribute('data-lang')] = row;
+		});
+		var order = [];
+		var push = function (code) { if (rows[code] && order.indexOf(code) === -1) order.push(code); };
+		var navLangs = (navigator.languages && navigator.languages.length) ? navigator.languages : (navigator.language ? [navigator.language] : []);
+		navLangs.forEach(function (tag) { push(matchLocale(tag)); });
+		var cc = String(stored || '').toLowerCase();
+		(COUNTRY_LANG[cc] || []).forEach(push);
+		POPULAR.forEach(push);
+		var tail = Object.keys(rows).filter(function (c) { return order.indexOf(c) === -1; });
+		if (coll) {
+			tail.sort(function (a, b) { return coll.compare(labelText(rows[a]), labelText(rows[b])); });
+		}
+		tail.forEach(push);
+		order.forEach(function (code) { scroller.appendChild(rows[code]); });
+	}
+
 	var stored = null;
 	try { stored = localStorage.getItem('cf_country'); } catch (e) {}
 	if (stored) {
 		applyCountry(stored);
+		applySort();
 	} else if (window.fetch) {
 		fetch('/cdn-cgi/trace').then(function (res) { return res.text(); }).then(function (text) {
 			var match = /(?:^|\n)loc=([A-Za-z]{2})(?:\n|$)/.exec(text || '');
@@ -176,6 +239,8 @@
 			var country = match[1].toUpperCase();
 			try { localStorage.setItem('cf_country', country); } catch (e) {}
 			applyCountry(country);
+			stored = country;
+			applySort();
 		}).catch(function () {});
 	}
 
