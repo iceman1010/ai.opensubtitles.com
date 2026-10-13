@@ -31,11 +31,6 @@
 	function setOpen(open) {
 		nav.classList.toggle('open', open);
 		btn.setAttribute('aria-expanded', String(open));
-		if (window.innerWidth > 640) {
-			nav.style.paddingRight = open
-				? Math.max(0, menu.offsetWidth - btn.offsetWidth) + 'px'
-				: '0px';
-		}
 		if (open) {
 			clearSearch();
 			scrollToCurrent();
@@ -255,12 +250,6 @@
 
 	document.addEventListener('keydown', function (e) {
 		if (e.key === 'Escape') setOpen(false);
-	});
-
-	window.addEventListener('resize', function () {
-		if (window.innerWidth <= 640 && nav.classList.contains('open')) {
-			nav.style.paddingRight = '0px';
-		}
 	});
 
 	menu.addEventListener('click', function (e) {

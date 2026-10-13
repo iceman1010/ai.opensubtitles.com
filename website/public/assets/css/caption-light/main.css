@@ -483,7 +483,7 @@ progress { width: 100%; height: 0.8rem; }
 .search-page:has(#search-results:not([hidden])) + .search-content { display: none; }
 
 .nav-more { position: relative; transition: padding 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
-.nav-menu { position: absolute; top: 0; inset-inline-start: 0; width: max-content; min-width: 10rem; display: flex; flex-direction: column; align-items: stretch; gap: 0.2rem; padding: 0.45rem 0.55rem; background: var(--surface); border: 1px solid var(--line); border-radius: 1.1rem; box-shadow: var(--shadow); opacity: 0; visibility: hidden; pointer-events: none; transform: scale(0.6); transform-origin: center top; transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.45s, background-color 0.45s ease, border-color 0.45s ease; z-index: 50; }
+.nav-menu { position: absolute; top: 0; inset-inline-end: 0; width: max-content; min-width: 10rem; display: flex; flex-direction: column; align-items: stretch; gap: 0.2rem; padding: 0.45rem 0.55rem; background: var(--surface); border: 1px solid var(--line); border-radius: 1.1rem; box-shadow: var(--shadow); opacity: 0; visibility: hidden; pointer-events: none; transform: scale(0.6); transform-origin: center top; transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.45s, background-color 0.45s ease, border-color 0.45s ease; z-index: 50; }
 .nav-more.open .nav-menu { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
 .nav-menu:hover { background: color-mix(in srgb, var(--surface) 88%, var(--ink) 12%); border-color: var(--ink-soft); }
 .lang-scroll { display: flex; flex-direction: column; gap: 0.2rem; max-height: 60vh; overflow-y: auto; scrollbar-width: auto; scrollbar-color: color-mix(in srgb, var(--ink) 45%, transparent) transparent; }
@@ -510,10 +510,6 @@ progress { width: 100%; height: 0.8rem; }
 .lang-option .btn-label { display: flex; flex-direction: column; align-items: flex-start; gap: 0.1rem; }
 .lang-alt { font-size: 0.75rem; font-weight: 400; color: var(--ink-soft); white-space: nowrap; }
 .lang-alt:empty { display: none; }
-
-@media (max-width: 640px) {
-	.nav-menu { inset-inline-start: auto; inset-inline-end: 0; }
-}
 
 .support-card { max-width: 36rem; }
 .support-card textarea { display: block; width: 100%; margin-top: 0.3rem; padding: 0.6rem 0.8rem; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); font: inherit; resize: vertical; }
