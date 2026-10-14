@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "언어 감지",
   "job.detect_consent_no": "수동으로 선택",
   "job.detect_skipped": "언어 감지를 건너뛰었습니다. 수동으로 언어를 선택해주세요.",
+
+  "job.estimate": "Estimated cost",
+  "job.balance": "Your balance",
+  "job.estimate_low": "Not enough credits for this job",
+  "job.buy_credits": "Buy credits",
+  "job.per_second": "second",
+  "job.per_character": "character",
   "job.list_title": "내 작업 — AI OpenSubtitles",
   "job.list_h1": "내 작업",
   "job.list_empty": "아직 작업이 없습니다.",

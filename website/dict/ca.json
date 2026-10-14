@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "Detecta l'idioma",
   "job.detect_consent_no": "Tria manual",
   "job.detect_skipped": "Detecció de l'idioma omesa — trieu l'idioma manualment.",
+
+  "job.estimate": "Estimated cost",
+  "job.balance": "Your balance",
+  "job.estimate_low": "Not enough credits for this job",
+  "job.buy_credits": "Buy credits",
+  "job.per_second": "second",
+  "job.per_character": "character",
   "job.list_title": "Les vostres tasques",
   "job.list_h1": "Les vostres tasques",
   "job.list_empty": "Encara no hi ha tasques — pugeu un fitxer per començar.",

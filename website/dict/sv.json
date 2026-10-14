@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "Identifiera språk",
   "job.detect_consent_no": "Välj manuellt",
   "job.detect_skipped": "Identifiering hoppades över. Välj språk manuellt.",
+
+  "job.estimate": "Estimated cost",
+  "job.balance": "Your balance",
+  "job.estimate_low": "Not enough credits for this job",
+  "job.buy_credits": "Buy credits",
+  "job.per_second": "second",
+  "job.per_character": "character",
   "job.list_title": "Mina jobb — AI OpenSubtitles",
   "job.list_h1": "Mina jobb",
   "job.list_empty": "Inga jobb ännu.",

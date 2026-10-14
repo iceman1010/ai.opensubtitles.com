@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "تشخیص زبان",
   "job.detect_consent_no": "انتخاب دستی",
   "job.detect_skipped": "تشخیص زبان رد شد — لطفاً زبان را به‌صورت دستی انتخاب کنید.",
+
+  "job.estimate": "Estimated cost",
+  "job.balance": "Your balance",
+  "job.estimate_low": "Not enough credits for this job",
+  "job.buy_credits": "Buy credits",
+  "job.per_second": "second",
+  "job.per_character": "character",
   "job.list_title": "کارهای شما",
   "job.list_h1": "کارهای شما",
   "job.list_empty": "هنوز کاری نیست — برای شروع یک فایل آپلود کنید.",

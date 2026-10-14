@@ -229,6 +229,13 @@
   "job.detect_consent_yes": "Modal button: run detection. Short.",
   "job.detect_consent_no": "Modal button: choose language manually. Short.",
   "job.detect_skipped": "Message after skipping detection: choose manually.",
+
+  "job.estimate": "Cost estimate box on /new: label before the calculated credit amount.",
+  "job.balance": "Cost estimate box: the user's remaining credits.",
+  "job.estimate_low": "Cost estimate box: warning when the estimate exceeds the balance.",
+  "job.buy_credits": "Link to /buy next to the low-balance warning. Short.",
+  "job.per_second": "Unit suffix: transcription price per second (shown when duration is unknown).",
+  "job.per_character": "Unit suffix: translation price per character (shown when size is unknown).",
   "job.list_title": "<title> of /jobs.",
   "job.list_h1": "H1 of /jobs.",
   "job.list_empty": "Empty-state text: no jobs yet.",

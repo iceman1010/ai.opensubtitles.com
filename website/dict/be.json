@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "Распанаць мову",
   "job.detect_consent_no": "Выбар уручную",
   "job.detect_skipped": "Распанаванне мовы прапушчана — калі ласка, выберыце мову ўручную.",
+
+  "job.estimate": "Estimated cost",
+  "job.balance": "Your balance",
+  "job.estimate_low": "Not enough credits for this job",
+  "job.buy_credits": "Buy credits",
+  "job.per_second": "second",
+  "job.per_character": "character",
   "job.list_title": "Вашы задачы",
   "job.list_h1": "Вашы задачы",
   "job.list_empty": "Задач пакуль няма — загрузіце файл, каб пачаць.",

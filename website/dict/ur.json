@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "زبان پہچانیں",
   "job.detect_consent_no": "دستی منتخب کریں",
   "job.detect_skipped": "زبان کی پہچان چھوڑ دی گئی — براہ کرم زبان دستی منتخب کریں۔",
+
+  "job.estimate": "Estimated cost",
+  "job.balance": "Your balance",
+  "job.estimate_low": "Not enough credits for this job",
+  "job.buy_credits": "Buy credits",
+  "job.per_second": "second",
+  "job.per_character": "character",
   "job.list_title": "آپ کے کام",
   "job.list_h1": "آپ کے کام",
   "job.list_empty": "ابھی کوئی کام نہیں — شروع کرنے کے لیے فائل اپ لوڈ کریں۔",

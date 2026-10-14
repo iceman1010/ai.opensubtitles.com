@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "Detectar idioma",
   "job.detect_consent_no": "Elegir manualmente",
   "job.detect_skipped": "Detección de idioma omitida — elige el idioma manualmente.",
+
+  "job.estimate": "Estimated cost",
+  "job.balance": "Your balance",
+  "job.estimate_low": "Not enough credits for this job",
+  "job.buy_credits": "Buy credits",
+  "job.per_second": "second",
+  "job.per_character": "character",
   "job.list_title": "Tus tareas",
   "job.list_h1": "Tus tareas",
   "job.list_empty": "Aún no hay tareas — sube un archivo para empezar.",

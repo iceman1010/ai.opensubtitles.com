@@ -4,6 +4,11 @@
 	let currentFile = null;
 	let currentKind = null;
 	let duration = undefined;
+	let currentChars = undefined;
+	let prices = null;
+	let userBalance = null;
+	let balanceAsked = false;
+	let lastEstimateText = '';
 
 	const DETECT_SECONDS = 240;
 
@@ -24,6 +29,12 @@
 	const fileDetailsToggle = document.getElementById('file-details-toggle');
 	const fileDetailsBody = document.getElementById('file-details-body');
 	const detectModal = document.getElementById('detect-modal');
+	const costBox = document.getElementById('cost-estimate');
+	const costValue = document.getElementById('cost-estimate-value');
+	const costBalance = document.getElementById('cost-estimate-balance');
+	const costNote = document.getElementById('cost-estimate-note');
+	const submitLabel = submitButton.querySelector('.btn-label');
+	const baseSubmitText = submitLabel.textContent;
 
 	const I18N = Object.assign({}, document.getElementById('newjob-i18n').dataset);
 	const SELECT_LANGUAGE = I18N.select_language || 'Select Language';
@@ -47,6 +58,9 @@
 		fileDetailsToggle.classList.remove('open');
 		fileDetailsToggle.setAttribute('aria-expanded', 'false');
 		detectModal.hidden = true;
+		costBox.hidden = true;
+		costBalance.hidden = true;
+		submitLabel.textContent = baseSubmitText;
 	}
 
 	function wireDropzone() {
@@ -73,6 +87,8 @@
 		reset();
 		currentFile = file;
 		currentKind = null;
+		duration = undefined;
+		currentChars = undefined;
 		detectResult.hidden = false;
 		detectResult.textContent = 'Inspecting ' + file.name + ' …';
 
@@ -80,6 +96,8 @@
 			const detection = await window.FileDetect.detect(file);
 			currentKind = detection.kind === 'subtitle' || detection.kind === 'media' ? detection.kind : null;
 			if (detection.duration) duration = detection.duration;
+			const stats = detection.details && detection.details.subtitles;
+			if (stats && isFinite(stats.characters)) currentChars = stats.characters;
 
 			if (currentKind === null) {
 				showError(detection.message || ('Unsupported file type: .' + detection.ext));
@@ -148,6 +166,7 @@
 			modelSelect.onchange = async () => {
 				const previous = Array.from(translateOptions.querySelectorAll('select[data-role="language"]')).map((s) => s.value);
 				await loadLanguages(modelSelect.value, null, previous);
+				renderEstimate();
 			};
 		} else {
 			translateOptions.hidden = true;
@@ -159,10 +178,120 @@
 			modelSelect.onchange = async () => {
 				const select = transcribeOptions.querySelector('select[data-role="language"]');
 				await loadLanguages(modelSelect.value, null, [select.value]);
+				renderEstimate();
 			};
 		}
 
 		optionsPanel.hidden = false;
+		await loadPrices();
+		loadBalance();
+		renderEstimate();
+	}
+
+	function indexPrices(list) {
+		const map = {};
+		if (Array.isArray(list)) {
+			for (const item of list) {
+				const price = parseFloat(item && item.price);
+				if (item && item.name && isFinite(price)) map[item.name] = price;
+			}
+		}
+		return map;
+	}
+
+	async function loadPrices() {
+		if (prices !== null) return;
+		try {
+			const info = await window.AI.servicesInfo();
+			const services = info.data && (info.data.services || info.data);
+			prices = {
+				media: indexPrices(services && services.Transcription),
+				subtitle: indexPrices(services && services.Translation)
+			};
+		} catch (e) {
+			prices = false;
+		}
+	}
+
+	function loadBalance() {
+		if (balanceAsked || !window.AI.loggedIn()) return;
+		balanceAsked = true;
+		window.AI.getCredits().then((result) => {
+			if (result && result.success) {
+				userBalance = result.credits;
+				renderEstimate();
+			}
+		}).catch(() => {});
+	}
+
+	function fmtCredits(value) {
+		return value.toFixed(5).replace(/0+$/, '').replace(/\.$/, '');
+	}
+
+	function currentEstimate() {
+		if (!prices || !currentKind) return null;
+		const scope = currentKind === 'media' ? transcribeOptions : translateOptions;
+		const apiSelect = scope.querySelector('select[name="model"]');
+		if (!apiSelect || !apiSelect.value) return null;
+		const price = prices[currentKind][apiSelect.value];
+		if (!isFinite(price)) return null;
+		const units = currentKind === 'media' ? duration : currentChars;
+		return { price: price, units: isFinite(units) ? units : null };
+	}
+
+	function renderBalance(total) {
+		if (userBalance === null) {
+			costBalance.hidden = true;
+			return;
+		}
+		costBalance.hidden = false;
+		costBalance.classList.remove('form-error');
+		costBalance.textContent = '';
+		if (total !== null && userBalance < total) {
+			costBalance.classList.add('form-error');
+			costBalance.textContent = I18N.estimate_low + ' — ' + I18N.balance + ': ' + fmtCredits(userBalance) + ' ';
+			const link = document.createElement('a');
+			link.href = '/buy';
+			link.textContent = I18N.buy_credits;
+			costBalance.appendChild(link);
+		} else {
+			costBalance.textContent = I18N.balance + ': ' + fmtCredits(userBalance) + ' ' + I18N.credits_word;
+		}
+	}
+
+	function estimateNode(label) {
+		const strong = document.createElement('strong');
+		strong.className = 'cost-estimate-amount';
+		strong.textContent = label;
+		return strong;
+	}
+
+	function renderEstimate() {
+		const estimate = currentEstimate();
+		if (!estimate) {
+			costBox.hidden = true;
+			submitLabel.textContent = baseSubmitText;
+			lastEstimateText = '';
+			return;
+		}
+		costBox.hidden = false;
+		const total = estimate.units !== null ? Math.ceil(estimate.units * estimate.price) : null;
+		if (total !== null) {
+			const label = '≈ ' + fmtCredits(total) + ' ' + I18N.credits_word;
+			if (label !== lastEstimateText) {
+				lastEstimateText = label;
+				costValue.textContent = I18N.estimate + ': ';
+				costValue.appendChild(estimateNode(label));
+				submitLabel.textContent = baseSubmitText + ' · ';
+				submitLabel.appendChild(estimateNode(label));
+			}
+		} else {
+			lastEstimateText = '';
+			costValue.textContent = I18N.estimate + ': ' + fmtCredits(estimate.price) + ' ' + I18N.credits_word + ' / ' + (currentKind === 'media' ? I18N.per_second : I18N.per_character);
+			submitLabel.textContent = baseSubmitText;
+		}
+		costNote.hidden = currentKind !== 'subtitle';
+		renderBalance(total);
 	}
 
 	async function loadLanguages(apiId, preferred, previous) {

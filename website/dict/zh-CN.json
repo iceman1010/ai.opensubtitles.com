@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "检测语言",
   "job.detect_consent_no": "手动选择",
   "job.detect_skipped": "已跳过语言检测 —— 请手动选择语言。",
+
+  "job.estimate": "Estimated cost",
+  "job.balance": "Your balance",
+  "job.estimate_low": "Not enough credits for this job",
+  "job.buy_credits": "Buy credits",
+  "job.per_second": "second",
+  "job.per_character": "character",
   "job.list_title": "您的任务",
   "job.list_h1": "您的任务",
   "job.list_empty": "暂无任务 —— 上传文件开始吧。",

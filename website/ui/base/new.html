@@ -29,6 +29,11 @@
 			<label>{{ @job.from }}<select data-role="language"></select></label>
 			<label>{{ @job.to }}<select data-role="language"></select></label>
 		</div>
+		<div id="cost-estimate" class="cost-estimate" hidden>
+			<p id="cost-estimate-value"></p>
+			<p id="cost-estimate-balance" hidden></p>
+			<p id="cost-estimate-note" class="muted" hidden>{{ @pricing.quality_note }}</p>
+		</div>
 		<button id="job-submit" class="btn btn-primary" type="button"><svg class="btn-icon" aria-hidden="true"><use href="#icon-upload"/></svg><span class="btn-label">{{ @job.submit }}</span></button>
 	</div>
 
@@ -75,6 +80,13 @@
 		data-details_words="{{ @job.details_words }}"
 		data-details_avg_length="{{ @job.details_avg_length }}"
 		data-detect_skipped="{{ @job.detect_skipped }}"
+		data-estimate="{{ @job.estimate }}"
+		data-balance="{{ @job.balance }}"
+		data-estimate_low="{{ @job.estimate_low }}"
+		data-buy_credits="{{ @job.buy_credits }}"
+		data-per_second="{{ @job.per_second }}"
+		data-per_character="{{ @job.per_character }}"
+		data-credits_word="{{ @payments.credits }}"
 	></div>
 </section>
 <script src="/js/detect.js"></script>

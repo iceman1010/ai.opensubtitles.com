@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "Tuvasta keel",
   "job.detect_consent_no": "Vali käsitsi",
   "job.detect_skipped": "Keele tuvastamine vahele jäetud — palun valige keel käsitsi.",
+
+  "job.estimate": "Estimated cost",
+  "job.balance": "Your balance",
+  "job.estimate_low": "Not enough credits for this job",
+  "job.buy_credits": "Buy credits",
+  "job.per_second": "second",
+  "job.per_character": "character",
   "job.list_title": "Teie ülesanded",
   "job.list_h1": "Teie ülesanded",
   "job.list_empty": "Ülesandeid veel pole — alustamiseks laadige fail üles.",

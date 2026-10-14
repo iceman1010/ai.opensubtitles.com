@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "Разпознаване на език",
   "job.detect_consent_no": "Ръчен избор",
   "job.detect_skipped": "Разпознаването на езика е пропуснато — моля, изберете езика ръчно.",
+
+  "job.estimate": "Estimated cost",
+  "job.balance": "Your balance",
+  "job.estimate_low": "Not enough credits for this job",
+  "job.buy_credits": "Buy credits",
+  "job.per_second": "second",
+  "job.per_character": "character",
   "job.list_title": "Вашите задачи",
   "job.list_h1": "Вашите задачи",
   "job.list_empty": "Все още няма задачи — качете файл, за да започнете.",

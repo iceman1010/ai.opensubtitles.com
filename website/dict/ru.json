@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "Определить язык",
   "job.detect_consent_no": "Выбрать вручную",
   "job.detect_skipped": "Определение языка пропущено. Пожалуйста, выберите язык вручную.",
+
+  "job.estimate": "Estimated cost",
+  "job.balance": "Your balance",
+  "job.estimate_low": "Not enough credits for this job",
+  "job.buy_credits": "Buy credits",
+  "job.per_second": "second",
+  "job.per_character": "character",
   "job.list_title": "Мои задания — AI OpenSubtitles",
   "job.list_h1": "Мои задания",
   "job.list_empty": "У вас пока нет заданий.",

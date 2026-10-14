@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "Sprache erkennen",
   "job.detect_consent_no": "Selbst wählen",
   "job.detect_skipped": "Spracherkennung übersprungen — bitte wähle die Sprache manuell.",
+
+  "job.estimate": "Geschätzte Kosten",
+  "job.balance": "Dein Guthaben",
+  "job.estimate_low": "Nicht genügend Credits für diesen Auftrag",
+  "job.buy_credits": "Credits kaufen",
+  "job.per_second": "Sekunde",
+  "job.per_character": "Zeichen",
   "job.list_title": "Deine Aufträge",
   "job.list_h1": "Deine Aufträge",
   "job.list_empty": "Noch keine Aufträge — lade eine Datei hoch, um loszulegen.",

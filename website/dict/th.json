@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "ตรวจจับภาษา",
   "job.detect_consent_no": "เลือกด้วยตนเอง",
   "job.detect_skipped": "ข้ามการตรวจจับภาษา กรุณาเลือกภาษาเอง",
+
+  "job.estimate": "Estimated cost",
+  "job.balance": "Your balance",
+  "job.estimate_low": "Not enough credits for this job",
+  "job.buy_credits": "Buy credits",
+  "job.per_second": "second",
+  "job.per_character": "character",
   "job.list_title": "งานของฉัน — AI OpenSubtitles",
   "job.list_h1": "งานของฉัน",
   "job.list_empty": "ยังไม่มีงาน",

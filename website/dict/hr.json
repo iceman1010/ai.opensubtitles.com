@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "Prepoznaj jezik",
   "job.detect_consent_no": "Ručni odabir",
   "job.detect_skipped": "Prepoznavanje jezika preskočeno — molimo odaberite jezik ručno.",
+
+  "job.estimate": "Estimated cost",
+  "job.balance": "Your balance",
+  "job.estimate_low": "Not enough credits for this job",
+  "job.buy_credits": "Buy credits",
+  "job.per_second": "second",
+  "job.per_character": "character",
   "job.list_title": "Vaši poslovi",
   "job.list_h1": "Vaši poslovi",
   "job.list_empty": "Još nema poslova — učitajte datoteku za početak.",

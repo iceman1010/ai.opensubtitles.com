@@ -186,6 +186,13 @@
   "job.detect_consent_yes": "偵測語言",
   "job.detect_consent_no": "手動選擇",
   "job.detect_skipped": "已略過語言偵測 —— 請手動選擇語言。",
+
+  "job.estimate": "Estimated cost",
+  "job.balance": "Your balance",
+  "job.estimate_low": "Not enough credits for this job",
+  "job.buy_credits": "Buy credits",
+  "job.per_second": "second",
+  "job.per_character": "character",
   "job.list_title": "您的任務",
   "job.list_h1": "您的任務",
   "job.list_empty": "暫無任務 —— 上傳檔案開始吧。",
