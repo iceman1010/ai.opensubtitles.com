@@ -239,6 +239,9 @@ section { max-width: 64rem; margin: 0 auto; padding: 1.5rem 1.5rem; }
 .auth-card label { display: block; margin-bottom: 1rem; font-weight: 600; }
 .auth-card input { display: block; width: 100%; margin-top: 0.3rem; padding: 0.6rem 0.8rem; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); font: inherit; }
 .auth-card .btn { width: 100%; }
+.org-hint { margin-top: 1rem; font-size: 0.9rem; }
+.org-hint summary { font-weight: 600; cursor: pointer; color: var(--ink-soft); }
+.org-hint[open] summary { margin-bottom: 0.5rem; }
 .muted { color: var(--ink-soft); font-size: 0.9rem; }
 
 .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--gap); padding: 2.5rem 0 var(--gap); }

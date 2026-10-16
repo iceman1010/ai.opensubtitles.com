@@ -9,4 +9,8 @@
 		<button class="btn btn-primary" type="submit"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-in"/></svg><span class="btn-label">{{ @login.submit }}</span></button>
 	</form>
 	<p class="muted">{{ @login.register_hint }} <a href="https://www.opensubtitles.com">{{ @login.register_link }}</a></p>
+	<details class="org-hint">
+		<summary>{{ @login.org_q }}</summary>
+		<p>{{ @login.org_a }}<a href="https://ai.opensubtitles.org">{{ @login.org_link }}</a></p>
+	</details>
 </section>

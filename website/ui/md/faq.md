@@ -12,6 +12,10 @@ Failed jobs are never charged: an automatic quality check validates every transc
 
 Pay as you go: buy credits and use them for any AI service. Credits never expire and you only pay for what you actually use. See [pricing](https://ai.opensubtitles.com/pricing.md).
 
+### Can I log in with my opensubtitles.org account?
+
+No — opensubtitles.org and opensubtitles.com accounts are separate, and your .org login will not work on this site. Please keep using the legacy website: [ai.opensubtitles.org](https://ai.opensubtitles.org). If you'd like to switch to this site, we can transfer your remaining credit balance — just contact us via [the support page](https://ai.opensubtitles.com/support).
+
 ## Transcription
 
 ### What happens to my file?
