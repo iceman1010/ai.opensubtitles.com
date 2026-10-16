@@ -8,6 +8,21 @@ class Base
     {
         \Services\Locale::apply($f3);
 
+        $markdown = [
+            'home.html' => '/index.md',
+            'transcribe.html' => '/transcribe.md',
+            'translate.html' => '/translate.md',
+            'faq.html' => '/faq.md',
+            'pricing.html' => '/pricing.md',
+            'support.html' => '/support.md',
+            'api.html' => '/api-docs.md',
+            'buy.html' => '/buy.md',
+            'search.html' => '/search.md',
+        ];
+        if (isset($markdown[$page])) {
+            header('Link: <' . $markdown[$page] . '>; rel="alternate"; type="text/markdown", </llms.txt>; rel="describedby"');
+        }
+
         $locale = $f3->get('locale');
         $prefix = $locale === $f3->get('APP.default_locale') ? '' : '/' . $locale;
 

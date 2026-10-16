@@ -36,6 +36,12 @@ class App
         $f3->route('GET /@locale/robots.txt', 'Controllers\Seo->robots');
         $f3->route('GET /@locale/sitemap.xml', 'Controllers\Seo->sitemap');
 
+        $f3->route('GET /llms.txt', 'Controllers\Llms->txt');
+        $f3->route('GET /llms-full.txt', 'Controllers\Llms->full');
+        foreach (\Controllers\Llms::slugs() as $slug) {
+            $f3->route('GET /' . $slug . '.md', fn (\Base $f3) => (new \Controllers\Llms())->serve($f3, $slug));
+        }
+
         if ((string) $f3->get('APP.dev_proxy_upstream') !== '') {
             $f3->route('GET /ai-web/*', 'Controllers\DevProxy->forward');
             $f3->route('POST /ai-web/*', 'Controllers\DevProxy->forward');

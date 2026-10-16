@@ -1,0 +1,25 @@
+# AI.OpenSubtitles.com
+
+> AI subtitle transcription and translation from the team behind opensubtitles.com. Transcribe any video or audio to SRT/VTT, translate subtitle files into dozens of languages, and search the opensubtitles.com subtitle catalog. Pay-as-you-go with credits; subtitle search is free.
+
+All markdown content is English. The human-readable site (https://ai.opensubtitles.com/) is available in 50+ languages.
+
+## Tools for agents
+
+- [Search & download subtitles](https://ai.opensubtitles.com/search.md): Free subtitle search over the opensubtitles.com catalog — no account needed for search, machine-usable endpoints, examples included. Downloading requires a free account login.
+- [API reference](https://ai.opensubtitles.com/api-docs.md): Full REST API for AI transcription and translation jobs (requires an opensubtitles.com account).
+
+## Pages
+
+- [Home](https://ai.opensubtitles.com/index.md): What the service is, how it works, available apps.
+- [AI Transcription](https://ai.opensubtitles.com/transcribe.md): Turn video or audio into subtitles.
+- [AI Translation](https://ai.opensubtitles.com/translate.md): Translate SRT/VTT files into dozens of languages.
+- [Pricing](https://ai.opensubtitles.com/pricing.md): Model prices in credits (per second / per character) and credit packages.
+- [Buy credits](https://ai.opensubtitles.com/buy.md): How credit purchases work.
+- [FAQ](https://ai.opensubtitles.com/faq.md): Credits, refunds, file formats, quality checks.
+- [Support](https://ai.opensubtitles.com/support.md): How to contact support (ticket form and endpoint).
+
+## Optional
+
+- [llms-full.txt](https://ai.opensubtitles.com/llms-full.txt): All of the above pages in a single file.
+- [Sitemap](https://ai.opensubtitles.com/sitemap.xml): All human-readable pages.

@@ -11,6 +11,7 @@ class Seo
         echo "Disallow: /dashboard\n";
         echo "Disallow: /new\n";
         echo "Disallow: /jobs\n";
+        echo "Disallow: /ai-web\n";
         echo "Sitemap: https://ai.opensubtitles.com/sitemap.xml\n";
     }
 
