@@ -8,6 +8,10 @@
 	<meta name="api-base" content="{{ @APP.api_base }}">
 	<meta name="api-key" content="{{ @APP.api_key }}">
 	<meta name="api-user-agent" content="{{ @APP.user_agent }}">
+	<check if="{{ @APP.ga_id }}"><true>
+	<meta name="ga-id" content="{{ @APP.ga_id }}">
+	<meta name="cookie-countries" content='{{ json_encode(@APP.cookie_banner_countries) }}'>
+	</true></check>
 	<link rel="canonical" href="https://ai.opensubtitles.com{{ @canonical }}">
 	<check if="{{ @noindex }}"><true><meta name="robots" content="noindex, nofollow"></true></check>
 	<repeat group="{{ @alternates }}" key="{{ @hl }}" value="{{ @url }}"><link rel="alternate" hreflang="{{ @hl }}" href="https://ai.opensubtitles.com{{ @url }}">
@@ -104,8 +108,16 @@
 	<footer class="site-footer">
 		<p>© {{ date('Y') }} {{ @site_name }} · <a href="https://www.opensubtitles.com">{{ @footer.main_site }}</a></p>
 	</footer>
+	<div id="cookie-banner" class="cookie-banner" hidden>
+		<p>{{ @cookie.text }}</p>
+		<div class="cookie-actions">
+			<button id="cookie-accept" class="btn btn-primary" type="button">{{ @cookie.accept }}</button>
+			<button id="cookie-decline" class="btn btn-ghost" type="button">{{ @cookie.decline }}</button>
+		</div>
+	</div>
 	<script src="/js/theme-toggle.js"></script>
 	<script src="/js/nav-menu.js"></script>
 	<script src="/js/lang-select.js"></script>
+	<script src="/js/cookie-consent.js"></script>
 </body>
 </html>

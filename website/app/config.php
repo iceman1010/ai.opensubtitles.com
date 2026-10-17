@@ -60,6 +60,8 @@ return [
     'lang_search' => true,
     'site_name' => 'AI.Opensubtitles.com',
     'api_key' => '',
+    'ga_id' => '',
+    'cookie_banner_countries' => [],
     'api_base' => '/ai-web/api/v1',
     'api_base_server' => 'https://ai.opensubtitles.com/ai-web/api/v1',
     'dev_proxy_upstream' => 'https://ai.opensubtitles.com',

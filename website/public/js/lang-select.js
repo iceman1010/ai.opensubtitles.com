@@ -31,6 +31,11 @@
 	function setOpen(open) {
 		nav.classList.toggle('open', open);
 		btn.setAttribute('aria-expanded', String(open));
+		if (window.innerWidth > 640) {
+			nav.style.paddingInlineEnd = open
+				? Math.max(0, menu.offsetWidth - btn.offsetWidth) + 'px'
+				: '0px';
+		}
 		if (open) {
 			clearSearch();
 			scrollToCurrent();
@@ -238,6 +243,13 @@
 			applySort();
 		}).catch(function () {});
 	}
+
+	window.addEventListener('resize', function () {
+		updateScrollButtons();
+		if (window.innerWidth <= 640 && nav.classList.contains('open')) {
+			nav.style.paddingInlineEnd = '0px';
+		}
+	});
 
 	btn.addEventListener('click', function (e) {
 		e.stopPropagation();
