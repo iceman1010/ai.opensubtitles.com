@@ -336,7 +336,7 @@
   "support.invalid_email": "Ugyldig e-postadresse.",
   "support.required_other": "Vennligst oppgi tjenestenavnet.",
   "support.required_description": "Vennligst beskriv problemet.",
-  "support.missing_field": "Påkrevd felt:",
+  "support.missing_field": "Påkrevd felt: ",
   "support.error_generic": "En feil oppstod under sending.",
   "support.modal_title": "Innlogging kreves",
   "support.modal_text": "Vennligst logg inn med opensubtitles.com-kontoen din for å kontakte support.",

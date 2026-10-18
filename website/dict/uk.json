@@ -336,7 +336,7 @@
   "support.invalid_email": "Невірна адреса електронної пошти.",
   "support.required_other": "Будь ласка, вкажіть назву сервісу.",
   "support.required_description": "Будь ласка, опишіть проблему.",
-  "support.missing_field": "Обов'язкове поле:",
+  "support.missing_field": "Обов'язкове поле: ",
   "support.error_generic": "Під час надсилання запиту сталася помилка.",
   "support.modal_title": "Потрібно увійти",
   "support.modal_text": "Будь ласка, увійдіть в обліковий запис opensubtitles.com для звернення до підтримки.",

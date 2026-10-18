@@ -336,7 +336,7 @@
   "support.invalid_email": "电子邮件格式无效",
   "support.required_other": "请注明您需要帮助的 OpenSubtitles.com 服务",
   "support.required_description": "问题描述为必填项",
-  "support.missing_field": "缺少必填字段：",
+  "support.missing_field": "缺少必填字段： ",
   "support.error_generic": "提交支持工单失败",
   "support.modal_title": "需要登录",
   "support.modal_text": "请使用您的 opensubtitles.com 帐户登录以提交支持工单。",

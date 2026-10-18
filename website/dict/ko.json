@@ -336,7 +336,7 @@
   "support.invalid_email": "올바른 이메일 주소가 아닙니다.",
   "support.required_other": "서비스 이름을 입력해주세요.",
   "support.required_description": "문의 내용을 입력해주세요.",
-  "support.missing_field": "필수 항목:",
+  "support.missing_field": "필수 항목: ",
   "support.error_generic": "문의 전송 중 오류가 발생했습니다.",
   "support.modal_title": "로그인이 필요합니다",
   "support.modal_text": "지원에 문의하려면 opensubtitles.com 계정으로 로그인해주세요.",

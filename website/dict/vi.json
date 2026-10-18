@@ -336,7 +336,7 @@
   "support.invalid_email": "Email không hợp lệ.",
   "support.required_other": "Vui lòng nhập tên dịch vụ.",
   "support.required_description": "Vui lòng mô tả vấn đề.",
-  "support.missing_field": "Trường bắt buộc:",
+  "support.missing_field": "Trường bắt buộc: ",
   "support.error_generic": "Đã xảy ra lỗi khi gửi yêu cầu.",
   "support.modal_title": "Cần đăng nhập",
   "support.modal_text": "Vui lòng đăng nhập tài khoản opensubtitles.com để liên hệ hỗ trợ.",

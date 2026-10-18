@@ -336,7 +336,7 @@
   "support.invalid_email": "Ogiltig e-postadress.",
   "support.required_other": "Ange tjänstnamnet.",
   "support.required_description": "Beskriv problemet.",
-  "support.missing_field": "Obligatoriskt fält:",
+  "support.missing_field": "Obligatoriskt fält: ",
   "support.error_generic": "Ett fel uppstod vid skickande.",
   "support.modal_title": "Inloggning krävs",
   "support.modal_text": "Logga in med ditt opensubtitles.com-konto för att kontakta support.",

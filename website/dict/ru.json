@@ -336,7 +336,7 @@
   "support.invalid_email": "Некорректный email.",
   "support.required_other": "Укажите название сервиса.",
   "support.required_description": "Опишите проблему.",
-  "support.missing_field": "Отсутствует поле:",
+  "support.missing_field": "Отсутствует поле: ",
   "support.error_generic": "Произошла ошибка при отправке обращения.",
   "support.modal_title": "Требуется вход",
   "support.modal_text": "Для обращения в поддержку войдите с помощью аккаунта opensubtitles.com.",

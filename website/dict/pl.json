@@ -336,7 +336,7 @@
   "support.invalid_email": "Nieprawidłowy adres email.",
   "support.required_other": "Podaj nazwę serwisu.",
   "support.required_description": "Opisz problem.",
-  "support.missing_field": "Brakujące pole:",
+  "support.missing_field": "Brakujące pole: ",
   "support.error_generic": "Wystąpił błąd podczas wysyłania zapytania.",
   "support.modal_title": "Wymagane logowanie",
   "support.modal_text": "Aby skontaktować się z pomocą, zaloguj się na konto opensubtitles.com.",

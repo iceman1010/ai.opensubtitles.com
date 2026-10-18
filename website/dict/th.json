@@ -336,7 +336,7 @@
   "support.invalid_email": "อีเมลไม่ถูกต้อง",
   "support.required_other": "กรุณากรอกชื่อบริการ",
   "support.required_description": "กรุณาอธิบายปัญหา",
-  "support.missing_field": "ช่องที่จำเป็น:",
+  "support.missing_field": "ช่องที่จำเป็น: ",
   "support.error_generic": "เกิดข้อผิดพลาดในการส่งคำขอ",
   "support.modal_title": "ต้องเข้าสู่ระบบ",
   "support.modal_text": "กรุณาเข้าสู่ระบบด้วยบัญชี opensubtitles.com เพื่อติดต่อฝ่ายสนับสนุน",

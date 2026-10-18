@@ -336,7 +336,7 @@
   "support.invalid_email": "Μη έγκυρη διεύθυνση e-mail.",
   "support.required_other": "Παρακαλούμε δώστε το όνομα της υπηρεσίας.",
   "support.required_description": "Παρακαλούμε περιγράψτε το πρόβλημα.",
-  "support.missing_field": "Απαιτούμενο πεδίο:",
+  "support.missing_field": "Απαιτούμενο πεδίο: ",
   "support.error_generic": "Παρουσιάστηκε σφάλμα κατά την αποστολή.",
   "support.modal_title": "Απαιτείται σύνδεση",
   "support.modal_text": "Παρακαλούμε συνδεθείτε με λογαριασμό opensubtitles.com για επικοινωνία με την υποστήριξη.",

@@ -336,7 +336,7 @@
   "support.invalid_email": "अमान्य ईमेल पता।",
   "support.required_other": "सेवा का नाम आवश्यक है।",
   "support.required_description": "समस्या का विवरण आवश्यक है।",
-  "support.missing_field": "आवश्यक फ़ील्ड:",
+  "support.missing_field": "आवश्यक फ़ील्ड: ",
   "support.error_generic": "अनुरोध भेजते समय त्रुटि हुई।",
   "support.modal_title": "लॉगिन आवश्यक है",
   "support.modal_text": "सहायता से संपर्क करने के लिए कृपया opensubtitles.com अकाउंट से लॉगिन करें।",

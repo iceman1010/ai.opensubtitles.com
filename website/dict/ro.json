@@ -336,7 +336,7 @@
   "support.invalid_email": "Adresă de e-mail invalidă.",
   "support.required_other": "Vă rugăm să introduceți numele serviciului.",
   "support.required_description": "Vă rugăm să descrieți problema.",
-  "support.missing_field": "Câmp obligatoriu:",
+  "support.missing_field": "Câmp obligatoriu: ",
   "support.error_generic": "A apărut o eroare la trimiterea cererii.",
   "support.modal_title": "Autentificare necesară",
   "support.modal_text": "Pentru a contacta suportul, vă rugăm să vă conectați cu un cont opensubtitles.com.",

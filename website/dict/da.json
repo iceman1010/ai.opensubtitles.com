@@ -336,7 +336,7 @@
   "support.invalid_email": "Ugyldig e-mail-adresse.",
   "support.required_other": "Indtast tjenestenavnet.",
   "support.required_description": "Beskriv problemet.",
-  "support.missing_field": "Obligatorisk felt:",
+  "support.missing_field": "Obligatorisk felt: ",
   "support.error_generic": "Der opstod en fejl ved afsendelse.",
   "support.modal_title": "Login påkrævet",
   "support.modal_text": "Log ind med din opensubtitles.com-konto for at kontakte support.",

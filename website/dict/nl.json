@@ -336,7 +336,7 @@
   "support.invalid_email": "Ongeldig e-mailadres.",
   "support.required_other": "Voer de servicenaam in.",
   "support.required_description": "Beschrijf het probleem.",
-  "support.missing_field": "Verplicht veld:",
+  "support.missing_field": "Verplicht veld: ",
   "support.error_generic": "Er is een fout opgetreden bij verzenden.",
   "support.modal_title": "Inloggen vereist",
   "support.modal_text": "Log in met uw opensubtitles.com-account om contact op te nemen met ondersteuning.",

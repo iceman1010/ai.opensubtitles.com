@@ -336,7 +336,7 @@
   "support.invalid_email": "Neplatná e-mailová adresa.",
   "support.required_other": "Prosím, zadejte název služby.",
   "support.required_description": "Prosím, popište problém.",
-  "support.missing_field": "Povinné pole:",
+  "support.missing_field": "Povinné pole: ",
   "support.error_generic": "Při odesílání žádosti nastala chyba.",
   "support.modal_title": "Vyžaduje se přihlášení",
   "support.modal_text": "Pro kontakt s podporou se přihlaste pomocí účtu opensubtitles.com.",

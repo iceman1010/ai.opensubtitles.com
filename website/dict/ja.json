@@ -336,7 +336,7 @@
   "support.invalid_email": "無効なメールアドレスです。",
   "support.required_other": "サービス名を入力してください。",
   "support.required_description": "お問い合わせ内容を入力してください。",
-  "support.missing_field": "必須項目：",
+  "support.missing_field": "必須項目： ",
   "support.error_generic": "送信中にエラーが発生しました。",
   "support.modal_title": "ログインが必要です",
   "support.modal_text": "サポートに問い合わせるには、opensubtitles.comアカウントでログインしてください。",

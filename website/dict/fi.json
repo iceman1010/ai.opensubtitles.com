@@ -336,7 +336,7 @@
   "support.invalid_email": "Virheellinen sähköpostiosoite.",
   "support.required_other": "Anna palvelun nimi.",
   "support.required_description": "Kuvaile ongelma.",
-  "support.missing_field": "Pakollinen kenttä:",
+  "support.missing_field": "Pakollinen kenttä: ",
   "support.error_generic": "Virhe lähetyksessä.",
   "support.modal_title": "Kirjautuminen vaaditaan",
   "support.modal_text": "Kirjaudu opensubtitles.com-tililläsi sisään tukiin ottamiseksi.",

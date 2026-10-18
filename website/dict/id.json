@@ -336,7 +336,7 @@
   "support.invalid_email": "Alamat email tidak valid.",
   "support.required_other": "Nama layanan diperlukan.",
   "support.required_description": "Deskripsi masalah diperlukan.",
-  "support.missing_field": "Kolom wajib:",
+  "support.missing_field": "Kolom wajib: ",
   "support.error_generic": "Terjadi kesalahan saat mengirim permintaan.",
   "support.modal_title": "Perlu masuk",
   "support.modal_text": "Silakan masuk dengan akun opensubtitles.com untuk menghubungi dukungan.",
