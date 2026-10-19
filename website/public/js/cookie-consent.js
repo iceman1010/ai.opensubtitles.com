@@ -15,15 +15,25 @@
 	var countries = [];
 	try { countries = JSON.parse(meta('cookie-countries') || '[]'); } catch (e) {}
 
-	function initGA() {
+	function consentDefaults(granted) {
+		var value = granted ? 'granted' : 'denied';
+		return { ad_storage: value, ad_user_data: value, ad_personalization: value, analytics_storage: value };
+	}
+
+	function initGA(granted) {
 		window.dataLayer = window.dataLayer || [];
 		window.gtag = function () { window.dataLayer.push(arguments); };
+		window.gtag('consent', 'default', consentDefaults(granted));
 		window.gtag('js', new Date());
 		window.gtag('config', gaId);
 		var s = document.createElement('script');
 		s.async = true;
 		s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId);
 		document.head.appendChild(s);
+	}
+
+	function grantConsent() {
+		if (window.gtag) window.gtag('consent', 'update', consentDefaults(true));
 	}
 
 	function storedConsent() {
@@ -39,7 +49,7 @@
 		if (accept) accept.addEventListener('click', function () {
 			try { localStorage.setItem(CONSENT_KEY, 'granted'); } catch (e) {}
 			banner.hidden = true;
-			initGA();
+			grantConsent();
 		});
 		if (decline) decline.addEventListener('click', function () {
 			try { localStorage.setItem(CONSENT_KEY, 'denied'); } catch (e) {}
@@ -61,9 +71,10 @@
 	}
 
 	resolveCountry(function (cc) {
-		if (countries.indexOf(cc) === -1) return initGA();
+		if (countries.indexOf(cc) === -1) return initGA(true);
 		var consent = storedConsent();
-		if (consent === 'granted') return initGA();
+		if (consent === 'granted') return initGA(true);
+		initGA(false);
 		if (consent === null) showBanner();
 	});
 })();
