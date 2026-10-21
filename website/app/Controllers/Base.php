@@ -27,7 +27,8 @@ class Base
         $prefix = $locale === $f3->get('APP.default_locale') ? '' : '/' . $locale;
 
         $f3->set('page', $page);
-        $f3->set('canonical', $prefix . $path);
+        $canonical = $prefix . $path;
+        $f3->set('canonical', $canonical === '/' ? '/' : rtrim($canonical, '/'));
         $f3->set('alternates', \Services\Locale::alternates($f3, $path));
         $f3->set('lang_rows', \Services\Locale::menu($f3, $path));
         $f3->set('lang_flags', \Services\Locale::flagsJson($f3));

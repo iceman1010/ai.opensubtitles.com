@@ -92,9 +92,9 @@
 		return 'https://s8.opensubtitles.com/features/' + s.slice(-1) + '/' + s.slice(-2, -1) + '/' + s.slice(-3, -2) + '/' + s + '.jpg';
 	}
 
-	function posterBox(imgUrl) {
+	function posterBox(imgUrl, title) {
 		return imgUrl
-			? '<div class="feature-poster has-img" data-poster="' + esc(imgUrl) + '"><img class="feature-poster-img" src="' + esc(imgUrl) + '" alt="" loading="lazy"></div>'
+			? '<div class="feature-poster has-img" data-poster="' + esc(imgUrl) + '" data-title="' + esc(title || '') + '"><img class="feature-poster-img" src="' + esc(imgUrl) + '" alt="' + esc(title || '') + '" loading="lazy"></div>'
 			: '<div class="feature-poster poster-empty" aria-hidden="true"><svg class="btn-icon"><use href="#icon-film"/></svg></div>';
 	}
 
@@ -168,7 +168,7 @@
 			const onDemand = a.uploader && a.uploader.name === i18n.on_demand_uploader;
 			const size = formatSize(file.file_name);
 			const uploaded = formatDate(a.upload_date);
-			const poster = fd.feature_id ? posterBox(posterUrlFor(fd.feature_id)) : posterBox(null);
+			const poster = fd.feature_id ? posterBox(posterUrlFor(fd.feature_id), fd.title || a.release) : posterBox(null);
 			return '<article class="card sub-card has-poster" data-file-id="' + esc(file.file_id || '') + '" data-file-name="' + esc(file.file_name || '') + '" data-lang="' + esc(a.language || '') + '">' +
 				poster +
 				'<div class="feature-body">' +
@@ -211,7 +211,7 @@
 			const isShow = a.feature_type === 'Tvshow';
 			const counts = isShow ? a.seasons_count : a.subtitles_count;
 			const countLabel = isShow ? i18n.episodes_count : i18n.subtitles_count;
-			const poster = posterBox(a.img_url);
+			const poster = posterBox(a.img_url, a.title);
 			return '<article class="card sub-card feature-card" data-imdb="' + esc(imdbId || '') + '" data-feature-type="' + esc(a.feature_type || '') + '">' +
 				poster +
 				'<div class="feature-body">' +
@@ -379,11 +379,13 @@
 		el('lightbox-overlay').addEventListener('click', () => {
 			el('lightbox-overlay').hidden = true;
 			el('lightbox-img').src = '';
+			el('lightbox-img').alt = '';
 		});
 		el('results-grid').addEventListener('click', (e) => {
 			const posterEl = e.target.closest('.feature-poster.has-img');
 			if (posterEl && posterEl.dataset.poster) {
 				el('lightbox-img').src = posterEl.dataset.poster;
+				el('lightbox-img').alt = posterEl.dataset.title || '';
 				el('lightbox-overlay').hidden = false;
 				return;
 			}
@@ -412,6 +414,7 @@
 			if (e.key === 'Escape' && !el('lightbox-overlay').hidden) {
 				el('lightbox-overlay').hidden = true;
 				el('lightbox-img').src = '';
+				el('lightbox-img').alt = '';
 			}
 		});
 	}

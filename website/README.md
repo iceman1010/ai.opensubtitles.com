@@ -2,8 +2,7 @@
 
 SEO-first demo & marketing site. PHP 8.3 + FatFreeFramework, server-rendered,
 vanilla JS, no build step. All API calls happen in browser JS (direct or via the
-existing same-domain proxy); PHP only renders pages. See `../plan.md` for the
-full brainstorm/decision record.
+existing same-domain proxy); PHP only renders pages. 
 
 ## Run (dev)
 

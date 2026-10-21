@@ -57,7 +57,10 @@ class Seo
         foreach ($entries as $path => $mtime) {
             echo "  <url>\n";
             foreach ($locales as $locale) {
-                $loc = $base . ($locale === $default ? '' : '/' . $locale) . $path;
+                $loc = rtrim($base . ($locale === $default ? '' : '/' . $locale) . $path, '/');
+                if ($loc === $base) {
+                    $loc .= '/';
+                }
                 echo '    <xhtml:link rel="alternate" hreflang="' . $locale . '" href="' . htmlspecialchars($loc) . '"/>' . "\n";
             }
             echo '    <xhtml:link rel="alternate" hreflang="x-default" href="' . htmlspecialchars($base . $path) . '"/>' . "\n";

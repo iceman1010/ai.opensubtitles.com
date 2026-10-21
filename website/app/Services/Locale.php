@@ -50,7 +50,8 @@ class Locale
         $links = [];
         foreach ($f3->get('APP.locales') as $locale) {
             $prefix = $locale === $f3->get('APP.default_locale') ? '' : '/' . $locale;
-            $links[$locale] = $prefix . $path;
+            $url = $prefix . $path;
+            $links[$locale] = $url === '/' ? '/' : rtrim($url, '/');
         }
         return $links;
     }
