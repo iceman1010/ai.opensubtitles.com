@@ -116,7 +116,11 @@ file deployed next to `config.php` (not via git).
   public Api-Key in the shared config so the client can auto-relogin after
   token expiry. Logout on either side logs out both.
 - Pricing page renders from `cache/pricing.json`, refreshed from
-  `api_proxy_base` (config) when older than 6h. Empty until configured.
+  `api_base_server` (config) when older than 6h. Empty until configured.
+  Refresh is serialized via `flock` on `cache/pricing.json.lock`, and a
+  failed refresh re-dates the existing cache (or writes an empty
+  placeholder) so stale data is served and the API is retried no sooner
+  than the next 6h window — no per-request retry storm during outages.
   Model cards show credit prices (max 5 decimals) plus a computed USD line
   (1 credit = $0.01, config `credit_usd_rate`; per 1,000 chars / per minute).
   A "Credit packages" card grid (from POST `/ai/info/credits`, public, no

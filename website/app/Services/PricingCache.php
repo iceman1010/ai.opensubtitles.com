@@ -51,14 +51,35 @@ class PricingCache
 
     private function ensureFresh(): void
     {
-        $stale = !is_file($this->file) || $this->age() >= (int) $this->f3->get('APP.pricing_cache_ttl');
-        if (!$stale && is_file($this->file)) {
-            $data = json_decode((string) file_get_contents($this->file), true);
-            $stale = !array_key_exists('packages', $data);
+        if (!$this->stale()) {
+            return;
         }
-        if ($stale) {
-            $this->refresh();
+        $lock = fopen($this->file . '.lock', 'c');
+        if (!$lock) {
+            return;
         }
+        if (flock($lock, LOCK_EX | LOCK_NB)) {
+            try {
+                if ($this->stale()) {
+                    $this->refresh();
+                }
+            } finally {
+                flock($lock, LOCK_UN);
+            }
+        }
+        fclose($lock);
+    }
+
+    private function stale(): bool
+    {
+        if (!is_file($this->file)) {
+            return true;
+        }
+        $data = json_decode((string) file_get_contents($this->file), true);
+        if (!is_array($data) || !array_key_exists('packages', $data)) {
+            return true;
+        }
+        return time() - (int) ($data['fetched_at'] ?? 0) >= (int) $this->f3->get('APP.pricing_cache_ttl');
     }
 
     private static function formatPrice(float $price): string
@@ -90,6 +111,7 @@ class PricingCache
 
         $decoded = json_decode((string) $body, true);
         if (!is_array($decoded['data'] ?? null)) {
+            $this->markFailedAttempt();
             return;
         }
         $services = $decoded['data'];
@@ -117,12 +139,17 @@ class PricingCache
         );
     }
 
-    private function age(): int
+    private function markFailedAttempt(): void
     {
-        if (!is_file($this->file)) {
-            return PHP_INT_MAX;
-        }
-        $data = json_decode((string) file_get_contents($this->file), true);
-        return time() - (int) ($data['fetched_at'] ?? 0);
+        $data = is_file($this->file) ? json_decode((string) file_get_contents($this->file), true) : [];
+        file_put_contents(
+            $this->file,
+            json_encode([
+                'fetched_at' => time(),
+                'services' => is_array($data['services'] ?? null) ? $data['services'] : [],
+                'packages' => is_array($data['packages'] ?? null) ? $data['packages'] : [],
+            ], JSON_PRETTY_PRINT),
+            LOCK_EX
+        );
     }
 }
