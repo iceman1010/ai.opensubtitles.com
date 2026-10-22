@@ -20,7 +20,7 @@ file deployed next to `config.php` (not via git).
 
 ## Structure
 
-    public/          webroot: index.php bootstrap, .htaccess, css/ + js assets
+    public/          webroot: index.php bootstrap, .htaccess, js assets
     app/
       App.php        boot: config (+ git-ignored config.local.php overrides),
                      theme UI paths, locale, routes
@@ -46,7 +46,14 @@ file deployed next to `config.php` (not via git).
 ## Notes
 
 - Theme switching: set `theme` in `app/config.php`; theme templates in
-  `ui/themes/<name>/` override `ui/base/`, CSS in `public/assets/css/<name>/`.
+  `ui/themes/<name>/` override `ui/base/`. Stylesheets live in `ui/css/<name>/`
+  as numbered source files (`00-tokens.css` first) and are joined + minified
+  server-side: an F3 route (`app/App.php`, `Web::minify()`, per-file mtime
+  cache) serves them at `/assets/css/<name>/main.css`; `Base::render` adds a
+  `?v=<max-mtime>` cache-buster. Edit the sources, reload — no build step.
+  F3 CACHE is on (`App::boot`) and the route has a 1-year TTL: browsers get
+  `max-age=31536000` + 304 revalidation; any source edit changes the `?v=`,
+  so a fresh build is guaranteed on the next reload.
 - Dark/light toggle rides CSS tokens (`data-theme` attribute), preference in
   localStorage, defaults to `prefers-color-scheme`.
 - Locale: URLs are `/` (en) and `/de/...`; `app/config.php` `languages` map

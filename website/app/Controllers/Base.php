@@ -36,6 +36,12 @@ class Base
         $f3->set('lang_dir', $f3->get('APP.languages')[$locale]['dir'] ?? 'ltr');
         $f3->set('lang_search_show', $f3->get('APP.lang_search') && count($f3->get('APP.languages')) > 8);
         $f3->set('noindex', false);
+        $cssDir = dirname(__DIR__, 2) . '/ui/css/caption-light/';
+        $cssVersion = 0;
+        foreach (glob($cssDir . '*.css') ?: [] as $cssFile) {
+            $cssVersion = max($cssVersion, filemtime($cssFile));
+        }
+        $f3->set('css_v', $cssVersion);
         echo \Template::instance()->render('layout.html');
     }
 }

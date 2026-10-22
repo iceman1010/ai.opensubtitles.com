@@ -1,0 +1,402 @@
+/* caption-light — new job form & job status
+ * Source file: edits belong here, not in public/. Joined + minified
+ * server-side into /assets/css/caption-light/main.css (F3 route in
+ * app/App.php). 00-tokens.css loads first; file numbering is load order.
+ */
+
+
+/* New job & job status
+---------------------- */
+
+.dropzone {
+	border: 2px dashed var(--line);
+	border-radius: var(--radius);
+	padding: 4rem 2rem;
+	text-align: center;
+	cursor: pointer;
+	color: var(--ink-soft);
+}
+
+
+.dropzone:hover,
+.dropzone.dragover {
+	border-color: var(--accent);
+	color: var(--ink);
+	background: var(--surface);
+}
+
+
+#options-panel {
+	background: var(--surface);
+	border: var(--border);
+	border-radius: var(--radius);
+	padding: var(--gap);
+	margin-top: var(--gap);
+}
+
+
+#options-panel label {
+	display: block;
+	font-weight: 600;
+	margin: 1rem 0;
+}
+
+
+#options-panel select {
+	display: block;
+	width: 100%;
+	margin-top: 0.3rem;
+	padding: 0.6rem 0.8rem;
+	border: var(--border);
+	border-radius: var(--radius-sm);
+	background: var(--paper);
+	color: var(--ink);
+	font: inherit;
+}
+
+
+#options-panel h2 {
+	margin: 0;
+}
+
+
+.checkbox {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	font-weight: 400 !important;
+}
+
+
+.checkbox input {
+	width: auto;
+}
+
+
+.notice {
+	background: var(--surface);
+	border: 1px solid var(--accent);
+	border-radius: var(--radius-sm);
+	padding: 0.6rem 1rem;
+	font-size: 0.9rem;
+}
+
+
+.form-error {
+	background: color-mix(in srgb, var(--danger) 12%, transparent);
+	border: 1px solid color-mix(in srgb, var(--danger) 40%, transparent);
+	color: var(--danger-ink);
+	border-radius: var(--radius-sm);
+	padding: 0.6rem 1rem;
+	font-size: 0.9rem;
+}
+
+
+.detect-result {
+	background: var(--surface);
+	border: var(--border);
+	border-radius: var(--radius);
+	padding: 1rem 1.25rem;
+	margin-top: var(--gap);
+}
+
+
+.file-details {
+	margin-top: 0.5rem;
+}
+
+
+.file-details-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	background: none;
+	border: 0;
+	padding: 0.25rem 0;
+	color: var(--ink-soft);
+	font-size: 0.875rem;
+	font-family: inherit;
+	cursor: pointer;
+}
+
+
+.file-details-toggle:hover {
+	color: var(--ink);
+}
+
+
+.file-details-toggle .btn-icon {
+	width: 1rem;
+	height: 1rem;
+	transition: transform 0.15s ease;
+}
+
+
+.file-details-toggle.open .btn-icon {
+	transform: rotate(180deg);
+}
+
+
+.file-details-body {
+	margin-top: 0.5rem;
+	background: var(--surface);
+	border: var(--border);
+	border-radius: var(--radius);
+	padding: 0.85rem 1.25rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+
+.fd-group h4 {
+	margin: 0 0 0.4rem;
+	font-size: 0.72rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--ink-soft);
+}
+
+
+.fd-group dl {
+	margin: 0;
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	column-gap: var(--gap);
+	row-gap: 0.2rem;
+}
+
+
+.fd-row {
+	display: contents;
+}
+
+
+.fd-row dt {
+	color: var(--ink-soft);
+	font-size: 0.9rem;
+}
+
+
+.fd-row dd {
+	margin: 0;
+	font-size: 0.9rem;
+	overflow-wrap: anywhere;
+}
+
+
+.lang-detect {
+	background: var(--surface);
+	border: var(--border);
+	border-radius: var(--radius);
+	padding: 0.8rem 1.25rem;
+	margin-top: var(--gap);
+	font-size: 0.9rem;
+}
+
+
+.lang-detect .spinner,
+#convert-progress .spinner,
+#job-processing .spinner {
+	display: inline-block;
+	vertical-align: -2px;
+	width: 0.9rem;
+	height: 0.9rem;
+	margin-inline-end: 0.45rem;
+	border: 2px solid var(--line);
+	border-top-color: var(--ink-soft);
+	border-radius: 50%;
+	animation: lang-detect-spin 0.7s linear infinite;
+}
+
+
+@keyframes lang-detect-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.lang-detect.ok {
+	border-color: var(--ok);
+}
+
+
+.lang-detect.fail {
+	border-color: var(--danger);
+}
+
+
+.cost-estimate {
+	background: var(--surface);
+	border: var(--border);
+	border-radius: var(--radius);
+	padding: 0.8rem 1.25rem;
+	margin-top: var(--gap);
+	margin-bottom: var(--gap);
+	font-size: 0.9rem;
+}
+
+
+.cost-estimate p {
+	margin: 0.2rem 0;
+}
+
+
+.cost-estimate-amount {
+	font-weight: 700;
+	animation: nav-glow-pulse 0.9s ease-out 1;
+}
+
+
+#job-quality.quality-pass {
+	color: var(--ok-ink);
+	font-weight: 600;
+}
+
+
+#job-quality.quality-fail {
+	color: var(--danger-ink);
+	font-weight: 600;
+}
+
+
+.stat-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--gap-sm);
+	margin: 1rem 0;
+}
+
+
+.stat-chip {
+	background: var(--paper);
+	border: var(--border);
+	border-radius: 10px;
+	padding: 0.5rem 0.9rem;
+	display: grid;
+}
+
+
+.stat-label {
+	font-size: 0.75rem;
+	color: var(--ink-soft);
+}
+
+
+.stat-value {
+	font-weight: 700;
+	font-size: 1.05rem;
+}
+
+
+.stat-chip.over-limit .stat-value {
+	color: var(--danger);
+}
+
+
+.read-issues-line {
+	font-weight: 600;
+	margin: var(--gap-sm) 0 0.5rem;
+}
+
+
+.issue-chip {
+	display: inline-block;
+	background: var(--paper);
+	border: var(--border);
+	border-radius: var(--radius-pill);
+	padding: 0.15rem 0.7rem;
+	font-size: 0.8rem;
+	margin-block: 0 0.4rem;
+	margin-inline: 0 0.4rem;
+}
+
+
+.read-problem {
+	background: var(--paper);
+	border: var(--border);
+	border-inline-start: 4px solid var(--line);
+	border-radius: var(--radius-sm);
+	padding: var(--gap-sm) 1rem;
+	margin-bottom: 0.6rem;
+}
+
+
+.read-problem.sev-critical {
+	border-inline-start-color: var(--danger);
+}
+
+
+.read-problem.sev-minor {
+	border-inline-start-color: var(--warn);
+}
+
+
+.read-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	align-items: center;
+	font-size: 0.85rem;
+	color: var(--ink-soft);
+}
+
+
+.read-meta strong {
+	color: var(--ink);
+}
+
+
+.sev-badge {
+	font-size: 0.7rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	border-radius: 4px;
+	padding: 0.1rem 0.4rem;
+}
+
+
+.sev-badge.sev-critical {
+	background: color-mix(in srgb, var(--danger) 15%, transparent);
+	color: var(--danger-ink);
+}
+
+
+.sev-badge.sev-minor {
+	background: color-mix(in srgb, var(--warn) 15%, transparent);
+	color: var(--warn-ink);
+}
+
+
+.read-time {
+	font-family: var(--font-mono);
+}
+
+
+.read-text {
+	font-family: var(--font-mono);
+	white-space: pre-wrap;
+	margin-top: 0.5rem;
+	font-size: 0.9rem;
+}
+
+
+.read-issues {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+	margin-top: 0.5rem;
+}
+
+
+.read-issues .issue-chip {
+	margin: 0;
+}
+
+
+.sub-chips .issue-chip {
+	margin: 0 0.4rem 0.4rem 0;
+}
+
+

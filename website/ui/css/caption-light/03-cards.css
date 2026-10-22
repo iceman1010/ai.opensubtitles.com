@@ -1,0 +1,90 @@
+/* caption-light — generic cards
+ * Source file: edits belong here, not in public/. Joined + minified
+ * server-side into /assets/css/caption-light/main.css (F3 route in
+ * app/App.php). 00-tokens.css loads first; file numbering is load order.
+ */
+
+
+/* Cards
+------- */
+
+.auth-card {
+	max-width: 24rem;
+	margin: 4rem auto;
+	background: var(--surface);
+	border: var(--border);
+	border-radius: var(--radius);
+	padding: 2.5rem;
+	box-shadow: var(--shadow);
+}
+
+
+.auth-card label {
+	display: block;
+	margin-bottom: 1rem;
+	font-weight: 600;
+}
+
+
+.auth-card input {
+	display: block;
+	width: 100%;
+	margin-top: 0.3rem;
+	padding: 0.6rem 0.8rem;
+	border: var(--border);
+	border-radius: var(--radius-sm);
+	background: var(--paper);
+	color: var(--ink);
+	font: inherit;
+}
+
+
+.auth-card .btn {
+	width: 100%;
+}
+
+
+.org-hint {
+	margin-top: 1rem;
+	font-size: 0.9rem;
+}
+
+
+.org-hint summary {
+	font-weight: 600;
+	cursor: pointer;
+	color: var(--ink-soft);
+}
+
+
+.org-hint[open] summary {
+	margin-bottom: 0.5rem;
+}
+
+
+.card {
+	background: var(--surface);
+	border: var(--border);
+	border-radius: var(--radius);
+	padding: 2rem;
+	box-shadow: var(--shadow);
+}
+
+
+.card + .card {
+	margin-top: var(--gap);
+}
+
+
+.card h2 {
+	margin-top: 0;
+	font-size: 1.1rem;
+	color: var(--ink-soft);
+}
+
+
+.card .btn {
+	margin-right: var(--gap);
+}
+
+

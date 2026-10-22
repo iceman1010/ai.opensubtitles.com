@@ -1,3 +1,9 @@
+/* caption-light — design tokens
+ * Every --variable the site uses, light + dark. Components only ever
+ * reference var(--…). Joined + minified server-side into
+ * /assets/css/caption-light/main.css (F3 route in app/App.php).
+ */
+
 :root {
 	color-scheme: light;
 	--paper: #fafaf7;

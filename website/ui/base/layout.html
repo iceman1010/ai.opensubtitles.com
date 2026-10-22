@@ -16,8 +16,7 @@
 	<check if="{{ @noindex }}"><true><meta name="robots" content="noindex, nofollow"></true></check>
 	<repeat group="{{ @alternates }}" key="{{ @hl }}" value="{{ @url }}"><link rel="alternate" hreflang="{{ @hl }}" href="https://ai.opensubtitles.com{{ @url }}">
 	</repeat>
-	<link rel="stylesheet" href="/assets/css/caption-light/tokens.css">
-	<link rel="stylesheet" href="/assets/css/caption-light/main.css">
+	<link rel="stylesheet" href="/assets/css/caption-light/main.css?v={{ @css_v }}">
 	<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
 	<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">

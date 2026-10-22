@@ -5,6 +5,7 @@ class App
     public static function boot(): \Base
     {
         $f3 = \Base::instance();
+        $f3->set('CACHE', true);
 
         $config = require dirname(__DIR__) . '/app/config.php';
         if (is_file(__DIR__ . '/config.local.php')) {
@@ -41,6 +42,13 @@ class App
         foreach (\Controllers\Llms::slugs() as $slug) {
             $f3->route('GET /' . $slug . '.md', fn (\Base $f3) => (new \Controllers\Llms())->serve($f3, $slug));
         }
+
+        $f3->route('GET /assets/css/caption-light/main.css', function (\Base $f3): void {
+            $dir = dirname(__DIR__) . '/ui/css/caption-light/';
+            $files = array_map('basename', glob($dir . '*.css') ?: []);
+            sort($files);
+            echo \Web::instance()->minify($files, 'text/css', true, $dir);
+        }, 31536000);
 
         if ((string) $f3->get('APP.dev_proxy_upstream') !== '') {
             $f3->route('GET /ai-web/*', 'Controllers\DevProxy->forward');

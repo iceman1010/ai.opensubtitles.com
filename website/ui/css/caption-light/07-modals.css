@@ -1,0 +1,353 @@
+/* caption-light — login modals, preview modal & lightbox
+ * Source file: edits belong here, not in public/. Joined + minified
+ * server-side into /assets/css/caption-light/main.css (F3 route in
+ * app/App.php). 00-tokens.css loads first; file numbering is load order.
+ */
+
+
+/* Login modals (detect & support)
+--------------------------------- */
+
+#detect-modal.modal-overlay,
+#support-modal.modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgb(0 0 0 / 60%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--gap);
+	z-index: var(--z-modal);
+}
+
+
+.modal-login-card {
+	background: var(--surface);
+	border: var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	padding: 1.75rem;
+	max-width: 24rem;
+}
+
+
+.modal-title {
+	font-weight: 600;
+	font-size: 1.05rem;
+	margin-bottom: 0.5rem;
+}
+
+
+#detect-modal .modal-actions,
+#support-modal .modal-actions {
+	margin-top: 1.25rem;
+}
+
+
+/* Preview modal & lightbox
+-------------------------- */
+
+.modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgb(0 0 0 / 55%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--gap);
+	z-index: var(--z-menu);
+}
+
+
+.modal-card {
+	background: var(--surface);
+	border: var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	width: 90vw;
+	height: 90vh;
+	display: flex;
+	flex-direction: column;
+	padding: var(--gap);
+}
+
+
+.modal-card h3 {
+	font-size: 1.05rem;
+	overflow-wrap: anywhere;
+	min-width: 0;
+}
+
+
+.modal-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	margin: 0 0 var(--gap-sm);
+}
+
+
+.modal-font {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	flex: 0 0 auto;
+}
+
+
+.modal-font > .btn-icon {
+	width: 2.6rem;
+	height: 2.6rem;
+	color: var(--ink-soft);
+}
+
+
+.modal-pre {
+	margin: 0;
+	flex: 1;
+	overflow: auto;
+	background: var(--paper);
+	border: var(--border);
+	border-radius: var(--radius-sm);
+	padding: 1rem;
+	font-size: 0.85rem;
+	font-family: var(--font-mono);
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+
+.pv-toolbar {
+	display: flex;
+	align-items: center;
+	margin: 0 0 var(--gap-sm);
+	flex-wrap: wrap;
+}
+
+
+.pv-toolbar > * + * {
+	margin-inline-start: var(--gap-sm);
+}
+
+
+.pv-badge {
+	flex: 0 0 auto;
+	font-size: 0.75rem;
+	color: var(--ink-soft);
+	border: var(--border);
+	border-radius: var(--radius-pill);
+	padding: 0.2rem 0.65rem;
+	white-space: nowrap;
+}
+
+
+.pv-search {
+	flex: 1 1 12rem;
+	min-width: 0;
+}
+
+
+.pv-count {
+	flex: 0 0 auto;
+	min-width: 8ch;
+	max-width: 12ch;
+	text-align: right;
+	font-family: var(--font-mono);
+	font-size: 0.8rem;
+	color: var(--ink-soft);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+
+.pv-nav-btn {
+	max-width: 4rem;
+	overflow: hidden;
+	transition: max-width 0.25s ease, min-width 0.25s ease, padding 0.25s ease, margin 0.25s ease, border-width 0.25s ease, opacity 0.25s ease;
+}
+
+
+[dir="rtl"] .pv-nav-btn svg {
+	transform: scaleX(-1);
+}
+
+
+.pv-count.pv-nav-btn {
+	max-width: 12ch;
+}
+
+
+.pv-off {
+	max-width: 0;
+	min-width: 0;
+	padding-left: 0;
+	padding-right: 0;
+	margin-inline-start: 0;
+	border-left-width: 0;
+	border-right-width: 0;
+	opacity: 0;
+}
+
+
+.pv-view {
+	flex: 1;
+	overflow: auto;
+	background: var(--paper);
+	border: var(--border);
+	border-radius: var(--radius-sm);
+	padding: 0.25rem 0;
+	font-size: 0.85rem;
+}
+
+
+.pv-space {
+	position: relative;
+}
+
+
+.pv-window {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	will-change: transform;
+}
+
+
+.pv-row {
+	border-bottom: var(--border);
+	overflow: hidden;
+}
+
+
+.pv-row:last-child {
+	border-bottom: 0;
+}
+
+
+.pv-row.pv-alt {
+	background: color-mix(in srgb, var(--ink) 4%, transparent);
+}
+
+
+.pv-row.pv-match {
+	background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+
+.pv-row:hover {
+	background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+
+.pv-row.pv-hit {
+	background: color-mix(in srgb, var(--accent) 14%, transparent);
+	box-shadow: inset 3px 0 0 var(--accent);
+}
+
+
+[dir="rtl"] .pv-row.pv-hit {
+	box-shadow: inset -3px 0 0 var(--accent);
+}
+
+
+.pv-inner {
+	display: grid;
+	grid-template-columns: 3.6em minmax(0, 1fr);
+	padding: 0.45em 0;
+}
+
+
+.pv-num {
+	align-self: stretch;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-end;
+	padding: 0 0.6em;
+	border-inline-end: var(--border);
+	font-family: var(--font-mono);
+	font-size: 0.78em;
+	line-height: inherit;
+	color: var(--ink-soft);
+}
+
+
+.pv-body {
+	min-width: 0;
+	padding-inline: 0.9em 1rem;
+}
+
+
+.pv-meta {
+	display: flex;
+	align-items: baseline;
+	gap: 0.5em;
+	font-family: var(--font-mono);
+	font-size: 0.78em;
+	color: var(--ink-soft);
+	margin-bottom: 0.25em;
+}
+
+
+.pv-time {
+	white-space: nowrap;
+}
+
+
+.pv-arrow {
+	color: var(--accent);
+}
+
+
+.pv-dur {
+	margin-inline-start: auto;
+}
+
+
+.pv-text {
+	white-space: pre-wrap;
+	word-break: break-word;
+	line-height: 1.45;
+	font-size: 1.08em;
+}
+
+
+.modal-actions {
+	display: flex;
+	gap: 0.5rem;
+	justify-content: flex-end;
+	margin-top: 1rem;
+}
+
+
+.modal-actions .btn {
+	flex: 1;
+	justify-content: center;
+}
+
+
+.lightbox-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgb(0 0 0 / 80%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--gap);
+	z-index: var(--z-lightbox);
+	cursor: zoom-out;
+}
+
+
+.lightbox-overlay img {
+	max-width: 92vw;
+	max-height: 88vh;
+	width: auto;
+	height: auto;
+	border-radius: var(--radius-sm);
+	box-shadow: var(--shadow);
+}
+
+

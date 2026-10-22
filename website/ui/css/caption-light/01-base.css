@@ -1,0 +1,175 @@
+/* caption-light — reset, buttons, shared primitives
+ * Source file: edits belong here, not in public/. Joined + minified
+ * server-side into /assets/css/caption-light/main.css (F3 route in
+ * app/App.php). 00-tokens.css loads first; file numbering is load order.
+ */
+
+
+/* Base & reset
+-------------- */
+
+* {
+	box-sizing: border-box;
+}
+
+
+[hidden] {
+	display: none !important;
+}
+
+
+:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+
+body {
+	margin: 0;
+	font-family: var(--font);
+	background: var(--paper);
+	color: var(--ink);
+	line-height: 1.6;
+}
+
+
+a {
+	color: inherit;
+}
+
+
+progress {
+	width: 100%;
+	height: 0.8rem;
+}
+
+
+/* Buttons
+--------- */
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+	position: relative;
+	padding: 0.7rem 1.4rem;
+	border-radius: var(--radius-pill);
+	text-decoration: none;
+	font-weight: 600;
+	border: 2px solid transparent;
+	cursor: pointer;
+	font-size: 1rem;
+}
+
+
+.btn-icon {
+	width: 1em;
+	height: 1em;
+	flex-shrink: 0;
+}
+
+
+.btn-icon use {
+	pointer-events: none;
+}
+
+
+.btn-small {
+	padding: 0.35rem 0.9rem;
+}
+
+
+.btn-block-show {
+	width: 100%;
+	justify-content: center;
+	margin-top: 0.5rem;
+}
+
+
+.btn-primary {
+	background: var(--accent);
+	color: var(--accent-ink);
+}
+
+
+.btn-primary:hover {
+	filter: brightness(1.05);
+}
+
+
+.btn-ghost {
+	border-color: var(--ink);
+	color: var(--ink);
+}
+
+
+.btn-ghost:hover {
+	background: var(--ink);
+	color: var(--paper);
+}
+
+
+.btn:disabled {
+	opacity: 0.55;
+	cursor: not-allowed;
+}
+
+
+.media-icon-btn {
+	padding: 0.35rem 0.5rem;
+}
+
+
+.seg {
+	display: inline-flex;
+	border: var(--border);
+	border-radius: var(--radius-pill);
+	overflow: hidden;
+	margin-bottom: 1rem;
+}
+
+
+.seg-btn {
+	border: none;
+	background: transparent;
+	color: var(--ink-soft);
+	padding: 0.45rem 1.1rem;
+	font: inherit;
+	font-size: 0.9rem;
+	cursor: pointer;
+}
+
+
+.seg-btn[aria-selected="true"] {
+	background: var(--accent);
+	color: var(--accent-ink);
+}
+
+
+.link-btn {
+	border: none;
+	background: none;
+	color: var(--accent);
+	cursor: pointer;
+	font: inherit;
+	font-size: 0.85rem;
+	text-decoration: underline;
+	padding: 0.5rem 0;
+}
+
+
+/* Utilities
+----------- */
+
+.empty {
+	color: var(--ink-soft);
+	text-align: center;
+}
+
+
+.muted {
+	color: var(--ink-soft);
+	font-size: 0.9rem;
+}
+
+
