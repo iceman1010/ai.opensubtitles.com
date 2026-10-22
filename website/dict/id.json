@@ -228,6 +228,7 @@
   "read.no_problems": "Tidak ditemukan masalah keterbacaan. Subtitle mudah dibaca.",
   "read.issues_total": "Masalah keterbacaan ditemukan:",
   "read.more_not_shown": "Masalah lain tidak ditampilkan.",
+  "read.more_details": "More details",
   "read.limit": "Batas",
   "read.reading_speed": "Kecepatan baca",
   "read.line_length": "Panjang baris",

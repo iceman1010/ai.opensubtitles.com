@@ -228,6 +228,7 @@
   "read.no_problems": "Проблем с читаемостью не обнаружено. Текст комфортен для чтения.",
   "read.issues_total": "Обнаружено проблем с читаемостью:",
   "read.more_not_shown": "Показаны не все проблемы.",
+  "read.more_details": "More details",
   "read.limit": "Лимит",
   "read.reading_speed": "Скорость чтения",
   "read.line_length": "Длина строки",

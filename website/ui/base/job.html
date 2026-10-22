@@ -22,7 +22,10 @@
 	<div id="readability-stats" class="stat-row"></div>
 	<p id="readability-limits" class="muted"></p>
 	<div id="readability-summary"></div>
-	<div id="readability-problems"></div>
+	<details id="readability-details" class="read-details" hidden>
+		<summary>{{ @read.more_details }}</summary>
+		<div id="readability-problems"></div>
+	</details>
 </section>
 <script>
 window.JOB_I18N = {
@@ -58,6 +61,6 @@ window.JOB_I18N = {
 };
 </script>
 <script type="module" src="/js/subsrt-global.js"></script>
-<script src="/js/subtitle-viewer.js"></script>
-<script src="/js/preview-modal.js"></script>
-<script src="/js/job.js"></script>
+<script src="/js/subtitle-viewer.js" defer></script>
+<script src="/js/preview-modal.js" defer></script>
+<script src="/js/job.js" defer></script>

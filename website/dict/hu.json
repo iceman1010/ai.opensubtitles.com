@@ -228,6 +228,7 @@
   "read.no_problems": "Nincs olvashatósági probléma — ez a felirat kényelmesen olvasható.",
   "read.issues_total": "olvashatósági probléma található:",
   "read.more_not_shown": "további problémák nem jelennek meg",
+  "read.more_details": "More details",
   "read.limit": "korlát",
   "read.reading_speed": "Olvasási sebesség",
   "read.line_length": "Sorhossz",

@@ -1,11 +1,14 @@
 (function () {
 	if (!window.AI.requireAuth()) return;
 
+	const DEBUG = window.SITE.debug;
+
 	const root = document.getElementById('job-status-card');
 	if (!root) return;
 
 	const kind = root.dataset.jobType;
 	const jobId = root.dataset.jobId;
+	if (DEBUG) console.debug('[job-debug] start', { kind: kind, jobId: jobId });
 
 	const stateEl = document.getElementById('job-state');
 	const processingBox = document.getElementById('job-processing');
@@ -20,11 +23,14 @@
 	const readabilityLimits = document.getElementById('readability-limits');
 	const readabilitySummary = document.getElementById('readability-summary');
 	const readabilityProblems = document.getElementById('readability-problems');
+	const readabilityDetails = document.getElementById('readability-details');
 
 	const POLL_START = 3000;
 	const POLL_MAX = 30000;
 	const POLL_TIMEOUT = 20 * 60 * 1000;
-	const MAX_PROBLEMS_SHOWN = 25;
+	const PROBLEM_CHUNK = 50;
+	let pendingProblems = [];
+	let problemObserver = null;
 	const started = Date.now();
 
 	let processingTimerId = null;
@@ -52,6 +58,7 @@
 		let response;
 		try {
 			response = await window.AI.status(kind, jobId);
+		if (DEBUG) console.debug('[job-debug] poll response:', JSON.parse(JSON.stringify(response)));
 		} catch (e) {
 			if (e.auth) return;
 			stateEl.textContent = 'Connection problem — retrying…';
@@ -81,6 +88,7 @@
 
 		stateEl.textContent = '';
 		startProcessing();
+		if (DEBUG) console.debug('[job-debug] no terminal branch matched — keep polling', { status: response.status, hasData: !!response.data });
 		schedule(POLL_START);
 	}
 
@@ -206,6 +214,7 @@
 
 		if (total === 0) {
 			readabilitySummary.appendChild(el('p', 'quality-pass', JOB_I18N.no_problems));
+			readabilityDetails.hidden = true;
 			return;
 		}
 
@@ -218,12 +227,34 @@
 		}
 
 		const problems = r.problems || [];
-		problems.slice(0, MAX_PROBLEMS_SHOWN).forEach((p) => {
-			readabilityProblems.appendChild(renderProblem(p));
+		readabilityDetails.hidden = problems.length === 0;
+		setupProblemLazyLoading(problems);
+	}
+
+	function setupProblemLazyLoading(problems) {
+		if (problemObserver) {
+			problemObserver.disconnect();
+			problemObserver = null;
+		}
+		pendingProblems = problems.slice();
+		readabilityProblems.innerHTML = '';
+		const sentinel = document.createElement('div');
+		sentinel.id = 'read-sentinel';
+		readabilityProblems.appendChild(sentinel);
+		problemObserver = new IntersectionObserver((entries) => {
+			if (entries.some((entry) => entry.isIntersecting)) appendProblemChunk();
 		});
-		if (problems.length > MAX_PROBLEMS_SHOWN) {
-			readabilityProblems.appendChild(el('p', 'muted',
-				'+' + (problems.length - MAX_PROBLEMS_SHOWN) + ' ' + JOB_I18N.more_not_shown));
+		problemObserver.observe(sentinel);
+	}
+
+	function appendProblemChunk() {
+		const sentinel = document.getElementById('read-sentinel');
+		const chunk = pendingProblems.splice(0, PROBLEM_CHUNK);
+		chunk.forEach((p) => readabilityProblems.insertBefore(renderProblem(p), sentinel));
+		if (pendingProblems.length === 0 && problemObserver) {
+			problemObserver.disconnect();
+			problemObserver = null;
+			if (sentinel) sentinel.hidden = true;
 		}
 	}
 

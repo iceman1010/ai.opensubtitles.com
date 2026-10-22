@@ -228,6 +228,7 @@
   "read.no_problems": "Aucun problème de lisibilité — ce sous-titre se lit confortablement.",
   "read.issues_total": "problème(s) de lisibilité détecté(s) :",
   "read.more_not_shown": "autres problèmes non affichés",
+  "read.more_details": "More details",
   "read.limit": "limite",
   "read.reading_speed": "Vitesse de lecture",
   "read.line_length": "Longueur des lignes",

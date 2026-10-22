@@ -228,6 +228,7 @@
   "read.no_problems": "Ingen læsbarhedsproblemer.",
   "read.issues_total": "Læsbarhedsproblemer fundet:",
   "read.more_not_shown": "Flere problemer vises ikke.",
+  "read.more_details": "More details",
   "read.limit": "Grænse",
   "read.reading_speed": "Læsehastighed",
   "read.line_length": "Linjelængde",

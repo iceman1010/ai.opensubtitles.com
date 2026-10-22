@@ -7,6 +7,7 @@
 	window.SITE = {
 		base: meta('api-base'),
 		apiKey: meta('api-key'),
-		userAgent: meta('api-user-agent') || 'aios v1'
+		userAgent: meta('api-user-agent') || 'aios v1',
+		debug: meta('app-debug') === '1'
 	};
 })();

@@ -228,6 +228,7 @@
   "read.no_problems": "Проблем з читабельністю не виявлено. Субтитри легко читати.",
   "read.issues_total": "Виявлено проблем з читабельністю:",
   "read.more_not_shown": "Інші проблеми не показані.",
+  "read.more_details": "More details",
   "read.limit": "Обмеження",
   "read.reading_speed": "Швидкість читання",
   "read.line_length": "Довжина рядка",

@@ -228,6 +228,7 @@
   "read.no_problems": "Nessun problema di leggibilità — questo sottotitolo è comodamente leggibile.",
   "read.issues_total": "problema(i) di leggibilità trovato(i):",
   "read.more_not_shown": "ulteriori problemi non mostrati",
+  "read.more_details": "More details",
   "read.limit": "limite",
   "read.reading_speed": "Velocità di lettura",
   "read.line_length": "Lunghezza riga",

@@ -200,7 +200,6 @@
   "job.detect_consent_yes": "Sprache erkennen",
   "job.detect_consent_no": "Selbst wählen",
   "job.detect_skipped": "Spracherkennung übersprungen — bitte wähle die Sprache manuell.",
-
   "job.estimate": "Geschätzte Kosten",
   "job.balance": "Dein Guthaben",
   "job.estimate_low": "Nicht genügend Credits für diesen Auftrag",
@@ -229,6 +228,7 @@
   "read.no_problems": "Keine Lesbarkeitsprobleme — dieser Untertitel lässt sich bequem lesen.",
   "read.issues_total": "Lesbarkeitsproblem(e) gefunden:",
   "read.more_not_shown": "weitere Probleme nicht angezeigt",
+  "read.more_details": "Mehr Details anzeigen",
   "read.limit": "Grenze",
   "read.reading_speed": "Lesegeschwindigkeit",
   "read.line_length": "Zeilenlänge",

@@ -228,6 +228,7 @@
   "read.no_problems": "لا توجد مشاكل في سهولة القراءة — هذه الترجمة مريحة للقراءة.",
   "read.issues_total": "تم العثور على مشاكل في سهولة القراءة:",
   "read.more_not_shown": "مشاكل إضافية غير معروضة",
+  "read.more_details": "More details",
   "read.limit": "الحد",
   "read.reading_speed": "سرعة القراءة",
   "read.line_length": "طول السطر",

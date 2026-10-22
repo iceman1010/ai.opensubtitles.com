@@ -228,6 +228,7 @@
   "read.no_problems": "Geen leesbaarheidsprobleme nie — hierdie onderskrif is gemaklik om te lees.",
   "read.issues_total": "leesbaarheidsprobleme gevind:",
   "read.more_not_shown": "verdere probleme nie gewys nie",
+  "read.more_details": "More details",
   "read.limit": "limiet",
   "read.reading_speed": "Leesspoed",
   "read.line_length": "Reëllengte",

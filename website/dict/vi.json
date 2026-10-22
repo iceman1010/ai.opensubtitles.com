@@ -228,6 +228,7 @@
   "read.no_problems": "Không phát hiện vấn đề về khả năng đọc. Phụ đề dễ đọc.",
   "read.issues_total": "Vấn đề khả năng đọc:",
   "read.more_not_shown": "Một số vấn đề khác không hiển thị.",
+  "read.more_details": "More details",
   "read.limit": "Giới hạn",
   "read.reading_speed": "Tốc độ đọc",
   "read.line_length": "Độ dài dòng",

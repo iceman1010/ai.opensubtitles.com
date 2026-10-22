@@ -228,6 +228,7 @@
   "read.no_problems": "Sense problemes de llegibilitat — aquest subtítol és còmode de llegir.",
   "read.issues_total": "problemes de llegibilitat trobats:",
   "read.more_not_shown": "més problemes no mostrats",
+  "read.more_details": "More details",
   "read.limit": "límit",
   "read.reading_speed": "Velocitat de lectura",
   "read.line_length": "Longitud de línia",

@@ -228,6 +228,7 @@
   "read.no_problems": "Nema problema sa čitljivošću — ovaj titl je prijatan za čitanje.",
   "read.issues_total": "pronađenih problema sa čitljivošću:",
   "read.more_not_shown": "dodatni problemi nisu prikazani",
+  "read.more_details": "More details",
   "read.limit": "ograničenje",
   "read.reading_speed": "Brzina čitanja",
   "read.line_length": "Dužina reda",

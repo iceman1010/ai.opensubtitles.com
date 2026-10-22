@@ -228,6 +228,7 @@
   "read.no_problems": "Nie znaleziono problemów z czytelnością. Napisy są wygodne do czytania.",
   "read.issues_total": "Znaleziono problemów z czytelnością:",
   "read.more_not_shown": "Dalsze problemy nie zostały pokazane.",
+  "read.more_details": "More details",
   "read.limit": "Limit",
   "read.reading_speed": "Prędkość czytania",
   "read.line_length": "Długość linii",

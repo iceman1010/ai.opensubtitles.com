@@ -228,6 +228,7 @@
   "read.no_problems": "ไม่พบปัญหาความอ่านง่าย คำบรรยายอ่านง่าย",
   "read.issues_total": "ปัญหาความอ่านง่ายที่พบ:",
   "read.more_not_shown": "ปัญหาอื่นๆ ไม่แสดง",
+  "read.more_details": "More details",
   "read.limit": "จำกัด",
   "read.reading_speed": "ความเร็วการอ่าน",
   "read.line_length": "ความยาวบรรทัด",

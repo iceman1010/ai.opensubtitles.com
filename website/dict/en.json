@@ -229,6 +229,7 @@
   "read.no_problems": "No readability issues — this subtitle is comfortable to read.",
   "read.issues_total": "readability issue(s) found:",
   "read.more_not_shown": "further issues not shown",
+  "read.more_details": "More details",
   "read.limit": "limit",
   "read.reading_speed": "Reading speed",
   "read.line_length": "Line length",

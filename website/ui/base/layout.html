@@ -8,6 +8,7 @@
 	<meta name="api-base" content="{{ @APP.api_base }}">
 	<meta name="api-key" content="{{ @APP.api_key }}">
 	<meta name="api-user-agent" content="{{ @APP.user_agent }}">
+	<meta name="app-debug" content="{{ @APP.debug ? '1' : '0' }}">
 	<check if="{{ @APP.ga_id }}"><true>
 	<meta name="ga-id" content="{{ @APP.ga_id }}">
 	<meta name="cookie-countries" content='{{ json_encode(@APP.cookie_banner_countries) }}'>
@@ -21,9 +22,9 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png">
 	<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 	<script>document.documentElement.dataset.theme=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');</script>
-	<script src="/js/config.js"></script>
-	<script src="/js/api.js"></script>
-	<script src="/js/auth.js"></script>
+	<script src="/js/config.js" defer></script>
+	<script src="/js/api.js" defer></script>
+	<script src="/js/auth.js" defer></script>
 </head>
 <body>
 	<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
@@ -114,9 +115,9 @@
 			<button id="cookie-decline" class="btn btn-ghost" type="button">{{ @cookie.decline }}</button>
 		</div>
 	</div>
-	<script src="/js/theme-toggle.js"></script>
-	<script src="/js/nav-menu.js"></script>
-	<script src="/js/lang-select.js"></script>
-	<script src="/js/cookie-consent.js"></script>
+	<script src="/js/theme-toggle.js" defer></script>
+	<script src="/js/nav-menu.js" defer></script>
+	<script src="/js/lang-select.js" defer></script>
+	<script src="/js/cookie-consent.js" defer></script>
 </body>
 </html>

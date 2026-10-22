@@ -228,6 +228,7 @@
   "read.no_problems": "Geen leesbaarheidsproblemen.",
   "read.issues_total": "Leesbaarheidsproblemen gevonden:",
   "read.more_not_shown": "Overige problemen niet getoond.",
+  "read.more_details": "More details",
   "read.limit": "Limiet",
   "read.reading_speed": "Leessnelheid",
   "read.line_length": "Regellengte",

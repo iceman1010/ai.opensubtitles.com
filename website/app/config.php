@@ -66,6 +66,7 @@ return [
     'api_base_server' => 'https://ai.opensubtitles.com/ai-web/api/v1',
     'dev_proxy_upstream' => 'https://ai.opensubtitles.com',
     'user_agent' => 'aios v1',
+    'debug' => false,
     'pricing_cache_ttl' => 21600,
     'credit_usd_rate' => 0.01,
     'cache_dir' => dirname(__DIR__) . '/cache',

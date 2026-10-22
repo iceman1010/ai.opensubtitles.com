@@ -228,6 +228,7 @@
   "read.no_problems": "مشکلی در خوانایی نیست — این زیرنویس برای خواندن راحت است.",
   "read.issues_total": "مشکل خوانایی یافت شد:",
   "read.more_not_shown": "مشکلات بیشتر نمایش داده نمی‌شوند",
+  "read.more_details": "More details",
   "read.limit": "محدودیت",
   "read.reading_speed": "سرعت خواندن",
   "read.line_length": "طول خط",
