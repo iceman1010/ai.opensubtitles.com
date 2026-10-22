@@ -1,6 +1,6 @@
 /vendor/
 /app/config.local.php
-/cache/*.json
+/cache/*
 /tmp/*
 .DS_Store
 *.log
