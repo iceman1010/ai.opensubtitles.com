@@ -377,6 +377,11 @@
 		setTimeout(() => URL.revokeObjectURL(link.href), 5000);
 	}
 
+	async function fileText(url) {
+		const res = await fetchWithRetry(url, { method: 'GET', headers: headers(true) });
+		return res.text();
+	}
+
 	async function detectLanguage(file, duration) {
 		const form = new FormData();
 		form.append('file', file, file.name || 'audio.mp3');
@@ -485,6 +490,7 @@
 		creditPackages,
 		createSupportTicket,
 		downloadFile,
+		fileText,
 		mediaFileText,
 		downloadText,
 		searchSubtitles,

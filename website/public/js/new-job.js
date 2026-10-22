@@ -21,6 +21,7 @@
 	const translateOptions = document.getElementById('translate-options');
 	const convertBox = document.getElementById('convert-progress');
 	const convertBar = document.getElementById('convert-bar');
+	const convertTimerEl = document.getElementById('convert-timer');
 	const uploadBox = document.getElementById('upload-progress');
 	const uploadBar = document.getElementById('upload-bar');
 	const errorBox = document.getElementById('job-error');
@@ -44,9 +45,29 @@
 		errorBox.hidden = false;
 	}
 
+	let convertTimerId = null;
+
+	function startConvertTimer() {
+		const started = Date.now();
+		convertTimerEl.textContent = '0:00';
+		convertTimerId = setInterval(() => {
+			const s = Math.floor((Date.now() - started) / 1000);
+			convertTimerEl.textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+		}, 1000);
+	}
+
+	function stopConvertTimer() {
+		if (convertTimerId) {
+			clearInterval(convertTimerId);
+			convertTimerId = null;
+		}
+		convertTimerEl.textContent = '';
+	}
+
 	function reset() {
 		errorBox.hidden = true;
 		optionsPanel.hidden = true;
+		stopConvertTimer();
 		convertBox.hidden = true;
 		uploadBox.hidden = true;
 		submitButton.disabled = false;
@@ -528,9 +549,11 @@
 
 			if (currentKind === 'media') {
 				convertBox.hidden = false;
+				startConvertTimer();
 				payload = await window.FFmpegService.convertToMonoMp3(currentFile, (p) => {
 					convertBar.value = Math.round(p * 100);
 				}, duration);
+				stopConvertTimer();
 				convertBox.hidden = true;
 
 				const scope = transcribeOptions;
@@ -567,6 +590,7 @@
 				submitButton.disabled = false;
 			}
 		} catch (e) {
+			stopConvertTimer();
 			convertBox.hidden = true;
 			uploadBox.hidden = true;
 			showError(e.message || 'Processing failed.');

@@ -3,6 +3,10 @@
 </section>
 <section class="card" id="job-status-card" data-job-type="{{ @job_type }}" data-job-id="{{ @job_id }}">
 	<p id="job-state">…</p>
+	<div id="job-processing" hidden>
+		<p><span class="spinner" aria-hidden="true"></span>{{ @job.processing }} <span id="processing-timer"></span></p>
+		<p class="muted">{{ @job.processing_hint }}</p>
+	</div>
 	<div id="job-detail" hidden>
 		<p>{{ @job.file }}: <strong id="job-file"></strong></p>
 		<p>{{ @job.credits_used }}: <strong id="job-price"></strong></p>
@@ -10,6 +14,7 @@
 	</div>
 	<p id="job-quality" hidden></p>
 	<p id="job-errors" class="form-error" hidden></p>
+	<button id="job-preview" class="btn btn-ghost" type="button" hidden><svg class="btn-icon" aria-hidden="true"><use href="#icon-eye"/></svg><span class="btn-label">{{ @media.preview }}</span></button>
 	<button id="job-download" class="btn btn-primary" type="button" hidden><svg class="btn-icon" aria-hidden="true"><use href="#icon-download"/></svg><span class="btn-label">{{ @job.download }}</span></button>
 </section>
 <section class="card" id="readability-card" hidden>
@@ -38,7 +43,21 @@ window.JOB_I18N = {
 	line_length: '{{ @read.line_length }}',
 	line_count: '{{ @read.line_count }}',
 	quality_pass: '{{ @job.quality_pass }}',
-	quality_fail: '{{ @job.quality_fail }}'
+	quality_fail: '{{ @job.quality_fail }}',
+	preview: '{{ @media.preview }}',
+	preview_failed: '{{ @media.preview_failed }}',
+	download: '{{ @media.download }}',
+	close: '{{ @media.close }}',
+	font_smaller: '{{ @media.font_smaller }}',
+	font_larger: '{{ @media.font_larger }}',
+	find_placeholder: '{{ @media.find_placeholder }}',
+	find: '{{ @media.find }}',
+	cues: '{{ @media.cues }}',
+	prev_match: '{{ @media.prev_match }}',
+	next_match: '{{ @media.next_match }}'
 };
 </script>
+<script type="module" src="/js/subsrt-global.js"></script>
+<script src="/js/subtitle-viewer.js"></script>
+<script src="/js/preview-modal.js"></script>
 <script src="/js/job.js"></script>

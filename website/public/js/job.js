@@ -8,8 +8,11 @@
 	const jobId = root.dataset.jobId;
 
 	const stateEl = document.getElementById('job-state');
+	const processingBox = document.getElementById('job-processing');
+	const processingTimerEl = document.getElementById('processing-timer');
 	const detailEl = document.getElementById('job-detail');
 	const downloadButton = document.getElementById('job-download');
+	const previewButton = document.getElementById('job-preview');
 	const errorEl = document.getElementById('job-errors');
 	const qualityEl = document.getElementById('job-quality');
 	const readabilityCard = document.getElementById('readability-card');
@@ -24,6 +27,27 @@
 	const MAX_PROBLEMS_SHOWN = 25;
 	const started = Date.now();
 
+	let processingTimerId = null;
+
+	function startProcessing() {
+		if (!processingBox.hidden) return;
+		processingBox.hidden = false;
+		processingTimerEl.textContent = '0:00';
+		const started = Date.now();
+		processingTimerId = setInterval(() => {
+			const s = Math.floor((Date.now() - started) / 1000);
+			processingTimerEl.textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+		}, 1000);
+	}
+
+	function stopProcessing() {
+		processingBox.hidden = true;
+		if (processingTimerId) {
+			clearInterval(processingTimerId);
+			processingTimerId = null;
+		}
+	}
+
 	async function poll() {
 		let response;
 		try {
@@ -35,11 +59,14 @@
 		}
 
 		if (response.status === 'COMPLETED' && response.data) {
+			stopProcessing();
+			stateEl.textContent = '';
 			renderComplete(response.data);
 			return;
 		}
 
 		if (response.status === 'ERROR' || response.status === 'TIMEOUT') {
+			stopProcessing();
 			stateEl.textContent = response.status === 'TIMEOUT' ? 'Timed out' : 'Failed';
 			errorEl.hidden = false;
 			errorEl.textContent = (response.errors && response.errors.join(', ')) || 'The job failed.';
@@ -47,11 +74,13 @@
 		}
 
 		if (Date.now() - started > POLL_TIMEOUT) {
+			stopProcessing();
 			stateEl.textContent = 'Still processing — this page no longer updates automatically. Reload to check again.';
 			return;
 		}
 
-		stateEl.textContent = 'Processing…';
+		stateEl.textContent = '';
+		startProcessing();
 		schedule(POLL_START);
 	}
 
@@ -114,6 +143,32 @@
 				qualityEl.textContent = 'Download failed: ' + e.message;
 			}
 			downloadButton.disabled = false;
+		});
+
+		previewButton.hidden = false;
+		previewButton.addEventListener('click', async () => {
+			previewButton.disabled = true;
+			try {
+				const content = await window.AI.fileText(data.url);
+				PreviewModal.open(data.file_name, content, {
+					download: JOB_I18N.download,
+					close: JOB_I18N.close,
+					font_smaller: JOB_I18N.font_smaller,
+					font_larger: JOB_I18N.font_larger,
+					find_placeholder: JOB_I18N.find_placeholder,
+					find: JOB_I18N.find,
+					cues: JOB_I18N.cues,
+					prev_match: JOB_I18N.prev_match,
+					next_match: JOB_I18N.next_match
+				});
+			} catch (e) {
+				if (!e.auth) {
+					errorEl.hidden = false;
+					errorEl.textContent = JOB_I18N.preview_failed + ': ' + e.message;
+				}
+			} finally {
+				previewButton.disabled = false;
+			}
 		});
 	}
 

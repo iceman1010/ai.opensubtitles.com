@@ -82,8 +82,8 @@ Output name: `<base>_converted.mp3`.
 - `js/ffmpeg-worker.js` — self-hosted core (public/vendor/ffmpeg/), mono 16k MP3.
 - `js/new-job.js` — smart page: detect → auto language detect → options form (model+language
   selects from info endpoints) → convert (if media) → upload → redirect to job page.
-- `js/job.js` — poll correct endpoint per type; COMPLETED → download btn (authed
-  GET), credits used, quality verdict for translations.
+- `js/job.js` — poll correct endpoint per type; COMPLETED → download + preview
+  (authed GET), credits used, quality verdict for translations.
 - `js/dashboard.js` — credits + recent activities + recent media.
 - PHP PricingCache: fix to POST FormData to `{base}/ai/credits/buy`, keep `data`.
 

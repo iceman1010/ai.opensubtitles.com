@@ -38,8 +38,9 @@
 	</div>
 
 	<div id="convert-progress" hidden>
-		<p>{{ @job.converting }}</p>
+		<p><span class="spinner" aria-hidden="true"></span>{{ @job.converting }} <span id="convert-timer"></span></p>
 		<progress id="convert-bar" max="100" value="0"></progress>
+		<p class="muted" id="convert-hint">{{ @job.convert_hint }}</p>
 	</div>
 	<div id="upload-progress" hidden>
 		<p>{{ @job.uploading }}</p>
