@@ -228,7 +228,7 @@
   "read.no_problems": "가독성 문제가 발견되지 않았습니다. 자막이 읽기 쉽습니다.",
   "read.issues_total": "발견된 가독성 문제:",
   "read.more_not_shown": "추가 문제는 표시되지 않았습니다.",
-  "read.more_details": "More details",
+  "read.more_details": "자세히 보기",
   "read.limit": "제한",
   "read.reading_speed": "읽기 속도",
   "read.line_length": "줄 길이",

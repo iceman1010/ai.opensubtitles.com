@@ -228,7 +228,7 @@
   "read.no_problems": "読みやすさ上の問題は見つかりませんでした。字幕は読みやすいです。",
   "read.issues_total": "読みやすさの問題：",
   "read.more_not_shown": "他の問題は表示されていません。",
-  "read.more_details": "More details",
+  "read.more_details": "詳細を表示",
   "read.limit": "上限",
   "read.reading_speed": "読取速度",
   "read.line_length": "行長",

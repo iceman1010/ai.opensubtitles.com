@@ -258,6 +258,7 @@
   "read.no_problems": "Readability verdict: no issues, comfortable to read. Full sentence.",
   "read.issues_total": "Readability verdict prefix: N issue(s) found, count appended by JS. Keep structure.",
   "read.more_not_shown": "Note: further issues not shown in the short list.",
+  "read.more_details": "Toggle label on job page: expands the full issue list (lazy-loaded). Short phrase.",
   "read.limit": "Readability table column: the limit value. One word.",
   "read.reading_speed": "Readability issue row label: reading speed.",
   "read.line_length": "Readability issue row label: line length.",
