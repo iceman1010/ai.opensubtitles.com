@@ -9,6 +9,7 @@
 	if (!nav || !btn || !menu) return;
 
 	var current = nav.getAttribute('data-current') || 'en';
+	var defaultLocale = nav.getAttribute('data-default') || 'en';
 	var languages = {};
 	try { languages = JSON.parse(nav.getAttribute('data-languages') || '{}'); } catch (e) { languages = {}; }
 
@@ -264,10 +265,25 @@
 		if (e.key === 'Escape') setOpen(false);
 	});
 
+	function liveLocalePath() {
+		var path = location.pathname;
+		if (current === defaultLocale) return path;
+		var prefix = '/' + current;
+		if (path === prefix || path.indexOf(prefix + '/') === 0) {
+			return path.slice(prefix.length) || '/';
+		}
+		return path;
+	}
+
 	menu.addEventListener('click', function (e) {
 		var row = e.target && e.target.closest ? e.target.closest('.lang-option') : null;
 		if (!row) return;
-		document.cookie = 'site_locale=' + encodeURIComponent(row.getAttribute('data-lang')) + '; max-age=31536000; path=/; samesite=lax';
+		var code = row.getAttribute('data-lang');
+		document.cookie = 'site_locale=' + encodeURIComponent(code) + '; max-age=31536000; path=/; samesite=lax';
+		if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+		e.preventDefault();
+		var target = (code === defaultLocale ? '' : '/' + code) + liveLocalePath();
+		location.assign(target);
 	});
 
 	window.LangFlag = { flagFor: flagFor, country: function () { return stored || ''; } };

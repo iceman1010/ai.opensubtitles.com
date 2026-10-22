@@ -75,7 +75,7 @@
 			</div>
 			<a class="nav-pill" href="{{ @lp }}/login" id="nav-login" data-auth="out"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-in"/></svg></span><span class="btn-label">{{ @nav.login }}</span></a>
 			<button class="nav-pill" id="nav-logout" type="button" data-auth="in" hidden><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-log-out"/></svg></span><span class="btn-label">{{ @nav.logout }}</span></button>
-			<div class="nav-more" id="lang-nav" data-current="{{ @locale }}" data-languages='{{ @lang_flags }}'>
+			<div class="nav-more" id="lang-nav" data-current="{{ @locale }}" data-default="{{ @APP.default_locale }}" data-languages='{{ @lang_flags }}'>
 				<button class="nav-pill" id="lang-btn" type="button" aria-label="{{ @nav.language }}" aria-haspopup="true" aria-expanded="false"><img class="lang-flag" src="/lib/circle-flags/{{ @lang_flag_current }}.svg" alt="" width="18" height="18" data-lang="{{ @locale }}"><span class="btn-label">{{ strtoupper(@locale) }}</span></button>
 				<div class="nav-menu" id="lang-menu">
 					<check if="{{ @lang_search_show }}"><true><div class="lang-search"><svg class="btn-icon" aria-hidden="true"><use href="#icon-search"/></svg><input type="search" id="lang-search" placeholder="{{ @nav.search_language }}" aria-label="{{ @nav.search_language }}" autocomplete="off" spellcheck="false"></div></true></check>
