@@ -12,6 +12,26 @@
 	--brand-glow: rgb(37 99 235 / 45%);
 	--nav-glow: rgb(37 99 235 / 55%);
 	--radius: 14px;
+	--radius-xs: 6px;
+	--radius-sm: 8px;
+	--radius-pill: 999px;
+	--border: 1px solid var(--line);
+	--gap: 1.5rem;
+	--gap-sm: 0.75rem;
+	--font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	--font-mono: ui-monospace, monospace;
+	--ok: #2e7d32;
+	--ok-ink: rgb(21 128 61);
+	--danger: rgb(200 40 40);
+	--danger-ink: rgb(180 30 30);
+	--warn: rgb(230 126 34);
+	--warn-ink: rgb(190 100 25);
+	--z-raised: 1;
+	--z-header: 10;
+	--z-menu: 50;
+	--z-lightbox: 60;
+	--z-modal: 70;
+	--z-cookie: 100;
 	--shadow: 0 5px 15px rgb(17 20 24 / 8%);
 	--font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
@@ -29,5 +49,10 @@
 	--caption-fg: #101216;
 	--brand-glow: rgb(59 130 246 / 55%);
 	--nav-glow: rgb(59 130 246 / 65%);
+	--ok: rgb(140 200 150);
+	--ok-ink: rgb(134 239 172);
+	--danger: rgb(255 140 140);
+	--danger-ink: rgb(255 160 160);
+	--warn-ink: rgb(255 190 130);
 	--shadow: 0 3px 10px rgb(0 0 0 / 45%);
 }
