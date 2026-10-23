@@ -1,0 +1,109 @@
+/* caption-light — support page
+ * Source files: edits belong here, not in public/. Joined + minified
+ * server-side into /assets/css/caption-light/main.css (F3 route in
+ * app/App.php). File numbering = load order = cascade.
+ */
+
+.support-card {
+	max-width:36rem;
+}
+
+.support-card textarea {
+	display:block;
+	width:100%;
+	margin-top:0.3rem;
+	padding:0.6rem 0.8rem;
+	border:var(--border);
+	border-radius:var(--radius-sm);
+	background:var(--paper);
+	color:var(--ink);
+	font:inherit;
+	resize:vertical;
+}
+
+.req {
+	color:var(--danger);
+}
+
+.field-error {
+	margin:-0.5rem 0 var(--gap-sm);
+	font-size:0.85rem;
+	color:var(--danger-ink);
+}
+
+.hint {
+	margin:0 0 var(--gap-sm);
+	font-size:0.85rem;
+	font-style:italic;
+	color:var(--ink-soft);
+}
+
+.support-scope {
+	margin:0 0 1rem;
+	padding:0;
+	border:0;
+}
+
+.support-scope legend {
+	padding:0;
+	font-weight:600;
+}
+
+.support-option {
+	display:flex;
+	gap:0.6rem;
+	align-items:flex-start;
+	margin-bottom:0.5rem;
+	padding:var(--gap-sm);
+	border:var(--border);
+	border-radius:var(--radius-sm);
+	font-weight:400!important;
+	cursor:pointer;
+	transition:border-color 0.2s,background-color 0.2s;
+}
+
+.support-option:hover {
+	border-color:var(--ink-soft);
+}
+
+.support-option:has(input:checked) {
+	border-color:var(--accent);
+	background:color-mix(in srgb,var(--accent) 8%,transparent);
+}
+
+.support-option input {
+	width:auto;
+	flex-shrink:0;
+	margin:0.2rem 0 0;
+}
+
+.support-option-body {
+	display:flex;
+	flex-direction:column;
+	gap:0.25rem;
+}
+
+.support-option-body span {
+	font-size:0.85rem;
+	color:var(--ink-soft);
+}
+
+.form-success {
+	background:color-mix(in srgb,var(--ok) 12%,transparent);
+	border:1px solid color-mix(in srgb,var(--ok) 40%,transparent);
+	color:var(--ok-ink);
+	border-radius:var(--radius-sm);
+	padding:0.6rem 1rem;
+	font-size:0.9rem;
+}
+
+.support-ticket-id {
+	margin:var(--gap-sm) 0 0;
+	font-size:1.15rem;
+	font-weight:700;
+}
+
+#support-success .btn {
+	margin-top:1.25rem;
+}
+

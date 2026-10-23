@@ -1,9 +1,8 @@
-/* caption-light — generic cards
- * Source file: edits belong here, not in public/. Joined + minified
+/* caption-light — shared components (generic .card, auth card, org hint)
+ * Source files: edits belong here, not in public/. Joined + minified
  * server-side into /assets/css/caption-light/main.css (F3 route in
- * app/App.php). 00-tokens.css loads first; file numbering is load order.
+ * app/App.php). File numbering = load order = cascade.
  */
-
 
 /* Cards
 ------- */
@@ -21,7 +20,7 @@
 
 .auth-card label {
 	display: block;
-	margin-bottom: 1rem;
+	margin-bottom: calc(var(--gap) * 0.5);
 	font-weight: 600;
 }
 
@@ -58,7 +57,7 @@
 
 
 .org-hint[open] summary {
-	margin-bottom: 0.5rem;
+	margin-bottom: calc(var(--gap) * 0.5);
 }
 
 
@@ -66,13 +65,15 @@
 	background: var(--surface);
 	border: var(--border);
 	border-radius: var(--radius);
-	padding: 2rem;
+	padding: var(--gap);
 	box-shadow: var(--shadow);
+	/* margin: calc(var(--gap) * 0.5) 0 0; */
+
 }
 
 
 .card + .card {
-	margin-top: var(--gap);
+	margin: calc(var(--gap) * 0.5) 0 0;
 }
 
 
@@ -83,8 +84,8 @@
 }
 
 
-.card .btn {
+/* .card .btn {
 	margin-right: var(--gap);
-}
+} */
 
 

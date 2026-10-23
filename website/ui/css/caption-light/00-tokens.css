@@ -23,7 +23,8 @@
 	--radius-pill: 999px;
 	--border: 1px solid var(--line);
 	--gap: 1.5rem;
-	--gap-sm: 0.75rem;
+	--gap-sm: calc(var(--gap) * 0.5);
+	--h-base-width: 64rem;
 	--font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 	--font-mono: ui-monospace, monospace;
 	--ok: #2e7d32;

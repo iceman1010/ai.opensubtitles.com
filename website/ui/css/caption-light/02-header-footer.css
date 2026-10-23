@@ -468,3 +468,53 @@
 }
 
 
+/* Language menu search
+--------------------- */
+
+
+.lang-search {
+	display: flex;
+	align-items: center;
+	gap: 0.45rem;
+	padding: 0.3rem var(--gap-sm);
+	border: var(--border);
+	border-radius: 0.8rem;
+	background: var(--paper);
+	color: var(--ink-soft);
+	margin-bottom: 0.2rem;
+}
+
+
+.lang-search .btn-icon {
+	width: 1rem;
+	height: 1rem;
+	flex-shrink: 0;
+}
+
+
+.lang-search input {
+	border: none;
+	background: none;
+	font: inherit;
+	color: var(--ink);
+	width: 100%;
+	min-width: 0;
+	padding: 0.25rem 0;
+	outline: none;
+}
+
+
+.lang-search input::placeholder {
+	color: var(--ink-soft);
+}
+
+
+.lang-search input::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+
+.lang-search:focus-within {
+	border-color: var(--accent);
+}

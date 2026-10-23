@@ -1,0 +1,298 @@
+/* caption-light — search page (result cards are JS-generated: search-page.js)
+ * Source files: edits belong here, not in public/. Joined + minified
+ * server-side into /assets/css/caption-light/main.css (F3 route in
+ * app/App.php). File numbering = load order = cascade.
+ */
+
+/* Search
+-------- */
+
+.search-page {
+	padding-bottom: 3rem;
+}
+
+
+.search-card {
+	padding: 1.25rem;
+}
+
+
+.search-row {
+	display: flex;
+	gap: 0.6rem;
+}
+
+
+.search-row input[type="search"] {
+	flex: 1;
+	padding: 0.65rem 0.9rem;
+	border: var(--border);
+	border-radius: var(--radius-sm);
+	background: var(--paper);
+	color: var(--ink);
+	font: inherit;
+}
+
+
+.search-filters {
+	display: flex;
+	gap: var(--gap-sm);
+	align-items: end;
+	flex-wrap: wrap;
+	margin-top: var(--gap-sm);
+}
+
+
+.search-filters label,
+.search-advanced label {
+	display: grid;
+	gap: 0.25rem;
+	font-size: 0.8rem;
+	color: var(--ink-soft);
+}
+
+
+.search-filters select,
+.search-advanced input {
+	padding: 0.5rem 0.7rem;
+	border: var(--border);
+	border-radius: var(--radius-sm);
+	background: var(--paper);
+	color: var(--ink);
+	font: inherit;
+}
+
+
+.search-advanced {
+	display: flex;
+	gap: var(--gap-sm);
+	flex-wrap: wrap;
+	margin-top: var(--gap-sm);
+}
+
+
+.search-advanced input {
+	width: 12rem;
+}
+
+
+.results-head {
+	display: flex;
+	align-items: baseline;
+	gap: var(--gap-sm);
+	margin: var(--gap) 0 var(--gap-sm);
+}
+
+
+.results-head h2 {
+	margin: 0;
+	font-size: 1.1rem;
+}
+
+
+.results-head span {
+	color: var(--ink-soft);
+	font-size: 0.85rem;
+}
+
+
+.results-grid {
+	display: grid;
+	gap: var(--gap);
+}
+
+
+.results-empty {
+	color: var(--ink-soft);
+	text-align: center;
+	padding: 2rem 0;
+}
+
+
+.sub-card {
+	padding: 1.1rem 1.25rem;
+}
+
+
+.sub-card h3 {
+	margin: 0;
+	font-size: 1rem;
+	overflow-wrap: anywhere;
+}
+
+
+.sub-year {
+	color: var(--ink-soft);
+	font-weight: 400;
+}
+
+
+.sub-card-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+	gap: var(--gap-sm);
+}
+
+
+.lang-badge {
+	background: var(--paper);
+	border: var(--border);
+	border-radius: var(--radius-xs);
+	padding: 0.15rem 0.55rem;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	white-space: nowrap;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+}
+
+
+.lang-badge .lang-flag {
+	width: 0.95rem;
+	height: 0.95rem;
+}
+
+
+.sub-release {
+	margin: 0.5rem 0 0;
+	color: var(--ink-soft);
+	font-size: 0.9rem;
+	overflow-wrap: anywhere;
+}
+
+
+.sub-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem 1rem;
+	margin: 0.6rem 0 0;
+	color: var(--ink-soft);
+	font-size: 0.85rem;
+}
+
+
+.sub-chips {
+	margin: 0.5rem 0 0;
+}
+
+
+.sub-uploader {
+	margin: 0.5rem 0 0;
+	font-size: 0.85rem;
+	color: var(--ink-soft);
+}
+
+
+.sub-ondemand {
+	font-weight: 700;
+	color: var(--accent);
+	cursor: help;
+}
+
+
+.sub-imdb {
+	color: var(--accent);
+}
+
+
+.sub-actions {
+	display: flex;
+	gap: 0.5rem;
+	margin-top: var(--gap-sm);
+	flex-wrap: wrap;
+}
+
+
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: var(--gap);
+}
+
+
+.pagination span {
+	color: var(--ink-soft);
+	font-size: 0.9rem;
+}
+
+
+@media (max-width: 640px) {
+	.search-row {
+		flex-direction: column;
+	}
+}
+
+.feature-card {
+	display: flex;
+	gap: 1rem;
+}
+
+
+.sub-card.has-poster {
+	display: flex;
+	gap: 1rem;
+}
+
+
+.feature-poster {
+	width: 64px;
+	aspect-ratio: 2 / 3;
+	border-radius: var(--radius-xs);
+	border: var(--border);
+	flex-shrink: 0;
+	align-self: flex-start;
+	background: var(--paper);
+	overflow: hidden;
+}
+
+
+.feature-poster img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+
+.feature-poster.poster-empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--ink-soft);
+	opacity: 0.6;
+}
+
+
+.feature-poster.poster-empty svg {
+	width: 1.6rem;
+	height: 1.6rem;
+}
+
+
+.feature-body {
+	flex: 1;
+	min-width: 0;
+}
+
+
+.feature-poster.has-img {
+	cursor: zoom-in;
+}
+
+
+.search-content {
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+}
+
+
+.search-page:has(#search-results:not([hidden])) + .search-content {
+	display: none;
+}

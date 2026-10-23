@@ -59,6 +59,8 @@ progress {
 	border: 2px solid transparent;
 	cursor: pointer;
 	font-size: 1rem;
+	margin-right: calc(var(--gap) * 0.5);
+	margin-left: calc(var(--gap) * 0.5);
 }
 
 
@@ -173,3 +175,42 @@ progress {
 }
 
 
+/* Page head
+----------- */
+
+
+.page-head {
+	padding-top: 4rem;
+	padding-bottom: 0;
+	text-align: center;
+}
+
+
+.page-head .lead {
+	margin-bottom: 0;
+}
+
+
+.lead {
+	color: var(--ink-soft);
+	max-width: 44rem;
+	margin: 0 auto var(--gap);
+}
+
+
+.page-head .btn {
+	margin-top: var(--gap);
+}
+
+
+.page-head .btn + .btn {
+	margin-inline-start: 0.5rem;
+}
+
+
+.page-head .tool-badge {
+	display: inline-block;
+	margin: 0 0 1.25rem;
+	padding: 0.25rem 0.85rem;
+	font-size: 0.8rem;
+}
