@@ -20,7 +20,7 @@ class Llms
         foreach (self::slugs() as $slug) {
             $parts[] = $this->source($f3, $slug);
         }
-        $this->send(implode("\n\n---\n\n", $parts) . "\n");
+        $this->send(implode("\n\n---\n\n", $parts) . "\n", 'public, max-age=0, s-maxage=600, stale-while-revalidate=3600');
     }
 
     public function serve(\Base $f3, string $slug): void
@@ -29,7 +29,12 @@ class Llms
             $f3->error(404);
             return;
         }
-        $this->send($this->source($f3, $slug));
+        $this->send(
+            $this->source($f3, $slug),
+            $slug === 'pricing'
+                ? 'public, max-age=0, s-maxage=600, stale-while-revalidate=3600'
+                : 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400'
+        );
     }
 
     private function source(\Base $f3, string $slug): string
@@ -109,10 +114,11 @@ class Llms
         return is_file($path) ? (string) file_get_contents($path) : '';
     }
 
-    private function send(string $body): void
+    private function send(string $body, string $cache = 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400'): void
     {
         header('Content-Type: text/markdown; charset=utf-8');
         header('X-Robots-Tag: noindex');
+        header('Cache-Control: ' . $cache);
         echo $body;
     }
 }

@@ -7,6 +7,7 @@ class Seo
     public function robots(\Base $f3): void
     {
         header('Content-Type: text/plain; charset=utf-8');
+        header('Cache-Control: public, max-age=300, stale-while-revalidate=3600');
         echo "User-agent: *\n";
         echo "Disallow: /dashboard\n";
         echo "Disallow: /new\n";
@@ -18,6 +19,7 @@ class Seo
     public function sitemap(\Base $f3): void
     {
         header('Content-Type: application/xml; charset=utf-8');
+        header('Cache-Control: public, max-age=300, stale-while-revalidate=3600');
 
         $base = 'https://ai.opensubtitles.com';
         $locales = $f3->get('APP.locales');
