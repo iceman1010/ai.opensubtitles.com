@@ -64,7 +64,7 @@ return [
     'cookie_banner_countries' => [],
     'api_base' => '/ai-web/api/v1',
     'api_base_server' => 'https://ai.opensubtitles.com/ai-web/api/v1',
-    'dev_proxy_upstream' => 'https://ai.opensubtitles.com',
+    'dev_proxy_upstream' => '',
     'user_agent' => 'aios v1',
     'debug' => false,
     'pricing_cache_ttl' => 21600,

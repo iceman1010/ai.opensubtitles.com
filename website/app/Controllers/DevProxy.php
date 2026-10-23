@@ -72,7 +72,8 @@ class DevProxy
                 }
                 return strlen($line);
             },
-            CURLOPT_TIMEOUT => 300,
+            CURLOPT_TIMEOUT => 15,
+            CURLOPT_CONNECTTIMEOUT => 3,
             CURLOPT_HTTPHEADER => $forwardHeaders,
         ]);
         if ($body !== null && $body !== '') {
