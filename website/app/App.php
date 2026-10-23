@@ -50,6 +50,29 @@ class App
             echo \Web::instance()->minify($files, 'text/css', true, $dir);
         }, 31536000);
 
+        // JS bundle whitelist — public/js files assembled per request. Documented in
+        // AGENTS.md and website/docs/scripts/README.md before adding a file or bundle here.
+        $f3->route('GET /assets/js/@bundle.js', function (\Base $f3, array $args): void {
+            $bundles = [
+                'core-head' => ['config.js', 'api.js', 'auth.js'],
+                'core-tail' => ['theme-toggle.js', 'nav-menu.js', 'lang-select.js', 'cookie-consent.js'],
+                'page-search' => ['subtitle-viewer.js', 'preview-modal.js', 'search-page.js'],
+                'page-dashboard' => ['subtitle-viewer.js', 'preview-modal.js', 'dashboard.js'],
+                'page-job' => ['subtitle-viewer.js', 'preview-modal.js', 'job.js'],
+                'page-new' => ['detect.js', 'ffmpeg-service.js', 'media-info-service.js', 'new-job.js'],
+            ];
+            $files = $bundles[$args['bundle']] ?? null;
+            if ($files === null) {
+                $f3->error(404);
+                return;
+            }
+            header('Content-Type: text/javascript; charset=UTF-8');
+            $dir = dirname(__DIR__) . '/public/js/';
+            foreach ($files as $file) {
+                echo \Web::instance()->minify([$file], 'text/javascript', false, $dir), "\n";
+            }
+        }, 31536000);
+
         if ((string) $f3->get('APP.dev_proxy_upstream') !== '') {
             $f3->route('GET /ai-web/*', 'Controllers\DevProxy->forward');
             $f3->route('POST /ai-web/*', 'Controllers\DevProxy->forward');

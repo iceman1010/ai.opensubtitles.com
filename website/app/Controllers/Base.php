@@ -42,6 +42,11 @@ class Base
             $cssVersion = max($cssVersion, filemtime($cssFile));
         }
         $f3->set('css_v', $cssVersion);
+        $jsVersion = 0;
+        foreach (glob(dirname(__DIR__, 2) . '/public/js/*.js') ?: [] as $jsFile) {
+            $jsVersion = max($jsVersion, filemtime($jsFile));
+        }
+        $f3->set('js_v', $jsVersion);
         echo \Template::instance()->render('layout.html');
     }
 }
