@@ -24,6 +24,13 @@
 	--border: 1px solid var(--line);
 	--gap: 1.5rem;
 	--gap-sm: calc(var(--gap) * 0.5);
+	--fs-2xs: 0.72rem;
+	--fs-xs: 0.75rem;
+	--fs-sm: 0.8rem;
+	--fs-md: 0.85rem;
+	--fs-base: 0.9rem;
+	--fs-lg: 0.95rem;
+	--fs-xl: 1.05rem;
 	--h-base-width: 64rem;
 	--font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 	--font-mono: ui-monospace, monospace;
@@ -40,7 +47,6 @@
 	--z-modal: 70;
 	--z-cookie: 100;
 	--shadow: 0 5px 15px rgb(17 20 24 / 8%);
-	--font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 [data-theme="dark"] {
@@ -60,6 +66,7 @@
 	--ok-ink: rgb(134 239 172);
 	--danger: rgb(255 140 140);
 	--danger-ink: rgb(255 160 160);
+	--warn: rgb(255 170 100);
 	--warn-ink: rgb(255 190 130);
 	--shadow: 0 3px 10px rgb(0 0 0 / 45%);
 }

@@ -47,7 +47,7 @@
 .search-advanced label {
 	display: grid;
 	gap: 0.25rem;
-	font-size: 0.8rem;
+	font-size: var(--fs-sm);
 	color: var(--ink-soft);
 }
 
@@ -92,7 +92,7 @@
 
 .results-head span {
 	color: var(--ink-soft);
-	font-size: 0.85rem;
+	font-size: var(--fs-md);
 }
 
 
@@ -140,7 +140,7 @@
 	border: var(--border);
 	border-radius: var(--radius-xs);
 	padding: 0.15rem 0.55rem;
-	font-size: 0.75rem;
+	font-size: var(--fs-xs);
 	font-weight: 700;
 	letter-spacing: 0.04em;
 	white-space: nowrap;
@@ -159,7 +159,7 @@
 .sub-release {
 	margin: 0.5rem 0 0;
 	color: var(--ink-soft);
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 	overflow-wrap: anywhere;
 }
 
@@ -170,7 +170,7 @@
 	gap: 0.4rem 1rem;
 	margin: 0.6rem 0 0;
 	color: var(--ink-soft);
-	font-size: 0.85rem;
+	font-size: var(--fs-md);
 }
 
 
@@ -181,7 +181,7 @@
 
 .sub-uploader {
 	margin: 0.5rem 0 0;
-	font-size: 0.85rem;
+	font-size: var(--fs-md);
 	color: var(--ink-soft);
 }
 
@@ -217,7 +217,7 @@
 
 .pagination span {
 	color: var(--ink-soft);
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 }
 
 

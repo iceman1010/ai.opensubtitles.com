@@ -137,7 +137,7 @@ progress {
 	color: var(--ink-soft);
 	padding: 0.45rem 1.1rem;
 	font: inherit;
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 	cursor: pointer;
 }
 
@@ -154,7 +154,7 @@ progress {
 	color: var(--accent);
 	cursor: pointer;
 	font: inherit;
-	font-size: 0.85rem;
+	font-size: var(--fs-md);
 	text-decoration: underline;
 	padding: 0.5rem 0;
 }
@@ -171,7 +171,7 @@ progress {
 
 .muted {
 	color: var(--ink-soft);
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 }
 
 
@@ -212,5 +212,5 @@ progress {
 	display: inline-block;
 	margin: 0 0 1.25rem;
 	padding: 0.25rem 0.85rem;
-	font-size: 0.8rem;
+	font-size: var(--fs-sm);
 }

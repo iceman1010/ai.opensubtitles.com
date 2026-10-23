@@ -18,13 +18,13 @@
 
 .api-meta p {
 	margin:0.25rem 0;
-	font-size:0.95rem;
+	font-size:var(--fs-lg);
 }
 
 .api-meta ul {
 	margin:0.25rem 0;
 	padding-inline-start:1.25rem;
-	font-size:0.9rem;
+	font-size:var(--fs-base);
 }
 
 .api-meta li {
@@ -38,7 +38,7 @@
 .api-table {
 	width:100%;
 	border-collapse:collapse;
-	font-size:0.9rem;
+	font-size:var(--fs-base);
 }
 
 .api-table th,.api-table td {
@@ -90,11 +90,11 @@
 	align-items:center;
 	gap:0.5rem;
 	margin:0 0 0.5rem;
-	font-size:1.05rem;
+	font-size:var(--fs-xl);
 }
 
 .api-method {
-	font-size:0.72rem;
+	font-size:var(--fs-2xs);
 	font-weight:700;
 	letter-spacing:0.05em;
 	border-radius:var(--radius-xs);
@@ -127,18 +127,18 @@
 
 .api-path {
 	font-family:var(--font-mono);
-	font-size:0.95rem;
+	font-size:var(--fs-lg);
 	word-break:break-all;
 }
 
 .api-summary {
 	color:var(--ink-soft);
 	font-weight:400;
-	font-size:0.9rem;
+	font-size:var(--fs-base);
 }
 
 .api-desc {
-	font-size:0.95rem;
+	font-size:var(--fs-lg);
 }
 
 .api-desc p {
@@ -146,7 +146,7 @@
 }
 
 .api-auth {
-	font-size:0.85rem;
+	font-size:var(--fs-md);
 	color:var(--ink-soft);
 	margin:0.5rem 0;
 }
@@ -159,19 +159,19 @@
 }
 
 .api-sub {
-	font-size:0.95rem;
+	font-size:var(--fs-lg);
 	margin:1rem 0 0.4rem;
 }
 
 .api-required {
 	color:var(--accent);
-	font-size:0.8rem;
+	font-size:var(--fs-sm);
 	font-weight:600;
 }
 
 .api-ct {
 	margin:0.5rem 0 0.3rem;
-	font-size:0.85rem;
+	font-size:var(--fs-md);
 	color:var(--ink-soft);
 }
 
@@ -182,12 +182,12 @@
 .api-schema summary {
 	cursor:pointer;
 	color:var(--accent);
-	font-size:0.85rem;
+	font-size:var(--fs-md);
 }
 
 .api-type {
 	color:var(--ink-soft);
-	font-size:0.85rem;
+	font-size:var(--fs-md);
 }
 
 .api-json {
@@ -196,7 +196,7 @@
 	border-radius:var(--radius-sm);
 	padding:var(--gap-sm) 1rem;
 	overflow-x:auto;
-	font-size:0.8rem;
+	font-size:var(--fs-sm);
 	line-height:1.5;
 	font-family:var(--font-mono);
 	margin:0.4rem 0 0;
@@ -210,7 +210,7 @@
 
 .api-resp-line {
 	margin:0.25rem 0;
-	font-size:0.95rem;
+	font-size:var(--fs-lg);
 }
 
 .api-code {

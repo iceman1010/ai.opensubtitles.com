@@ -191,7 +191,7 @@
 	text-decoration: none;
 	color: var(--ink);
 	font-weight: 600;
-	font-size: 0.95rem;
+	font-size: var(--fs-lg);
 }
 
 
@@ -328,7 +328,7 @@
 	color: var(--ink-soft);
 	cursor: pointer;
 	font: inherit;
-	font-size: 0.95rem;
+	font-size: var(--fs-lg);
 	box-shadow: var(--shadow);
 	z-index: var(--z-raised);
 }
@@ -369,7 +369,7 @@
 .lang-empty {
 	padding: 0.6rem 0.9rem;
 	color: var(--ink-soft);
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 }
 
 
@@ -406,7 +406,7 @@
 
 
 .lang-alt {
-	font-size: 0.75rem;
+	font-size: var(--fs-xs);
 	font-weight: 400;
 	color: var(--ink-soft);
 	white-space: nowrap;
@@ -426,7 +426,7 @@
 	padding: var(--gap) 2rem;
 	text-align: center;
 	color: var(--ink-soft);
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 	margin-top: 3rem;
 }
 
@@ -451,7 +451,7 @@
 
 .cookie-banner p {
 	margin: 0;
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 }
 
 
@@ -464,7 +464,7 @@
 
 .cookie-actions .btn {
 	padding: 0.45rem 1.2rem;
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 }
 
 

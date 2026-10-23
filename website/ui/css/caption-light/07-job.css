@@ -78,7 +78,7 @@
 	border: 1px solid var(--accent);
 	border-radius: var(--radius-sm);
 	padding: 0.6rem 1rem;
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 }
 
 
@@ -88,7 +88,7 @@
 	color: var(--danger-ink);
 	border-radius: var(--radius-sm);
 	padding: 0.6rem 1rem;
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 }
 
 
@@ -151,7 +151,7 @@
 
 .fd-group h4 {
 	margin: 0 0 0.4rem;
-	font-size: 0.72rem;
+	font-size: var(--fs-2xs);
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
@@ -175,13 +175,13 @@
 
 .fd-row dt {
 	color: var(--ink-soft);
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 }
 
 
 .fd-row dd {
 	margin: 0;
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 	overflow-wrap: anywhere;
 }
 
@@ -192,7 +192,7 @@
 	border-radius: var(--radius);
 	padding: 0.8rem 1.25rem;
 	margin-top: var(--gap);
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 }
 
 
@@ -234,7 +234,7 @@
 	padding: 0.8rem 1.25rem;
 	margin-top: var(--gap);
 	margin-bottom: var(--gap);
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 }
 
 
@@ -310,14 +310,14 @@
 
 
 .stat-label {
-	font-size: 0.75rem;
+	font-size: var(--fs-xs);
 	color: var(--ink-soft);
 }
 
 
 .stat-value {
 	font-weight: 700;
-	font-size: 1.05rem;
+	font-size: var(--fs-xl);
 }
 
 
@@ -338,7 +338,7 @@
 	border: var(--border);
 	border-radius: var(--radius-pill);
 	padding: 0.15rem 0.7rem;
-	font-size: 0.8rem;
+	font-size: var(--fs-sm);
 	margin-block: 0 0.4rem;
 	margin-inline: 0 0.4rem;
 }
@@ -384,7 +384,7 @@
 	flex-wrap: wrap;
 	gap: 0.6rem;
 	align-items: center;
-	font-size: 0.85rem;
+	font-size: var(--fs-md);
 	color: var(--ink-soft);
 }
 
@@ -424,7 +424,7 @@
 	font-family: var(--font-mono);
 	white-space: pre-wrap;
 	margin-top: 0.5rem;
-	font-size: 0.9rem;
+	font-size: var(--fs-base);
 }
 
 

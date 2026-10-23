@@ -27,13 +27,13 @@
 
 .field-error {
 	margin:-0.5rem 0 var(--gap-sm);
-	font-size:0.85rem;
+	font-size:var(--fs-md);
 	color:var(--danger-ink);
 }
 
 .hint {
 	margin:0 0 var(--gap-sm);
-	font-size:0.85rem;
+	font-size:var(--fs-md);
 	font-style:italic;
 	color:var(--ink-soft);
 }
@@ -84,7 +84,7 @@
 }
 
 .support-option-body span {
-	font-size:0.85rem;
+	font-size:var(--fs-md);
 	color:var(--ink-soft);
 }
 
@@ -94,7 +94,7 @@
 	color:var(--ok-ink);
 	border-radius:var(--radius-sm);
 	padding:0.6rem 1rem;
-	font-size:0.9rem;
+	font-size:var(--fs-base);
 }
 
 .support-ticket-id {
