@@ -73,7 +73,8 @@ class App
             }
         }, 31536000);
 
-        if ((string) $f3->get('APP.dev_proxy_upstream') !== '') {
+        // DevProxy is dev-only by ENVIRONMENT (php -S), never by config — config defaults deploy. Incident: URGENT_problem.md 2026-10-23.
+        if (PHP_SAPI === 'cli-server' && (string) $f3->get('APP.dev_proxy_upstream') !== '') {
             $f3->route('GET /ai-web/*', 'Controllers\DevProxy->forward');
             $f3->route('POST /ai-web/*', 'Controllers\DevProxy->forward');
             $f3->route('PUT /ai-web/*', 'Controllers\DevProxy->forward');
