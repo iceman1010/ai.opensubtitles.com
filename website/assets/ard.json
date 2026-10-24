@@ -1,0 +1,19 @@
+{
+  "entries": [
+    {
+      "@context": "https://agenticresourcediscovery.org/context/v1",
+      "identifier": "urn:air:ai.opensubtitles.com:api",
+      "displayName": "OpenSubtitles API",
+      "type": "application/vnd.oai.openapi+json",
+      "url": "https://ai.opensubtitles.com/api-docs/openapi.json",
+      "description": "Search and download subtitles from the opensubtitles.com catalog and run AI jobs: transcribe media to subtitles, translate subtitle files, detect languages. REST API with pay-as-you-go credits; subtitle search is free. Published by ai.opensubtitles.com, the AI companion site of opensubtitles.com — separate entities that share the same user base and the same API backend; the OpenAPI document served here describes that shared API.",
+      "capabilities": ["SubtitleSearch", "SubtitleDownload", "Transcription", "Translation", "LanguageDetection"],
+      "representativeQueries": [
+        "find subtitles for a movie or TV show",
+        "transcribe this video into an SRT subtitle file",
+        "translate an SRT subtitle file into another language",
+        "what language is this audio or text in"
+      ]
+    }
+  ]
+}
