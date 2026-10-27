@@ -9,6 +9,7 @@
 	<meta name="api-key" content="{{ @APP.api_key }}">
 	<meta name="api-user-agent" content="{{ @APP.user_agent }}">
 	<meta name="app-debug" content="{{ @APP.debug ? '1' : '0' }}">
+	<meta name="locale-prefix" content="{{ @lp }}">
 	<check if="{{ @APP.ga_id }}"><true>
 	<meta name="ga-id" content="{{ @APP.ga_id }}">
 	<meta name="cookie-countries" content='{{ json_encode(@APP.cookie_banner_countries) }}'>

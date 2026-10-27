@@ -463,7 +463,11 @@
 	window.AI = {
 		loggedIn: () => !!getValidToken(),
 		requireAuth: () => {
-			if (!getValidToken()) location.href = '/login';
+			if (!getValidToken()) {
+				var lp = document.querySelector('meta[name="locale-prefix"]');
+				var prefix = lp ? lp.getAttribute('content') || '' : '';
+				location.href = prefix + '/login';
+			}
 			return !!getValidToken();
 		},
 		authExpired,

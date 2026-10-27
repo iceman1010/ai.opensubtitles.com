@@ -1,8 +1,10 @@
 (function () {
 	document.addEventListener('ai:auth-expired', () => {
-		if (!location.pathname.startsWith('/login')) {
+		if (!location.pathname.includes('/login')) {
 			sessionStorage.setItem('ai_redirect_after_login', location.pathname);
-			location.href = '/login?expired=1';
+			var lp = document.querySelector('meta[name="locale-prefix"]');
+			var prefix = lp ? lp.getAttribute('content') || '' : '';
+			location.href = prefix + '/login?expired=1';
 		}
 	});
 
