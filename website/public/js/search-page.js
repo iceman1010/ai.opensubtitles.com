@@ -144,7 +144,7 @@
 	function langBadge(code) {
 		const key = String(code || '').toLowerCase();
 		const src = langFlagSrc(key) || FLAGS + 'xx.svg';
-		return '<span class="lang-badge"><img class="lang-flag" src="' + esc(src) + '" alt="" width="15" height="15" data-lang="' + esc(key) + '">' + esc(langName(key)) + '</span>';
+		return '<span class="lang-badge"><img class="lang-flag" src="' + esc(src) + '" alt="' + esc(langName(key)) + '" width="15" height="15" data-lang="' + esc(key) + '">' + esc(langName(key)) + '</span>';
 	}
 
 	function renderSubtitles(data) {
