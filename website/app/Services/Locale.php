@@ -53,6 +53,8 @@ class Locale
             $url = $prefix . $path;
             $links[$locale] = $url === '/' ? '/' : rtrim($url, '/');
         }
+        $default = $f3->get('APP.default_locale');
+        $links['x-default'] = $links[$default] ?? ($path === '/' ? '/' : rtrim($path, '/'));
         return $links;
     }
 
