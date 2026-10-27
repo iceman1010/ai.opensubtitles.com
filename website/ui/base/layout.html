@@ -13,11 +13,19 @@
 	<check if="{{ @APP.ga_id }}"><true>
 	<meta name="ga-id" content="{{ @APP.ga_id }}">
 	<meta name="cookie-countries" content='{{ json_encode(@APP.cookie_banner_countries) }}'>
+	<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 	</true></check>
 	<link rel="canonical" href="https://ai.opensubtitles.com{{ @canonical }}">
+	<meta property="og:title" content="{{ @page_title }} · {{ @site_name }}">
+	<meta property="og:description" content="{{ @page_description }}">
+	<meta property="og:image" content="https://ai.opensubtitles.com/assets/img/logo.png">
+	<meta property="og:url" content="https://ai.opensubtitles.com{{ @canonical }}">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="{{ @site_name }}">
 	<check if="{{ @noindex }}"><true><meta name="robots" content="noindex, nofollow"></true></check>
 	<repeat group="{{ @alternates }}" key="{{ @hl }}" value="{{ @url }}"><link rel="alternate" hreflang="{{ @hl }}" href="https://ai.opensubtitles.com{{ @url }}">
 	</repeat>
+	<link rel="preload" as="image" href="/assets/img/logo-64.png" fetchpriority="high">
 	<link rel="ard" href="https://ai.opensubtitles.com/.well-known/ard.json">
 	<link rel="stylesheet" href="/assets/css/caption-light/main.css?v={{ @css_v }}">
 	<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
@@ -56,7 +64,7 @@
 		<symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
 	</svg>
 	<header class="site-header">
-		<a class="brand" href="{{ @lp ?: '/' }}"><img src="/assets/img/logo-64.png" alt="{{ @site_name }}" width="32" height="32"></a>
+		<a class="brand" href="{{ @lp ?: '/' }}"><img src="/assets/img/logo-64.png" alt="{{ @site_name }}" width="32" height="32" fetchpriority="high"></a>
 		<nav>
 			<a class="nav-pill" href="{{ @lp }}/transcribe"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-mic"/></svg></span><span class="btn-label">{{ @nav.transcribe }}</span></a>
 			<a class="nav-pill" href="{{ @lp }}/translate"><span class="nav-icon"><svg class="btn-icon" aria-hidden="true"><use href="#icon-languages"/></svg></span><span class="btn-label">{{ @nav.translate }}</span></a>
