@@ -12,6 +12,7 @@ class Ard
             return;
         }
         header('Content-Type: application/json; charset=utf-8');
+        header('Access-Control-Allow-Origin: *');
         header('X-Robots-Tag: noindex');
         header('Cache-Control: public, max-age=0, s-maxage=3600, stale-while-revalidate=86400');
         readfile($path);

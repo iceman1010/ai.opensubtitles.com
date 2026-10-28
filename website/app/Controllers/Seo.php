@@ -13,7 +13,6 @@ class Seo
         echo "Disallow: /new\n";
         echo "Disallow: /jobs\n";
         echo "Disallow: /ai-web\n";
-        echo "Agentmap: https://ai.opensubtitles.com/.well-known/ard.json\n";
         echo "Sitemap: https://ai.opensubtitles.com/sitemap.xml\n";
     }
 
