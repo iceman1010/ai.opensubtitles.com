@@ -1,4 +1,5 @@
 {
+  "specVersion": "1.0",
   "entries": [
     {
       "@context": "https://agenticresourcediscovery.org/context/v1",
