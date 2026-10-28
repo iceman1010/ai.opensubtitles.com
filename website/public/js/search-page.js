@@ -264,9 +264,15 @@
 		}
 	}
 
-	function requireLogin() {
+	function requireLogin(card, action) {
 		if (AI.loggedIn()) return true;
-		location.href = '/login';
+		sessionStorage.setItem('ai_redirect_after_login', location.pathname + location.search);
+		if (state.lastParams) {
+			var pending = card && action ? { action: action, fileId: card.dataset.fileId, fileName: card.dataset.fileName || '', lang: card.dataset.lang || '' } : null;
+			sessionStorage.setItem('ai_resume_search', JSON.stringify({ params: state.lastParams, mode: state.mode, imdbKind: state.imdbKind, pending: pending }));
+		}
+		var lp = document.querySelector('meta[name="locale-prefix"]');
+		location.href = (lp ? lp.getAttribute('content') || '' : '') + '/login';
 		return false;
 	}
 
@@ -300,7 +306,7 @@
 	async function handleCardAction(card, action, button) {
 		const fileId = card.dataset.fileId;
 		const fileName = card.dataset.fileName || 'subtitles.srt';
-		if (!fileId || !requireLogin()) return;
+		if (!fileId || !requireLogin(card, action)) return;
 		if (action === 'preview') {
 			setButtonBusy(button, true, i18n.loading_preview);
 			try {
@@ -419,6 +425,43 @@
 		});
 	}
 
+	async function resumeSearch() {
+		var raw = sessionStorage.getItem('ai_resume_search');
+		if (!raw) return;
+		sessionStorage.removeItem('ai_resume_search');
+		try {
+			var saved = JSON.parse(raw);
+			if (!saved || !saved.params) return;
+			setMode(saved.mode === 'features' ? 'features' : 'subtitles');
+			var p = saved.params;
+			state.imdbKind = saved.imdbKind === 'parent_imdb_id' ? 'parent_imdb_id' : 'imdb_id';
+			if (p.query) el('search-query').value = p.query;
+			if (p.imdb_id || p.parent_imdb_id) {
+				el('search-imdb').value = p.imdb_id || p.parent_imdb_id;
+				el('search-advanced').hidden = false;
+			}
+			if (p.year) el('search-year').value = p.year;
+			if (p.type) el('search-type').value = p.type;
+			if (p.languages) {
+				var codes = Array.from(el('search-language').options).map((o) => o.value);
+				if (codes.includes(p.languages)) el('search-language').value = p.languages;
+			}
+			state.page = p.page || 1;
+			await runSearch();
+			replayPendingAction(saved.pending);
+		} catch (e) {}
+	}
+
+	function replayPendingAction(pending) {
+		if (!pending || !pending.fileId || !pending.action) return;
+		var card = document.querySelector('.sub-card[data-file-id="' + CSS.escape(pending.fileId) + '"]');
+		if (!card) return;
+		card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+		var button = card.querySelector('button[data-action="' + pending.action + '"]');
+		if (button) handleCardAction(card, pending.action, button);
+	}
+
 	loadLanguages();
 	bind();
+	loadLanguages().then(resumeSearch);
 })();

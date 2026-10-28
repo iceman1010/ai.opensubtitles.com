@@ -464,6 +464,7 @@
 		loggedIn: () => !!getValidToken(),
 		requireAuth: () => {
 			if (!getValidToken()) {
+				sessionStorage.setItem('ai_redirect_after_login', location.pathname + location.search);
 				var lp = document.querySelector('meta[name="locale-prefix"]');
 				var prefix = lp ? lp.getAttribute('content') || '' : '';
 				location.href = prefix + '/login';

@@ -17,6 +17,10 @@
 				const needsAuth = el.getAttribute('data-auth') === 'in';
 				el.hidden = needsAuth ? !loggedIn : loggedIn;
 			});
+			navLogin.addEventListener('click', () => {
+				sessionStorage.removeItem('ai_redirect_after_login');
+				sessionStorage.removeItem('ai_resume_search');
+			});
 			navLogout.addEventListener('click', () => {
 				window.AI.logout();
 				location.href = '/';
