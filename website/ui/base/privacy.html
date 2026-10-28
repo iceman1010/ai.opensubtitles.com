@@ -1,0 +1,9 @@
+<section class="page-head">
+	<h1>{{ @privacy.h1 }}</h1>
+	<p class="lead">{{ @privacy.lead }}</p>
+</section>
+<check if="{{ @privacy_content }}">
+	<section class="legal">
+		<include href="{{ @privacy_content }}">
+	</section>
+</check>

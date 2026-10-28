@@ -355,5 +355,13 @@
   "translate.quality_note": "每份翻譯在交付前都會自動檢查 —— 超過 99% 能通過檢查。即使某份未通過，您仍可免費收到。",
   "pricing.quality_note": "僅對通過自動品質檢查的翻譯收費 —— 未通過的翻譯仍會交付並自動退款。",
   "job.quality_pass": "品質檢查通過",
-  "job.quality_fail": "品質檢查未通過 —— 已退還 {n} 點數"
+  "job.quality_fail": "品質檢查未通過 —— 已退還 {n} 點數",
+  "privacy.title": "隱私權政策",
+  "privacy.meta_description": "AI.OpenSubtitles.com 隱私權政策",
+  "privacy.h1": "隱私權政策",
+  "privacy.lead": "我們如何收集、使用和保護您的個人資訊。",
+  "terms.title": "條款和條件",
+  "terms.meta_description": "AI.OpenSubtitles.com 條款和條件",
+  "terms.h1": "條款和條件",
+  "terms.lead": "AI.OpenSubtitles.com 使用條款。"
 }

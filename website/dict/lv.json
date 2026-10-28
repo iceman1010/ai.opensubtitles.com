@@ -355,5 +355,13 @@
   "translate.quality_note": "Katrs tulkojums pirms piegādes tiek automātiski pārbaudīts — vairāk nekā 99% pārbaudi iztur. Ja kāds neiztur, jūs to tik un tā saņemat bez maksas.",
   "pricing.quality_note": "Tiek iekasēta maksa tikai par tulkojumiem, kas iztur automātisko kvalitātes pārbaudi — neizdevušies tulkojumi tik un tā tiek piegādāti un atmaksāti automātiski.",
   "job.quality_pass": "Kvalitātes pārbaude izturēta",
-  "job.quality_fail": "Kvalitātes pārbaude neizturēta — atmaksāti {n} kredīti"
+  "job.quality_fail": "Kvalitātes pārbaude neizturēta — atmaksāti {n} kredīti",
+  "privacy.title": "Privatumo politika",
+  "privacy.meta_description": "AI.OpenSubtitles.com privatumo politika",
+  "privacy.h1": "Privatumo politika",
+  "privacy.lead": "Kā mēs apkopojam, izmantojam un aizsargājam jūsu personas datus.",
+  "terms.title": "Lietošanas noteikumi",
+  "terms.meta_description": "AI.OpenSubtitles.com lietošanas noteikumi",
+  "terms.h1": "Lietošanas noteikumi",
+  "terms.lead": "AI.OpenSubtitles.com lietošanas noteikumi."
 }

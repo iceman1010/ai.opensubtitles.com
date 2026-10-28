@@ -355,5 +355,13 @@
   "translate.quality_note": "Har bir tarjima yetkazishdan oldin avtomatik tekshiriladi — 99% dan ortig‘i tekshiruvdan o‘tadi. Birontasi o‘tmasa, uni baribir bepul olasiz.",
   "pricing.quality_note": "Faqat avtomatik sifat tekshiruvidan o‘tgan tarjimalar uchun haq olinadi — muvaffaqiyatsiz tarjimalar baribir yetkaziladi va avtomatik qaytariladi.",
   "job.quality_pass": "Sifat tekshiruvi o‘tildi",
-  "job.quality_fail": "Sifat tekshiruvi o‘tmadi — {n} kredit qaytarildi"
+  "job.quality_fail": "Sifat tekshiruvi o‘tmadi — {n} kredit qaytarildi",
+  "privacy.title": "Maxfiylik siyosati",
+  "privacy.meta_description": "AI.OpenSubtitles.com Maxfiylik siyosati",
+  "privacy.h1": "Maxfiylik siyosati",
+  "privacy.lead": "Shaxsiy ma'lumotlaringizni qanday yig'amiz, foydalanamiz va himoya qilamiz.",
+  "terms.title": "Foydalanish shartlari",
+  "terms.meta_description": "AI.OpenSubtitles.com Foydalanish shartlari",
+  "terms.h1": "Foydalanish shartlari",
+  "terms.lead": "AI.OpenSubtitles.com foydalanish shartlari."
 }

@@ -355,5 +355,13 @@
   "translate.quality_note": "Kiekvienas vertimas prieš pristatymą automatiškai patikrinamas — daugiau nei 99 % patikrinimą išlaiko. Jei kuris neišlaiko, jį vis tiek gaunate nemokamai.",
   "pricing.quality_note": "Mokama tik už vertimus, išlaikiusius automatinį kokybės patikrinimą — nepavykę vertimai vis tiek pristatomi ir grąžinami automatiškai.",
   "job.quality_pass": "Kokybės patikrinimas išlaikytas",
-  "job.quality_fail": "Kokybės patikrinimas neišlaikytas — grąžinta {n} kreditų"
+  "job.quality_fail": "Kokybės patikrinimas neišlaikytas — grąžinta {n} kreditų",
+  "privacy.title": "Privatumo politika",
+  "privacy.meta_description": "AI.OpenSubtitles.com privatumo politika",
+  "privacy.h1": "Privatumo politika",
+  "privacy.lead": "Kaip renkame, naudojame ir saugome jūsų asmens duomenis.",
+  "terms.title": "Naudojimo sąlygos",
+  "terms.meta_description": "AI.OpenSubtitles.com naudojimo sąlygos",
+  "terms.h1": "Naudojimo sąlygos",
+  "terms.lead": "AI.OpenSubtitles.com naudojimo sąlygos."
 }

@@ -355,5 +355,13 @@
   "translate.quality_note": "Svaki prijevod automatski se provjerava prije isporuke — preko 99% prođe provjeru. Ako neki ne prođe, i dalje ga dobivate, besplatno.",
   "pricing.quality_note": "Naplaćuju se samo prijevodi koji prođu automatsku provjeru kvalitete — neuspjeli prijevodi svejedno se isporučuju i vraćaju se automatski.",
   "job.quality_pass": "Provjera kvalitete prošla",
-  "job.quality_fail": "Provjera kvalitete nije uspjela — vraćeno {n} kredita"
+  "job.quality_fail": "Provjera kvalitete nije uspjela — vraćeno {n} kredita",
+  "privacy.title": "Politika privatnosti",
+  "privacy.meta_description": "Politika privatnosti AI.OpenSubtitles.com",
+  "privacy.h1": "Politika privatnosti",
+  "privacy.lead": "Kako prikupljamo, koristimo i štitimo vaše osobne podatke.",
+  "terms.title": "Uvjeti korištenja",
+  "terms.meta_description": "Uvjeti korištenja AI.OpenSubtitles.com",
+  "terms.h1": "Uvjeti korištenja",
+  "terms.lead": "Uvjeti korištenja AI.OpenSubtitles.com."
 }

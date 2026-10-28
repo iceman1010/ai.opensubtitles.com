@@ -355,5 +355,13 @@
   "translate.quality_note": "Çdo përkthim kontrollohet automatikisht para dorëzimit — mbi 99% e kalojnë kontrollin. Nëse ndonjë nuk e kalon, e merrni gjithsesi, falas.",
   "pricing.quality_note": "Tarifohen vetëm përkthimet që kalojnë kontrollin automatik të cilësisë — përkthimet e dështuara dorëzohen gjithsesi dhe rimbursohen automatikisht.",
   "job.quality_pass": "Kontrolli i cilësisë kaloi",
-  "job.quality_fail": "Kontrolli i cilësisë dështoi — u rimbursuan {n} kredi"
+  "job.quality_fail": "Kontrolli i cilësisë dështoi — u rimbursuan {n} kredi",
+  "privacy.title": "Politika e Privatësisë",
+  "privacy.meta_description": "Politika e Privatësisë e AI.OpenSubtitles.com",
+  "privacy.h1": "Politika e Privatësisë",
+  "privacy.lead": "Si mbledhim, përdorim dhe mbrojmë të dhënat tuaja personale.",
+  "terms.title": "Kushtet dhe Kushtet",
+  "terms.meta_description": "Kushtet e AI.OpenSubtitles.com",
+  "terms.h1": "Kushtet dhe Kushtet",
+  "terms.lead": "Kushtet e përdorimit të AI.OpenSubtitles.com."
 }

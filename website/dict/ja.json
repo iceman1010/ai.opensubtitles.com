@@ -355,5 +355,13 @@
   "translate.quality_note": "99 %以上の字幕翻訳が品質チェックに合格します。不合格の場合はクレジットの返還とファイルの無料提供が行われます。",
   "pricing.quality_note": "品質チェックに合格した字幕翻訳のみに課金されます。不合格の場合はファイルを無料で提供し、クレジットは返還されます。",
   "job.quality_pass": "品質チェックに合格しました",
-  "job.quality_fail": "{n}クレジットが返還されました（品質チェック不合格）"
+  "job.quality_fail": "{n}クレジットが返還されました（品質チェック不合格）",
+  "privacy.title": "プライバシーポリシー",
+  "privacy.meta_description": "AI.OpenSubtitles.com プライバシーポリシー",
+  "privacy.h1": "プライバシーポリシー",
+  "privacy.lead": "当社がお客様の個人情報をどのように収集、利用、保護するかについて。",
+  "terms.title": "利用規約",
+  "terms.meta_description": "AI.OpenSubtitles.com 利用規約",
+  "terms.h1": "利用規約",
+  "terms.lead": "AI.OpenSubtitles.com の利用条件。"
 }

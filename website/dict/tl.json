@@ -355,5 +355,13 @@
   "translate.quality_note": "Ang bawat pagsasalin ay awtomatikong tsinetsek bago i-deliver — mahigit 99% ang pumapasa sa check. Kung may bumagsak, matatanggap pa rin ninyo ito nang libre.",
   "pricing.quality_note": "Ang mga pagsasalin lamang na pumasa sa awtomatikong quality check ang sinisingil — ang mga bumagsak na pagsasalin ay dine-deliver pa rin at awtomatikong ibinabalik.",
   "job.quality_pass": "Pumasa sa quality check",
-  "job.quality_fail": "Bumagsak sa quality check — {n} credit ibinalik"
+  "job.quality_fail": "Bumagsak sa quality check — {n} credit ibinalik",
+  "privacy.title": "Patakaran sa Privacy",
+  "privacy.meta_description": "Patakaran sa Privacy ng AI.OpenSubtitles.com",
+  "privacy.h1": "Patakaran sa Privacy",
+  "privacy.lead": "Kung paano namin kinokolekta, ginagamit at pinoprotektahan ang iyong personal na impormasyon.",
+  "terms.title": "Mga Tuntunin at Kundisyon",
+  "terms.meta_description": "Mga Tuntunin at Kundisyon ng AI.OpenSubtitles.com",
+  "terms.h1": "Mga Tuntunin at Kundisyon",
+  "terms.lead": "Mga tuntunin sa paggamit ng AI.OpenSubtitles.com."
 }

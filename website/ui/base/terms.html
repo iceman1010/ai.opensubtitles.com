@@ -1,0 +1,9 @@
+<section class="page-head">
+	<h1>{{ @terms.h1 }}</h1>
+	<p class="lead">{{ @terms.lead }}</p>
+</section>
+<check if="{{ @terms_content }}">
+	<section class="legal">
+		<include href="{{ @terms_content }}">
+	</section>
+</check>

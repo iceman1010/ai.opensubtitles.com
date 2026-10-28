@@ -355,5 +355,13 @@
   "translate.quality_note": "Cada traducció es comprova automàticament abans del lliurament — més del 99% supera el control. Si alguna no el supera, la rebeu igualment, sense càrrec.",
   "pricing.quality_note": "Només es cobren les traduccions que superen el control automàtic de qualitat — les traduccions fallides es lliuren igualment i es reembossen automàticament.",
   "job.quality_pass": "Control de qualitat superat",
-  "job.quality_fail": "Control de qualitat no superat — {n} crèdits reembossats"
+  "job.quality_fail": "Control de qualitat no superat — {n} crèdits reembossats",
+  "privacy.title": "Política de privadesa",
+  "privacy.meta_description": "Política de privadesa de AI.OpenSubtitles.com",
+  "privacy.h1": "Política de privadesa",
+  "privacy.lead": "Com recopilem, utilitzem i protegim la vostra informació personal.",
+  "terms.title": "Termes i condicions",
+  "terms.meta_description": "Termes i condicions de AI.OpenSubtitles.com",
+  "terms.h1": "Termes i condicions",
+  "terms.lead": "Condicions d'ús de AI.OpenSubtitles.com."
 }

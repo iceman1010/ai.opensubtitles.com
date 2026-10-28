@@ -73,7 +73,7 @@
 
 
 .card + .card {
-	margin: calc(var(--gap) * 0.5) 0 0;
+	margin-block-start: calc(var(--gap) * 0.5);
 }
 
 

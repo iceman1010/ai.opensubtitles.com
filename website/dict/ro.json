@@ -355,5 +355,13 @@
   "translate.quality_note": "Peste 99 % din traducerile de subtitrări trec controlul de calitate. În caz de eșec, creditele sunt returnate și fișierul este oferit gratuit.",
   "pricing.quality_note": "Se plătește doar pentru traducerile care trec controlul de calitate. Dacă nu trec, fișierul este gratuit și creditele sunt returnate.",
   "job.quality_pass": "Control de calitate trecut",
-  "job.quality_fail": "{n} credite returnate (control de calitate eșuat)"
+  "job.quality_fail": "{n} credite returnate (control de calitate eșuat)",
+  "privacy.title": "Politica de confidențialitate",
+  "privacy.meta_description": "Politica de confidențialitate AI.OpenSubtitles.com",
+  "privacy.h1": "Politica de confidențialitate",
+  "privacy.lead": "Cum colectăm, folosim și protejăm informațiile dvs. personale.",
+  "terms.title": "Termeni și condiții",
+  "terms.meta_description": "Termeni și condiții AI.OpenSubtitles.com",
+  "terms.h1": "Termeni și condiții",
+  "terms.lead": "Condiții de utilizare AI.OpenSubtitles.com."
 }

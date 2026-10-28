@@ -355,5 +355,13 @@
   "translate.quality_note": "Meer dan 99 % van ondertitelvertalingen halen de kwaliteitscontrole. Bij mislukking worden credits teruggestort en bestand gratis aangeboden.",
   "pricing.quality_note": "Alleen betaald voor vertalingen die kwaliteitscontrole halen. Bij mislukking bestand gratis, credits teruggestort.",
   "job.quality_pass": "Kwaliteitscontrole geslaagd",
-  "job.quality_fail": "{n} credits teruggestort (kwaliteitscontrole mislukt)"
+  "job.quality_fail": "{n} credits teruggestort (kwaliteitscontrole mislukt)",
+  "privacy.title": "Privacybeleid",
+  "privacy.meta_description": "Privacybeleid van AI.OpenSubtitles.com",
+  "privacy.h1": "Privacybeleid",
+  "privacy.lead": "Hoe wij uw persoonlijke gegevens verzamelen, gebruiken en beschermen.",
+  "terms.title": "Algemene voorwaarden",
+  "terms.meta_description": "Algemene voorwaarden van AI.OpenSubtitles.com",
+  "terms.h1": "Algemene voorwaarden",
+  "terms.lead": "Gebruiksvoorwaarden van AI.OpenSubtitles.com."
 }

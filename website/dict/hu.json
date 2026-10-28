@@ -355,5 +355,13 @@
   "translate.quality_note": "Minden fordítást automatikusan ellenőrzünk a kézbesítés előtt — több mint 99% megfelel az ellenőrzésen. Ha valamelyik nem felel meg, akkor is megkapja, díjmentesen.",
   "pricing.quality_note": "Csak az automatikus minőségellenőrzésen megfelelt fordítások kerülnek felszámításra — a megbukott fordítások így is kézbesítésre kerülnek, és automatikusan visszatérítésre kerülnek.",
   "job.quality_pass": "A minőségellenőrzés sikeres",
-  "job.quality_fail": "A minőségellenőrzés sikertelen — {n} kredit visszatérítve"
+  "job.quality_fail": "A minőségellenőrzés sikertelen — {n} kredit visszatérítve",
+  "privacy.title": "Adatvédelmi Szabályzat",
+  "privacy.meta_description": "AI.OpenSubtitles.com Adatvédelmi Szabályzata",
+  "privacy.h1": "Adatvédelmi Szabályzat",
+  "privacy.lead": "Hogyan gyűjtjük, használjuk és védjük az Ön személyes adatait.",
+  "terms.title": "Általános Szerződési Feltételek",
+  "terms.meta_description": "AI.OpenSubtitles.com Általános Szerződési Feltételei",
+  "terms.h1": "Általános Szerződési Feltételek",
+  "terms.lead": "Az AI.OpenSubtitles.com használati feltételei."
 }

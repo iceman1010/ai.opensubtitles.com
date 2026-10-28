@@ -355,5 +355,13 @@
   "translate.quality_note": "Yli 99 % tekstikäännöksistä läpäisee laatukontrollin. Epäonnistumisen tapauksessa kreditit palautetaan ja tiedosto tarjotaan ilmaiseksi.",
   "pricing.quality_note": "Maksu vain käännöksistä, jotka läpäisevät laatukontrollin. Jos epäonnistuvat, tiedosto on ilmainen ja kreditit palautetaan.",
   "job.quality_pass": "Laatukontrolli läpäisty",
-  "job.quality_fail": "{n} kredittiä palautettu (laatukontrolli epäonnistui)"
+  "job.quality_fail": "{n} kredittiä palautettu (laatukontrolli epäonnistui)",
+  "privacy.title": "Tietosuojakäytäntö",
+  "privacy.meta_description": "AI.OpenSubtitles.comin tietosuojakäytäntö",
+  "privacy.h1": "Tietosuojakäytäntö",
+  "privacy.lead": "Miten keräämme, käytämme ja suojaamme henkilökohtaisia tietojasi.",
+  "terms.title": "Käyttöehdot",
+  "terms.meta_description": "AI.OpenSubtitles.comin käyttöehdot",
+  "terms.h1": "Käyttöehdot",
+  "terms.lead": "AI.OpenSubtitles.comin käyttöehdot."
 }

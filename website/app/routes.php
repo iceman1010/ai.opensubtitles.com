@@ -10,6 +10,8 @@ return [
     // 'GET /tools' => 'Controllers\Tools->index',
     // 'GET /tools/@tool' => 'Controllers\Tools->show',
     'GET /support' => 'Controllers\Support->index',
+    'GET /privacy' => 'Controllers\Legal->privacy',
+    'GET /terms' => 'Controllers\Legal->terms',
     'GET /api-docs' => 'Controllers\ApiDocs->index',
     'GET /login' => 'Controllers\Auth->login',
     'GET /dashboard' => 'Controllers\Dashboard->index',

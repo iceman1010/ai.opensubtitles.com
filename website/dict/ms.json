@@ -355,5 +355,13 @@
   "translate.quality_note": "Setiap terjemahan disemak secara automatik sebelum penghantaran — lebih 99% lulus semakan. Jika ada yang tidak lulus, anda masih menerimanya, percuma.",
   "pricing.quality_note": "Hanya terjemahan yang lulus semakan kualiti automatik dicaj — terjemahan yang gagal tetap dihantar dan dipulangkan secara automatik.",
   "job.quality_pass": "Semakan kualiti lulus",
-  "job.quality_fail": "Semakan kualiti gagal — {n} kredit dipulangkan"
+  "job.quality_fail": "Semakan kualiti gagal — {n} kredit dipulangkan",
+  "privacy.title": "Dasar Privasi",
+  "privacy.meta_description": "Dasar Privasi AI.OpenSubtitles.com",
+  "privacy.h1": "Dasar Privasi",
+  "privacy.lead": "Bagaimana kami mengumpulkan, menggunakan dan melindungi maklumat peribadi anda.",
+  "terms.title": "Terma dan Syarat",
+  "terms.meta_description": "Terma dan Syarat AI.OpenSubtitles.com",
+  "terms.h1": "Terma dan Syarat",
+  "terms.lead": "Syarat penggunaan AI.OpenSubtitles.com."
 }

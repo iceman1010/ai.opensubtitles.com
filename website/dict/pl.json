@@ -355,5 +355,13 @@
   "translate.quality_note": "Ponad 99 % tłumaczeń przechodzi kontrolę jakości. W razie niepowodzenia otrzymasz plik za darmo.",
   "pricing.quality_note": "Płacisz tylko za tłumaczenia, które przeszły kontrolę jakości. Jeśli tłumaczenie nie przejdzie kontroli — plik jest udostępniany za darmo, a kredyty zostaną zwrócone.",
   "job.quality_pass": "Kontrola jakości zakończona pomyślnie",
-  "job.quality_fail": "Kontrola jakości nie powiodła się, zwrócono {n} kredytów"
+  "job.quality_fail": "Kontrola jakości nie powiodła się, zwrócono {n} kredytów",
+  "privacy.title": "Polityka prywatności",
+  "privacy.meta_description": "Polityka prywatności AI.OpenSubtitles.com",
+  "privacy.h1": "Polityka prywatności",
+  "privacy.lead": "Jak gromadzimy, wykorzystujemy i chronimy Twoje dane osobowe.",
+  "terms.title": "Regulamin",
+  "terms.meta_description": "Regulamin AI.OpenSubtitles.com",
+  "terms.h1": "Regulamin",
+  "terms.lead": "Warunki korzystania z AI.OpenSubtitles.com."
 }

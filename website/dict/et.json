@@ -355,5 +355,13 @@
   "translate.quality_note": "Iga tõlget kontrollitakse enne tarnimist automaatselt — üle 99% läbib kontrolli. Kui mõni ei läbi, saate selle siiski kätte tasuta.",
   "pricing.quality_note": "Arve esitatakse ainult automaatse kvaliteedikontrolli läbinud tõlgete eest — läbikukkunud tõlked tarnitakse siiski ja tagastatakse automaatselt.",
   "job.quality_pass": "Kvaliteedikontroll läbitud",
-  "job.quality_fail": "Kvaliteedikontroll läbi kukkunud — tagastatud {n} krediiti"
+  "job.quality_fail": "Kvaliteedikontroll läbi kukkunud — tagastatud {n} krediiti",
+  "privacy.title": "Privaatsuspoliitika",
+  "privacy.meta_description": "AI.OpenSubtitles.com privaatsuspoliitika",
+  "privacy.h1": "Privaatsuspoliitika",
+  "privacy.lead": "Kuidas me kogume, kasutame ja kaitseme teie isikuandmeid.",
+  "terms.title": "Kasutustingimused",
+  "terms.meta_description": "AI.OpenSubtitles.com kasutustingimused",
+  "terms.h1": "Kasutustingimused",
+  "terms.lead": "AI.OpenSubtitles.com kasutustingimused."
 }

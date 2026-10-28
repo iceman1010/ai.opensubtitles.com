@@ -355,5 +355,13 @@
   "translate.quality_note": "Elke vertaling word outomaties voor aflewering gekontroleer — meer as 99% slaag die kontrole. As een druip, ontvang u dit steeds, gratis.",
   "pricing.quality_note": "Slegs vertalings wat die outomatiese gehaltebeheer slaag, word gehef — gedruipte vertalings word steeds afgelewer en outomaties terugbetaal.",
   "job.quality_pass": "Gehaltebeheer geslaag",
-  "job.quality_fail": "Gehaltebeheer gedruip — {n} krediete terugbetaal"
+  "job.quality_fail": "Gehaltebeheer gedruip — {n} krediete terugbetaal",
+  "privacy.title": "Privaatheidsbeleid",
+  "privacy.meta_description": "Privaatheidsbeleid van AI.OpenSubtitles.com",
+  "privacy.h1": "Privaatheidsbeleid",
+  "privacy.lead": "Hoe ons u persoonlike inligting versamel, gebruik en beskerm.",
+  "terms.title": "Voorwaardes",
+  "terms.meta_description": "Voorwaardes van AI.OpenSubtitles.com",
+  "terms.h1": "Voorwaardes",
+  "terms.lead": "Gebruiksvoorwaardes van AI.OpenSubtitles.com."
 }

@@ -355,5 +355,13 @@
   "translate.quality_note": "Lebih dari 99 % terjemahan subtitle lolos pemeriksaan kualitas. Jika gagal, kredit akan dikembalikan dan file tersedia gratis.",
   "pricing.quality_note": "Anda hanya dikenai biaya untuk terjemahan yang lolos pemeriksaan kualitas. Jika gagal, file tersedia gratis dan kredit dikembalikan.",
   "job.quality_pass": "Pemeriksaan kualitas berhasil",
-  "job.quality_fail": "{n} kredit dikembalikan (gagal pemeriksaan kualitas)"
+  "job.quality_fail": "{n} kredit dikembalikan (gagal pemeriksaan kualitas)",
+  "privacy.title": "Kebijakan Privasi",
+  "privacy.meta_description": "Kebijakan Privasi AI.OpenSubtitles.com",
+  "privacy.h1": "Kebijakan Privasi",
+  "privacy.lead": "Bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi pribadi Anda.",
+  "terms.title": "Syarat dan Ketentuan",
+  "terms.meta_description": "Syarat dan Ketentuan AI.OpenSubtitles.com",
+  "terms.h1": "Syarat dan Ketentuan",
+  "terms.lead": "Ketentuan penggunaan AI.OpenSubtitles.com."
 }

@@ -355,5 +355,13 @@
   "translate.quality_note": "Her çeviri, teslimden önce otomatik olarak denetlenir — %99'dan fazlası kontrolden geçer. Geçmeyen bir çeviri olsa bile dosyayı yine de alırsınız, ücretsiz olarak.",
   "pricing.quality_note": "Yalnızca otomatik kalite kontrolünden geçen çeviriler ücretlendirilir — başarısız çeviriler yine de teslim edilir ve kredileri otomatik olarak iade edilir.",
   "job.quality_pass": "Kalite kontrolünden geçti",
-  "job.quality_fail": "Kalite kontrolü başarısız — {n} kredi iade edildi"
+  "job.quality_fail": "Kalite kontrolü başarısız — {n} kredi iade edildi",
+  "privacy.title": "Gizlilik Politikası",
+  "privacy.meta_description": "AI.OpenSubtitles.com Gizlilik Politikası",
+  "privacy.h1": "Gizlilik Politikası",
+  "privacy.lead": "Kişisel bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu.",
+  "terms.title": "Kullanım Koşulları",
+  "terms.meta_description": "AI.OpenSubtitles.com Kullanım Koşulları",
+  "terms.h1": "Kullanım Koşulları",
+  "terms.lead": "AI.OpenSubtitles.com kullanım koşulları."
 }

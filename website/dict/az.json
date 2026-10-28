@@ -355,5 +355,13 @@
   "translate.quality_note": "Hər tərcümə çatdırılmadan əvvəl avtomatik yoxlanılır — 99%-dən çoxu yoxlamadan keçir. Hansısa keçməsə, onu yenə də pulsuz alırsınız.",
   "pricing.quality_note": "Yalnız avtomatik keyfiyyət yoxlamasından keçən tərcümələr ödənilir — uğursuz tərcümələr yenə də çatdırılır və avtomatik geri qaytarılır.",
   "job.quality_pass": "Keyfiyyət yoxlaması keçildi",
-  "job.quality_fail": "Keyfiyyət yoxlaması keçilmədi — {n} kredit geri qaytarıldı"
+  "job.quality_fail": "Keyfiyyət yoxlaması keçilmədi — {n} kredit geri qaytarıldı",
+  "privacy.title": "Məxfilik Siyasəti",
+  "privacy.meta_description": "AI.OpenSubtitles.com Məxfilik Siyasəti",
+  "privacy.h1": "Məxfilik Siyasəti",
+  "privacy.lead": "Şəxsi məlumatlarınızı necə topladığımızı, istifadə etdiyimizi və qoruduğumuzu.",
+  "terms.title": "İstifadə Şərtləri",
+  "terms.meta_description": "AI.OpenSubtitles.com İstifadə Şərtləri",
+  "terms.h1": "İstifadə Şərtləri",
+  "terms.lead": "AI.OpenSubtitles.com istifadə şərtləri."
 }

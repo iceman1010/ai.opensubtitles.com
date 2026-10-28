@@ -355,5 +355,13 @@
   "translate.quality_note": "Viac ako 99 % prekladov titulkov prejde kontrolou kvality. V prípade neúspechu sa kredity vrátia a súbor bude dostupný zdarma.",
   "pricing.quality_note": "Platí sa len za preklady, ktoré prejdú kontrolou kvality. Ak neprejdú, súbor je bezplatný a kredity sa vrátia.",
   "job.quality_pass": "Kontrola kvality úspešná",
-  "job.quality_fail": "{n} kreditov vrátených (kontrola kvality neúspešná)"
+  "job.quality_fail": "{n} kreditov vrátených (kontrola kvality neúspešná)",
+  "privacy.title": "Zásady ochrany osobných údajov",
+  "privacy.meta_description": "Zásady ochrany osobných údajov AI.OpenSubtitles.com",
+  "privacy.h1": "Zásady ochrany osobných údajov",
+  "privacy.lead": "Ako zhromažďujeme, používame a chránime vaše osobné údaje.",
+  "terms.title": "Podmienky používania",
+  "terms.meta_description": "Podmienky používania AI.OpenSubtitles.com",
+  "terms.h1": "Podmienky používania",
+  "terms.lead": "Podmienky používania AI.OpenSubtitles.com."
 }

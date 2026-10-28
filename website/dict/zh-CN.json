@@ -355,5 +355,13 @@
   "translate.quality_note": "每份翻译在交付前都会自动检查 —— 超过 99% 能通过检查。即使某份未通过，您仍可免费收到。",
   "pricing.quality_note": "仅对通过自动质量检查的翻译收费 —— 未通过的翻译仍会交付并自动退款。",
   "job.quality_pass": "质量检查通过",
-  "job.quality_fail": "质量检查未通过 —— 已退还 {n} 点数"
+  "job.quality_fail": "质量检查未通过 —— 已退还 {n} 点数",
+  "privacy.title": "隐私政策",
+  "privacy.meta_description": "AI.OpenSubtitles.com 隐私政策",
+  "privacy.h1": "隐私政策",
+  "privacy.lead": "我们如何收集、使用和保护您的个人信息。",
+  "terms.title": "条款和条件",
+  "terms.meta_description": "AI.OpenSubtitles.com 条款和条件",
+  "terms.h1": "条款和条件",
+  "terms.lead": "AI.OpenSubtitles.com 使用条款。"
 }

@@ -355,5 +355,13 @@
   "translate.quality_note": "Hver þýðing er sjálfkrafa skoðuð fyrir afhendingu — yfir 99% standast skoðunina. Ef einhver fellur færðu hana samt, án gjalds.",
   "pricing.quality_note": "Aðeins þýðingar sem standast sjálfvirku gæðaskoðunina eru rukkaðar — fallnar þýðingar eru samt afhentar og endurgreiddar sjálfkrafa.",
   "job.quality_pass": "Gæðaskoðun staðist",
-  "job.quality_fail": "Gæðaskoðun fallin — {n} einingar endurgreiddar"
+  "job.quality_fail": "Gæðaskoðun fallin — {n} einingar endurgreiddar",
+  "privacy.title": "Persónuverndarstefna",
+  "privacy.meta_description": "Persónuverndarstefna AI.OpenSubtitles.com",
+  "privacy.h1": "Persónuverndarstefna",
+  "privacy.lead": "Hvernig við söfnum, notum og verndum persónuupplýsingar þínar.",
+  "terms.title": "Notendaskilmálar",
+  "terms.meta_description": "Notendaskilmálar AI.OpenSubtitles.com",
+  "terms.h1": "Notendaskilmálar",
+  "terms.lead": "Notendaskilmálar AI.OpenSubtitles.com."
 }

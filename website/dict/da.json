@@ -355,5 +355,13 @@
   "translate.quality_note": "Over 99 % af undertekstoversættelser bestand kvalitetskontrollen. Ved mislykkelse refunderes krediter og filen tilbydes gratis.",
   "pricing.quality_note": "Betal kun for oversættelser, der bestand kvalitetskontrollen. Hvis de mislykkes, er filen gratis og krediter refunderes.",
   "job.quality_pass": "Kvalitetskontrol bestået",
-  "job.quality_fail": "{n} krediter refunderet (kvalitetskontrol mislykkedes)"
+  "job.quality_fail": "{n} krediter refunderet (kvalitetskontrol mislykkedes)",
+  "privacy.title": "Privatlivspolitik",
+  "privacy.meta_description": "Privatlivspolitik for AI.OpenSubtitles.com",
+  "privacy.h1": "Privatlivspolitik",
+  "privacy.lead": "Hvordan vi indsamler, bruger og beskytter dine personlige oplysninger.",
+  "terms.title": "Handelsbetingelser",
+  "terms.meta_description": "Handelsbetingelser for AI.OpenSubtitles.com",
+  "terms.h1": "Handelsbetingelser",
+  "terms.lead": "Brugsbetingelser for AI.OpenSubtitles.com."
 }

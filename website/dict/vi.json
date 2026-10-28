@@ -355,5 +355,13 @@
   "translate.quality_note": "Hơn 99 % bản dịch phụ đề qua kiểm tra chất lượng. Nếu thất bại, tín dụng được hoàn và tệp miễn phí.",
   "pricing.quality_note": "Chỉ tính phí cho bản dịch vượt qua kiểm tra chất lượng. Nếu thất bại, tệp miễn phí và tín dụng được hoàn.",
   "job.quality_pass": "Kiểm tra chất lượng thành công",
-  "job.quality_fail": "Đã hoàn {n} tín dụng (kiểm tra chất lượng thất bại)"
+  "job.quality_fail": "Đã hoàn {n} tín dụng (kiểm tra chất lượng thất bại)",
+  "privacy.title": "Chính sách bảo mật",
+  "privacy.meta_description": "Chính sách bảo mật của AI.OpenSubtitles.com",
+  "privacy.h1": "Chính sách bảo mật",
+  "privacy.lead": "Cách chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân của bạn.",
+  "terms.title": "Điều khoản và Điều kiện",
+  "terms.meta_description": "Điều khoản và Điều kiện của AI.OpenSubtitles.com",
+  "terms.h1": "Điều khoản và Điều kiện",
+  "terms.lead": "Điều khoản sử dụng AI.OpenSubtitles.com."
 }

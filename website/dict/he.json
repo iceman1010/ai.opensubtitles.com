@@ -355,5 +355,13 @@
   "translate.quality_note": "כל תרגום נבדק באופן אוטומטי לפני המסירה — למעלה מ-99% עוברים את הבדיקה. אם אחד לא עובר, עדיין תקבלו אותו, ללא תשלום.",
   "pricing.quality_note": "רק תרגומים שעוברים את בדיקת האיכות האוטומטית מחויבים — תרגומים שנכשלים מסופקים בכל מקרה ומוחזרים באופן אוטומטי.",
   "job.quality_pass": "בדיקת האיכות עברה",
-  "job.quality_fail": "בדיקת האיכות נכשלה — {n} קרדיטים הוחזרו"
+  "job.quality_fail": "בדיקת האיכות נכשלה — {n} קרדיטים הוחזרו",
+  "privacy.title": "מדיניות פרטיות",
+  "privacy.meta_description": "מדיניות הפרטיות של AI.OpenSubtitles.com",
+  "privacy.h1": "מדיניות פרטיות",
+  "privacy.lead": "כיצד אנו אוספים, משתמשים ומגנים על המידע האישי שלך.",
+  "terms.title": "תנאים והגבלות",
+  "terms.meta_description": "תנאים והגבלות של AI.OpenSubtitles.com",
+  "terms.h1": "תנאים והגבלות",
+  "terms.lead": "תנאי שימוש ב-AI.OpenSubtitles.com."
 }

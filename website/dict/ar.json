@@ -355,5 +355,13 @@
   "translate.quality_note": "تُفحص كل ترجمة تلقائيًا قبل التسليم — ينجو أكثر من 99% من الفحص. وإن رسبت واحدة، فستتلقىها مع ذلك مجانًا.",
   "pricing.quality_note": "لا تُحتسب رسوم إلا على الترجمات التي تجتاز فحص الجودة التلقائي — تُسلَّم الترجمات الراسبة أيضًا ويُسترد ثمنها تلقائيًا.",
   "job.quality_pass": "اجتاز فحص الجودة",
-  "job.quality_fail": "رسب فحص الجودة — جرى استرداد {n} رصيد"
+  "job.quality_fail": "رسب فحص الجودة — جرى استرداد {n} رصيد",
+  "privacy.title": "سياسة الخصوصية",
+  "privacy.meta_description": "سياسة الخصوصية الخاصة بـ AI.OpenSubtitles.com",
+  "privacy.h1": "سياسة الخصوصية",
+  "privacy.lead": "كيف نجمع معلوماتك الشخصية ونستخدمها ونحميها.",
+  "terms.title": "الشروط والأحكام",
+  "terms.meta_description": "الشروط والأحكام الخاصة بـ AI.OpenSubtitles.com",
+  "terms.h1": "الشروط والأحكام",
+  "terms.lead": "شروط استخدام AI.OpenSubtitles.com."
 }

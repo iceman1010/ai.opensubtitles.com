@@ -355,5 +355,13 @@
   "translate.quality_note": "Jede Übersetzung wird vor der Auslieferung automatisch geprüft – über 99 % bestehen die Kontrolle. Schafft es eine nicht, bekommst du sie trotzdem – kostenlos.",
   "pricing.quality_note": "Nur Übersetzungen, die die automatische Qualitätskontrolle bestehen, werden berechnet – nicht bestandene werden trotzdem geliefert und automatisch zurückerstattet.",
   "job.quality_pass": "Qualitätsprüfung bestanden",
-  "job.quality_fail": "Qualitätsprüfung fehlgeschlagen – {n} Credits zurückerstattet"
+  "job.quality_fail": "Qualitätsprüfung fehlgeschlagen – {n} Credits zurückerstattet",
+  "privacy.title": "Privacy Policy",
+  "privacy.meta_description": "Privacy Policy for AI.OpenSubtitles.com",
+  "privacy.h1": "Privacy Policy",
+  "privacy.lead": "How we collect, use, and protect your personal information.",
+  "terms.title": "Terms and Conditions",
+  "terms.meta_description": "Terms and Conditions for AI.OpenSubtitles.com",
+  "terms.h1": "Terms and Conditions",
+  "terms.lead": "Terms of use for AI.OpenSubtitles.com."
 }

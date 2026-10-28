@@ -38,6 +38,8 @@ class Seo
             // TEMP-beta: Tools hidden for beta launch. Siblings of this comment: app/routes.php (routes) and ui/base/layout.html (nav pill).
             // '/tools' => 'tools.html',
             '/support' => 'support.html',
+            '/privacy' => 'privacy.html',
+            '/terms' => 'terms.html',
             '/login' => 'login.html',
         ];
 
