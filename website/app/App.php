@@ -59,6 +59,7 @@ class App
             $bundles = [
                 'core-head' => ['config.js', 'api.js', 'auth.js'],
                 'core-tail' => ['theme-toggle.js', 'nav-menu.js', 'lang-select.js', 'cookie-consent.js'],
+                'subsrt' => ['subsrt.iife.js'],
                 'page-search' => ['subtitle-viewer.js', 'preview-modal.js', 'search-page.js'],
                 'page-dashboard' => ['subtitle-viewer.js', 'preview-modal.js', 'dashboard.js'],
                 'page-job' => ['subtitle-viewer.js', 'preview-modal.js', 'job.js'],
