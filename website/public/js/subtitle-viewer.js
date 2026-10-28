@@ -16,13 +16,18 @@
 	}
 
 	function cleanText(raw) {
-		return String(raw || '')
+		const plain = String(raw || '')
 			.replace(/\{\\[^}]*\}/g, '')
 			.replace(/<[^>]*>/g, '')
 			.replace(/\\[Nn]/g, '\n')
-			.replace(/\r/g, '')
-			.replace(/\n{3,}/g, '\n\n')
-			.trim();
+			.replace(/\r/g, '');
+		const lines = plain.split('\n').map((ln) => ln.trim()).filter(Boolean);
+		if (lines.length <= 2) return lines.join('\n');
+		return lines.reduce((acc, ln) => {
+			if (!acc) return ln;
+			if (/^[-\u2013\u2014]\s?/.test(ln)) return acc + '\n' + ln;
+			return acc + ' ' + ln;
+		}, '');
 	}
 
 	function create(container, cues) {
@@ -33,12 +38,17 @@
 		container.textContent = '';
 		container.appendChild(space);
 
-		let rowH = 100;
+		let heights = [];   // per-row height estimate (px)
+		let prefix = [0];   // prefix[i] = top of row i
 		let lastHit = -1;
 		let matchList = [];
 		let matchPos = -1;
 		let matchFlags = null;
 		let raf = 0;
+
+		function fontPx() {
+			return parseFloat(getComputedStyle(container).fontSize) || 14;
+		}
 
 		function estimate() {
 			const fpx = fontPx();
@@ -46,17 +56,26 @@
 			const charsPerLine = Math.max(20, Math.floor((width - 48) / (fpx * 0.6)));
 			const lineH = Math.round(fpx * 1.57);
 			const metaH = Math.round(fpx * 0.95) + 8;
-			let max = 0;
-			for (let i = 0; i < rows.length; i++) {
-				const lines = rows[i].display.split('\n').reduce((a, ln) => a + Math.max(1, Math.ceil(ln.length / charsPerLine)), 0);
-				max = Math.max(max, metaH + lines * lineH + 12);
-			}
-			rowH = Math.max(max, Math.round(fpx * 3));
-			space.style.height = rows.length * rowH + 'px';
+			heights = rows.map((r) => {
+				const lines = r.display.split('\n').reduce((a, ln) => a + Math.max(1, Math.ceil(ln.length / charsPerLine)), 0);
+				return metaH + lines * lineH + 12;
+			});
+			rebuildPrefix();
 		}
 
-		function fontPx() {
-			return parseFloat(getComputedStyle(container).fontSize) || 14;
+		function rebuildPrefix() {
+			prefix = [0];
+			for (let i = 0; i < heights.length; i++) prefix.push(prefix[i] + heights[i]);
+			space.style.height = (prefix[heights.length] || 0) + 'px';
+		}
+
+		function firstRowFor(y) {
+			let lo = 0, hi = heights.length - 1, res = 0;
+			while (lo <= hi) {
+				const mid = (lo + hi) >> 1;
+				if (prefix[mid] <= y) { res = mid; lo = mid + 1; } else { hi = mid - 1; }
+			}
+			return res;
 		}
 
 		function buildRow(i) {
@@ -64,20 +83,19 @@
 			if (i % 2 === 1) row.classList.add('pv-alt');
 			if (matchFlags && matchFlags[i]) row.classList.add('pv-match');
 			if (i === lastHit) row.classList.add('pv-hit');
-			row.style.height = rowH + 'px';
 			const inner = el('div', 'pv-inner');
 			inner.appendChild(el('span', 'pv-num', String(i + 1)));
-		const body = el('div', 'pv-body');
-		const meta = el('div', 'pv-meta');
-		meta.dir = 'ltr';
-		meta.appendChild(el('span', 'pv-time', fmtTime(rows[i].start)));
-		meta.appendChild(el('span', 'pv-arrow', '\u2192'));
-		meta.appendChild(el('span', 'pv-time', fmtTime(rows[i].end)));
-		meta.appendChild(el('span', 'pv-dur', '+' + (Math.max(0, rows[i].end - rows[i].start) / 1000).toFixed(1) + 's'));
-		body.appendChild(meta);
-		const text = el('div', 'pv-text', rows[i].display);
-		text.dir = 'auto';
-		body.appendChild(text);
+			const body = el('div', 'pv-body');
+			const meta = el('div', 'pv-meta');
+			meta.dir = 'ltr';
+			meta.appendChild(el('span', 'pv-time', fmtTime(rows[i].start)));
+			meta.appendChild(el('span', 'pv-arrow', '\u2192'));
+			meta.appendChild(el('span', 'pv-time', fmtTime(rows[i].end)));
+			meta.appendChild(el('span', 'pv-dur', '+' + (Math.max(0, rows[i].end - rows[i].start) / 1000).toFixed(1) + 's'));
+			body.appendChild(meta);
+			const text = el('div', 'pv-text', rows[i].display);
+			text.dir = 'auto';
+			body.appendChild(text);
 			inner.appendChild(body);
 			row.appendChild(inner);
 			return row;
@@ -85,26 +103,38 @@
 
 		function render() {
 			raf = 0;
-			if (!rows.length) return;
+			if (!rows.length || !heights.length) return;
 			const top = container.scrollTop;
 			const bottom = top + container.clientHeight;
 			const buf = 4;
-			const i0 = Math.max(0, Math.floor(top / rowH) - buf);
-			const i1 = Math.min(rows.length - 1, Math.floor(bottom / rowH) + buf);
-			win.style.transform = 'translateY(' + i0 * rowH + 'px)';
+			const i0 = Math.max(0, firstRowFor(top) - buf);
+			const i1 = Math.min(rows.length - 1, firstRowFor(bottom) + buf);
+			win.style.transform = 'translateY(' + prefix[i0] + 'px)';
 			win.textContent = '';
 			const frag = document.createDocumentFragment();
-			for (let i = i0; i <= i1; i++) frag.appendChild(buildRow(i));
-			win.appendChild(frag);
-			const nodes = win.children;
-			const oldH = rowH;
-			for (let k = 0; k < nodes.length; k++) {
-				const actual = nodes[k].firstChild.offsetHeight;
-				if (actual > rowH) rowH = actual;
+			for (let i = i0; i <= i1; i++) {
+				const row = buildRow(i);
+				row.style.height = heights[i] + 'px';
+				frag.appendChild(row);
 			}
-			if (rowH !== oldH) {
-				space.style.height = rows.length * rowH + 'px';
-				container.scrollTop += i0 * (rowH - oldH);
+			win.appendChild(frag);
+			// lazy correction: snap estimates to actual rendered heights
+			const nodes = win.children;
+			let changed = false;
+			for (let k = 0; k < nodes.length; k++) {
+				const i = i0 + k;
+				const actual = nodes[k].firstChild.offsetHeight;
+				if (actual > 0 && actual !== heights[i]) {
+					heights[i] = actual;
+					changed = true;
+				}
+			}
+			if (changed) {
+				const anchor = firstRowFor(top);
+				const anchorBefore = prefix[anchor];
+				rebuildPrefix();
+				container.scrollTop += prefix[anchor] - anchorBefore;
+				win.style.transform = 'translateY(' + prefix[i0] + 'px)';
 				schedule();
 			}
 		}
@@ -114,7 +144,7 @@
 		}
 
 		function scrollToRow(i) {
-			container.scrollTop = Math.max(0, i * rowH - 12);
+			container.scrollTop = Math.max(0, prefix[i] - 12);
 			schedule();
 		}
 
