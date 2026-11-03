@@ -328,10 +328,18 @@
 	function setLangStatus(text, state, withSpinner) {
 		langDetect.textContent = '';
 		if (withSpinner) langDetect.appendChild(Object.assign(document.createElement('span'), { className: 'spinner' }));
-		langDetect.appendChild(document.createTextNode(text || ''));
+		const textNode = document.createElement('span');
+		textNode.className = 'lang-detect-text';
+		textNode.textContent = text || '';
+		langDetect.appendChild(textNode);
 		langDetect.hidden = false;
 		langDetect.classList.remove('ok', 'fail');
 		if (state) langDetect.classList.add(state);
+		langDetect.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+		textNode.classList.remove('pulse');
+		void textNode.offsetWidth;
+		textNode.classList.add('pulse');
+		textNode.addEventListener('animationend', () => textNode.classList.remove('pulse'), { once: true });
 	}
 
 	function showDetectConsent() {

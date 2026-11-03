@@ -59,7 +59,7 @@ ffmpeg.wasm (`@ffmpeg/ffmpeg` 0.12 + core 0.12.6), in a Web Worker, args:
 `-i in -vn -acodec libmp3lame -ac 1 -ar 16000 out.mp3`
 → **mono 16 kHz MP3** ("same parameters as desktop app"). NOT "keep source
 bitrate". Progress via worker messages. File limits: warn >500MB, hard 2GB.
-Output name: `<base>_converted.mp3`.
+Output name: `<base>.mp3`.
 
 ## File-type routing (web client's real logic — NO mediainfo.wasm)
 

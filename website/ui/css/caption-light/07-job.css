@@ -226,6 +226,16 @@
 	border-color: var(--danger);
 }
 
+.lang-detect-text.pulse {
+	animation: nav-glow-pulse 0.9s ease-out 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.lang-detect-text.pulse {
+		animation: none;
+	}
+}
+
 
 .cost-estimate {
 	background: var(--surface);

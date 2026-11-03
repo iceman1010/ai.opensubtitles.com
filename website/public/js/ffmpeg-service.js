@@ -73,7 +73,7 @@
 
 		return enqueue(async () => {
 			const inputPath = '/input/' + file.name;
-			const outputName = baseName(file.name) + '_converted.mp3';
+			const outputName = baseName(file.name) + '.mp3';
 			await instance.createDir('/input').catch(() => undefined);
 			await instance.mount('WORKERFS', { files: [file] }, '/input');
 			try {
