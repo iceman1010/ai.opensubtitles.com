@@ -155,6 +155,29 @@ section {
 }
 
 
+.features ul {
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+	gap: var(--gap);
+	padding: 0;
+}
+
+
+.features li {
+	background: var(--surface);
+	border: var(--border);
+	border-radius: var(--radius);
+	padding: var(--gap);
+}
+
+
+.features strong {
+	display: block;
+	margin-bottom: var(--gap-sm);
+}
+
+
 .apps {
 	text-align: center;
 	background: var(--surface);
