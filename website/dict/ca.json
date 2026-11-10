@@ -363,5 +363,10 @@
   "terms.title": "Termes i condicions",
   "terms.meta_description": "Termes i condicions de AI.OpenSubtitles.com",
   "terms.h1": "Termes i condicions",
-  "terms.lead": "Condicions d'ús de AI.OpenSubtitles.com."
+  "terms.lead": "Condicions d'ús de AI.OpenSubtitles.com.",
+  "prompt.title": "Voleu veure aquest lloc web en {language}?",
+  "prompt.question": "Voleu veure aquest lloc web en català?",
+  "prompt.english": "Anglès",
+  "prompt.note": "Podeu canviar l'idioma en qualsevol moment des del menú.",
+  "prompt.close": "Tanca"
 }

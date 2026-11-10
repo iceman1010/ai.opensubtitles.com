@@ -363,5 +363,10 @@
   "terms.title": "Όροι και Προϋποθέσεις",
   "terms.meta_description": "Όροι και Προϋποθέσεις της AI.OpenSubtitles.com",
   "terms.h1": "Όροι και Προϋποθέσεις",
-  "terms.lead": "Όροι χρήσης της AI.OpenSubtitles.com."
+  "terms.lead": "Όροι χρήσης της AI.OpenSubtitles.com.",
+  "prompt.title": "Θέλετε να προβάλετε αυτόν τον ιστότοπο στα {language};",
+  "prompt.question": "Θέλετε να προβάλετε αυτόν τον ιστότοπο στα ελληνικά;",
+  "prompt.english": "Αγγλικά",
+  "prompt.note": "Μπορείτε να αλλάξετε τη γλώσσα ανά πάσα στιγμή από το μενού.",
+  "prompt.close": "Κλείσιμο"
 }

@@ -363,5 +363,10 @@
   "terms.title": "利用規約",
   "terms.meta_description": "AI.OpenSubtitles.com 利用規約",
   "terms.h1": "利用規約",
-  "terms.lead": "AI.OpenSubtitles.com の利用条件。"
+  "terms.lead": "AI.OpenSubtitles.com の利用条件。",
+  "prompt.title": "このサイトを{language}で表示しますか？",
+  "prompt.question": "このサイトを日本語で表示しますか？",
+  "prompt.english": "英語",
+  "prompt.note": "言語はメニューからいつでも変更できます。",
+  "prompt.close": "閉じる"
 }

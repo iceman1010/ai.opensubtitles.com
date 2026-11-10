@@ -363,5 +363,10 @@
   "terms.title": "Lietošanas noteikumi",
   "terms.meta_description": "AI.OpenSubtitles.com lietošanas noteikumi",
   "terms.h1": "Lietošanas noteikumi",
-  "terms.lead": "AI.OpenSubtitles.com lietošanas noteikumi."
+  "terms.lead": "AI.OpenSubtitles.com lietošanas noteikumi.",
+  "prompt.title": "Vai vēlaties skatīt šo vietni {language} valodā?",
+  "prompt.question": "Vai vēlaties skatīt šo vietni latviešu valodā?",
+  "prompt.english": "Angļu",
+  "prompt.note": "Valodu jebkurā laikā varat mainīt izvēlnē.",
+  "prompt.close": "Aizvērt"
 }

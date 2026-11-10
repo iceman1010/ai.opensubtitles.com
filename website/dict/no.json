@@ -363,5 +363,10 @@
   "terms.title": "Vilkår og betingelser",
   "terms.meta_description": "Vilkår og betingelser for AI.OpenSubtitles.com",
   "terms.h1": "Vilkår og betingelser",
-  "terms.lead": "Bruksvilkår for AI.OpenSubtitles.com."
+  "terms.lead": "Bruksvilkår for AI.OpenSubtitles.com.",
+  "prompt.title": "Vil du se dette nettstedet på {language}?",
+  "prompt.question": "Vil du se dette nettstedet på norsk?",
+  "prompt.english": "Engelsk",
+  "prompt.note": "Du kan når som helst endre språk i menyen.",
+  "prompt.close": "Lukk"
 }

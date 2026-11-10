@@ -363,5 +363,10 @@
   "terms.title": "Användarvillkor",
   "terms.meta_description": "Användarvillkor för AI.OpenSubtitles.com",
   "terms.h1": "Användarvillkor",
-  "terms.lead": "Användningsvillkor för AI.OpenSubtitles.com."
+  "terms.lead": "Användningsvillkor för AI.OpenSubtitles.com.",
+  "prompt.title": "Vill du se den här webbplatsen på {language}?",
+  "prompt.question": "Vill du se den här webbplatsen på svenska?",
+  "prompt.english": "Engelska",
+  "prompt.note": "Du kan när som helst byta språk i menyn.",
+  "prompt.close": "Stäng"
 }

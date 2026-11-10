@@ -363,5 +363,10 @@
   "terms.title": "Умови використання",
   "terms.meta_description": "Умови використання AI.OpenSubtitles.com",
   "terms.h1": "Умови використання",
-  "terms.lead": "Умови використання AI.OpenSubtitles.com."
+  "terms.lead": "Умови використання AI.OpenSubtitles.com.",
+  "prompt.title": "Хочете переглядати цей сайт {language}мовою?",
+  "prompt.question": "Хочете переглядати цей сайт українською мовою?",
+  "prompt.english": "Англійська",
+  "prompt.note": "Ви можете змінити мову будь-коли через меню.",
+  "prompt.close": "Закрити"
 }

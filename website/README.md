@@ -57,13 +57,16 @@ file deployed next to `config.php` (not via git).
 - Dark/light toggle rides CSS tokens (`data-theme` attribute), preference in
   localStorage, defaults to `prefers-color-scheme`.
 - Locale: URLs are `/` (en) and `/de/...`; `app/config.php` `languages` map
-  (locale => label + flag + optional `flag_overrides`) is the single source of
-  truth for available languages. `App::boot()` wraps all main route handlers
+  (locale => label + flag + English `name` + optional `flag_overrides`) is the
+  single source of truth for available languages. `App::boot()` wraps all main route handlers
   so `Services\Locale::apply()` runs before each controller — dict lookups in
   controllers (e.g. `page_title`) resolve the request's locale. First visit
-  without a `site_locale` cookie is
-  auto-forwarded (302) when `Accept-Language` matches a configured language;
-  with a pinned cookie, locale-less URLs 302 to the pinned locale (bots carry
+  without a `site_locale` cookie gets an ask-first client-side modal
+  (`public/js/locale-prompt.js` in the core-tail bundle): the suggested
+  language comes from `navigator.languages` first, then the Cloudflare
+  visitor country (`/cdn-cgi/trace` → config `geo_map`); the origin never
+  redirects on headers (homepage is full-page cached at the CDN anyway).
+  With a pinned cookie, locale-less URLs 302 to the pinned locale (bots carry
   no cookie and never see that redirect — one language per URL for crawlers).
   All internal `<a href>` page links in templates are locale-aware via the
   `lp` hive var (`{{ @lp }}/faq`; empty for en) — new templates must use it

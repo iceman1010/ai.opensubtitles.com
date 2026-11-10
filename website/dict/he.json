@@ -363,5 +363,10 @@
   "terms.title": "תנאים והגבלות",
   "terms.meta_description": "תנאים והגבלות של AI.OpenSubtitles.com",
   "terms.h1": "תנאים והגבלות",
-  "terms.lead": "תנאי שימוש ב-AI.OpenSubtitles.com."
+  "terms.lead": "תנאי שימוש ב-AI.OpenSubtitles.com.",
+  "prompt.title": "האם תרצו לצפות באתר זה ב{language}?",
+  "prompt.question": "האם תרצו לצפות באתר זה בעברית?",
+  "prompt.english": "אנגלית",
+  "prompt.note": "תוכלו לשנות את השפה בכל עת מהתפריט.",
+  "prompt.close": "סגירה"
 }

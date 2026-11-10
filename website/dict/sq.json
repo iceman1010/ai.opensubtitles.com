@@ -363,5 +363,10 @@
   "terms.title": "Kushtet dhe Kushtet",
   "terms.meta_description": "Kushtet e AI.OpenSubtitles.com",
   "terms.h1": "Kushtet dhe Kushtet",
-  "terms.lead": "Kushtet e përdorimit të AI.OpenSubtitles.com."
+  "terms.lead": "Kushtet e përdorimit të AI.OpenSubtitles.com.",
+  "prompt.title": "A dëshironi ta shihni këtë faqe në {language}?",
+  "prompt.question": "A dëshironi ta shihni këtë faqe në shqip?",
+  "prompt.english": "Anglisht",
+  "prompt.note": "Gjuhën mund ta ndryshoni çdo herë nga menuja.",
+  "prompt.close": "Mbyll"
 }

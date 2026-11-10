@@ -363,5 +363,10 @@
   "terms.title": "Termeni și condiții",
   "terms.meta_description": "Termeni și condiții AI.OpenSubtitles.com",
   "terms.h1": "Termeni și condiții",
-  "terms.lead": "Condiții de utilizare AI.OpenSubtitles.com."
+  "terms.lead": "Condiții de utilizare AI.OpenSubtitles.com.",
+  "prompt.title": "Doriți să vizualizați acest site în {language}?",
+  "prompt.question": "Doriți să vizualizați acest site în română?",
+  "prompt.english": "Engleză",
+  "prompt.note": "Puteți schimba oricând limba din meniu.",
+  "prompt.close": "Închide"
 }

@@ -363,5 +363,10 @@
   "terms.title": "Általános Szerződési Feltételek",
   "terms.meta_description": "AI.OpenSubtitles.com Általános Szerződési Feltételei",
   "terms.h1": "Általános Szerződési Feltételek",
-  "terms.lead": "Az AI.OpenSubtitles.com használati feltételei."
+  "terms.lead": "Az AI.OpenSubtitles.com használati feltételei.",
+  "prompt.title": "Szeretné ezt a weboldalt {language} nyelven megtekinteni?",
+  "prompt.question": "Szeretné ezt a weboldalt magyarul megtekinteni?",
+  "prompt.english": "Angol",
+  "prompt.note": "A nyelvet bármikor megváltoztathatja a menüben.",
+  "prompt.close": "Bezárás"
 }

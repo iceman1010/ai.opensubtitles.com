@@ -363,5 +363,10 @@
   "terms.title": "Termini e condizioni",
   "terms.meta_description": "Termini e condizioni di AI.OpenSubtitles.com",
   "terms.h1": "Termini e condizioni",
-  "terms.lead": "Condizioni d'uso di AI.OpenSubtitles.com."
+  "terms.lead": "Condizioni d'uso di AI.OpenSubtitles.com.",
+  "prompt.title": "Vuoi visualizzare questo sito in {language}?",
+  "prompt.question": "Vuoi visualizzare questo sito in italiano?",
+  "prompt.english": "Inglese",
+  "prompt.note": "Puoi cambiare lingua in qualsiasi momento dal menu.",
+  "prompt.close": "Chiudi"
 }

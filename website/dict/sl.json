@@ -363,5 +363,10 @@
   "terms.title": "Pogoji uporabe",
   "terms.meta_description": "Pogoji uporabe AI.OpenSubtitles.com",
   "terms.h1": "Pogoji uporabe",
-  "terms.lead": "Pogoji uporabe AI.OpenSubtitles.com."
+  "terms.lead": "Pogoji uporabe AI.OpenSubtitles.com.",
+  "prompt.title": "Želite si ogledati to spletno stran v {language}?",
+  "prompt.question": "Želite si ogledati to spletno stran v slovenščini?",
+  "prompt.english": "Angleščina",
+  "prompt.note": "Jezik lahko kadar koli spremenite v meniju.",
+  "prompt.close": "Zapri"
 }

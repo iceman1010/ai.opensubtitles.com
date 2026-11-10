@@ -363,5 +363,10 @@
   "terms.title": "Syarat dan Ketentuan",
   "terms.meta_description": "Syarat dan Ketentuan AI.OpenSubtitles.com",
   "terms.h1": "Syarat dan Ketentuan",
-  "terms.lead": "Ketentuan penggunaan AI.OpenSubtitles.com."
+  "terms.lead": "Ketentuan penggunaan AI.OpenSubtitles.com.",
+  "prompt.title": "Apakah Anda ingin melihat situs ini dalam bahasa {language}?",
+  "prompt.question": "Apakah Anda ingin melihat situs ini dalam bahasa Indonesia?",
+  "prompt.english": "Bahasa Inggris",
+  "prompt.note": "Anda dapat mengubah bahasa kapan saja melalui menu.",
+  "prompt.close": "Tutup"
 }

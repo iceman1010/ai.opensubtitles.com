@@ -363,5 +363,10 @@
   "terms.title": "Mga Tuntunin at Kundisyon",
   "terms.meta_description": "Mga Tuntunin at Kundisyon ng AI.OpenSubtitles.com",
   "terms.h1": "Mga Tuntunin at Kundisyon",
-  "terms.lead": "Mga tuntunin sa paggamit ng AI.OpenSubtitles.com."
+  "terms.lead": "Mga tuntunin sa paggamit ng AI.OpenSubtitles.com.",
+  "prompt.title": "Gusto mo bang tingnan ang site na ito sa {language}?",
+  "prompt.question": "Gusto mo bang tingnan ang site na ito sa Filipino?",
+  "prompt.english": "Ingles",
+  "prompt.note": "Maaari mong baguhin ang wika anumang oras sa menu.",
+  "prompt.close": "Isara"
 }

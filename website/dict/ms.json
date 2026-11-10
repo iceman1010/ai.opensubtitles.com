@@ -363,5 +363,10 @@
   "terms.title": "Terma dan Syarat",
   "terms.meta_description": "Terma dan Syarat AI.OpenSubtitles.com",
   "terms.h1": "Terma dan Syarat",
-  "terms.lead": "Syarat penggunaan AI.OpenSubtitles.com."
+  "terms.lead": "Syarat penggunaan AI.OpenSubtitles.com.",
+  "prompt.title": "Adakah anda ingin melihat laman web ini dalam bahasa {language}?",
+  "prompt.question": "Adakah anda ingin melihat laman web ini dalam bahasa Melayu?",
+  "prompt.english": "Bahasa Inggeris",
+  "prompt.note": "Anda boleh menukar bahasa pada bila-bila masa melalui menu.",
+  "prompt.close": "Tutup"
 }

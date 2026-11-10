@@ -363,5 +363,10 @@
   "terms.title": "ข้อกำหนดและเงื่อนไข",
   "terms.meta_description": "ข้อกำหนดและเงื่อนไขของ AI.OpenSubtitles.com",
   "terms.h1": "ข้อกำหนดและเงื่อนไข",
-  "terms.lead": "ข้อกำหนดการใช้งานของ AI.OpenSubtitles.com"
+  "terms.lead": "ข้อกำหนดการใช้งานของ AI.OpenSubtitles.com",
+  "prompt.title": "ต้องการดูเว็บไซต์นี้เป็นภาษา{language}หรือไม่",
+  "prompt.question": "ต้องการดูเว็บไซต์นี้เป็นภาษาไทยหรือไม่",
+  "prompt.english": "ภาษาอังกฤษ",
+  "prompt.note": "คุณเปลี่ยนภาษาได้ทุกเมื่อผ่านเมนู",
+  "prompt.close": "ปิด"
 }

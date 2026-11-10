@@ -363,5 +363,10 @@
   "terms.title": "شرائط و ضوابط",
   "terms.meta_description": "AI.OpenSubtitles.com کی شرائط و ضوابط",
   "terms.h1": "شرائط و ضوابط",
-  "terms.lead": "AI.OpenSubtitles.com کے استعمال کی شرائط۔"
+  "terms.lead": "AI.OpenSubtitles.com کے استعمال کی شرائط۔",
+  "prompt.title": "کیا آپ یہ ویب سائٹ {language} میں دیکھنا چاہتے ہیں؟",
+  "prompt.question": "کیا آپ یہ ویب سائٹ اردو میں دیکھنا چاہتے ہیں؟",
+  "prompt.english": "انگریزی",
+  "prompt.note": "آپ کسی بھی وقت مینو سے زبان تبدیل کر سکتے ہیں۔",
+  "prompt.close": "بند کریں"
 }

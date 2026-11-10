@@ -363,5 +363,10 @@
   "terms.title": "İstifadə Şərtləri",
   "terms.meta_description": "AI.OpenSubtitles.com İstifadə Şərtləri",
   "terms.h1": "İstifadə Şərtləri",
-  "terms.lead": "AI.OpenSubtitles.com istifadə şərtləri."
+  "terms.lead": "AI.OpenSubtitles.com istifadə şərtləri.",
+  "prompt.title": "Bu saytı {language} dilində görmək istəyirsiniz?",
+  "prompt.question": "Bu saytı Azərbaycan dilində görmək istəyirsiniz?",
+  "prompt.english": "İngilis",
+  "prompt.note": "Dili istənilən vaxt menyudan dəyişə bilərsiniz.",
+  "prompt.close": "Bağla"
 }

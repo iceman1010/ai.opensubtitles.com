@@ -363,5 +363,10 @@
   "terms.title": "Regulamin",
   "terms.meta_description": "Regulamin AI.OpenSubtitles.com",
   "terms.h1": "Regulamin",
-  "terms.lead": "Warunki korzystania z AI.OpenSubtitles.com."
+  "terms.lead": "Warunki korzystania z AI.OpenSubtitles.com.",
+  "prompt.title": "Czy chcesz wyświetlać tę stronę w języku {language}?",
+  "prompt.question": "Czy chcesz wyświetlać tę stronę po polsku?",
+  "prompt.english": "Angielski",
+  "prompt.note": "Język możesz zmienić w każdej chwili w menu.",
+  "prompt.close": "Zamknij"
 }

@@ -363,5 +363,10 @@
   "terms.title": "Podmienky používania",
   "terms.meta_description": "Podmienky používania AI.OpenSubtitles.com",
   "terms.h1": "Podmienky používania",
-  "terms.lead": "Podmienky používania AI.OpenSubtitles.com."
+  "terms.lead": "Podmienky používania AI.OpenSubtitles.com.",
+  "prompt.title": "Chcete zobraziť túto stránku v jazyku {language}?",
+  "prompt.question": "Chcete zobraziť túto stránku v slovenčine?",
+  "prompt.english": "Angličtina",
+  "prompt.note": "Jazyk môžete kedykoľvek zmeniť v ponuke.",
+  "prompt.close": "Zavrieť"
 }

@@ -363,5 +363,10 @@
   "terms.title": "Handelsbetingelser",
   "terms.meta_description": "Handelsbetingelser for AI.OpenSubtitles.com",
   "terms.h1": "Handelsbetingelser",
-  "terms.lead": "Brugsbetingelser for AI.OpenSubtitles.com."
+  "terms.lead": "Brugsbetingelser for AI.OpenSubtitles.com.",
+  "prompt.title": "Vil du se denne hjemmeside på {language}?",
+  "prompt.question": "Vil du se denne hjemmeside på dansk?",
+  "prompt.english": "Engelsk",
+  "prompt.note": "Du kan altid skifte sprog i menuen.",
+  "prompt.close": "Luk"
 }

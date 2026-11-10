@@ -363,5 +363,10 @@
   "terms.title": "Условия использования",
   "terms.meta_description": "Условия использования AI.OpenSubtitles.com",
   "terms.h1": "Условия использования",
-  "terms.lead": "Условия использования AI.OpenSubtitles.com."
+  "terms.lead": "Условия использования AI.OpenSubtitles.com.",
+  "prompt.title": "Хотите просматривать этот сайт на языке {language}?",
+  "prompt.question": "Хотите просматривать этот сайт на русском языке?",
+  "prompt.english": "Английский",
+  "prompt.note": "Вы можете изменить язык в любой момент через меню.",
+  "prompt.close": "Закрыть"
 }

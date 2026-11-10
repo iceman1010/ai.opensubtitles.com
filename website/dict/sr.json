@@ -363,5 +363,10 @@
   "terms.title": "Услови коришћења",
   "terms.meta_description": "Услови коришћења AI.OpenSubtitles.com",
   "terms.h1": "Услови коришћења",
-  "terms.lead": "Услови коришћења AI.OpenSubtitles.com."
+  "terms.lead": "Услови коришћења AI.OpenSubtitles.com.",
+  "prompt.title": "Želite li da pregledate ovaj sajt na {language}?",
+  "prompt.question": "Želite li da pregledate ovaj sajt na srpskom?",
+  "prompt.english": "Engleski",
+  "prompt.note": "Jezik možete promeniti u bilo kom trenutku u meniju.",
+  "prompt.close": "Zatvori"
 }

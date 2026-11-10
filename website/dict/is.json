@@ -363,5 +363,10 @@
   "terms.title": "Notendaskilmálar",
   "terms.meta_description": "Notendaskilmálar AI.OpenSubtitles.com",
   "terms.h1": "Notendaskilmálar",
-  "terms.lead": "Notendaskilmálar AI.OpenSubtitles.com."
+  "terms.lead": "Notendaskilmálar AI.OpenSubtitles.com.",
+  "prompt.title": "Viltu skoða þetta vefsvæði á {language}?",
+  "prompt.question": "Viltu skoða þetta vefsvæði á íslensku?",
+  "prompt.english": "Enska",
+  "prompt.note": "Þú getur breytt tungumálinu hvenær sem er í valmyndinni.",
+  "prompt.close": "Loka"
 }

@@ -363,5 +363,10 @@
   "terms.title": "Kullanım Koşulları",
   "terms.meta_description": "AI.OpenSubtitles.com Kullanım Koşulları",
   "terms.h1": "Kullanım Koşulları",
-  "terms.lead": "AI.OpenSubtitles.com kullanım koşulları."
+  "terms.lead": "AI.OpenSubtitles.com kullanım koşulları.",
+  "prompt.title": "Bu siteyi {language} olarak görüntülemek ister misiniz?",
+  "prompt.question": "Bu siteyi Türkçe olarak görüntülemek ister misiniz?",
+  "prompt.english": "İngilizce",
+  "prompt.note": "Dili menüden istediğiniz zaman değiştirebilirsiniz.",
+  "prompt.close": "Kapat"
 }

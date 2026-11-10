@@ -351,3 +351,134 @@
 }
 
 
+/* Locale prompt (first-visit language suggestion)
+   ---------------------------------------------- */
+
+#locale-prompt.modal-overlay {
+	z-index: var(--z-modal);
+}
+
+.lp-card {
+	background: var(--surface);
+	border: var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	padding: 1.75rem 1.5rem 1.25rem;
+	width: min(92vw, 23rem);
+	position: relative;
+	text-align: center;
+	animation: lp-in 0.18s ease-out;
+}
+
+@keyframes lp-in {
+	from {
+		opacity: 0;
+		transform: scale(0.97) translateY(4px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.lp-card {
+		animation: none;
+	}
+}
+
+.lp-close {
+	position: absolute;
+	top: 0.5rem;
+	inset-inline-end: 0.5rem;
+	width: 2.2rem;
+	height: 2.2rem;
+	display: grid;
+	place-items: center;
+	color: var(--ink-soft);
+	background: none;
+	border: 0;
+	border-radius: var(--radius-xs);
+	cursor: pointer;
+}
+
+.lp-close:hover {
+	color: var(--ink);
+	background: color-mix(in srgb, var(--ink) 6%, transparent);
+}
+
+.lp-close svg {
+	width: 1.1rem;
+	height: 1.1rem;
+}
+
+.lp-title {
+	font-weight: 600;
+	font-size: var(--fs-xl);
+	margin: 0 0 0.4rem;
+}
+
+.lp-sub {
+	margin: 0 0 1.25rem;
+	color: var(--ink-soft);
+	font-size: var(--fs-base);
+	line-height: 1.45;
+}
+
+.lp-options {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.75rem;
+	margin-bottom: 1.1rem;
+}
+
+.lp-option {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.45rem;
+	padding: 1rem 0.5rem 0.8rem;
+	background: var(--surface);
+	border: var(--border);
+	border-radius: var(--radius-sm);
+	cursor: pointer;
+	font: inherit;
+	color: var(--ink);
+	transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.lp-option:hover {
+	border-color: var(--accent);
+	background: color-mix(in srgb, var(--accent) 5%, var(--surface));
+}
+
+.lp-option.lp-suggested {
+	border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+}
+
+.lp-flag {
+	width: 2.75rem;
+	height: 2.75rem;
+	border-radius: 50%;
+	box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 30%, transparent);
+}
+
+.lp-name {
+	font-weight: 600;
+	font-size: var(--fs-lg);
+}
+
+.lp-gloss {
+	font-size: var(--fs-xs);
+	color: var(--ink-soft);
+}
+
+.lp-note {
+	margin: 0;
+	font-size: var(--fs-xs);
+	color: var(--ink-soft);
+}
+
+@media (max-width: 420px) {
+	.lp-options {
+		grid-template-columns: 1fr;
+	}
+}
+
+

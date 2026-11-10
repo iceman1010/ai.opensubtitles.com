@@ -363,5 +363,10 @@
   "terms.title": "이용약관",
   "terms.meta_description": "AI.OpenSubtitles.com 이용약관",
   "terms.h1": "이용약관",
-  "terms.lead": "AI.OpenSubtitles.com 이용약관."
+  "terms.lead": "AI.OpenSubtitles.com 이용약관.",
+  "prompt.title": "이 사이트를 {language}(으)로 표시할까요?",
+  "prompt.question": "이 사이트를 한국어로 표시할까요?",
+  "prompt.english": "영어",
+  "prompt.note": "언제든지 메뉴에서 언어를 변경할 수 있습니다.",
+  "prompt.close": "닫기"
 }

@@ -363,5 +363,10 @@
   "terms.title": "Kasutustingimused",
   "terms.meta_description": "AI.OpenSubtitles.com kasutustingimused",
   "terms.h1": "Kasutustingimused",
-  "terms.lead": "AI.OpenSubtitles.com kasutustingimused."
+  "terms.lead": "AI.OpenSubtitles.com kasutustingimused.",
+  "prompt.title": "Kas soovite seda veebilehte {language} keeles vaadata?",
+  "prompt.question": "Kas soovite seda veebilehte eesti keeles vaadata?",
+  "prompt.english": "Inglise",
+  "prompt.note": "Keelt saate menüüst igal ajal muuta.",
+  "prompt.close": "Sulge"
 }

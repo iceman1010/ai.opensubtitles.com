@@ -363,5 +363,10 @@
   "terms.title": "條款和條件",
   "terms.meta_description": "AI.OpenSubtitles.com 條款和條件",
   "terms.h1": "條款和條件",
-  "terms.lead": "AI.OpenSubtitles.com 使用條款。"
+  "terms.lead": "AI.OpenSubtitles.com 使用條款。",
+  "prompt.title": "您想以{language}檢視本網站嗎？",
+  "prompt.question": "您想以繁體中文檢視本網站嗎？",
+  "prompt.english": "英語",
+  "prompt.note": "您可以隨時在選單中變更語言。",
+  "prompt.close": "關閉"
 }

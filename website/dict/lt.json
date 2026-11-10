@@ -363,5 +363,10 @@
   "terms.title": "Naudojimo sąlygos",
   "terms.meta_description": "AI.OpenSubtitles.com naudojimo sąlygos",
   "terms.h1": "Naudojimo sąlygos",
-  "terms.lead": "AI.OpenSubtitles.com naudojimo sąlygos."
+  "terms.lead": "AI.OpenSubtitles.com naudojimo sąlygos.",
+  "prompt.title": "Ar norite matyti šią svetainę {language}?",
+  "prompt.question": "Ar norite peržiūrėti šią svetainę lietuviškai?",
+  "prompt.english": "Anglų",
+  "prompt.note": "Kalbą bet kada galite pakeisti meniu.",
+  "prompt.close": "Uždaryti"
 }

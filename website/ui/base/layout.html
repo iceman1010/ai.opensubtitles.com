@@ -124,6 +124,26 @@
 			<button id="cookie-decline" class="btn btn-ghost" type="button">{{ @cookie.decline }}</button>
 		</div>
 	</div>
+	<div id="locale-prompt" class="modal-overlay" hidden data-geo='{{ @lang_geo }}'>
+		<div class="lp-card" role="dialog" aria-modal="true" aria-labelledby="lp-title">
+			<button class="lp-close" type="button" id="lp-close" aria-label="{{ @prompt.close }}"><svg aria-hidden="true"><use href="#icon-x"/></svg></button>
+			<h3 class="lp-title" id="lp-title">{{ @prompt.title }}</h3>
+			<p class="lp-sub" id="lp-sub" dir="ltr"></p>
+			<div class="lp-options">
+				<button class="lp-option lp-suggested" type="button" id="lp-locale">
+					<img class="lp-flag" id="lp-locale-flag" alt="" width="44" height="44" src="/lib/circle-flags/de.svg">
+					<span class="lp-name" id="lp-locale-name"></span>
+					<span class="lp-gloss" id="lp-locale-gloss"></span>
+				</button>
+				<button class="lp-option" type="button" id="lp-english">
+					<img class="lp-flag" id="lp-english-flag" alt="" width="44" height="44" src="/lib/circle-flags/gb.svg">
+					<span class="lp-name">{{ @prompt.english }}</span>
+					<span class="lp-gloss" id="lp-english-gloss"></span>
+				</button>
+			</div>
+			<p class="lp-note">{{ @prompt.note }}</p>
+		</div>
+	</div>
 	<script src="/assets/js/core-tail.js?v={{ @js_v }}" defer></script>
 </body>
 </html>

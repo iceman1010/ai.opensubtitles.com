@@ -363,5 +363,10 @@
   "terms.title": "Общи условия",
   "terms.meta_description": "Общи условия на AI.OpenSubtitles.com",
   "terms.h1": "Общи условия",
-  "terms.lead": "Условия за ползване на AI.OpenSubtitles.com."
+  "terms.lead": "Условия за ползване на AI.OpenSubtitles.com.",
+  "prompt.title": "Искате ли да разглеждате този сайт на {language}?",
+  "prompt.question": "Искате ли да разглеждате този сайт на български?",
+  "prompt.english": "Английски",
+  "prompt.note": "Можете да смените езика по всяко време от менюто.",
+  "prompt.close": "Затваряне"
 }

@@ -363,5 +363,10 @@
   "terms.title": "Käyttöehdot",
   "terms.meta_description": "AI.OpenSubtitles.comin käyttöehdot",
   "terms.h1": "Käyttöehdot",
-  "terms.lead": "AI.OpenSubtitles.comin käyttöehdot."
+  "terms.lead": "AI.OpenSubtitles.comin käyttöehdot.",
+  "prompt.title": "Haluatko nähdä tämän sivuston {language}?",
+  "prompt.question": "Haluatko nähdä tämän sivuston suomeksi?",
+  "prompt.english": "Englanti",
+  "prompt.note": "Voit vaihtaa kielen milloin tahansa valikosta.",
+  "prompt.close": "Sulje"
 }

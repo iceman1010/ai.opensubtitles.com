@@ -363,5 +363,10 @@
   "terms.title": "Foydalanish shartlari",
   "terms.meta_description": "AI.OpenSubtitles.com Foydalanish shartlari",
   "terms.h1": "Foydalanish shartlari",
-  "terms.lead": "AI.OpenSubtitles.com foydalanish shartlari."
+  "terms.lead": "AI.OpenSubtitles.com foydalanish shartlari.",
+  "prompt.title": "Bu saytni {language} tilida ko‘rmoqchimisiz?",
+  "prompt.question": "Bu saytni o‘zbek tilida ko‘rmoqchimisiz?",
+  "prompt.english": "Ingliz",
+  "prompt.note": "Tilni istalgan vaqt menyudan o‘zgartirishingiz mumkin.",
+  "prompt.close": "Yopish"
 }

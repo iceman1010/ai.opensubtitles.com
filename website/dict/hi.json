@@ -363,5 +363,10 @@
   "terms.title": "नियम और शर्तें",
   "terms.meta_description": "AI.OpenSubtitles.com के नियम और शर्तें",
   "terms.h1": "नियम और शर्तें",
-  "terms.lead": "AI.OpenSubtitles.com के उपयोग की शर्तें।"
+  "terms.lead": "AI.OpenSubtitles.com के उपयोग की शर्तें।",
+  "prompt.title": "क्या आप इस वेबसाइट को {language} में देखना चाहते हैं?",
+  "prompt.question": "क्या आप इस वेबसाइट को हिन्दी में देखना चाहते हैं?",
+  "prompt.english": "अंग्रेज़ी",
+  "prompt.note": "आप भाषा को कभी भी मेनू से बदल सकते हैं।",
+  "prompt.close": "बंद करें"
 }

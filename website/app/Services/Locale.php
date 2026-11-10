@@ -12,18 +12,13 @@ class Locale
 
         if ($requested === null && $f3->get('VERB') === 'GET') {
             $cookie = (string) ($f3->get('COOKIE.site_locale') ?? '');
-            if ($cookie === '') {
-                $match = self::negotiate($locales, (string) ($_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? ''));
-                if ($match !== null && $match !== $default) {
-                    setcookie('site_locale', $match, ['expires' => time() + 31536000, 'path' => '/', 'samesite' => 'Lax']);
-                    $path = (string) $f3->get('PATH');
-                    $query = (string) $f3->get('QUERY');
-                    $f3->reroute('/' . $match . ($path === '/' ? '' : $path) . ($query !== '' ? '?' . $query : ''));
-                    return;
-                }
-            } elseif (in_array($cookie, $locales, true) && $cookie !== $default) {
+            if ($cookie !== '' && in_array($cookie, $locales, true) && $cookie !== $default) {
                 // Pinned visitor on a locale-less path: keep their language.
                 // Bots carry no cookie and never see this redirect.
+                // First-visit detection is NOT done here: the homepage is
+                // full-page cached at Cloudflare (origin never sees those
+                // requests), so the ask-first prompt runs client-side
+                // (public/js/locale-prompt.js, cf_country -> geo_map).
                 $path = (string) $f3->get('PATH');
                 $query = (string) $f3->get('QUERY');
                 $f3->reroute('/' . $cookie . ($path === '/' ? '' : $path) . ($query !== '' ? '?' . $query : ''));
@@ -84,39 +79,54 @@ class Locale
         return json_encode($out, JSON_UNESCAPED_SLASHES);
     }
 
-    private static function negotiate(array $locales, string $header): ?string
+    public static function geoJson(\Base $f3): string
     {
-        if ($header === '') {
-            return null;
+        $languages = $f3->get('APP.languages');
+        $map = $f3->get('APP.geo_map') ?: [];
+        $targets = array_values(array_unique($map));
+        $dir = rtrim((string) $f3->get('LOCALES'), '/') . '/';
+
+        $stamp = '';
+        $files = [];
+        foreach ($targets as $locale) {
+            $file = $dir . preg_replace_callback('/-([a-z]{2})$/', static fn (array $m): string => '-' . strtoupper($m[1]), $locale) . '.json';
+            $files[$locale] = $file;
+            $stamp .= $file . ':' . (string) @filemtime($file) . ';';
         }
 
-        $candidates = [];
-        foreach (explode(',', $header) as $part) {
-            $segments = explode(';q=', trim($part));
-            $tag = strtolower(trim((string) $segments[0]));
-            $q = isset($segments[1]) ? (float) $segments[1] : 1.0;
-            if ($tag === '' || $tag === '*' || $q <= 0.0) {
+        $cacheDir = (string) $f3->get('APP.cache_dir');
+        $cacheFile = $cacheDir . '/lang-geo.json';
+        if (is_file($cacheFile)) {
+            $cached = json_decode((string) file_get_contents($cacheFile), true);
+            if (is_array($cached) && ($cached['stamp'] ?? '') === $stamp) {
+                return (string) ($cached['json'] ?? '');
+            }
+        }
+
+        $prompts = [];
+        foreach ($targets as $locale) {
+            if (!isset($languages[$locale])) {
                 continue;
             }
-            $candidates[] = [$tag, $q];
+            $dict = json_decode((string) @file_get_contents($files[$locale]), true);
+            if (!is_array($dict) || !isset($dict['prompt.title'], $dict['prompt.question'], $dict['prompt.english'])) {
+                continue;
+            }
+            $lang = $languages[$locale];
+            $prompts[$locale] = [
+                'label' => $lang['label'],
+                'flag' => $lang['flag'],
+                'dir' => $lang['dir'] ?? 'ltr',
+                'name' => $lang['name'] ?? $lang['label'],
+                'question' => (string) $dict['prompt.question'],
+                'english_gloss' => (string) $dict['prompt.english'],
+            ];
         }
 
-        usort($candidates, static fn (array $a, array $b): int => $b[1] <=> $a[1]);
-
-        foreach ($candidates as [$tag]) {
-            $base = explode('-', $tag)[0];
-            foreach ($locales as $locale) {
-                if (strtolower($locale) === $tag) {
-                    return $locale;
-                }
-            }
-            foreach ($locales as $locale) {
-                if (strtolower($locale) === $base) {
-                    return $locale;
-                }
-            }
+        $json = json_encode(['map' => $map, 'prompts' => $prompts], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        if (is_dir($cacheDir) || @mkdir($cacheDir, 0775, true)) {
+            @file_put_contents($cacheFile, json_encode(['stamp' => $stamp, 'json' => $json], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
         }
-
-        return null;
+        return $json;
     }
 }
