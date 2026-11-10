@@ -1,6 +1,6 @@
 {
     "name": "opensubtitles/ai-website",
-    "description": "SEO-first demo & marketing site for ai.opensubtitles.com",
+    "description": "SEO-first demo & marketing site for ai.opensubtitles.com, replacing the old outdated site.",
     "type": "project",
     "require": {
         "php": ">=8.2",

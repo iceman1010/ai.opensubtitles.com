@@ -1,32 +1,17 @@
 <?php
 
-return [
+$config = [
     'theme' => 'caption-light',
     'default_locale' => 'en',
-    'geo_map' => [
-        'DE' => 'de', 'AT' => 'de', 'CH' => 'de', 'LI' => 'de',
-        'ES' => 'es', 'MX' => 'es', 'AR' => 'es', 'CL' => 'es', 'CO' => 'es', 'PE' => 'es',
-        'VE' => 'es', 'EC' => 'es', 'UY' => 'es', 'PY' => 'es', 'BO' => 'es', 'CR' => 'es',
-        'PA' => 'es', 'GT' => 'es', 'HN' => 'es', 'SV' => 'es', 'NI' => 'es', 'DO' => 'es', 'CU' => 'es',
-        'FR' => 'fr', 'MC' => 'fr', 'SN' => 'fr', 'CI' => 'fr', 'ML' => 'fr', 'BF' => 'fr',
-        'NE' => 'fr', 'BJ' => 'fr', 'TG' => 'fr', 'GA' => 'fr', 'CD' => 'fr', 'CG' => 'fr', 'MG' => 'fr',
-        'PT' => 'pt', 'BR' => 'pt-br', 'IT' => 'it', 'SM' => 'it',
-        'NL' => 'nl', 'BE' => 'nl', 'PL' => 'pl', 'RU' => 'ru', 'BY' => 'be', 'UA' => 'uk',
-        'TR' => 'tr', 'AZ' => 'az', 'JP' => 'ja', 'KR' => 'ko',
-        'CN' => 'zh-cn', 'SG' => 'zh-cn', 'TW' => 'zh-tw', 'HK' => 'zh-tw',
-        'ID' => 'id', 'MY' => 'ms', 'TH' => 'th', 'VN' => 'vi', 'IN' => 'hi', 'PH' => 'tl',
-        'IL' => 'he', 'IR' => 'fa', 'PK' => 'ur', 'GR' => 'el', 'CY' => 'el',
-        'SA' => 'ar', 'AE' => 'ar', 'EG' => 'ar', 'MA' => 'ar', 'DZ' => 'ar', 'TN' => 'ar',
-        'JO' => 'ar', 'PS' => 'ar', 'LB' => 'ar', 'IQ' => 'ar', 'KW' => 'ar', 'QA' => 'ar',
-        'BH' => 'ar', 'OM' => 'ar', 'YE' => 'ar', 'SY' => 'ar', 'LY' => 'ar', 'SD' => 'ar', 'MR' => 'ar',
-        'CZ' => 'cs', 'SK' => 'sk', 'RO' => 'ro', 'MD' => 'ro', 'HU' => 'hu',
-        'SE' => 'sv', 'DK' => 'da', 'FI' => 'fi', 'NO' => 'no',
-        'BG' => 'bg', 'HR' => 'hr', 'RS' => 'sr', 'SI' => 'sl', 'BA' => 'bs',
-        'LT' => 'lt', 'LV' => 'lv', 'EE' => 'et', 'AL' => 'sq', 'XK' => 'sq', 'MK' => 'mk',
-        'IS' => 'is', 'AD' => 'ca', 'UZ' => 'uz',
+    'geo_overrides' => [
+        'BR' => 'pt-br',
+        'PT' => 'pt',
+        'BY' => 'be',
+        'PY' => 'es',
     ],
+    'geo_excludes' => [],
     'languages' => [
-        'en' => ['label' => 'English', 'flag' => 'gb', 'flag_overrides' => ['us' => 'us', 'ca' => 'us', 'au' => 'au', 'nz' => 'nz', 'in' => 'in']],
+        'en' => ['label' => 'English', 'flag' => 'gb', 'flag_overrides' => ['us' => 'us']],
         'de' => ['label' => 'Deutsch', 'flag' => 'de', 'name' => 'German'],
         'es' => ['label' => 'Español', 'flag' => 'es', 'name' => 'Spanish'],
         'fr' => ['label' => 'Français', 'flag' => 'fr', 'name' => 'French'],
@@ -93,3 +78,11 @@ return [
     'credit_usd_rate' => 0.01,
     'cache_dir' => dirname(__DIR__) . '/cache',
 ];
+
+$__geo = is_file(__DIR__ . '/geo-map.generated.php') ? require __DIR__ . '/geo-map.generated.php' : [];
+foreach (($config['geo_excludes'] ?? []) as $__cc) {
+    unset($__geo[$__cc]);
+}
+$config['geo_map'] = array_replace($__geo, $config['geo_overrides'] ?? []);
+
+return $config;
