@@ -6,6 +6,10 @@ class Locale
 {
     public static function apply(\Base $f3): void
     {
+        if ($f3->get('locale')) {
+            return;
+        }
+
         $default = $f3->get('APP.default_locale');
         $locales = $f3->get('APP.locales');
         $requested = $f3->get('PARAMS.locale');

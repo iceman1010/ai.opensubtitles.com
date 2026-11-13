@@ -30,12 +30,22 @@ class Base
             $links[] = '</llms.txt>; rel="describedby"';
         }
         header('Link: ' . implode(', ', $links));
-        if ($page === 'pricing.html') {
-            header('Cache-Control: public, max-age=0, s-maxage=600, stale-while-revalidate=3600');
-        } elseif (in_array($page, ['login.html', 'dashboard.html', 'new.html', 'jobs.html', 'job.html'], true)) {
-            header('Cache-Control: public, max-age=0, s-maxage=60, stale-while-revalidate=600');
-        } else {
-            header('Cache-Control: public, max-age=0, s-maxage=3600, stale-while-revalidate=86400');
+        switch ($page) {
+            case 'error.html':
+                header('Cache-Control: no-cache, must-revalidate');
+                break;
+            case 'pricing.html':
+                header('Cache-Control: public, max-age=0, s-maxage=600, stale-while-revalidate=3600');
+                break;
+            case 'login.html':
+            case 'dashboard.html':
+            case 'new.html':
+            case 'jobs.html':
+            case 'job.html':
+                header('Cache-Control: public, max-age=0, s-maxage=60, stale-while-revalidate=600');
+                break;
+            default:
+                header('Cache-Control: public, max-age=0, s-maxage=3600, stale-while-revalidate=86400');
         }
 
         $locale = $f3->get('locale');

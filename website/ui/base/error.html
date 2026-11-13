@@ -1,0 +1,6 @@
+<section class="page-head">
+	<h1><check if="{{ @error_is_404 }}"><true>{{ @error.404.h1 }}</true><false>{{ @error.generic.h1 }}</false></check></h1>
+	<p class="lead"><check if="{{ @error_is_404 }}"><true>{{ @error.404.lead }}</true><false>{{ @error.generic.lead }}</false></check></p>
+	<p class="muted">HTTP {{ @ERROR.code }}</p>
+	<p><a class="btn btn-primary" href="{{ @lp ?: '/' }}"><span class="btn-label">{{ @error.back_home }}</span></a></p>
+</section>

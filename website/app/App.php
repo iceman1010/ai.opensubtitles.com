@@ -46,6 +46,8 @@ class App
         $f3->route('GET /api-docs/openapi.json', 'Controllers\ApiDocs->openapi');
         $f3->route('GET /.well-known/ard.json', 'Controllers\Ard->manifest');
 
+        $f3->set('ONERROR', 'Controllers\Error->show');
+
         $f3->route('GET /assets/css/caption-light/main.css', function (\Base $f3): void {
             $dir = dirname(__DIR__) . '/ui/css/caption-light/';
             $files = array_map('basename', glob($dir . '*.css') ?: []);
