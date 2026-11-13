@@ -215,6 +215,11 @@
 }
 
 
+.pagination-top {
+	margin: 0 0 var(--gap);
+}
+
+
 .pagination span {
 	color: var(--ink-soft);
 	font-size: var(--fs-base);

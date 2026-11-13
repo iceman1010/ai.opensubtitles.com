@@ -10,6 +10,7 @@
 	};
 
 	const el = (id) => document.getElementById(id);
+	const qsa = (sel) => document.querySelectorAll(sel);
 	const i18n = Object.assign({}, document.getElementById('search-i18n').dataset);
 	const i18n_placeholder_subtitles = i18n.placeholder_subtitles || 'Search…';
 	const i18n_placeholder_features = i18n.placeholder_features || 'Search…';
@@ -238,11 +239,10 @@
 		el('results-meta').textContent = state.totalCount.toLocaleString() + ' ' + i18n.found;
 		if (isSubs) renderSubtitles(data);
 		else renderFeatures(data);
-		const pag = el('pagination');
-		pag.hidden = state.totalPages <= 1;
-		el('page-info').textContent = i18n.page_of + ' ' + state.page + ' ' + i18n.of + ' ' + state.totalPages;
-		el('page-prev').disabled = state.page <= 1;
-		el('page-next').disabled = state.page >= state.totalPages;
+		qsa('.pagination').forEach((pag) => { pag.hidden = state.totalPages <= 1; });
+		qsa('.page-info').forEach((node) => { node.textContent = i18n.page_of + ' ' + state.page + ' ' + i18n.of + ' ' + state.totalPages; });
+		qsa('.page-prev').forEach((btn) => { btn.disabled = state.page <= 1; });
+		qsa('.page-next').forEach((btn) => { btn.disabled = state.page >= state.totalPages; });
 		el('search-results').hidden = false;
 	}
 
@@ -348,7 +348,7 @@
 		el('search-query').placeholder = mode === 'subtitles' ? i18n_placeholder_subtitles : i18n_placeholder_features;
 		el('search-language').closest('label').hidden = mode === 'features';
 		el('search-results').hidden = true;
-		el('pagination').hidden = true;
+		qsa('.pagination').forEach((pag) => { pag.hidden = true; });
 	}
 
 	function bind() {
@@ -367,12 +367,12 @@
 		el('search-language').addEventListener('change', () => {
 			AI.saveConfig({ lastSearchLanguage: el('search-language').value });
 		});
-		el('page-prev').addEventListener('click', () => {
+		qsa('.page-prev').forEach((btn) => btn.addEventListener('click', () => {
 			if (state.page > 1) { state.page--; runSearch(); window.scrollTo(0, 0); }
-		});
-		el('page-next').addEventListener('click', () => {
+		}));
+		qsa('.page-next').forEach((btn) => btn.addEventListener('click', () => {
 			if (state.page < state.totalPages) { state.page++; runSearch(); window.scrollTo(0, 0); }
-		});
+		}));
 		el('results-grid').addEventListener('error', (e) => {
 			const img = e.target;
 			if (!img.classList || !img.classList.contains('feature-poster-img')) return;
@@ -448,7 +448,7 @@
 			}
 			state.page = p.page || 1;
 			await runSearch();
-			replayPendingAction(saved.pending);
+			if (AI.loggedIn()) replayPendingAction(saved.pending);
 		} catch (e) {}
 	}
 

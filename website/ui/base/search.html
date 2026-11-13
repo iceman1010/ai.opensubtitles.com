@@ -35,11 +35,16 @@
 			<h2 id="results-title"></h2>
 			<span id="results-meta"></span>
 		</div>
+		<div class="pagination pagination-top" id="pagination-top" hidden>
+			<button class="page-prev btn btn-ghost btn-small" type="button">← {{ @search.prev }}</button>
+			<span class="page-info"></span>
+			<button class="page-next btn btn-ghost btn-small" type="button">{{ @search.next }} →</button>
+		</div>
 		<div id="results-grid" class="results-grid"></div>
-		<div class="pagination" id="pagination" hidden>
-			<button id="page-prev" class="btn btn-ghost btn-small" type="button">← {{ @search.prev }}</button>
-			<span id="page-info"></span>
-			<button id="page-next" class="btn btn-ghost btn-small" type="button">{{ @search.next }} →</button>
+		<div class="pagination" id="pagination-bottom" hidden>
+			<button class="page-prev btn btn-ghost btn-small" type="button">← {{ @search.prev }}</button>
+			<span class="page-info"></span>
+			<button class="page-next btn btn-ghost btn-small" type="button">{{ @search.next }} →</button>
 		</div>
 	</div>
 </section>
