@@ -18,17 +18,17 @@ No — opensubtitles.org and opensubtitles.com accounts are separate, and your .
 
 ## Transcription
 
-### What happens to my file?
+### Where does my media go when I upload it?
 
-Media is converted to a mono MP3 in your browser; only that audio track is uploaded for transcription.
+Nothing leaves your machine at first — the browser extracts a mono MP3 audio track, and that file alone is sent to the transcription service.
 
-### Which formats work?
+### Which input files can I transcribe?
 
-Common video and audio formats are supported. You always receive SRT or VTT subtitles.
+All the everyday video and audio containers are fine. Whatever you feed in, the finished subtitles come back as SRT or VTT.
 
-### What if the transcription is in the wrong language?
+### The transcript came out in the wrong language — why?
 
-The selected language must match the spoken language of your file. Transcription and translation are separate steps — transcribe first, then translate the result into any language.
+The language you pick must be the one actually spoken in the file. Getting subtitles in another language is a second pass: run the transcription first, then send the result through translation.
 
 ## Translation
 
@@ -36,14 +36,14 @@ The selected language must match the spoken language of your file. Transcription
 
 Every translation is checked automatically against the original subtitle file: completeness, timing, untranslated passages, wrong alphabets and reading speed. If a translation fails, you still receive the file — and the credits are refunded automatically.
 
-### Which subtitle formats?
+### What can I upload for translating?
 
-SRT and VTT are the standard output formats; more input formats are supported.
+Subtitle files go in, subtitle files come out: SRT and VTT are what you receive, and a range of other formats is accepted as input.
 
-### Will the timing change?
+### Are my timestamps preserved?
 
-Possibly — it depends on the language pair and the model. Timestamps are kept when possible, but if the target language needs shorter captions (e.g. Japanese), captions may be split differently.
+Usually yes, but not guaranteed. The model tries to keep your original timing; when a target language needs tighter captions (Japanese, for example), lines get split and the timing shifts accordingly.
 
-### Why does my translation fail or produce strange characters?
+### My translated file is full of strange characters — what went wrong?
 
-Almost always an incorrect character encoding. Save subtitle files as UTF-8 without BOM before uploading — files in legacy encodings (e.g. Windows-1252) may fail or produce broken text.
+In almost every case the file wasn't UTF-8. Re-save it as UTF-8 without BOM and upload again; older encodings such as Windows-1252 tend to break or garble the text.

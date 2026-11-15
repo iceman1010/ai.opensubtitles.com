@@ -9,18 +9,6 @@
 
 ## FAQ
 
-### What happens to my file?
-
-Media is converted to a mono MP3 in your browser; only that audio track is uploaded for transcription.
-
-### Which formats work?
-
-Common video and audio formats are supported. You always receive SRT or VTT subtitles.
-
-### What if the transcription is in the wrong language?
-
-The selected language must match the spoken language of your file. Transcription and translation are separate steps — transcribe first, then translate the result into any language.
-
 ### How accurate is the transcription?
 
 Depends on the model, background noise and overall audio quality; more capable models usually produce better results.
