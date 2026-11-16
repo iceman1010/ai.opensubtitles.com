@@ -1,4 +1,13 @@
 (function () {
+	var here = location.pathname.replace(/\/+$/, '') || '/';
+	document.querySelectorAll('header nav a.nav-pill').forEach(function (a) {
+		if (a.classList.contains('lang-option')) return;
+		var href = (a.getAttribute('href') || '').replace(/\/+$/, '') || '/';
+		if (href === here) a.setAttribute('aria-current', 'page');
+	});
+})();
+
+(function () {
 	var btn = document.getElementById('nav-more-btn');
 	var wrap = btn && btn.parentElement;
 	var menu = document.getElementById('nav-menu');

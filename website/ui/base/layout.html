@@ -63,6 +63,7 @@
 		<symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></symbol>
 		<symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
 	</svg>
+	<a class="skip-link" href="#main-content">{{ @common.skip_to_content }}</a>
 	<header class="site-header">
 		<a class="brand" href="{{ @lp ?: '/' }}"><img src="/assets/img/logo-64.png" alt="{{ @site_name }}" width="32" height="32" fetchpriority="high"></a>
 		<nav>
@@ -97,7 +98,7 @@
 					</div>
 				</div>
 			</div>
-			<button id="theme-toggle" class="theme-toggle" type="button" aria-label="{{ @common.theme_toggle }}">◐</button>
+			<button id="theme-toggle" class="theme-toggle" type="button" aria-label="{{ @common.theme_toggle }}" aria-pressed="false">◐</button>
 		</nav>
 	</header>
 	<script>
@@ -110,15 +111,15 @@
 			});
 		})();
 	</script>
-	<main>
+	<main id="main-content" tabindex="-1">
 		<include href="{{ @page }}">
 	</main>
 	<footer class="site-footer">
 		<p>© {{ date('Y') }} {{ @site_name }} · <a href="https://www.opensubtitles.com">{{ @footer.main_site }}</a></p>
 		<p><a href="{{ @lp }}/support">{{ @nav.support }}</a> · <a href="{{ @lp }}/privacy">{{ @nav.privacy }}</a> · <a href="{{ @lp }}/terms">{{ @nav.terms }}</a></p>
 	</footer>
-	<div id="cookie-banner" class="cookie-banner" hidden>
-		<p>{{ @cookie.text }}</p>
+	<div id="cookie-banner" class="cookie-banner" role="region" aria-labelledby="cookie-text" hidden>
+		<p id="cookie-text">{{ @cookie.text }}</p>
 		<div class="cookie-actions">
 			<button id="cookie-accept" class="btn btn-primary" type="button">{{ @cookie.accept }}</button>
 			<button id="cookie-decline" class="btn btn-ghost" type="button">{{ @cookie.decline }}</button>

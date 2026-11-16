@@ -4,13 +4,13 @@
 </section>
 <section class="search-page">
 	<div class="card search-card">
-		<div class="seg" role="tablist">
-			<button id="tab-subtitles" class="seg-btn" type="button" role="tab" aria-selected="true">{{ @search.tab_subtitles }}</button>
-			<button id="tab-features" class="seg-btn" type="button" role="tab" aria-selected="false">{{ @search.tab_features }}</button>
+		<div class="seg" role="group" aria-label="{{ @search.mode_label }}">
+			<button id="tab-subtitles" class="seg-btn" type="button" aria-pressed="true">{{ @search.tab_subtitles }}</button>
+			<button id="tab-features" class="seg-btn" type="button" aria-pressed="false">{{ @search.tab_features }}</button>
 		</div>
 		<form id="search-form">
 			<div class="search-row">
-				<input type="search" id="search-query" placeholder="{{ @search.placeholder_subtitles }}" autocomplete="off" dir="auto">
+				<input type="search" id="search-query" placeholder="{{ @search.placeholder_subtitles }}" aria-label="{{ @search.placeholder_subtitles }}" autocomplete="off" dir="auto">
 				<button id="search-submit" class="btn btn-primary" type="submit"><svg class="btn-icon" aria-hidden="true"><use href="#icon-search"/></svg><span class="btn-label">{{ @search.submit }}</span></button>
 			</div>
 			<div class="search-filters">
@@ -27,25 +27,25 @@
 				<label>{{ @search.year }}<input type="number" id="search-year" min="1900" max="2100" inputmode="numeric"></label>
 			</div>
 		</form>
-		<p id="search-error" class="form-error" hidden></p>
+		<p id="search-error" class="form-error" role="alert" hidden></p>
 	</div>
 
 	<div id="search-results" hidden>
 		<div class="results-head">
 			<h2 id="results-title"></h2>
-			<span id="results-meta"></span>
+			<span id="results-meta" aria-live="polite"></span>
 		</div>
-		<div class="pagination pagination-top" id="pagination-top" hidden>
+		<nav class="pagination pagination-top" id="pagination-top" aria-label="{{ @search.pagination_label }}" hidden>
 			<button class="page-prev btn btn-ghost btn-small" type="button">← {{ @search.prev }}</button>
-			<span class="page-info"></span>
+			<span class="page-info" aria-live="polite"></span>
 			<button class="page-next btn btn-ghost btn-small" type="button">{{ @search.next }} →</button>
-		</div>
+		</nav>
 		<div id="results-grid" class="results-grid"></div>
-		<div class="pagination" id="pagination-bottom" hidden>
+		<nav class="pagination" id="pagination-bottom" aria-label="{{ @search.pagination_label }}" hidden>
 			<button class="page-prev btn btn-ghost btn-small" type="button">← {{ @search.prev }}</button>
-			<span class="page-info"></span>
+			<span class="page-info" aria-live="polite"></span>
 			<button class="page-next btn btn-ghost btn-small" type="button">{{ @search.next }} →</button>
-		</div>
+		</nav>
 	</div>
 </section>
 
@@ -55,7 +55,7 @@
 	</section>
 </check>
 
-<div id="lightbox-overlay" class="lightbox-overlay" hidden>
+<div id="lightbox-overlay" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="{{ @search.lightbox_title }}" tabindex="-1" hidden>
 	<img id="lightbox-img" alt="">
 </div>
 

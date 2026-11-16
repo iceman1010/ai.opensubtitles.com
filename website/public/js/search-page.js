@@ -343,9 +343,11 @@
 	function setMode(mode) {
 		state.mode = mode;
 		state.imdbKind = 'imdb_id';
-		el('tab-subtitles').setAttribute('aria-selected', mode === 'subtitles');
-		el('tab-features').setAttribute('aria-selected', mode === 'features');
-		el('search-query').placeholder = mode === 'subtitles' ? i18n_placeholder_subtitles : i18n_placeholder_features;
+		el('tab-subtitles').setAttribute('aria-pressed', mode === 'subtitles');
+		el('tab-features').setAttribute('aria-pressed', mode === 'features');
+		const label = mode === 'subtitles' ? i18n_placeholder_subtitles : i18n_placeholder_features;
+		el('search-query').placeholder = label;
+		el('search-query').setAttribute('aria-label', label);
 		el('search-language').closest('label').hidden = mode === 'features';
 		el('search-results').hidden = true;
 		qsa('.pagination').forEach((pag) => { pag.hidden = true; });
@@ -401,6 +403,7 @@
 				el('lightbox-img').src = posterEl.dataset.poster;
 				el('lightbox-img').alt = posterEl.dataset.title || '';
 				el('lightbox-overlay').hidden = false;
+				el('lightbox-overlay').focus();
 				return;
 			}
 			const button = e.target.closest('button[data-action]');

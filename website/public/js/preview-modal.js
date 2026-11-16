@@ -6,6 +6,7 @@
 	let modal = null;
 	let viewer = null;
 	let currentContent = '';
+	let lastFocus = null;
 
 	function el(tag, className, text) {
 		const node = document.createElement(tag);
@@ -47,6 +48,21 @@
 
 	function escListener(e) {
 		if (e.key === 'Escape') PreviewModal.close();
+		if (e.key === 'Tab' && modal) {
+			const focusables = Array.from(modal.overlay.querySelectorAll(
+				'button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+			)).filter((n) => n.offsetParent !== null);
+			if (!focusables.length) return;
+			const first = focusables[0];
+			const last = focusables[focusables.length - 1];
+			if (e.shiftKey && document.activeElement === first) {
+				e.preventDefault();
+				last.focus();
+			} else if (!e.shiftKey && document.activeElement === last) {
+				e.preventDefault();
+				first.focus();
+			}
+		}
 	}
 
 	function build(labels) {
@@ -154,7 +170,7 @@
 		card.appendChild(actions);
 		overlay.appendChild(card);
 		document.body.appendChild(overlay);
-		modal = { overlay, title, pre, view, toolbar, badge, search, find: findBtn, prev: prevBtn, next: nextBtn, counter, smaller, larger, labels: {} };
+		modal = { overlay, title, pre, view, toolbar, badge, search, find: findBtn, prev: prevBtn, next: nextBtn, counter, smaller, larger, close, labels: {} };
 		applyFontSize();
 	}
 
@@ -236,6 +252,8 @@
 				applyFontSize();
 			}
 			document.addEventListener('keydown', escListener);
+			lastFocus = document.activeElement;
+			modal.close.focus();
 		},
 		close() {
 			if (!modal) return;
@@ -245,6 +263,8 @@
 				viewer = null;
 			}
 			document.removeEventListener('keydown', escListener);
+			if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
+			lastFocus = null;
 		}
 	};
 

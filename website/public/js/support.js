@@ -31,20 +31,23 @@
 			const showModal = () => {
 				if (document.activeElement) document.activeElement.blur();
 				modal.hidden = false;
+				document.getElementById('support-modal-login').focus();
+			};
+			const hideModal = () => {
+				modal.hidden = true;
+				emailInput.focus();
 			};
 			form.addEventListener('focusin', showModal);
 			form.addEventListener('click', (e) => {
 				e.preventDefault();
 				showModal();
 			}, true);
-			document.getElementById('support-modal-close').addEventListener('click', () => {
-				modal.hidden = true;
-			});
+			document.getElementById('support-modal-close').addEventListener('click', hideModal);
 			modal.addEventListener('click', (e) => {
-				if (e.target === modal) modal.hidden = true;
+				if (e.target === modal) hideModal();
 			});
 			document.addEventListener('keydown', (e) => {
-				if (e.key === 'Escape' && !modal.hidden) modal.hidden = true;
+				if (e.key === 'Escape' && !modal.hidden) hideModal();
 			});
 			document.getElementById('support-modal-login').addEventListener('click', () => {
 				sessionStorage.setItem('ai_redirect_after_login', location.pathname);
