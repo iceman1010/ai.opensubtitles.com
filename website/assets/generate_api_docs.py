@@ -164,7 +164,7 @@ def security_line(op, spec):
     chips = []
     for entry in sec:
         names = list(entry.keys())
-        inner = " or ".join(f"<code>{esc(n)}</code>" for n in names) or "any"
+        inner = " + ".join(f"<code>{esc(n)}</code>" for n in names) or "any"
         chips.append(f'<span class="api-chip">{inner}</span>')
     return " or ".join(chips)
 

@@ -3,17 +3,51 @@
 Authoritative sources: `ai-opensubtitles-clients/docs/api/*.md`, web client
 `src/services/api/*.ts`, `src/workers/ffmpeg.worker.ts`, `src/config/fileFormats.json`.
 
+## Quickstart
+
+```
+1) Login (Api-Key header only; 1 request/second):
+curl -X POST https://api.opensubtitles.com/api/v1/login \
+  -H "Api-Key: <API_KEY>" -H "Content-Type: application/json" \
+  -d '{"username":"<USER>","password":"<PASS>"}'
+-> {"token":"<TOKEN>","user":{...},"base_url":"api.opensubtitles.com"}
+
+2) Start an AI translation (multipart form; costs credits; both headers):
+curl -X POST https://api.opensubtitles.com/api/v1/ai/translate \
+  -H "Api-Key: <API_KEY>" -H "Authorization: Bearer <TOKEN>" \
+  -F "file=@movie.srt" -F "api=nano" -F "translate_to=de"
+-> {"status":"CREATED","correlation_id":"<ID>"}
+
+3) Poll status every 3-5 s (NOTE: /ai/translation, not /ai/translate):
+curl -X POST https://api.opensubtitles.com/api/v1/ai/translation/<ID> \
+  -H "Api-Key: <API_KEY>" -H "Authorization: Bearer <TOKEN>"
+-> {"status":"PENDING" | "COMPLETED" (data.url) | "ERROR"/"TIMEOUT" (errors[])}
+
+4) Download the result (auth headers on the file URL too):
+curl -O -J -H "Api-Key: <API_KEY>" -H "Authorization: Bearer <TOKEN>" "<data.url>"
+```
+
+`base_url` from the login response is a **hostname only** — build URLs as
+`https://<base_url>/api/v1/<endpoint>`. Transcription works the same way
+(`POST /ai/transcribe`, then `POST /ai/transcribe/<ID>`).
+
 ## Base URL & headers
 
 - Base: `/ai-web/api/v1` (same-domain proxy, prod). Login is `{base}/login`;
-  AI endpoints are `{base}/ai{endpoint}`.
+  AI endpoints are `{base}/ai{endpoint}`. Direct API:
+  `https://api.opensubtitles.com/api/v1` (or the login-returned `base_url`).
 - Standard headers: `Accept: application/json`, `Api-Key: <key>`,
-  `User-Agent: aios v1`, `X-User-Agent: aios v1`, `Authorization: Bearer <token>`
-  (except login), `Content-Type: application/json` (JSON calls only — NOT FormData).
+  `User-Agent: aios v1`, `X-User-Agent: aios v1`, `Content-Type: application/json`
+  (JSON calls only — NOT FormData).
+- Auth rule: AI endpoints are user-scoped (they spend a user's credits) — send
+  BOTH `Api-Key` (application) and `Authorization: Bearer <token>` (user).
+  Anonymous endpoints (subtitle/feature search, infos) need `Api-Key` only.
+  `/ai/osticket`: `Api-Key` required, Bearer optional.
 
 ## Auth
 
-- `POST {base}/login` JSON `{username, password}` → `{token, user: {user_id}}`.
+- `POST {base}/login` JSON `{username, password}` → `{token, user: {user_id}, base_url}`.
+  `base_url` is a hostname only — request URLs are `https://<base_url>/api/v1/<endpoint>`.
 - Token: localStorage, 6h TTL, verified via getCredits(). NO auto-login without
   cached token (429 protection). Login = single attempt, no retry.
 - Errors: 401 invalid credentials, 429 rate limit, body "blocked" = temp block.

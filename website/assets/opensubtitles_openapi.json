@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "OpenSubtitles API",
-    "description": "Explore Open Subtitles API here",
+    "description": "Explore Open Subtitles API here\n\nQuickstart — the four calls every integration needs:\n\n```\n1) Login (Api-Key header only; 1 request/second):\ncurl -X POST https://api.opensubtitles.com/api/v1/login \\\n  -H \"Api-Key: <API_KEY>\" -H \"Content-Type: application/json\" \\\n  -d '{\"username\":\"<USER>\",\"password\":\"<PASS>\"}'\n-> {\"token\":\"<TOKEN>\",\"user\":{...},\"base_url\":\"api.opensubtitles.com\"}\n\n2) Start an AI translation (multipart form; costs credits; both headers):\ncurl -X POST https://api.opensubtitles.com/api/v1/ai/translate \\\n  -H \"Api-Key: <API_KEY>\" -H \"Authorization: Bearer <TOKEN>\" \\\n  -F \"file=@movie.srt\" -F \"api=nano\" -F \"translate_to=de\"\n-> {\"status\":\"CREATED\",\"correlation_id\":\"<ID>\"}\n\n3) Poll status every 3-5 s (NOTE: /ai/translation, not /ai/translate):\ncurl -X POST https://api.opensubtitles.com/api/v1/ai/translation/<ID> \\\n  -H \"Api-Key: <API_KEY>\" -H \"Authorization: Bearer <TOKEN>\"\n-> {\"status\":\"PENDING\" | \"COMPLETED\" (data.url) | \"ERROR\"/\"TIMEOUT\" (errors[])}\n\n4) Download the result (auth headers on the file URL too):\ncurl -O -J -H \"Api-Key: <API_KEY>\" -H \"Authorization: Bearer <TOKEN>\" \"<data.url>\"\n```\n\nbase_url is a hostname only: build URLs as https://<base_url>/api/v1/<endpoint>. Transcription works the same way (POST /ai/transcribe, then POST /ai/transcribe/<ID>).",
     "contact": {
       "name": "OpenSubtitles API Support",
       "url": "https://www.opensubtitles.com/en/contact/",
@@ -82,7 +82,7 @@
           "Authentication"
         ],
         "summary": "Login",
-        "description": "Create a token to authenticate a user. If response code is ```401 Unathorized``` stop sending further requests with the same credentials, login is \"expensive\" operation.\n\nRequest rate limit is 1 request per 1 second.\n\nFurther API requests must continue on returned ```base_url``` host, which can have different cache time for search results and different request rate limits. If ```base_url``` equals ```vip-api.opensubtitles.com``` make sure you always send with every request JWT token (if available), otherwise request might fail with 4xx code.",
+        "description": "Create a token to authenticate a user. If response code is ```401 Unathorized``` stop sending further requests with the same credentials, login is \"expensive\" operation.\n\nRequest rate limit is 1 request per 1 second.\n\nFurther API requests must continue on returned ```base_url``` host, which can have different cache time for search results and different request rate limits. If ```base_url``` equals ```vip-api.opensubtitles.com``` make sure you always send with every request JWT token (if available), otherwise request might fail with 4xx code.\n\n```base_url``` is a hostname only — build request URLs as ```https://<base_url>/api/v1/<endpoint>``` (after a login returning ```vip-api.opensubtitles.com```, call ```https://vip-api.opensubtitles.com/api/v1/...```).\n\nAI endpoints are user-scoped (they spend a user's credits): POST /login first, then send BOTH the ```Api-Key``` header (application) and ```Authorization: Bearer <token>``` (user) on every AI request. Anonymous endpoints (subtitles/features search, infos) need the Api-Key only.",
         "operationId": "login",
         "parameters": [
           {
@@ -5719,7 +5719,8 @@
         "x-internal": false,
         "security": [
           {
-            "Api-Key": []
+            "Api-Key": [],
+            "Bearer": []
           }
         ],
         "tags": [
@@ -5851,7 +5852,8 @@
         "x-internal": false,
         "security": [
           {
-            "Api-Key": []
+            "Api-Key": [],
+            "Bearer": []
           }
         ],
         "tags": [
@@ -7085,7 +7087,8 @@
         },
         "security": [
           {
-            "Api-Key": []
+            "Api-Key": [],
+            "Bearer": []
           }
         ]
       },
@@ -7118,9 +7121,7 @@
         "description": "**Translate** subtitles using AI from one language to another language. \n\nCredits on user account are needed. [Buy Credits](../open_api.json/paths/~1ai~1credits~1buy/get)\n\nCheck following method: [Get AI Translate status](../open_api.json/paths/~1ai~1translate~1{correlation_id}/get)\n\nMethod is returning \n```\n{\n  \"status\": \"CREATED\",\n  \"correlation_id\": \"67eda18f52e11\"\n}\n```\nStatus possible values: \n```\nCREATED     -> Initial state`\nPENDING     -> procedure is still running\nCOMPLETED   -> remote procedure call is completed and has a result\nERROR       -> procedure resulted in an error and is not running anymore\nTIMEOUT     -> No matching procedure call found before timeout\n```\nUsing `correlation_id` can check status of job using GET\n",
         "security": [
           {
-            "Api-Key": []
-          },
-          {
+            "Api-Key": [],
             "Bearer": []
           }
         ],
@@ -7310,9 +7311,7 @@
         },
         "security": [
           {
-            "Api-Key": []
-          },
-          {
+            "Api-Key": [],
             "Bearer": []
           }
         ],
@@ -8783,7 +8782,8 @@
         "x-internal": false,
         "security": [
           {
-            "Api-Key": []
+            "Api-Key": [],
+            "Bearer": []
           }
         ],
         "x-stoplight": {
@@ -8815,9 +8815,7 @@
         "description": "**Transcribe** media (audio, video) file using AI into subtitles. Max size of file: 100 MB \n\nCredits on user account are needed. [Buy Credits](../open_api.json/paths/~1ai~1credits~1buy/get)\n\nCheck following method: [Get AI Transcribe status](../open_api.json/paths/~1ai~1transcribe~1{correlation_id}/get)\n\nMethod is returning \n```\n{\n  \"status\": \"CREATED\",\n  \"correlation_id\": \"67eda18f52e11\"\n}\n```\nStatus possible values: \n```\nCREATED     -> Initial state`\nPENDING     -> procedure is still running\nCOMPLETED   -> remote procedure call is completed and has a result\nERROR       -> procedure resulted in an error and is not running anymore\nTIMEOUT     -> No matching procedure call found before timeout\n```\nUsing `correlation_id` can check status of job using GET\n",
         "security": [
           {
-            "Api-Key": []
-          },
-          {
+            "Api-Key": [],
             "Bearer": []
           }
         ],
@@ -8898,9 +8896,7 @@
         "operationId": "transcribe-status",
         "security": [
           {
-            "Api-Key": []
-          },
-          {
+            "Api-Key": [],
             "Bearer": []
           }
         ],
@@ -9004,9 +9000,7 @@
         "description": "**Detect language** of subtitle file.\n\nAt least 1 credits on user account is needed. [Buy Credits](../open_api.json/paths/~1ai~1credits~1buy/get)\n\nMethod is returning \n```\n{\n  \"data\": {\n    \"format\": \"SubRip\",\n    \"type\": \"text\",\n    \"language\": {\n      \"W3C\": \"en\",\n      \"name\": \"english\",\n      \"native\": \"english\",\n      \"ISO_639_1\": \"en\",\n      \"ISO_639_2b\": \"eng\"\n    }\n  }\n}\n```",
         "security": [
           {
-            "Api-Key": []
-          },
-          {
+            "Api-Key": [],
             "Bearer": []
           }
         ],
@@ -9061,9 +9055,7 @@
         "description": "**Detect language**  of media audio file. Max size of file: 100 MB \n\nAt least 1 credits on user account is needed. [Buy Credits](../open_api.json/paths/~1ai~1credits~1buy/get)\n\nCheck following method: [Get Detect Language Audio status](../open_api.json/paths/~1ai~1detect_language_audio~1{correlation_id}/get)\n\nMethod is returning \n```\n{\n  \"status\": \"CREATED\",\n  \"correlation_id\": \"67eda18f52e11\"\n}\n```\nStatus possible values: \n```\nCREATED     -> Initial state`\nPENDING     -> procedure is still running\nCOMPLETED   -> remote procedure call is completed and has a result\nERROR       -> procedure resulted in an error and is not running anymore\nTIMEOUT     -> No matching procedure call found before timeout\n```\nUsing `correlation_id` can check status of job using GET\n",
         "security": [
           {
-            "Api-Key": []
-          },
-          {
+            "Api-Key": [],
             "Bearer": []
           }
         ],
@@ -9136,9 +9128,7 @@
         "operationId": "detect-language-audio-status",
         "security": [
           {
-            "Api-Key": []
-          },
-          {
+            "Api-Key": [],
             "Bearer": []
           }
         ],
@@ -9205,7 +9195,8 @@
         },
         "security": [
           {
-            "Api-Key": []
+            "Api-Key": [],
+            "Bearer": []
           }
         ],
         "parameters": [
@@ -9258,7 +9249,8 @@
         },
         "security": [
           {
-            "Api-Key": []
+            "Api-Key": [],
+            "Bearer": []
           }
         ],
         "parameters": [
@@ -9310,7 +9302,8 @@
         },
         "security": [
           {
-            "Api-Key": []
+            "Api-Key": [],
+            "Bearer": []
           }
         ],
         "parameters": [
@@ -9379,7 +9372,8 @@
         },
         "security": [
           {
-            "Api-Key": []
+            "Api-Key": [],
+            "Bearer": []
           }
         ],
         "parameters": [
@@ -9432,7 +9426,8 @@
         },
         "security": [
           {
-            "Api-Key": []
+            "Api-Key": [],
+            "Bearer": []
           }
         ],
         "parameters": [
@@ -9493,7 +9488,8 @@
         },
         "security": [
           {
-            "Api-Key": []
+            "Api-Key": [],
+            "Bearer": []
           }
         ],
         "parameters": [
@@ -9559,7 +9555,8 @@
         },
         "security": [
           {
-            "Api-Key": []
+            "Api-Key": [],
+            "Bearer": []
           }
         ],
         "parameters": [
@@ -10596,9 +10593,7 @@
   },
   "security": [
     {
-      "Api-Key": []
-    },
-    {
+      "Api-Key": [],
       "Bearer": []
     }
   ]
