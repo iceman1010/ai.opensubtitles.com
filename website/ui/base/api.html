@@ -2,7 +2,29 @@
 	<h1>{{ @apidocs.h1 }}</h1>
 	<p class="lead">{{ @apidocs.lead }}</p>
 </section>
-<section class="api-docs"><div class="api-meta"><p><strong>OpenSubtitles API</strong> <span class="api-type">v1.0.1</span></p><p>Explore Open Subtitles API here<br/><br/>Quickstart — the four calls every integration needs:<br/><br/><code><br/>1) Login (Api-Key header only; 1 request/second):<br/>curl -X POST https://api.opensubtitles.com/api/v1/login \<br/>  -H &quot;Api-Key: &lt;API_KEY&gt;&quot; -H &quot;Content-Type: application/json&quot; \<br/>  -d &#x27;{&quot;username&quot;:&quot;&lt;USER&gt;&quot;,&quot;password&quot;:&quot;&lt;PASS&gt;&quot;}&#x27;<br/>-&gt; {&quot;token&quot;:&quot;&lt;TOKEN&gt;&quot;,&quot;user&quot;:{...},&quot;base_url&quot;:&quot;api.opensubtitles.com&quot;}<br/><br/>2) Start an AI translation (multipart form; costs credits; both headers):<br/>curl -X POST https://api.opensubtitles.com/api/v1/ai/translate \<br/>  -H &quot;Api-Key: &lt;API_KEY&gt;&quot; -H &quot;Authorization: Bearer &lt;TOKEN&gt;&quot; \<br/>  -F &quot;file=@movie.srt&quot; -F &quot;api=nano&quot; -F &quot;translate_to=de&quot;<br/>-&gt; {&quot;status&quot;:&quot;CREATED&quot;,&quot;correlation_id&quot;:&quot;&lt;ID&gt;&quot;}<br/><br/>3) Poll status every 3-5 s (NOTE: /ai/translation, not /ai/translate):<br/>curl -X POST https://api.opensubtitles.com/api/v1/ai/translation/&lt;ID&gt; \<br/>  -H &quot;Api-Key: &lt;API_KEY&gt;&quot; -H &quot;Authorization: Bearer &lt;TOKEN&gt;&quot;<br/>-&gt; {&quot;status&quot;:&quot;PENDING&quot; | &quot;COMPLETED&quot; (data.url) | &quot;ERROR&quot;/&quot;TIMEOUT&quot; (errors[])}<br/><br/>4) Download the result (auth headers on the file URL too):<br/>curl -O -J -H &quot;Api-Key: &lt;API_KEY&gt;&quot; -H &quot;Authorization: Bearer &lt;TOKEN&gt;&quot; &quot;&lt;data.url&gt;&quot;<br/></code><br/><br/>base_url is a hostname only: build URLs as https://&lt;base_url&gt;/api/v1/&lt;endpoint&gt;. Transcription works the same way (POST /ai/transcribe, then POST /ai/transcribe/&lt;ID&gt;).</p><p>Servers:</p><table class="api-table"><tbody><tr><td><code>https://api.opensubtitles.com/api/v1</code></td><td>Default server</td></tr><tr><td><code>https://vip-api.opensubtitles.com/api/v1</code></td><td>VIP server</td></tr></tbody></table><p>Authentication:</p><ul><li><code>Api-Key</code> <span class="api-type">(header)</span>: Application API key obtained in the user profile of app developer on opensubtitles.com to authorise the <strong>application</strong></li><li><code>Bearer</code>: User token created in the login endpoint to authorise opensubtitles.com <strong>user</strong></li></ul></div><h2 class="api-h2">Endpoints</h2><table class="api-table api-overview"><thead><tr><th>Method</th><th>Path</th><th>Summary</th></tr></thead><tbody><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-transcribe"><code>/ai/transcribe</code></a></td><td>AI Transcribe</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-transcribe-correlation-id"><code>/ai/transcribe/{correlation_id}</code></a></td><td>AI Transcribe status</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-translate"><code>/ai/translate</code></a></td><td>AI Translate</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-translate-correlation-id"><code>/ai/translate/{correlation_id}</code></a></td><td>AI Translate status</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postlogin"><code>/login</code></a></td><td>Login</td></tr><tr><td><span class="api-method m-delete">DELETE</span></td><td><a href="#op-deletelogout"><code>/logout</code></a></td><td>Logout</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getdiscover-popular"><code>/discover/popular</code></a></td><td>Popular features</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getdiscover-latest"><code>/discover/latest</code></a></td><td>Latest subtitles</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getdiscover-most-downloaded"><code>/discover/most_downloaded</code></a></td><td>Most downloaded subtitles</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postdownload"><code>/download</code></a></td><td>Download</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getfeatures"><code>/features</code></a></td><td>Search for features</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getinfos-formats"><code>/infos/formats</code></a></td><td>Subtitle Formats</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getinfos-languages"><code>/infos/languages</code></a></td><td>Languages</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-info-translation"><code>/ai/info/translation</code></a></td><td>AI Translation</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-info-transcription"><code>/ai/info/transcription</code></a></td><td>AI Transcription</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getsubtitles"><code>/subtitles</code></a></td><td>Search for subtitles</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getinfos-user"><code>/infos/user</code></a></td><td>User Informations</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-credits"><code>/ai/credits</code></a></td><td>User Credits Informations</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-credits-buy"><code>/ai/credits/buy</code></a></td><td>Buy Credits</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-recent-media"><code>/ai/recent_media</code></a></td><td>User Recent Media</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-userinfo"><code>/ai/userinfo</code></a></td><td>User Informations</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-payment-history"><code>/ai/payment_history</code></a></td><td>User Payment History</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-recent-activities"><code>/ai/recent_activities</code></a></td><td>User Recent Activities</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getutilities-guessit"><code>/utilities/guessit</code></a></td><td>Guessit</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-detect-language-text"><code>/ai/detect_language_text</code></a></td><td>Detect Language Text</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-detect-language-audio"><code>/ai/detect_language_audio</code></a></td><td>Detect Language Audio</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-detect-language-audio-correlation-id"><code>/ai/detect_language_audio/{correlation_id}</code></a></td><td>Detect Language Audio Status</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-download"><code>/ai/download</code></a></td><td>AI Download</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-download-correlation-id"><code>/ai/download/{correlation_id}</code></a></td><td>AI Download status</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-files-media-file-id-file-name"><code>/ai/files/{media_file_id}/{file_name}</code></a></td><td>Get Media File</td></tr></tbody></table><div class="api-tag"><h2 class="api-h2">AI Transcribe</h2><article class="api-op" id="op-postai-transcribe"><h3><span class="api-method m-post">POST</span> <code class="api-path">/ai/transcribe</code> <span class="api-summary">AI Transcribe</span></h3><div class="api-desc"><p><strong>Transcribe</strong> media (audio, video) file using AI into subtitles. Max size of file: 100 MB </p><p>Credits on user account are needed. <a href="#op-getai-credits-buy">Buy Credits</a></p><p>Check following method: <a href="#op-getai-transcribe-correlation-id">Get AI Transcribe status</a></p><p>Method is returning <br/><code><br/>{<br/>  &quot;status&quot;: &quot;CREATED&quot;,<br/>  &quot;correlation_id&quot;: &quot;67eda18f52e11&quot;<br/>}<br/></code><br/>Status possible values: <br/><code><br/>CREATED     -&gt; Initial state</code><br/>PENDING     -&gt; procedure is still running<br/>COMPLETED   -&gt; remote procedure call is completed and has a result<br/>ERROR       -&gt; procedure resulted in an error and is not running anymore<br/>TIMEOUT     -&gt; No matching procedure call found before timeout<br/><code><br/>Using </code>correlation_id` can check status of job using GET</p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><table class="api-table"><thead><tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code>api</code></td><td>query</td><td>string</td><td>yes</td><td>transcribe API</td></tr><tr><td><code>file</code></td><td>query</td><td>string</td><td>yes</td><td>Media file to process. Supported audio formats: mp3, aac (ADTS), m4a, wav, flac, ogg, webm. Video containers are also accepted (audio track is extracted). Max size: 100 MB.</td></tr><tr><td><code>language</code></td><td>query</td><td>string</td><td>yes</td><td>language of media file</td></tr></tbody></table><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>multipart/form-data</code></p><details class="api-schema"><summary>Response schema <span class="api-type">object</span></summary><pre class="api-json">{
+<section class="api-docs"><div class="api-meta"><p><strong>OpenSubtitles API</strong> <span class="api-type">v1.0.1</span></p><p>Explore Open Subtitles API here<br/><br/>Quickstart — the four calls every integration needs:<br/><br/><code><br/>1) Login (Api-Key header only; 1 request/second):<br/>curl -X POST https://api.opensubtitles.com/api/v1/login \<br/>  -H &quot;Api-Key: &lt;API_KEY&gt;&quot; -H &quot;Content-Type: application/json&quot; \<br/>  -d &#x27;{&quot;username&quot;:&quot;&lt;USER&gt;&quot;,&quot;password&quot;:&quot;&lt;PASS&gt;&quot;}&#x27;<br/>-&gt; {&quot;token&quot;:&quot;&lt;TOKEN&gt;&quot;,&quot;user&quot;:{...},&quot;base_url&quot;:&quot;api.opensubtitles.com&quot;}<br/><br/>2) Start an AI translation (multipart form; costs credits; both headers):<br/>curl -X POST https://api.opensubtitles.com/api/v1/ai/translate \<br/>  -H &quot;Api-Key: &lt;API_KEY&gt;&quot; -H &quot;Authorization: Bearer &lt;TOKEN&gt;&quot; \<br/>  -F &quot;file=@movie.srt&quot; -F &quot;api=nano&quot; -F &quot;translate_to=de&quot;<br/>-&gt; {&quot;status&quot;:&quot;CREATED&quot;,&quot;correlation_id&quot;:&quot;&lt;ID&gt;&quot;}<br/><br/>3) Poll status every 3-5 s (NOTE: /ai/translation, not /ai/translate):<br/>curl -X POST https://api.opensubtitles.com/api/v1/ai/translation/&lt;ID&gt; \<br/>  -H &quot;Api-Key: &lt;API_KEY&gt;&quot; -H &quot;Authorization: Bearer &lt;TOKEN&gt;&quot;<br/>-&gt; {&quot;status&quot;:&quot;PENDING&quot; | &quot;COMPLETED&quot; (data.url) | &quot;ERROR&quot;/&quot;TIMEOUT&quot; (errors[])}<br/><br/>4) Download the result (auth headers on the file URL too):<br/>curl -O -J -H &quot;Api-Key: &lt;API_KEY&gt;&quot; -H &quot;Authorization: Bearer &lt;TOKEN&gt;&quot; &quot;&lt;data.url&gt;&quot;<br/></code><br/><br/>base_url is a hostname only: build URLs as https://&lt;base_url&gt;/api/v1/&lt;endpoint&gt;. Transcription works the same way (POST /ai/transcribe, then POST /ai/transcribe/&lt;ID&gt;).</p><p>Servers:</p><table class="api-table"><tbody><tr><td><code>https://api.opensubtitles.com/api/v1</code></td><td>Default server</td></tr><tr><td><code>https://vip-api.opensubtitles.com/api/v1</code></td><td>VIP server</td></tr></tbody></table><p>Authentication:</p><ul><li><code>Api-Key</code> <span class="api-type">(header)</span>: Application API key obtained in the user profile of app developer on opensubtitles.com to authorise the <strong>application</strong></li><li><code>Bearer</code>: User token created in the login endpoint to authorise opensubtitles.com <strong>user</strong></li></ul></div><h2 class="api-h2">Endpoints</h2><table class="api-table api-overview"><thead><tr><th>Method</th><th>Path</th><th>Summary</th></tr></thead><tbody><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-transcribe"><code>/ai/transcribe</code></a></td><td>AI Transcribe</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-transcribe-correlation-id"><code>/ai/transcribe/{correlation_id}</code></a></td><td>AI Transcribe status</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-transcribe-correlation-id"><code>/ai/transcribe/{correlation_id}</code></a></td><td>AI Transcribe status (POST)</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-translate"><code>/ai/translate</code></a></td><td>AI Translate</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-translate-correlation-id"><code>/ai/translate/{correlation_id}</code></a></td><td>AI Translate status</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-translation-correlation-id"><code>/ai/translation/{correlation_id}</code></a></td><td>AI Translation status (POST)</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postlogin"><code>/login</code></a></td><td>Login</td></tr><tr><td><span class="api-method m-delete">DELETE</span></td><td><a href="#op-deletelogout"><code>/logout</code></a></td><td>Logout</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getdiscover-popular"><code>/discover/popular</code></a></td><td>Popular features</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getdiscover-latest"><code>/discover/latest</code></a></td><td>Latest subtitles</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getdiscover-most-downloaded"><code>/discover/most_downloaded</code></a></td><td>Most downloaded subtitles</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postdownload"><code>/download</code></a></td><td>Download</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getfeatures"><code>/features</code></a></td><td>Search for features</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getinfos-formats"><code>/infos/formats</code></a></td><td>Subtitle Formats</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getinfos-languages"><code>/infos/languages</code></a></td><td>Languages</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-info-translation"><code>/ai/info/translation</code></a></td><td>AI Translation</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-info-transcription"><code>/ai/info/transcription</code></a></td><td>AI Transcription</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getsubtitles"><code>/subtitles</code></a></td><td>Search for subtitles</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getinfos-user"><code>/infos/user</code></a></td><td>User Informations</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-credits"><code>/ai/credits</code></a></td><td>User Credits Informations</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-credits-buy"><code>/ai/credits/buy</code></a></td><td>Buy Credits</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-credits-buy"><code>/ai/credits/buy</code></a></td><td>Buy Credits (POST)</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-recent-media"><code>/ai/recent_media</code></a></td><td>User Recent Media</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-userinfo"><code>/ai/userinfo</code></a></td><td>User Informations</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-payment-history"><code>/ai/payment_history</code></a></td><td>User Payment History</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-recent-activities"><code>/ai/recent_activities</code></a></td><td>User Recent Activities</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getutilities-guessit"><code>/utilities/guessit</code></a></td><td>Guessit</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-detect-language-text"><code>/ai/detect_language_text</code></a></td><td>Detect Language Text</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-detect-language-audio"><code>/ai/detect_language_audio</code></a></td><td>Detect Language Audio</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-detect-language-audio-correlation-id"><code>/ai/detect_language_audio/{correlation_id}</code></a></td><td>Detect Language Audio Status</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-detect-language"><code>/ai/detect_language</code></a></td><td>AI Detect Language</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-detectlanguage-correlation-id"><code>/ai/detectLanguage/{correlation_id}</code></a></td><td>AI Detect Language status (POST)</td></tr><tr><td><span class="api-method m-post">POST</span></td><td><a href="#op-postai-download"><code>/ai/download</code></a></td><td>AI Download</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-download-correlation-id"><code>/ai/download/{correlation_id}</code></a></td><td>AI Download status</td></tr><tr><td><span class="api-method m-get">GET</span></td><td><a href="#op-getai-files-media-file-id-file-name"><code>/ai/files/{media_file_id}/{file_name}</code></a></td><td>Get Media File</td></tr></tbody></table><div class="api-tag"><h2 class="api-h2">AI Transcribe</h2><article class="api-op" id="op-postai-transcribe"><h3><span class="api-method m-post">POST</span> <code class="api-path">/ai/transcribe</code> <span class="api-summary">AI Transcribe</span></h3><div class="api-desc"><p><strong>Transcribe</strong> media (audio, video) file using AI into subtitles. Max size of file: 100 MB </p><p>Credits on user account are needed. <a href="#op-getai-credits-buy">Buy Credits</a></p><p>Check following method: <a href="#op-getai-transcribe-correlation-id">Get AI Transcribe status</a></p><p>Method is returning <br/><code><br/>{<br/>  &quot;status&quot;: &quot;CREATED&quot;,<br/>  &quot;correlation_id&quot;: &quot;67eda18f52e11&quot;<br/>}<br/></code><br/>Status possible values: <br/><code><br/>CREATED     -&gt; Initial state</code><br/>PENDING     -&gt; procedure is still running<br/>COMPLETED   -&gt; remote procedure call is completed and has a result<br/>ERROR       -&gt; procedure resulted in an error and is not running anymore<br/>TIMEOUT     -&gt; No matching procedure call found before timeout<br/><code><br/>Using </code>correlation_id` can check status of job using GET</p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><h4 class="api-sub">Request body <span class="api-required">required</span></h4><p class="api-ct"><code>multipart/form-data</code></p><details class="api-schema"><summary>Schema <span class="api-type">object (api, file, language)</span></summary><pre class="api-json">{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;: {
+    &quot;api&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;transcribe API&quot;
+    },
+    &quot;file&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;Media file to process. Supported audio formats: mp3, aac (ADTS), m4a, wav, flac, ogg, webm. Video containers are also accepted (audio track is extracted). Max size: 100 MB.&quot;,
+      &quot;format&quot;: &quot;binary&quot;
+    },
+    &quot;language&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;language of media file&quot;
+    }
+  },
+  &quot;required&quot;: [
+    &quot;api&quot;,
+    &quot;file&quot;,
+    &quot;language&quot;
+  ]
+}</pre></details><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>application/json</code></p><details class="api-schema"><summary>Response schema <span class="api-type">object</span></summary><pre class="api-json">{
   &quot;type&quot;: &quot;object&quot;,
   &quot;properties&quot;: {}
 }</pre></details><details class="api-example" open="open"><summary>Response example</summary><pre class="api-json">{
@@ -31,13 +53,181 @@
     },
     &quot;complete&quot;: 1788199451
   }
-}</pre></details></div></article></div><div class="api-tag"><h2 class="api-h2">AI Translate</h2><article class="api-op" id="op-postai-translate"><h3><span class="api-method m-post">POST</span> <code class="api-path">/ai/translate</code> <span class="api-summary">AI Translate</span></h3><div class="api-desc"><p><strong>Translate</strong> subtitles using AI from one language to another language. </p><p>Credits on user account are needed. <a href="#op-getai-credits-buy">Buy Credits</a></p><p>Check following method: <a href="#op-getai-translate-correlation-id">Get AI Translate status</a></p><p>Method is returning <br/><code><br/>{<br/>  &quot;status&quot;: &quot;CREATED&quot;,<br/>  &quot;correlation_id&quot;: &quot;67eda18f52e11&quot;<br/>}<br/></code><br/>Status possible values: <br/><code><br/>CREATED     -&gt; Initial state</code><br/>PENDING     -&gt; procedure is still running<br/>COMPLETED   -&gt; remote procedure call is completed and has a result<br/>ERROR       -&gt; procedure resulted in an error and is not running anymore<br/>TIMEOUT     -&gt; No matching procedure call found before timeout<br/><code><br/>Using </code>correlation_id` can check status of job using GET</p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><table class="api-table"><thead><tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code>api</code></td><td>query</td><td>string</td><td>yes</td><td>translation_apis</td></tr><tr><td><code>file</code></td><td>query</td><td>string</td><td>yes</td><td>file contents to translate</td></tr><tr><td><code>translate_from</code></td><td>query</td><td>string</td><td>—</td><td>language ISO639 translate_from (auto is default)<br/>Default: &quot;auto&quot;</td></tr><tr><td><code>translate_to</code></td><td>query</td><td>string</td><td>yes</td><td>language ISO639 translate_from</td></tr><tr><td><code>file_id</code></td><td>query</td><td>integer</td><td>—</td><td>file_id from /subtitles endpoint</td></tr></tbody></table><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>multipart/form-data</code></p><details class="api-schema"><summary>Response schema <span class="api-type">object</span></summary><pre class="api-json">{
+}</pre></details></div></article><article class="api-op" id="op-postai-transcribe-correlation-id"><h3><span class="api-method m-post">POST</span> <code class="api-path">/ai/transcribe/{correlation_id}</code> <span class="api-summary">AI Transcribe status (POST)</span></h3><div class="api-desc"><p>Get status of a transcribe job using <code>correlation_id</code> (variant used by the official clients). Poll every 3-5 s.</p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><table class="api-table"><thead><tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code>correlation_id</code></td><td>path</td><td>string</td><td>yes</td><td>correlation_id</td></tr></tbody></table><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>application/json</code></p><details class="api-example" open="open"><summary>Response example</summary><pre class="api-json">{
+  &quot;correlation_id&quot;: &quot;67eda18f52e11&quot;,
+  &quot;status&quot;: &quot;COMPLETED&quot;,
+  &quot;data&quot;: {
+    &quot;id&quot;: 45537,
+    &quot;file_name&quot;: &quot;test_archer_2min.srt&quot;,
+    &quot;url&quot;: &quot;https://api.opensubtitles.com/api/v1/ai/files/45537/test_archer_2min.srt&quot;,
+    &quot;seconds_count&quot;: 121,
+    &quot;unit_price&quot;: 0.0075,
+    &quot;total_price&quot;: 1,
+    &quot;credits_left&quot;: 693,
+    &quot;task&quot;: {
+      &quot;language&quot;: &quot;en&quot;,
+      &quot;api&quot;: &quot;nano&quot;,
+      &quot;login&quot;: &quot;ai_testuser_1&quot;,
+      &quot;loginid&quot;: &quot;797817&quot;,
+      &quot;format&quot;: &quot;srt&quot;,
+      &quot;id&quot;: &quot;45537&quot;,
+      &quot;file&quot;: &quot;test_archer_2min.mp3&quot;,
+      &quot;function&quot;: &quot;transcribe&quot;
+    },
+    &quot;complete&quot;: 1788199451
+  }
+}</pre></details></div></article></div><div class="api-tag"><h2 class="api-h2">AI Translate</h2><article class="api-op" id="op-postai-translate"><h3><span class="api-method m-post">POST</span> <code class="api-path">/ai/translate</code> <span class="api-summary">AI Translate</span></h3><div class="api-desc"><p><strong>Translate</strong> subtitles using AI from one language to another language. </p><p>Credits on user account are needed. <a href="#op-getai-credits-buy">Buy Credits</a></p><p>Check following method: <a href="#op-getai-translate-correlation-id">Get AI Translate status</a></p><p>Method is returning <br/><code><br/>{<br/>  &quot;status&quot;: &quot;CREATED&quot;,<br/>  &quot;correlation_id&quot;: &quot;67eda18f52e11&quot;<br/>}<br/></code><br/>Status possible values: <br/><code><br/>CREATED     -&gt; Initial state</code><br/>PENDING     -&gt; procedure is still running<br/>COMPLETED   -&gt; remote procedure call is completed and has a result<br/>ERROR       -&gt; procedure resulted in an error and is not running anymore<br/>TIMEOUT     -&gt; No matching procedure call found before timeout<br/><code><br/>Using </code>correlation_id` can check status of job using GET</p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><h4 class="api-sub">Request body <span class="api-required">required</span></h4><p class="api-ct"><code>multipart/form-data</code></p><details class="api-schema"><summary>Schema <span class="api-type">object (api, file, translate_from, translate_to, file_id)</span></summary><pre class="api-json">{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;: {
+    &quot;api&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;translation_apis&quot;
+    },
+    &quot;file&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;file contents to translate&quot;,
+      &quot;format&quot;: &quot;binary&quot;
+    },
+    &quot;translate_from&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;language ISO639 translate_from (auto is default)&quot;
+    },
+    &quot;translate_to&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;language ISO639 translate_from&quot;
+    },
+    &quot;file_id&quot;: {
+      &quot;type&quot;: &quot;integer&quot;,
+      &quot;description&quot;: &quot;file_id from /subtitles endpoint&quot;
+    }
+  },
+  &quot;required&quot;: [
+    &quot;api&quot;,
+    &quot;file&quot;,
+    &quot;translate_to&quot;
+  ]
+}</pre></details><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>application/json</code></p><details class="api-schema"><summary>Response schema <span class="api-type">object</span></summary><pre class="api-json">{
   &quot;type&quot;: &quot;object&quot;,
   &quot;properties&quot;: {}
 }</pre></details><details class="api-example" open="open"><summary>Response example</summary><pre class="api-json">{
   &quot;status&quot;: &quot;CREATED&quot;,
   &quot;correlation_id&quot;: &quot;67eda18f52e11&quot;
 }</pre></details></div></article><article class="api-op" id="op-getai-translate-correlation-id"><h3><span class="api-method m-get">GET</span> <code class="api-path">/ai/translate/{correlation_id}</code> <span class="api-summary">AI Translate status</span></h3><div class="api-desc"><p>Get status of <strong><a href="#op-postai-translate">translate</a></strong> job using <code>correlation_id</code>.</p><p>On <code>COMPLETED</code>, the <code>data</code> object includes quality-assessment fields:</p><p>- <strong><code>quality</code></strong> - object, always sent. Quality check report comparing the original subtitle against the translation. The final verdict is <strong><code>quality.valid</code></strong> (<code>true</code> = the translation is usable, <code>false</code> = it failed the quality check).<br/>- <strong><code>readability</code></strong> - object, always sent. Per-caption readability audit (reading speed and line length against subtitle guidelines). Purely advisory, never fails the translation.<br/>- <strong><code>quality_refund</code></strong> - integer, present <strong>only when <code>quality.valid</code> is <code>false</code></strong>. Credits refunded to the user&#x27;s account because the translation failed the quality check.</p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><table class="api-table"><thead><tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code>correlation_id</code></td><td>path</td><td>string</td><td>yes</td><td>correlation_id</td></tr></tbody></table><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>application/json</code></p><details class="api-example" open="open"><summary>Response example</summary><pre class="api-json">{
+  &quot;correlation_id&quot;: &quot;67eda18f52e11&quot;,
+  &quot;status&quot;: &quot;COMPLETED&quot;,
+  &quot;data&quot;: {
+    &quot;file_name&quot;: &quot;test.de.srt&quot;,
+    &quot;url&quot;: &quot;https://api.opensubtitles.com/api/v1/ai/files/45536/test.de.srt&quot;,
+    &quot;characters_count&quot;: 1616,
+    &quot;unit_price&quot;: 0.0009,
+    &quot;total_price&quot;: 2,
+    &quot;credits_left&quot;: 694,
+    &quot;end_time&quot;: 1788199436,
+    &quot;duration&quot;: 11,
+    &quot;quality&quot;: {
+      &quot;valid&quot;: true,
+      &quot;result&quot;: &quot;passed&quot;,
+      &quot;error_count&quot;: 0,
+      &quot;warning_count&quot;: 1,
+      &quot;defects_by_type&quot;: {
+        &quot;merged_captions&quot;: 1
+      },
+      &quot;defects&quot;: [
+        {
+          &quot;type&quot;: &quot;merged_captions&quot;,
+          &quot;severity&quot;: &quot;warning&quot;,
+          &quot;message&quot;: &quot;Original captions #12-13 are merged into translation caption #12&quot;,
+          &quot;source_start_caption&quot;: 12,
+          &quot;source_end_caption&quot;: 13,
+          &quot;translation_caption&quot;: 12,
+          &quot;caption_count&quot;: 2
+        }
+      ],
+      &quot;quality&quot;: {
+        &quot;source_captions&quot;: 103,
+        &quot;aligned_pairs&quot;: 102,
+        &quot;partial_chars_analyzed&quot;: 4618,
+        &quot;ratios&quot;: {
+          &quot;content_loss&quot;: 0.0,
+          &quot;timestamp_drift&quot;: 0.0,
+          &quot;partial_translation&quot;: 0.0,
+          &quot;merged&quot;: 0.0097,
+          &quot;verbatim_copy&quot;: 0.0,
+          &quot;near_verbatim_copy&quot;: 0.0,
+          &quot;unexpected_script&quot;: 0.0,
+          &quot;unaligned&quot;: 0.0
+        },
+        &quot;thresholds&quot;: {
+          &quot;content_loss&quot;: 0.01,
+          &quot;timestamp_drift&quot;: 0.02,
+          &quot;partial_translation&quot;: null,
+          &quot;merged&quot;: 0.1,
+          &quot;verbatim_copy&quot;: 0.5,
+          &quot;near_verbatim_copy&quot;: 0.5,
+          &quot;unexpected_script&quot;: 0.0,
+          &quot;unaligned&quot;: null
+        },
+        &quot;readability&quot;: {
+          &quot;avg_cps&quot;: 14.1,
+          &quot;max_cps&quot;: 20.3,
+          &quot;max_cps_caption&quot;: 67,
+          &quot;max_cpl&quot;: 41,
+          &quot;max_cpl_caption&quot;: 51
+        },
+        &quot;strict&quot;: false,
+        &quot;reasons&quot;: []
+      }
+    },
+    &quot;readability&quot;: {
+      &quot;captions&quot;: 103,
+      &quot;analyzed&quot;: 101,
+      &quot;avg_cps&quot;: 14.1,
+      &quot;max_cps&quot;: 20.3,
+      &quot;max_cps_caption&quot;: 67,
+      &quot;max_cpl&quot;: 41,
+      &quot;max_cpl_caption&quot;: 51,
+      &quot;thresholds&quot;: {
+        &quot;max_cps&quot;: 20.0,
+        &quot;max_cpl&quot;: 42,
+        &quot;max_lines&quot;: 2
+      },
+      &quot;problems_by_type&quot;: {
+        &quot;reading_speed&quot;: 1
+      },
+      &quot;problems&quot;: [
+        {
+          &quot;caption&quot;: 67,
+          &quot;severity&quot;: &quot;minor&quot;,
+          &quot;start_seconds&quot;: 120.4,
+          &quot;end_seconds&quot;: 121.8,
+          &quot;duration_seconds&quot;: 1.4,
+          &quot;chars&quot;: 28,
+          &quot;cps&quot;: 20.3,
+          &quot;text&quot;: &quot;Ich denke, wir sollten jetzt gehen.&quot;,
+          &quot;issues&quot;: [
+            {
+              &quot;type&quot;: &quot;reading_speed&quot;,
+              &quot;value&quot;: 20.3,
+              &quot;limit&quot;: 20.0,
+              &quot;severity&quot;: &quot;minor&quot;
+            }
+          ]
+        }
+      ]
+    },
+    &quot;task&quot;: {
+      &quot;login&quot;: &quot;ai_testuser_1&quot;,
+      &quot;loginid&quot;: &quot;797817&quot;,
+      &quot;api&quot;: &quot;deepl2&quot;,
+      &quot;language&quot;: &quot;en&quot;,
+      &quot;translation&quot;: &quot;de&quot;,
+      &quot;start_time&quot;: 1788199425,
+      &quot;id&quot;: &quot;45536&quot;,
+      &quot;function&quot;: &quot;translate&quot;
+    },
+    &quot;complete&quot;: 1788199436
+  }
+}</pre></details></div></article><article class="api-op" id="op-postai-translation-correlation-id"><h3><span class="api-method m-post">POST</span> <code class="api-path">/ai/translation/{correlation_id}</code> <span class="api-summary">AI Translation status (POST)</span></h3><div class="api-desc"><p>Get status of a translation job using <code>correlation_id</code> (variant used by the official clients). On COMPLETED, <code>data</code> includes <code>quality</code> (verdict in <code>quality.valid</code>), <code>readability</code>, and <code>quality_refund</code> when the quality check failed (auto-refund). Poll every 3-5 s.</p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>application/json</code></p><details class="api-example" open="open"><summary>Response example</summary><pre class="api-json">{
   &quot;correlation_id&quot;: &quot;67eda18f52e11&quot;,
   &quot;status&quot;: &quot;COMPLETED&quot;,
   &quot;data&quot;: {
@@ -6905,6 +7095,102 @@
       &quot;checkout_url&quot;: &quot;https://ai.opensubtitles.com/assets/buy_credits.php?tag=EXAMPLE39&quot;
     }
   ]
+}</pre></details></div></article><article class="api-op" id="op-postai-credits-buy"><h3><span class="api-method m-post">POST</span> <code class="api-path">/ai/credits/buy</code> <span class="api-summary">Buy Credits (POST)</span></h3><div class="api-desc"><p>List credit packages with checkout URLs (variant used by the official clients). FormData: optional <code>email</code> for the receipt.</p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><h4 class="api-sub">Request body <span class="api-required">required</span></h4><p class="api-ct"><code>multipart/form-data</code></p><details class="api-schema"><summary>Schema <span class="api-type">object (email)</span></summary><pre class="api-json">{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;: {
+    &quot;email&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;email address for the purchase receipt&quot;
+    }
+  },
+  &quot;required&quot;: []
+}</pre></details><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>application/json</code></p><details class="api-schema"><summary>Response schema <span class="api-type">object (data)</span></summary><pre class="api-json">{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;: {
+    &quot;data&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;items&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+          &quot;name&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          },
+          &quot;value&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          },
+          &quot;discount_percent&quot;: {
+            &quot;type&quot;: &quot;integer&quot;
+          },
+          &quot;checkout_url&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          }
+        }
+      }
+    }
+  },
+  &quot;x-examples&quot;: {
+    &quot;Example 1&quot;: {
+      &quot;data&quot;: [
+        {
+          &quot;name&quot;: &quot;500 credits&quot;,
+          &quot;value&quot;: &quot;5 USD&quot;,
+          &quot;discount_percent&quot;: 0,
+          &quot;checkout_url&quot;: &quot;https://ai.opensubtitles.com/assets/buy_credits.html?tag=1sBYypgiIshtuRhFxInoOQ%3D%3D%3AtSuW7qdTDrGra5UTHRSgWgXy8Rrg0LCb%2Fh3CxOaJpPiP%2BtmIPSA1gY3CJeM6oUc0&quot;
+        },
+        {
+          &quot;name&quot;: &quot;1000 credits&quot;,
+          &quot;value&quot;: &quot;10 USD&quot;,
+          &quot;discount_percent&quot;: 0,
+          &quot;checkout_url&quot;: &quot;https://ai.opensubtitles.com/assets/buy_credits.html?tag=vgBZglBSiIZUdCU2KCqsyg%3D%3D%3ALPHN%2BH1x5cBoPolx5PIkMVuEV7q025%2BWz%2FEaMv9CCM0300xkpT9f%2B3fC7d2POdso&quot;
+        },
+        {
+          &quot;name&quot;: &quot;5500 credits&quot;,
+          &quot;value&quot;: &quot;50 USD&quot;,
+          &quot;discount_percent&quot;: 10,
+          &quot;checkout_url&quot;: &quot;https://ai.opensubtitles.com/assets/buy_credits.html?tag=eZQKqUTXDncZLOJuIlr%2FJg%3D%3D%3AJeYPTQeow17b4%2FN4SwDJeN%2BtG4b4X%2FuO4vwjMcjWGHIMkFSXF70K8b1REsx7Ve%2B6&quot;
+        },
+        {
+          &quot;name&quot;: &quot;39000 credits&quot;,
+          &quot;value&quot;: &quot;300 USD&quot;,
+          &quot;discount_percent&quot;: 30,
+          &quot;checkout_url&quot;: &quot;https://ai.opensubtitles.com/assets/buy_credits.html?tag=KykrwFhYEHysP0zEJAB4pA%3D%3D%3AQ9KItCiZ8AxAPqi%2F2qIaUavVE60ANcBBLFRqFJLonMZq14xETj5GgS2lT5i4m4ri&quot;
+        }
+      ]
+    }
+  }
+}</pre></details><details class="api-example" open="open"><summary>Response example</summary><pre class="api-json">{
+  &quot;data&quot;: [
+    {
+      &quot;name&quot;: &quot;500 credits&quot;,
+      &quot;value&quot;: &quot;5 USD&quot;,
+      &quot;discount_percent&quot;: 0,
+      &quot;checkout_url&quot;: &quot;https://ai.opensubtitles.com/assets/buy_credits.php?tag=EXAMPLE&quot;
+    },
+    {
+      &quot;name&quot;: &quot;1100 credits&quot;,
+      &quot;value&quot;: &quot;10 USD&quot;,
+      &quot;discount_percent&quot;: 10,
+      &quot;checkout_url&quot;: &quot;https://ai.opensubtitles.com/assets/buy_credits.php?tag=EXAMPLE1&quot;
+    },
+    {
+      &quot;name&quot;: &quot;5750 credits&quot;,
+      &quot;value&quot;: &quot;50 USD&quot;,
+      &quot;discount_percent&quot;: 15,
+      &quot;checkout_url&quot;: &quot;https://ai.opensubtitles.com/assets/buy_credits.php?tag=EXAMPLE5&quot;
+    },
+    {
+      &quot;name&quot;: &quot;18000 credits&quot;,
+      &quot;value&quot;: &quot;150 USD&quot;,
+      &quot;discount_percent&quot;: 20,
+      &quot;checkout_url&quot;: &quot;https://ai.opensubtitles.com/assets/buy_credits.php?tag=EXAMPLE18&quot;
+    },
+    {
+      &quot;name&quot;: &quot;39000 credits&quot;,
+      &quot;value&quot;: &quot;300 USD&quot;,
+      &quot;discount_percent&quot;: 30,
+      &quot;checkout_url&quot;: &quot;https://ai.opensubtitles.com/assets/buy_credits.php?tag=EXAMPLE39&quot;
+    }
+  ]
 }</pre></details></div></article><article class="api-op" id="op-postai-recent-media"><h3><span class="api-method m-post">POST</span> <code class="api-path">/ai/recent_media</code> <span class="api-summary">User Recent Media</span></h3><div class="api-desc"><p>List recently processed media files for the logged-in user.</p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><table class="api-table"><thead><tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code>User-Agent</code></td><td>header</td><td>string</td><td>—</td><td>&lt;&lt;&#123;&#123;APP_NAME&#125;&#125; v&#123;&#123;APP_VERSION&#125;&#125;&gt;&gt;</td></tr><tr><td><code>Authorization</code></td><td>header</td><td>string</td><td>—</td><td>Bearer &lt;&lt;&#123;&#123;token&#125;&#125;&gt;&gt;</td></tr></tbody></table><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>application/json</code></p><details class="api-schema"><summary>Response schema <span class="api-type">object</span></summary><pre class="api-json">{
   &quot;type&quot;: &quot;object&quot;,
   &quot;properties&quot;: {}
@@ -7032,7 +7318,19 @@
     }
   },
   &quot;description&quot;: &quot;&quot;
-}</pre></details></div></article><article class="api-op" id="op-postai-detect-language-text"><h3><span class="api-method m-post">POST</span> <code class="api-path">/ai/detect_language_text</code> <span class="api-summary">Detect Language Text</span></h3><div class="api-desc"><p><strong>Detect language</strong> of subtitle file.</p><p>At least 1 credits on user account is needed. <a href="#op-getai-credits-buy">Buy Credits</a></p><p>Method is returning <br/><code><br/>{<br/>  &quot;data&quot;: {<br/>    &quot;format&quot;: &quot;SubRip&quot;,<br/>    &quot;type&quot;: &quot;text&quot;,<br/>    &quot;language&quot;: {<br/>      &quot;W3C&quot;: &quot;en&quot;,<br/>      &quot;name&quot;: &quot;english&quot;,<br/>      &quot;native&quot;: &quot;english&quot;,<br/>      &quot;ISO_639_1&quot;: &quot;en&quot;,<br/>      &quot;ISO_639_2b&quot;: &quot;eng&quot;<br/>    }<br/>  }<br/>}<br/></code></p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><table class="api-table"><thead><tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code>file</code></td><td>query</td><td>string</td><td>yes</td><td>subtitle file</td></tr></tbody></table><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>multipart/form-data</code></p><details class="api-schema"><summary>Response schema <span class="api-type">object (data)</span></summary><pre class="api-json">{
+}</pre></details></div></article><article class="api-op" id="op-postai-detect-language-text"><h3><span class="api-method m-post">POST</span> <code class="api-path">/ai/detect_language_text</code> <span class="api-summary">Detect Language Text</span></h3><div class="api-desc"><p><strong>Detect language</strong> of subtitle file.</p><p>At least 1 credits on user account is needed. <a href="#op-getai-credits-buy">Buy Credits</a></p><p>Method is returning <br/><code><br/>{<br/>  &quot;data&quot;: {<br/>    &quot;format&quot;: &quot;SubRip&quot;,<br/>    &quot;type&quot;: &quot;text&quot;,<br/>    &quot;language&quot;: {<br/>      &quot;W3C&quot;: &quot;en&quot;,<br/>      &quot;name&quot;: &quot;english&quot;,<br/>      &quot;native&quot;: &quot;english&quot;,<br/>      &quot;ISO_639_1&quot;: &quot;en&quot;,<br/>      &quot;ISO_639_2b&quot;: &quot;eng&quot;<br/>    }<br/>  }<br/>}<br/></code></p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><h4 class="api-sub">Request body <span class="api-required">required</span></h4><p class="api-ct"><code>multipart/form-data</code></p><details class="api-schema"><summary>Schema <span class="api-type">object (file)</span></summary><pre class="api-json">{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;: {
+    &quot;file&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;subtitle file&quot;,
+      &quot;format&quot;: &quot;binary&quot;
+    }
+  },
+  &quot;required&quot;: [
+    &quot;file&quot;
+  ]
+}</pre></details><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>application/json</code></p><details class="api-schema"><summary>Response schema <span class="api-type">object (data)</span></summary><pre class="api-json">{
   &quot;type&quot;: &quot;object&quot;,
   &quot;properties&quot;: {
     &quot;data&quot;: {
@@ -7094,7 +7392,29 @@
       &quot;ISO_639_2b&quot;: &quot;eng&quot;
     }
   }
-}</pre></details></div></article><article class="api-op" id="op-postai-detect-language-audio"><h3><span class="api-method m-post">POST</span> <code class="api-path">/ai/detect_language_audio</code> <span class="api-summary">Detect Language Audio</span></h3><div class="api-desc"><p><strong>Detect language</strong>  of media audio file. Max size of file: 100 MB </p><p>At least 1 credits on user account is needed. <a href="#op-getai-credits-buy">Buy Credits</a></p><p>Check following method: <a href="#op-getai-detect-language-audio-correlation-id">Get Detect Language Audio status</a></p><p>Method is returning <br/><code><br/>{<br/>  &quot;status&quot;: &quot;CREATED&quot;,<br/>  &quot;correlation_id&quot;: &quot;67eda18f52e11&quot;<br/>}<br/></code><br/>Status possible values: <br/><code><br/>CREATED     -&gt; Initial state</code><br/>PENDING     -&gt; procedure is still running<br/>COMPLETED   -&gt; remote procedure call is completed and has a result<br/>ERROR       -&gt; procedure resulted in an error and is not running anymore<br/>TIMEOUT     -&gt; No matching procedure call found before timeout<br/><code><br/>Using </code>correlation_id` can check status of job using GET</p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><table class="api-table"><thead><tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code>api</code></td><td>query</td><td>string</td><td>yes</td><td>transcribe API</td></tr><tr><td><code>file</code></td><td>query</td><td>string</td><td>yes</td><td>Media file to process. Supported audio formats: mp3, aac (ADTS), m4a, wav, flac, ogg, webm. Video containers are also accepted (audio track is extracted). Max size: 100 MB.</td></tr><tr><td><code>language</code></td><td>query</td><td>string</td><td>yes</td><td>language of media file</td></tr></tbody></table><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>multipart/form-data</code></p><details class="api-schema"><summary>Response schema <span class="api-type">object</span></summary><pre class="api-json">{
+}</pre></details></div></article><article class="api-op" id="op-postai-detect-language-audio"><h3><span class="api-method m-post">POST</span> <code class="api-path">/ai/detect_language_audio</code> <span class="api-summary">Detect Language Audio</span></h3><div class="api-desc"><p><strong>Detect language</strong>  of media audio file. Max size of file: 100 MB </p><p>At least 1 credits on user account is needed. <a href="#op-getai-credits-buy">Buy Credits</a></p><p>Check following method: <a href="#op-getai-detect-language-audio-correlation-id">Get Detect Language Audio status</a></p><p>Method is returning <br/><code><br/>{<br/>  &quot;status&quot;: &quot;CREATED&quot;,<br/>  &quot;correlation_id&quot;: &quot;67eda18f52e11&quot;<br/>}<br/></code><br/>Status possible values: <br/><code><br/>CREATED     -&gt; Initial state</code><br/>PENDING     -&gt; procedure is still running<br/>COMPLETED   -&gt; remote procedure call is completed and has a result<br/>ERROR       -&gt; procedure resulted in an error and is not running anymore<br/>TIMEOUT     -&gt; No matching procedure call found before timeout<br/><code><br/>Using </code>correlation_id` can check status of job using GET</p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><h4 class="api-sub">Request body <span class="api-required">required</span></h4><p class="api-ct"><code>multipart/form-data</code></p><details class="api-schema"><summary>Schema <span class="api-type">object (api, file, language)</span></summary><pre class="api-json">{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;: {
+    &quot;api&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;transcribe API&quot;
+    },
+    &quot;file&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;Media file to process. Supported audio formats: mp3, aac (ADTS), m4a, wav, flac, ogg, webm. Video containers are also accepted (audio track is extracted). Max size: 100 MB.&quot;,
+      &quot;format&quot;: &quot;binary&quot;
+    },
+    &quot;language&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;language of media file&quot;
+    }
+  },
+  &quot;required&quot;: [
+    &quot;api&quot;,
+    &quot;file&quot;,
+    &quot;language&quot;
+  ]
+}</pre></details><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>application/json</code></p><details class="api-schema"><summary>Response schema <span class="api-type">object</span></summary><pre class="api-json">{
   &quot;type&quot;: &quot;object&quot;,
   &quot;properties&quot;: {}
 }</pre></details><details class="api-example" open="open"><summary>Response example</summary><pre class="api-json">{
@@ -7107,6 +7427,52 @@
   &quot;loginid&quot;: &quot;797817&quot;,
   &quot;correlation_id&quot;: &quot;67eda18f52e11&quot;
 }</pre></details></div></article><article class="api-op" id="op-getai-detect-language-audio-correlation-id"><h3><span class="api-method m-get">GET</span> <code class="api-path">/ai/detect_language_audio/{correlation_id}</code> <span class="api-summary">Detect Language Audio Status</span></h3><div class="api-desc"><p>Get status of <strong><a href="#op-postai-detect-language-audio">Detect Language Audio</a></strong> job using <code>correlation_id</code></p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><table class="api-table"><thead><tr><th>Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code>correlation_id</code></td><td>path</td><td>string</td><td>yes</td><td>correlation_id</td></tr></tbody></table><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>application/json</code></p><details class="api-example" open="open"><summary>Response example</summary><pre class="api-json">{
+  &quot;status&quot;: &quot;COMPLETED&quot;,
+  &quot;correlation_id&quot;: &quot;67eda18f52e11&quot;,
+  &quot;data&quot;: {
+    &quot;language&quot;: {
+      &quot;W3C&quot;: &quot;en&quot;,
+      &quot;name&quot;: &quot;english&quot;,
+      &quot;native&quot;: &quot;english&quot;,
+      &quot;ISO_639_1&quot;: &quot;en&quot;,
+      &quot;ISO_639_2b&quot;: &quot;eng&quot;
+    },
+    &quot;end_time&quot;: 1788199102,
+    &quot;duration&quot;: 15,
+    &quot;complete&quot;: 1788199102
+  }
+}</pre></details></div></article><article class="api-op" id="op-postai-detect-language"><h3><span class="api-method m-post">POST</span> <code class="api-path">/ai/detect_language</code> <span class="api-summary">AI Detect Language</span></h3><div class="api-desc"><p>Detect the spoken language of an audio or video file. Returns <code>data.language</code> synchronously, or a <code>correlation_id</code> to poll via POST /ai/detectLanguage/{correlation_id}. FormData: <code>file</code> (required), optional <code>duration</code> in seconds.</p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><h4 class="api-sub">Request body <span class="api-required">required</span></h4><p class="api-ct"><code>multipart/form-data</code></p><details class="api-schema"><summary>Schema <span class="api-type">object (file, duration)</span></summary><pre class="api-json">{
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;: {
+    &quot;file&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;format&quot;: &quot;binary&quot;,
+      &quot;description&quot;: &quot;audio/video file to analyze&quot;
+    },
+    &quot;duration&quot;: {
+      &quot;type&quot;: &quot;number&quot;,
+      &quot;description&quot;: &quot;media duration in seconds (improves accuracy)&quot;
+    }
+  },
+  &quot;required&quot;: [
+    &quot;file&quot;
+  ]
+}</pre></details><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>application/json</code></p><details class="api-example" open="open"><summary>Response example</summary><pre class="api-json">{
+  &quot;status&quot;: &quot;COMPLETED&quot;,
+  &quot;correlation_id&quot;: &quot;67eda18f52e11&quot;,
+  &quot;data&quot;: {
+    &quot;language&quot;: {
+      &quot;W3C&quot;: &quot;en&quot;,
+      &quot;name&quot;: &quot;english&quot;,
+      &quot;native&quot;: &quot;english&quot;,
+      &quot;ISO_639_1&quot;: &quot;en&quot;,
+      &quot;ISO_639_2b&quot;: &quot;eng&quot;
+    },
+    &quot;end_time&quot;: 1788199102,
+    &quot;duration&quot;: 15,
+    &quot;complete&quot;: 1788199102
+  }
+}</pre></details></div></article><article class="api-op" id="op-postai-detectlanguage-correlation-id"><h3><span class="api-method m-post">POST</span> <code class="api-path">/ai/detectLanguage/{correlation_id}</code> <span class="api-summary">AI Detect Language status (POST)</span></h3><div class="api-desc"><p>Get status of a language-detection job using <code>correlation_id</code> (variant used by the official clients). Match language codes by ISO_639_1 base.</p></div><p class="api-auth">Auth: <span class="api-chip"><code>Api-Key</code> + <code>Bearer</code></span></p><h4 class="api-sub">Responses</h4><div class="api-resp"><p class="api-resp-line"><span class="api-code">200</span> OK</p><p class="api-ct"><code>application/json</code></p><details class="api-example" open="open"><summary>Response example</summary><pre class="api-json">{
   &quot;status&quot;: &quot;COMPLETED&quot;,
   &quot;correlation_id&quot;: &quot;67eda18f52e11&quot;,
   &quot;data&quot;: {

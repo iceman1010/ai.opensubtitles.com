@@ -5863,7 +5863,135 @@
           "id": "0tuklm9ob00a3"
         }
       },
-      "parameters": []
+      "parameters": [],
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Buy Credits (POST)",
+        "description": "List credit packages with checkout URLs (variant used by the official clients). FormData: optional ```email``` for the receipt.",
+        "security": [
+          {
+            "Api-Key": [],
+            "Bearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "email address for the purchase receipt"
+                  }
+                },
+                "required": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "string"
+                          },
+                          "discount_percent": {
+                            "type": "integer"
+                          },
+                          "checkout_url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "data": [
+                        {
+                          "name": "500 credits",
+                          "value": "5 USD",
+                          "discount_percent": 0,
+                          "checkout_url": "https://ai.opensubtitles.com/assets/buy_credits.html?tag=1sBYypgiIshtuRhFxInoOQ%3D%3D%3AtSuW7qdTDrGra5UTHRSgWgXy8Rrg0LCb%2Fh3CxOaJpPiP%2BtmIPSA1gY3CJeM6oUc0"
+                        },
+                        {
+                          "name": "1000 credits",
+                          "value": "10 USD",
+                          "discount_percent": 0,
+                          "checkout_url": "https://ai.opensubtitles.com/assets/buy_credits.html?tag=vgBZglBSiIZUdCU2KCqsyg%3D%3D%3ALPHN%2BH1x5cBoPolx5PIkMVuEV7q025%2BWz%2FEaMv9CCM0300xkpT9f%2B3fC7d2POdso"
+                        },
+                        {
+                          "name": "5500 credits",
+                          "value": "50 USD",
+                          "discount_percent": 10,
+                          "checkout_url": "https://ai.opensubtitles.com/assets/buy_credits.html?tag=eZQKqUTXDncZLOJuIlr%2FJg%3D%3D%3AJeYPTQeow17b4%2FN4SwDJeN%2BtG4b4X%2FuO4vwjMcjWGHIMkFSXF70K8b1REsx7Ve%2B6"
+                        },
+                        {
+                          "name": "39000 credits",
+                          "value": "300 USD",
+                          "discount_percent": 30,
+                          "checkout_url": "https://ai.opensubtitles.com/assets/buy_credits.html?tag=KykrwFhYEHysP0zEJAB4pA%3D%3D%3AQ9KItCiZ8AxAPqi%2F2qIaUavVE60ANcBBLFRqFJLonMZq14xETj5GgS2lT5i4m4ri"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "example": {
+                  "data": [
+                    {
+                      "name": "500 credits",
+                      "value": "5 USD",
+                      "discount_percent": 0,
+                      "checkout_url": "https://ai.opensubtitles.com/assets/buy_credits.php?tag=EXAMPLE"
+                    },
+                    {
+                      "name": "1100 credits",
+                      "value": "10 USD",
+                      "discount_percent": 10,
+                      "checkout_url": "https://ai.opensubtitles.com/assets/buy_credits.php?tag=EXAMPLE1"
+                    },
+                    {
+                      "name": "5750 credits",
+                      "value": "50 USD",
+                      "discount_percent": 15,
+                      "checkout_url": "https://ai.opensubtitles.com/assets/buy_credits.php?tag=EXAMPLE5"
+                    },
+                    {
+                      "name": "18000 credits",
+                      "value": "150 USD",
+                      "discount_percent": 20,
+                      "checkout_url": "https://ai.opensubtitles.com/assets/buy_credits.php?tag=EXAMPLE18"
+                    },
+                    {
+                      "name": "39000 credits",
+                      "value": "300 USD",
+                      "discount_percent": 30,
+                      "checkout_url": "https://ai.opensubtitles.com/assets/buy_credits.php?tag=EXAMPLE39"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "/ai/info/translation": {
       "get": {
@@ -7101,7 +7229,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "multipart/form-data": {
+              "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {}
@@ -7125,55 +7253,48 @@
             "Bearer": []
           }
         ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "api",
-            "description": "translation_apis",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "file",
-            "description": "file contents to translate",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string",
-              "default": "auto"
-            },
-            "in": "query",
-            "name": "translate_from",
-            "description": "language ISO639 translate_from (auto is default)"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "translate_to",
-            "description": "language ISO639 translate_from",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "integer"
-            },
-            "in": "query",
-            "name": "file_id",
-            "description": "file_id from /subtitles endpoint"
-          }
-        ],
+        "parameters": [],
         "tags": [
           "AI Translate"
-        ]
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "api": {
+                    "type": "string",
+                    "description": "translation_apis"
+                  },
+                  "file": {
+                    "type": "string",
+                    "description": "file contents to translate",
+                    "format": "binary"
+                  },
+                  "translate_from": {
+                    "type": "string",
+                    "description": "language ISO639 translate_from (auto is default)"
+                  },
+                  "translate_to": {
+                    "type": "string",
+                    "description": "language ISO639 translate_from"
+                  },
+                  "file_id": {
+                    "type": "integer",
+                    "description": "file_id from /subtitles endpoint"
+                  }
+                },
+                "required": [
+                  "api",
+                  "file",
+                  "translate_to"
+                ]
+              }
+            }
+          }
+        }
       },
       "parameters": []
     },
@@ -8798,7 +8919,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "multipart/form-data": {
+              "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {}
@@ -8819,40 +8940,42 @@
             "Bearer": []
           }
         ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "api",
-            "description": "transcribe API",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "description": "Media file to process. Supported audio formats: mp3, aac (ADTS), m4a, wav, flac, ogg, webm. Video containers are also accepted (audio track is extracted). Max size: 100 MB.",
-            "required": true,
-            "name": "file"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "language",
-            "description": "language of media file",
-            "required": true
-          }
-        ],
+        "parameters": [],
         "tags": [
           "AI Transcribe"
         ],
         "x-stoplight": {
           "id": "2chhfrkbc30af"
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "api": {
+                    "type": "string",
+                    "description": "transcribe API"
+                  },
+                  "file": {
+                    "type": "string",
+                    "description": "Media file to process. Supported audio formats: mp3, aac (ADTS), m4a, wav, flac, ogg, webm. Video containers are also accepted (audio track is extracted). Max size: 100 MB.",
+                    "format": "binary"
+                  },
+                  "language": {
+                    "type": "string",
+                    "description": "language of media file"
+                  }
+                },
+                "required": [
+                  "api",
+                  "file",
+                  "language"
+                ]
+              }
+            }
+          }
         }
       },
       "parameters": []
@@ -8918,7 +9041,54 @@
           "required": true,
           "description": "correlation_id"
         }
-      ]
+      ],
+      "post": {
+        "tags": [
+          "AI Transcribe"
+        ],
+        "summary": "AI Transcribe status (POST)",
+        "description": "Get status of a transcribe job using ```correlation_id``` (variant used by the official clients). Poll every 3-5 s.",
+        "security": [
+          {
+            "Api-Key": [],
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "correlation_id": "67eda18f52e11",
+                  "status": "COMPLETED",
+                  "data": {
+                    "id": 45537,
+                    "file_name": "test_archer_2min.srt",
+                    "url": "https://api.opensubtitles.com/api/v1/ai/files/45537/test_archer_2min.srt",
+                    "seconds_count": 121,
+                    "unit_price": 0.0075,
+                    "total_price": 1,
+                    "credits_left": 693,
+                    "task": {
+                      "language": "en",
+                      "api": "nano",
+                      "login": "ai_testuser_1",
+                      "loginid": "797817",
+                      "format": "srt",
+                      "id": "45537",
+                      "file": "test_archer_2min.mp3",
+                      "function": "transcribe"
+                    },
+                    "complete": 1788199451
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "/ai/detect_language_text": {
       "post": {
@@ -8927,7 +9097,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "multipart/form-data": {
+              "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
@@ -9004,24 +9174,34 @@
             "Bearer": []
           }
         ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "description": "subtitle file",
-            "required": true,
-            "name": "file"
-          }
-        ],
+        "parameters": [],
         "x-stoplight": {
           "id": "68wq42ph4db5n"
         },
         "x-internal": false,
         "tags": [
           "Utilities"
-        ]
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "description": "subtitle file",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        }
       },
       "parameters": []
     },
@@ -9032,7 +9212,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "multipart/form-data": {
+              "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {}
@@ -9059,41 +9239,43 @@
             "Bearer": []
           }
         ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "api",
-            "description": "transcribe API",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "description": "Media file to process. Supported audio formats: mp3, aac (ADTS), m4a, wav, flac, ogg, webm. Video containers are also accepted (audio track is extracted). Max size: 100 MB.",
-            "required": true,
-            "name": "file"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "language",
-            "description": "language of media file",
-            "required": true
-          }
-        ],
+        "parameters": [],
         "x-stoplight": {
           "id": "ps8b79w4p8i6k"
         },
         "tags": [
           "Utilities"
-        ]
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "api": {
+                    "type": "string",
+                    "description": "transcribe API"
+                  },
+                  "file": {
+                    "type": "string",
+                    "description": "Media file to process. Supported audio formats: mp3, aac (ADTS), m4a, wav, flac, ogg, webm. Video containers are also accepted (audio track is extracted). Max size: 100 MB.",
+                    "format": "binary"
+                  },
+                  "language": {
+                    "type": "string",
+                    "description": "language of media file"
+                  }
+                },
+                "required": [
+                  "api",
+                  "file",
+                  "language"
+                ]
+              }
+            }
+          }
+        }
       },
       "parameters": []
     },
@@ -9602,6 +9784,252 @@
           "description": "file_name"
         }
       ]
+    },
+    "/ai/detect_language": {
+      "post": {
+        "tags": [
+          "Utilities"
+        ],
+        "summary": "AI Detect Language",
+        "description": "Detect the spoken language of an audio or video file. Returns ```data.language``` synchronously, or a ```correlation_id``` to poll via POST /ai/detectLanguage/{correlation_id}. FormData: ```file``` (required), optional ```duration``` in seconds.",
+        "security": [
+          {
+            "Api-Key": [],
+            "Bearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "audio/video file to analyze"
+                  },
+                  "duration": {
+                    "type": "number",
+                    "description": "media duration in seconds (improves accuracy)"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "COMPLETED",
+                  "correlation_id": "67eda18f52e11",
+                  "data": {
+                    "language": {
+                      "W3C": "en",
+                      "name": "english",
+                      "native": "english",
+                      "ISO_639_1": "en",
+                      "ISO_639_2b": "eng"
+                    },
+                    "end_time": 1788199102,
+                    "duration": 15,
+                    "complete": 1788199102
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ai/translation/{correlation_id}": {
+      "post": {
+        "tags": [
+          "AI Translate"
+        ],
+        "summary": "AI Translation status (POST)",
+        "description": "Get status of a translation job using ```correlation_id``` (variant used by the official clients). On COMPLETED, ```data``` includes ```quality``` (verdict in ```quality.valid```), ```readability```, and ```quality_refund``` when the quality check failed (auto-refund). Poll every 3-5 s.",
+        "security": [
+          {
+            "Api-Key": [],
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "correlation_id": "67eda18f52e11",
+                  "status": "COMPLETED",
+                  "data": {
+                    "file_name": "test.de.srt",
+                    "url": "https://api.opensubtitles.com/api/v1/ai/files/45536/test.de.srt",
+                    "characters_count": 1616,
+                    "unit_price": 0.0009,
+                    "total_price": 2,
+                    "credits_left": 694,
+                    "end_time": 1788199436,
+                    "duration": 11,
+                    "quality": {
+                      "valid": true,
+                      "result": "passed",
+                      "error_count": 0,
+                      "warning_count": 1,
+                      "defects_by_type": {
+                        "merged_captions": 1
+                      },
+                      "defects": [
+                        {
+                          "type": "merged_captions",
+                          "severity": "warning",
+                          "message": "Original captions #12-13 are merged into translation caption #12",
+                          "source_start_caption": 12,
+                          "source_end_caption": 13,
+                          "translation_caption": 12,
+                          "caption_count": 2
+                        }
+                      ],
+                      "quality": {
+                        "source_captions": 103,
+                        "aligned_pairs": 102,
+                        "partial_chars_analyzed": 4618,
+                        "ratios": {
+                          "content_loss": 0.0,
+                          "timestamp_drift": 0.0,
+                          "partial_translation": 0.0,
+                          "merged": 0.0097,
+                          "verbatim_copy": 0.0,
+                          "near_verbatim_copy": 0.0,
+                          "unexpected_script": 0.0,
+                          "unaligned": 0.0
+                        },
+                        "thresholds": {
+                          "content_loss": 0.01,
+                          "timestamp_drift": 0.02,
+                          "partial_translation": null,
+                          "merged": 0.1,
+                          "verbatim_copy": 0.5,
+                          "near_verbatim_copy": 0.5,
+                          "unexpected_script": 0.0,
+                          "unaligned": null
+                        },
+                        "readability": {
+                          "avg_cps": 14.1,
+                          "max_cps": 20.3,
+                          "max_cps_caption": 67,
+                          "max_cpl": 41,
+                          "max_cpl_caption": 51
+                        },
+                        "strict": false,
+                        "reasons": []
+                      }
+                    },
+                    "readability": {
+                      "captions": 103,
+                      "analyzed": 101,
+                      "avg_cps": 14.1,
+                      "max_cps": 20.3,
+                      "max_cps_caption": 67,
+                      "max_cpl": 41,
+                      "max_cpl_caption": 51,
+                      "thresholds": {
+                        "max_cps": 20.0,
+                        "max_cpl": 42,
+                        "max_lines": 2
+                      },
+                      "problems_by_type": {
+                        "reading_speed": 1
+                      },
+                      "problems": [
+                        {
+                          "caption": 67,
+                          "severity": "minor",
+                          "start_seconds": 120.4,
+                          "end_seconds": 121.8,
+                          "duration_seconds": 1.4,
+                          "chars": 28,
+                          "cps": 20.3,
+                          "text": "Ich denke, wir sollten jetzt gehen.",
+                          "issues": [
+                            {
+                              "type": "reading_speed",
+                              "value": 20.3,
+                              "limit": 20.0,
+                              "severity": "minor"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "task": {
+                      "login": "ai_testuser_1",
+                      "loginid": "797817",
+                      "api": "deepl2",
+                      "language": "en",
+                      "translation": "de",
+                      "start_time": 1788199425,
+                      "id": "45536",
+                      "function": "translate"
+                    },
+                    "complete": 1788199436
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ai/detectLanguage/{correlation_id}": {
+      "post": {
+        "tags": [
+          "Utilities"
+        ],
+        "summary": "AI Detect Language status (POST)",
+        "description": "Get status of a language-detection job using ```correlation_id``` (variant used by the official clients). Match language codes by ISO_639_1 base.",
+        "security": [
+          {
+            "Api-Key": [],
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "COMPLETED",
+                  "correlation_id": "67eda18f52e11",
+                  "data": {
+                    "language": {
+                      "W3C": "en",
+                      "name": "english",
+                      "native": "english",
+                      "ISO_639_1": "en",
+                      "ISO_639_2b": "eng"
+                    },
+                    "end_time": 1788199102,
+                    "duration": 15,
+                    "complete": 1788199102
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
