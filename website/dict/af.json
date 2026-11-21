@@ -211,6 +211,7 @@
   "job.new_h1": "Nuwe taak",
   "job.new_lead": "Laat val 'n medialêer vir transkripsie of 'n onderskriflêer (SRT/VTT) vir vertaling — die formaat word outomaties bespeur.",
   "job.cost_note": "Geskatte koste in krediete. Mislukte take word nooit aangereken nie.",
+  "job.possibly_submitted": "Die oplaai het dalk die bediener bereik — die taak loop moontlik al en is aangereken. Kontroleer „Onlangse media“ op jou dashboard voordat jy weer probeer, om ’n dubbele koste te vermy.",
   "job.drop_hint": "Laat val 'n lêer hier of klik om te kies",
   "job.transcription_options": "Transkripsie",
   "job.translation_options": "Vertaling",

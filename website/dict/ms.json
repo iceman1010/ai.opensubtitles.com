@@ -211,6 +211,7 @@
   "job.new_h1": "Tugasan baharu",
   "job.new_lead": "Lepaskan fail media untuk transkripsi atau fail sarikata (SRT/VTT) untuk terjemahan — format dikesan secara automatik.",
   "job.cost_note": "Kos dianggarkan dalam kredit. Kerja yang gagal tidak pernah dicaj.",
+  "job.possibly_submitted": "Muat naik mungkin telah sampai ke pelayan — kerja mungkin sedang berjalan dan telah dicaj. Semak „Media terkini“ pada papan pemuka sebelum mencuba semula, untuk mengelakkan caj berganda.",
   "job.drop_hint": "Lepaskan fail di sini atau klik untuk memilih",
   "job.transcription_options": "Transkripsi",
   "job.translation_options": "Terjemahan",

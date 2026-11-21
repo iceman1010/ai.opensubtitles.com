@@ -211,6 +211,7 @@
   "job.new_h1": "Neuer Auftrag",
   "job.new_lead": "Zieh eine Mediendatei für die Transkription oder eine Untertiteldatei (SRT/VTT) für die Übersetzung hierher — das Format wird automatisch erkannt.",
   "job.cost_note": "Geschätzte Kosten in Credits. Fehlgeschlagene Jobs werden nie berechnet.",
+  "job.possibly_submitted": "Der Upload hat den Server möglicherweise erreicht — der Auftrag läuft womöglich bereits und wurde berechnet. Prüfe „Letzte Medien“ in deinem Dashboard, bevor du es erneut versuchst, um eine doppelte Berechnung zu vermeiden.",
   "job.drop_hint": "Datei hierher ziehen oder klicken zum Auswählen",
   "job.transcription_options": "Transkription",
   "job.translation_options": "Übersetzung",

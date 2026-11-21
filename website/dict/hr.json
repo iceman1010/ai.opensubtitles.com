@@ -211,6 +211,7 @@
   "job.new_h1": "Novi posao",
   "job.new_lead": "Ubacite medijsku datoteku za transkripciju ili datoteku titlova (SRT/VTT) za prijevod — format se prepoznaje automatski.",
   "job.cost_note": "Procijenjena cijena u kreditima. Neuspjeli poslovi se nikada ne naplaćuju.",
+  "job.possibly_submitted": "Otpremanje je možda stiglo do poslužitelja — zadatak možda već radi i naplaćen je. Prije ponovnog pokušaja provjerite „Nedavni mediji“ na nadzornoj ploči da izbjegnete dvostruku naplatu.",
   "job.drop_hint": "Ispustite datoteku ovdje ili kliknite za odabir",
   "job.transcription_options": "Transkripcija",
   "job.translation_options": "Prijevod",

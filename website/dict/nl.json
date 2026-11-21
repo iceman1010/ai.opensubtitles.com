@@ -211,6 +211,7 @@
   "job.new_h1": "Nieuwe taak",
   "job.new_lead": "Upload een mediabestand of ondertitelbestand. Formaat wordt automatisch gedetecteerd.",
   "job.cost_note": "Geschatte kosten in credits. Mislukte taken worden nooit in rekening gebracht.",
+  "job.possibly_submitted": "De upload heeft de server mogelijk bereikt — de taak draait mogelijk al en is in rekening gebracht. Controleer „Recente mediabestanden“ op je dashboard voordat je het opnieuw probeert, om een dubbele afschrijving te voorkomen.",
   "job.drop_hint": "Sleep of klik om bestand te selecteren",
   "job.transcription_options": "Transcriptie-opties",
   "job.translation_options": "Vertaling-opties",

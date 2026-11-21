@@ -211,6 +211,7 @@
   "job.new_h1": "Nytt jobb",
   "job.new_lead": "Last opp en mediefil eller undertekstfil. Formatet oppdages automatisk.",
   "job.cost_note": "Estimert kostnad i kreditter. Mislykkede jobber blir aldri belastet.",
+  "job.possibly_submitted": "Opplastingen kan ha nådd serveren — jobben kan allerede kjøre og være trukket. Sjekk „Siste mediefiler“ på dashbordet før du prøver igjen, for å unngå dobbel belastning.",
   "job.drop_hint": "Dra og slipp eller klikk for å velge fil",
   "job.transcription_options": "Transkripsjonsalternativer",
   "job.translation_options": "Oversettelsesalternativer",

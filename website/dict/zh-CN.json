@@ -211,6 +211,7 @@
   "job.new_h1": "新建任务",
   "job.new_lead": "拖入用于转录的媒体文件或用于翻译的字幕文件（SRT/VTT）—— 格式会自动识别。",
   "job.cost_note": "以积分计的预计费用。失败的任务绝不收费。",
+  "job.possibly_submitted": "上传可能已到达服务器——任务可能已在运行并已扣费。为避免重复扣费，请在重试前查看仪表板上的“最近媒体”。",
   "job.drop_hint": "将文件拖到此处或点击选择",
   "job.transcription_options": "转录",
   "job.translation_options": "翻译",

@@ -211,6 +211,7 @@
   "job.new_h1": "Novo opravilo",
   "job.new_lead": "Spustite predstavnostno datoteko za transkripcijo ali datoteko s podnapisi (SRT/VTT) za prevajanje — format se prepozna samodejno.",
   "job.cost_note": "Ocena stroškov v kreditih. Neuspešna opravila se nikoli ne zaračunajo.",
+  "job.possibly_submitted": "Nalaganje je morda doseglo strežnik — opravilo morda že poteka in je bilo zaračunano. Pred ponovnim poskusom preverite „Nedavne predstavnosti“ na nadzorni plošči, da se izognete dvojnemu zaračunavanju.",
   "job.drop_hint": "Spustite datoteko sem ali kliknite za izbiro",
   "job.transcription_options": "Transkripcija",
   "job.translation_options": "Prevajanje",

@@ -126,6 +126,29 @@
 		return res.json();
 	}
 
+	async function fetchOnce(url, options) {
+		pulseBrand();
+		const res = await fetch(url, options).catch(() => {
+			const err = new Error('Network error');
+			err.status = 0;
+			throw err;
+		});
+		const body = res.ok ? '' : await res.text().catch(() => '');
+		if (res.status === 401 || res.status === 403) {
+			if (getValidToken()) authExpired();
+			const err = new Error(parseErrorMessage(body, res.status));
+			err.status = res.status;
+			err.auth = true;
+			throw err;
+		}
+		if (!res.ok) {
+			const err = new Error(parseErrorMessage(body, res.status));
+			err.status = res.status;
+			throw err;
+		}
+		return res;
+	}
+
 	async function login(username, password, rememberMe) {
 		if (!username || !password) return { success: false, error: 'Username and password are required' };
 		if (rememberMe) saveConfig({ username: username, password: password, apiKey: SITE.apiKey });
@@ -271,11 +294,17 @@
 					return reject(err);
 				}
 				if (xhr.status >= 400) {
-					return reject(new Error(parseErrorMessage(xhr.response, xhr.status)));
+					const err = new Error(parseErrorMessage(xhr.response, xhr.status));
+					err.status = xhr.status;
+					return reject(err);
 				}
 				resolve(xhr.response);
 			});
-			xhr.addEventListener('error', () => reject(new Error('Network error during upload')));
+			xhr.addEventListener('error', () => {
+				const err = new Error('Network error during upload');
+				err.status = 0;
+				reject(err);
+			});
 			pulseBrand();
 			xhr.send(formData);
 		});
@@ -453,11 +482,12 @@
 	}
 
 	async function downloadSubtitleFile(fileId) {
-		return jsonCall(aiUrl('/proxy/download'), {
+		const res = await fetchOnce(aiUrl('/proxy/download'), {
 			method: 'POST',
 			headers: headers(true, 'application/json'),
 			body: JSON.stringify({ file_id: fileId })
 		});
+		return res.json();
 	}
 
 	window.AI = {

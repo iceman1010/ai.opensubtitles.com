@@ -211,6 +211,7 @@
   "job.new_h1": "Nytt jobb",
   "job.new_lead": "Ladda upp en mediafil eller undertextfil. Formatet identifieras automatiskt.",
   "job.cost_note": "Uppskattad kostnad i krediter. Misslyckade jobb debiteras aldrig.",
+  "job.possibly_submitted": "Uppladdningen kan ha nått servern — jobbet kanske redan körs och har debiterats. Kontrollera „Senaste mediafiler“ på instrumentpanelen innan du försöker igen, för att undvika en dubbel debitering.",
   "job.drop_hint": "Dra och släpp eller klicka för att välja fil",
   "job.transcription_options": "Transkriberingsalternativ",
   "job.translation_options": "Översättningsalternativ",

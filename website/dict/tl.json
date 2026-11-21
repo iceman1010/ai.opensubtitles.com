@@ -211,6 +211,7 @@
   "job.new_h1": "Bagong gawain",
   "job.new_lead": "Mag-drop ng media file para sa transcription o subtitle file (SRT/VTT) para sa pagsasalin — awtomatikong nadedetect ang format.",
   "job.cost_note": "Tinatayang gastos sa credits. Hindi kailanman sisingilin ang mga nabigong trabaho.",
+  "job.possibly_submitted": "Maaaring naabot ng upload ang server — maaaring tumatakbo na at nasingil na ang trabaho. Suriin ang „Kamakailang media“ sa iyong dashboard bago subukan muli, upang maiwasan ang dobleng singil.",
   "job.drop_hint": "Mag-drop ng file dito o mag-click upang pumili",
   "job.transcription_options": "Transkripsyon",
   "job.translation_options": "Pagsasalin",

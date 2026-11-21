@@ -211,6 +211,7 @@
   "job.new_h1": "Új feladat",
   "job.new_lead": "Húzzon be médiafájlt az átíráshoz vagy feliratfájlt (SRT/VTT) a fordításhoz — a formátum automatikusan felismerésre kerül.",
   "job.cost_note": "Becsült költség kreditben. A sikertelen feladatokért soha nem számítunk fel díjat.",
+  "job.possibly_submitted": "A feltöltés elérhette a kiszolgálót — a feladat lehet, hogy már fut és terhelve lett. A dupla terhelés elkerülése érdekében ellenőrizze a „Legutóbbi médiák“ részt a vezérlőpulton, mielőtt újrapróbálja.",
   "job.drop_hint": "Húzzon ide egy fájlt, vagy kattintson a kiválasztáshoz",
   "job.transcription_options": "Átírás",
   "job.translation_options": "Fordítás",

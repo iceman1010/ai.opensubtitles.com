@@ -260,6 +260,7 @@
   "job.new_h1": "H1 of /new.",
   "job.new_lead": "Lead on /new: drop media or subtitle file, format auto-detected.",
   "job.cost_note": "/new cost-estimate note (was pricing.quality_note duplicate). Facts: estimate in credits; failed jobs never charged.",
+  "job.possibly_submitted": "Shown instead of the raw error when a job upload failed ambiguously (network error or 5xx after possible delivery). Mirrors the clients' POSSIBLY_SUBMITTED_WARNING. Keep: ambiguity + charge warning + check-before-retry guidance.",
   "job.drop_hint": "Dropzone hint: drop file or click to choose. Short imperative.",
   "job.transcription_options": "Options group heading: transcription settings.",
   "job.translation_options": "Options group heading: translation settings.",

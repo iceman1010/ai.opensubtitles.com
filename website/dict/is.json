@@ -211,6 +211,7 @@
   "job.new_h1": "Nýtt verk",
   "job.new_lead": "Slepptu miðlaskrá til umritunar eða skjátextaskrá (SRT/VTT) til þýðingar — sniðið greinist sjálfkrafa.",
   "job.cost_note": "Áætlaður kostnaður í kredits. Misteknum störfum er aldrei reiknað fyrir.",
+  "job.possibly_submitted": "Innsendingin náði hugsanlega til netþjóns — verkið er kannski þegar í gangi og hefur verið gjaldað. Athugið „Nýlegir miðlar“ á mælaborðinu áður en þú reynir aftur, til að forðast tvöfalda gjald.",
   "job.drop_hint": "Slepptu skrá hér eða smelltu til að velja",
   "job.transcription_options": "Umritun",
   "job.translation_options": "Þýðing",

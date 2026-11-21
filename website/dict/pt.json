@@ -211,6 +211,7 @@
   "job.new_h1": "Nova tarefa",
   "job.new_lead": "Largue um ficheiro multimédia para transcrição ou um ficheiro de legendas (SRT/VTT) para tradução — o formato é detetado automaticamente.",
   "job.cost_note": "Custo estimado em créditos. Os trabalhos falhados nunca são cobrados.",
+  "job.possibly_submitted": "O carregamento pode ter chegado ao servidor — a tarefa pode já estar em execução e ter sido cobrada. Verifique „Multimédia recente“ no painel antes de tentar novamente, para evitar uma cobrança dupla.",
   "job.drop_hint": "Largue um ficheiro aqui ou clique para escolher",
   "job.transcription_options": "Transcrição",
   "job.translation_options": "Tradução",

@@ -211,6 +211,7 @@
   "job.new_h1": "Nowe zadanie",
   "job.new_lead": "Wrzuć plik multimedialny lub plik napisów — format zostanie wykryty automatycznie.",
   "job.cost_note": "Szacowany koszt w kredytach. Za nieudane zadania nigdy nie pobieramy opłat.",
+  "job.possibly_submitted": "Przesłanie mogło dotrzeć do serwera — zadanie może już być w trakcie i zostało rozliczone. Sprawdź „Ostatnie pliki multimedialne“ na pulpicie przed ponowną próbą, aby uniknąć podwójnej opłaty.",
   "job.drop_hint": "Przeciągnij i upuść plik lub kliknij, by wybrać",
   "job.transcription_options": "Ustawienia transkrypcji",
   "job.translation_options": "Ustawienia tłumaczenia",

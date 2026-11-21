@@ -608,7 +608,8 @@
 			stopConvertTimer();
 			convertBox.hidden = true;
 			uploadBox.hidden = true;
-			showError(e.message || 'Processing failed.');
+			const ambiguous = e && typeof e.status === 'number' && (e.status === 0 || e.status >= 500);
+			showError(ambiguous ? I18N.possibly_submitted : (e.message || 'Processing failed.'));
 			submitButton.disabled = false;
 		}
 	});

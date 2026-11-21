@@ -211,6 +211,7 @@
   "job.new_h1": "Nova tarefa",
   "job.new_lead": "Solte um arquivo de mídia para transcrição ou um arquivo de legendas (SRT/VTT) para tradução — o formato é detectado automaticamente.",
   "job.cost_note": "Custo estimado em créditos. Trabalhos com falha nunca são cobrados.",
+  "job.possibly_submitted": "O upload pode ter chegado ao servidor — o trabalho pode já estar em andamento e ter sido cobrado. Verifique „Mídias recentes“ no painel antes de tentar de novo, para evitar uma cobrança em dobro.",
   "job.drop_hint": "Arraste um arquivo aqui ou clique para escolher",
   "job.transcription_options": "Transcrição",
   "job.translation_options": "Tradução",

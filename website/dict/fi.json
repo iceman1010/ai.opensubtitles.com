@@ -211,6 +211,7 @@
   "job.new_h1": "Uusi työ",
   "job.new_lead": "Lataa mediatiedosto tai tekstitiedosto. Muoto tunnistetaan automaattisesti.",
   "job.cost_note": "Arvioitu hinta krediiteissä. Epäonnistuneista töistä ei koskaan veloiteta.",
+  "job.possibly_submitted": "Lataus on voinut tulla perille palvelimelle — työ voi olla jo käynnissä ja veloitettu. Tarkista „Viimeisimmät mediatiedostot“ hallintapaneelista ennen uudelleenyritystä välttyäksesi kaksoisveloituksesta.",
   "job.drop_hint": "Vedä ja pudota tai klikkaa tiedoston valintaan",
   "job.transcription_options": "Transkriptioasetukset",
   "job.translation_options": "Käännöasetukset",

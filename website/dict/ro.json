@@ -211,6 +211,7 @@
   "job.new_h1": "Sarcină nouă",
   "job.new_lead": "Încărcați un fișier media sau un fișier de subtitrări. Formatul va fi detectat automat.",
   "job.cost_note": "Cost estimat în credite. Sarcinile eșuate nu sunt niciodată taxate.",
+  "job.possibly_submitted": "Încărcarea poate să fi ajuns la server — sarcina rulează posibil deja și a fost tarifată. Verificați „Fișiere media recente“ din panou înainte de a reîncerca, pentru a evita o taxare dublă.",
   "job.drop_hint": "Trageți sau faceți clic pentru a selecta fișierul",
   "job.transcription_options": "Opțiuni de transcriere",
   "job.translation_options": "Opțiuni de traducere",

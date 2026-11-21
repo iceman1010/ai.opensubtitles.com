@@ -211,6 +211,7 @@
   "job.new_h1": "New job",
   "job.new_lead": "Drop a media file for transcription or a subtitle file (SRT/VTT) for translation — the format is detected automatically.",
   "job.cost_note": "Estimated cost in credits. Failed jobs are never charged.",
+  "job.possibly_submitted": "The upload may have reached the server — the job may already be running and charged. Check Recent media on your dashboard before retrying, to avoid a duplicate charge.",
   "job.drop_hint": "Drop a file here or click to choose",
   "job.transcription_options": "Transcription",
   "job.translation_options": "Translation",

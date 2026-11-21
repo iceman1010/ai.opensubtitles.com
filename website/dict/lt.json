@@ -211,6 +211,7 @@
   "job.new_h1": "Nauja užduotis",
   "job.new_lead": "Įmeskite medijos failą transkripcijai arba subtitrų failą (SRT/VTT) vertimui — formatas atpažįstamas automatiškai.",
   "job.cost_note": "Numatoma kaina kreditais. Už nepavykusius darbus niekada neskaičiuojama.",
+  "job.possibly_submitted": "Įkėlimas galėjo pasiekti serverį — užduotis galbūt jau vykdoma ir apmokėta. Prieš bandydami dar kartą, patikrinkite „Naujausia medija“ prietaisų skydelyje, kad išvengtumėte dvigubo mokesčio.",
   "job.drop_hint": "Įmeskite failą čia arba spustelėkite pasirinkti",
   "job.transcription_options": "Transkripcija",
   "job.translation_options": "Vertimas",

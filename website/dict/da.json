@@ -211,6 +211,7 @@
   "job.new_h1": "Nyt job",
   "job.new_lead": "Upload en mediefil eller undertekstfil. Formatet registreres automatisk.",
   "job.cost_note": "Anslået pris i kreditter. Mislykkede job bliver aldrig opkrævet.",
+  "job.possibly_submitted": "Uploaden er muligvis nået til serveren — jobbet kører måske allerede og er blevet trukket for. Tjek „Seneste mediefiler“ på dit dashboard, før du prøver igen, for at undgå en dobbelt betaling.",
   "job.drop_hint": "Træk og slip eller klik for at vælge fil",
   "job.transcription_options": "Transskriberingsindstillinger",
   "job.translation_options": "Oversættelsesindstillinger",

@@ -211,6 +211,7 @@
   "job.new_h1": "Yangi vazifa",
   "job.new_lead": "Transkripsiya uchun media fayl yoki tarjima uchun subtitr faylini (SRT/VTT) tashlang — format avtomatik aniqlanadi.",
   "job.cost_note": "Kreditlardagi taxminiy xarajat. Muvaffaqiyatsiz ishlar hech qachon hisoblanmaydi.",
+  "job.possibly_submitted": "Yuklash serverga yetib borishi mumkin — vazifa allaqachon bajarilayotgan va hisoblangan boʻlishi mumkin. Ikkilamchi toʻlovdan qochish uchun qayta urinishdan oldin boshqaruv panelidagi „Soʻnggi media“ni tekshiring.",
   "job.drop_hint": "Faylni bu yerga tashlang yoki tanlash uchun bosing",
   "job.transcription_options": "Transkripsiya",
   "job.translation_options": "Tarjima",

@@ -211,6 +211,7 @@
   "job.new_h1": "Uus ülesanne",
   "job.new_lead": "Lohistage transkribeerimiseks meediafail või tõlkimiseks subtiitrifail (SRT/VTT) — vorming tuvastatakse automaatselt.",
   "job.cost_note": "Hinnanguline maksumus krediitides. Ebaõnnestunud tööde eest ei võeta kunagi tasu.",
+  "job.possibly_submitted": "Üleslaadimine võis serverini jõuda — töö võib juba töötada ja olla tasustatud. Enne uut katset kontrollige armatuurlaual „Viimane meedia“, et vältida topelttasu.",
   "job.drop_hint": "Lohistage fail siia või klõpsake valimiseks",
   "job.transcription_options": "Transkribeerimine",
   "job.translation_options": "Tõlkimine",

@@ -211,6 +211,7 @@
   "job.new_h1": "Jauns darbs",
   "job.new_lead": "Ievelciet medija failu transkripcijai vai subtitru failu (SRT/VTT) tulkošanai — formāts tiek atpazīts automātiski.",
   "job.cost_note": "Orientējošas izmaksas kredītos. Par neveiksmīgiem darbiem nekad netiek pieprasīta samaksa.",
+  "job.possibly_submitted": "Augšupielāde, iespējams, sasniedza serveri — darbs var jau darboties un būt norakstīts. Pirms mēģināt vēlreiz, pārbaudiet „Nesenie mediji“ informācijas panelī, lai izvairītos no dubultas maksas.",
   "job.drop_hint": "Nometiet failu šeit vai noklikšķiniet, lai izvēlētos",
   "job.transcription_options": "Transkripcija",
   "job.translation_options": "Tulkošana",

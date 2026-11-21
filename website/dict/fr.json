@@ -211,6 +211,7 @@
   "job.new_h1": "Nouvelle tâche",
   "job.new_lead": "Déposez un fichier média pour la transcription ou un fichier de sous-titres (SRT/VTT) pour la traduction — le format est détecté automatiquement.",
   "job.cost_note": "Coût estimé en crédits. Les tâches échouées ne sont jamais facturées.",
+  "job.possibly_submitted": "L’envoi a peut-être atteint le serveur — la tâche est peut-être déjà en cours et facturée. Vérifiez « Médias récents » sur votre tableau de bord avant de réessayer, afin d’éviter un double débit.",
   "job.drop_hint": "Déposez un fichier ici ou cliquez pour choisir",
   "job.transcription_options": "Transcription",
   "job.translation_options": "Traduction",

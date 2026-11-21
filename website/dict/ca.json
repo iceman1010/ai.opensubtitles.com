@@ -211,6 +211,7 @@
   "job.new_h1": "Nova tasca",
   "job.new_lead": "Deixeu anar un fitxer multimèdia per a la transcripció o un fitxer de subtítols (SRT/VTT) per a la traducció — el format es detecta automàticament.",
   "job.cost_note": "Cost estimat en crèdits. Els treballs fallits mai no es cobren.",
+  "job.possibly_submitted": "És possible que la pujada hagi arribat al servidor — la tasca potser ja s’està executant i s’ha cobrat. Comprova „Mitjans recents“ al tauler abans de reintentar-ho, per evitar un doble càrrec.",
   "job.drop_hint": "Deixeu anar un fitxer aquí o feu clic per triar",
   "job.transcription_options": "Transcripció",
   "job.translation_options": "Traducció",

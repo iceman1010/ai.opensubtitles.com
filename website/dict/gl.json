@@ -211,6 +211,7 @@
   "job.new_h1": "Nova tarefa",
   "job.new_lead": "Solte un ficheiro multimedia para a transcrición ou un ficheiro de subtítulos (SRT/VTT) para a tradución — o formato detéctase automaticamente.",
   "job.cost_note": "Custo estimado en créditos. Os traballos fallidos nunca se cobran.",
+  "job.possibly_submitted": "É posible que a subida chegase ao servidor — a tarea quizais estea xa en execución e cobrada. Comproba „Medios recentes“ no panel antes de reintentar, para evitar un cobro duplicado.",
   "job.drop_hint": "Solte un ficheiro aquí ou prema para escoller",
   "job.transcription_options": "Transcrición",
   "job.translation_options": "Tradución",

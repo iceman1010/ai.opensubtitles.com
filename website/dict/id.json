@@ -211,6 +211,7 @@
   "job.new_h1": "Tugas baru",
   "job.new_lead": "Unggah file media atau subtitle. Format akan terdeteksi otomatis.",
   "job.cost_note": "Perkiraan biaya dalam kredit. Pekerjaan yang gagal tidak pernah ditagihkan.",
+  "job.possibly_submitted": "Unggahan mungkin sudah sampai ke server — pekerjaan mungkin sudah berjalan dan ditagihkan. Periksa „File media terbaru“ di dasbor sebelum mencoba lagi, agar tidak dikenakan biaya ganda.",
   "job.drop_hint": "Seret dan lepas atau klik untuk memilih file",
   "job.transcription_options": "Opsi transkripsi",
   "job.translation_options": "Opsi terjemahan",

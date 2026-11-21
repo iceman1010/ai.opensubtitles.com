@@ -211,6 +211,7 @@
   "job.new_h1": "Nuovo lavoro",
   "job.new_lead": "Carica un file multimediale per la trascrizione o un file di sottotitoli (SRT/VTT) per la traduzione — il formato viene rilevato automaticamente.",
   "job.cost_note": "Costo stimato in crediti. I lavori falliti non vengono mai addebitati.",
+  "job.possibly_submitted": "Il caricamento potrebbe aver raggiunto il server: il lavoro potrebbe essere già in esecuzione e addebitato. Controlla „Media recenti“ nella dashboard prima di riprovare, per evitare un doppio addebito.",
   "job.drop_hint": "Trascina qui un file o clicca per scegliere",
   "job.transcription_options": "Trascrizione",
   "job.translation_options": "Traduzione",

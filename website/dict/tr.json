@@ -211,6 +211,7 @@
   "job.new_h1": "Yeni iş",
   "job.new_lead": "Transkripsiyon için bir medya dosyası veya çeviri için bir altyazı dosyası (SRT/VTT) bırakın — biçim otomatik algılanır.",
   "job.cost_note": "Kredi cinsinden tahmini maliyet. Başarısız işler için asla ücret alınmaz.",
+  "job.possibly_submitted": "Yükleme sunucuya ulaşmış olabilir — iş zaten çalışıyor ve ücretlendirilmiş olabilir. Çift ücret ödememek için yeniden denemeden önce kontrol panelinizdeki „Son medya“ bölümüne bakın.",
   "job.drop_hint": "Bir dosyayı buraya bırakın veya seçmek için tıklayın",
   "job.transcription_options": "Transkripsiyon",
   "job.translation_options": "Çeviri",

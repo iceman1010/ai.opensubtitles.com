@@ -211,6 +211,7 @@
   "job.new_h1": "Tác vụ mới",
   "job.new_lead": "Tải tệp media hoặc phụ đề lên. Định dạng được tự động phát hiện.",
   "job.cost_note": "Chi phí ước tính tính bằng credit. Công việc thất bại không bao giờ bị tính phí.",
+  "job.possibly_submitted": "Bản tải lên có thể đã đến máy chủ — công việc có thể đang chạy và đã bị trừ tiền. Để tránh bị trừ hai lần, hãy kiểm tra „Tệp media gần đây“ trên bảng điều khiển trước khi thử lại.",
   "job.drop_hint": "Kéo thả hoặc nhấp để chọn tệp",
   "job.transcription_options": "Tùy chọn chuyển âm",
   "job.translation_options": "Tùy chọn dịch",

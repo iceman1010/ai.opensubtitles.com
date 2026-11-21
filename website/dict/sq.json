@@ -211,6 +211,7 @@
   "job.new_h1": "Punë e re",
   "job.new_lead": "Hidhni një skedar media për transkriptim ose një skedar titrash (SRT/VTT) për përkthim — formati zbulohet automatikisht.",
   "job.cost_note": "Kosto e vlerësuar në kredite. Punimet e dështuara kurrë nuk faturohen.",
+  "job.possibly_submitted": "Ngarkimi mund të ketë arritur në server — detyra mund të jetë duke u ekzekutuar dhe t’u paguar. Kontrolloni „Mediat e fundit“ në panel përpara se të provoni përsëri, për të shmangur një pagesë të dyfishtë.",
   "job.drop_hint": "Hidhni një skedar këtu ose klikoni për të zgjedhur",
   "job.transcription_options": "Transkriptim",
   "job.translation_options": "Përkthim",

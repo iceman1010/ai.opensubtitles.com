@@ -211,6 +211,7 @@
   "job.new_h1": "Yeni tapşırıq",
   "job.new_lead": "Transkripsiya üçün media faylı və ya tərcümə üçün subtitr faylı (SRT/VTT) atın — format avtomatik tanınır.",
   "job.cost_note": "Kreditlərlə təxmini dəyər. Uğursuz işlər heç vaxt hesablanmır.",
+  "job.possibly_submitted": "Yükləmə ola bilər ki, serverə çatıb — tapşırıq artıq icra olunur və ödəniş tutulub. İkiqat ödənişdən qaçmaq üçün yenidən cəhd etməzdən əvvəl idarəetmə panelindəki „Son media“ bölməsini yoxlayın.",
   "job.drop_hint": "Faylı bura atın və ya seçmək üçün klikləyin",
   "job.transcription_options": "Transkripsiya",
   "job.translation_options": "Tərcümə",

@@ -211,6 +211,7 @@
   "job.new_h1": "Nová úloha",
   "job.new_lead": "Nahrajte mediální soubor nebo soubor s titulky. Formát bude automaticky rozpoznán.",
   "job.cost_note": "Odhad nákladů v kreditech. Neúspěšné úlohy se nikdy neúčtují.",
+  "job.possibly_submitted": "Nahrání možná dorazilo na server — úloha už možná běží a byla účtována. Než to zkusíte znovu, zkontrolujte „Nedávné mediální soubory“ na dashboardu, abyste se vyhli dvojitému účtování.",
   "job.drop_hint": "Přetáhněte nebo klikněte pro výběr souboru",
   "job.transcription_options": "Možnosti přepisu",
   "job.translation_options": "Možnosti překladu",

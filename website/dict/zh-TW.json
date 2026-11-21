@@ -211,6 +211,7 @@
   "job.new_h1": "新增任務",
   "job.new_lead": "拖入用於轉錄的媒體檔案或用於翻譯的字幕檔案（SRT/VTT）—— 格式會自動識別。",
   "job.cost_note": "以點數計的預估費用。失敗的工作絕不收費。",
+  "job.possibly_submitted": "上傳可能已到達伺服器——工作可能已在執行並已扣款。為避免重複扣款，請在重試前查看儀表板上的「最近媒體」。",
   "job.drop_hint": "將檔案拖到此處或點選選擇",
   "job.transcription_options": "轉錄",
   "job.translation_options": "翻譯",
