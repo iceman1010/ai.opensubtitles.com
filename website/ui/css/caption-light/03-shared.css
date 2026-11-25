@@ -39,7 +39,9 @@
 
 
 .auth-card .btn {
-	width: 100%;
+	display: flex;
+	width: fit-content;
+	margin-inline: auto;
 }
 
 
