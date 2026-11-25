@@ -63,6 +63,7 @@ class App
                 'core-tail' => ['theme-toggle.js', 'nav-menu.js', 'lang-select.js', 'cookie-consent.js', 'locale-prompt.js'],
                 'subsrt' => ['subsrt.iife.js'],
                 'page-search' => ['subtitle-viewer.js', 'preview-modal.js', 'search-page.js'],
+                'page-subtitle' => ['subtitle-viewer.js', 'preview-modal.js', 'subtitle-page.js'],
                 'page-dashboard' => ['subtitle-viewer.js', 'preview-modal.js', 'dashboard.js'],
                 'page-job' => ['subtitle-viewer.js', 'preview-modal.js', 'job.js'],
                 'page-new' => ['detect.js', 'ffmpeg-service.js', 'media-info-service.js', 'new-job.js'],

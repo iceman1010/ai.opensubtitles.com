@@ -28,10 +28,28 @@ class Search extends Base
         $this->deepLink($f3, 'parent_imdb_id');
     }
 
+    public function file(\Base $f3): void
+    {
+        $id = $f3->get('PARAMS.id');
+        if (!preg_match('/^\d{1,10}$/', $id)) {
+            $f3->error(404);
+            return;
+        }
+
+        \Services\Locale::apply($f3);
+
+        $f3->set('page_title', $f3->get('subtitle.title'));
+        $f3->set('page_description', $f3->get('subtitle.meta_description'));
+        $f3->set('noindex', true);
+        $f3->set('subtitle_file_id', $id);
+
+        $this->render($f3, 'subtitle.html', '/search/file/' . $id);
+    }
+
     private function deepLink(\Base $f3, string $param): void
     {
         $id = $f3->get('PARAMS.id');
-        if (!preg_match('/^tt\d{1,10}$/', $id)) {
+        if (!preg_match('/^(?:tt)?\d{1,10}$/', $id)) {
             $f3->error(404);
             return;
         }
@@ -44,7 +62,7 @@ class Search extends Base
         $f3->set('search_content', \Services\Content::file($f3, 'search'));
 
         $f3->set('noindex', true);
-        $f3->set('search_imdb_prefill', $id);
+        $f3->set('search_imdb_prefill', str_starts_with($id, 'tt') ? $id : 'tt' . $id);
         $f3->set('search_imdb_kind', $param);
 
         $this->render($f3, 'search.html', '/search');

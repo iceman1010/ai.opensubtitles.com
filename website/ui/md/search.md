@@ -107,6 +107,21 @@ curl -H "Api-Key: {API_KEY}" \
   "{API_BASE_URL}/ai/proxy/subtitles?query=matrix&year=1999&languages=en"
 ```
 
+## Shareable page links (for humans)
+
+When your answer is shown to a person, link these pages instead of raw API endpoints.
+They are HTML pages of this website — for programmatic use, keep using the JSON endpoints above.
+
+| Page | URL pattern |
+|---|---|
+| Search results for one movie/episode | `https://ai.opensubtitles.com/search/imdb/{imdb_id}` |
+| Episode search via the parent show | `https://ai.opensubtitles.com/search/imdb/parent/{imdb_id}` |
+| One subtitle's detail page | `https://ai.opensubtitles.com/search/file/{file_id}` |
+
+`imdb_id` may be given with or without the `tt` prefix — `tt0133093` and `133093` are
+equivalent (the numeric form matches `feature_details.imdb_id` in API responses).
+`file_id` is the numeric `files[0].file_id` from the search response.
+
 ## Notes
 
 - Search and download are free — no credits needed.

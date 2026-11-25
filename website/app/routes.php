@@ -20,6 +20,7 @@ return [
     'GET /search' => 'Controllers\Search->index',
     'GET /search/imdb/@id' => 'Controllers\Search->imdb',
     'GET /search/imdb/parent/@id' => 'Controllers\Search->imdbParent',
+    'GET /search/file/@id' => 'Controllers\Search->file',
     'GET /jobs' => 'Controllers\Job->index',
     'GET /jobs/@type/@id' => 'Controllers\Job->show',
 ];

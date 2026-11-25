@@ -82,7 +82,7 @@ auth headers to download), `characters_count`, `unit_price`, `total_price`,
 | Recent media | POST `/ai/recent_media?page=N` | `{}` |
 | Recent activities | POST `/ai/recent_activities?page=N` | `{}` (types: 1 trans, 2 transl, 3 purchase) |
 | Support ticket | POST `/ai/osticket` | FormData `problem_description`,`email`,`name` (Api-Key required, Bearer token optional) → `{ticket_id}`; non-JSON body = success |
-| Subtitle search | GET `/ai/proxy/subtitles` | query params `query`,`imdb_id`,`parent_imdb_id`,`year`,`type`,`languages`,`page` (Api-Key only, free) |
+| Subtitle search | GET `/ai/proxy/subtitles` | query params `query`,`imdb_id`,`parent_imdb_id`,`year`,`type`,`languages`,`page` (Api-Key only, free). Also accepts `file_id` (undocumented upstream): `?file_id=496565` → exactly one search item — used by the `/search/file/@id` detail page |
 | Feature search | GET `/ai/proxy/features` | same params minus `languages` (Api-Key only) |
 | Subtitle download | POST `/ai/proxy/download` | JSON `{file_id}` (Api-Key + Bearer token) → `{link}` (GET → file) or `{file}` |
 | Search languages | GET `/infos/languages` | → `{data:[{language_code,language_name}]}` (Api-Key only) |

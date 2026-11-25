@@ -1,0 +1,46 @@
+<section class="page-head">
+	<h1>{{ @subtitle.h1 }}</h1>
+</section>
+<section class="card" id="subtitle-card" data-file-id="{{ @subtitle_file_id }}">
+	<p id="subtitle-loading" role="status" aria-live="polite"><span class="spinner" aria-hidden="true"></span></p>
+	<p id="subtitle-notfound" class="results-empty" role="status" hidden>{{ @subtitle.not_found }}</p>
+	<p id="subtitle-error" class="form-error" role="alert" hidden></p>
+	<article id="subtitle-detail" class="card sub-card has-poster" hidden></article>
+</section>
+
+<div id="lightbox-overlay" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="{{ @subtitle.lightbox_title }}" tabindex="-1" hidden>
+	<img id="lightbox-img" alt="">
+</div>
+
+<div id="subtitle-i18n" hidden
+	data-preview="{{ @subtitle.preview }}"
+	data-download="{{ @subtitle.download }}"
+	data-downloading="{{ @subtitle.downloading }}"
+	data-loading_preview="{{ @subtitle.loading_preview }}"
+	data-download_failed="{{ @subtitle.download_failed }}"
+	data-translate="{{ @subtitle.translate }}"
+	data-preparing="{{ @subtitle.preparing }}"
+	data-stash_failed="{{ @subtitle.stash_failed }}"
+	data-error="{{ @subtitle.error }}"
+	data-release="{{ @subtitle.release }}"
+	data-downloads="{{ @subtitle.downloads }}"
+	data-uploaded="{{ @subtitle.uploaded }}"
+	data-by="{{ @subtitle.by }}"
+	data-hearing_impaired="{{ @subtitle.hearing_impaired }}"
+	data-ai_translated="{{ @subtitle.ai_translated }}"
+	data-foreign_parts="{{ @subtitle.foreign_parts }}"
+	data-trusted="{{ @subtitle.trusted }}"
+	data-on_demand="{{ @subtitle.on_demand }}"
+	data-on_demand_uploader="AI.OpenSubtitles.com"
+	data-lightbox_title="{{ @subtitle.lightbox_title }}"
+	data-close="{{ @media.close }}"
+	data-font_smaller="{{ @media.font_smaller }}"
+	data-font_larger="{{ @media.font_larger }}"
+	data-find_placeholder="{{ @media.find_placeholder }}"
+	data-find="{{ @media.find }}"
+	data-cues="{{ @media.cues }}"
+	data-prev_match="{{ @media.prev_match }}"
+	data-next_match="{{ @media.next_match }}"
+></div>
+
+<script src="/assets/js/page-subtitle.js?v={{ @js_v }}" defer></script>

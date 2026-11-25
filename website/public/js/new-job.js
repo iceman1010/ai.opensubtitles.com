@@ -9,6 +9,7 @@
 	let userBalance = null;
 	let balanceAsked = false;
 	let lastEstimateText = '';
+	let pendingHandoffLang = null;
 
 	const DETECT_SECONDS = 240;
 
@@ -144,6 +145,7 @@
 			renderFileDetails(detection.details);
 			await showOptions(detection.kind);
 			if (detection.kind === 'media') showDetectConsent();
+			else if (pendingHandoffLang) applyHandoffLanguage();
 			else detectSourceLanguage();
 		} catch (e) {
 			showError(e.message || 'Could not process this file.');
@@ -547,6 +549,29 @@
 		}
 	}
 
+	function applyHandoffLanguage() {
+		const select = translateOptions.querySelectorAll('select[data-role="language"]')[0];
+		const code = pendingHandoffLang;
+		pendingHandoffLang = null;
+		if (!select || !select.options.length || !code) {
+			setLangStatus(I18N.language_detect_failed, 'fail');
+			return;
+		}
+		const base = baseLanguage(code);
+		let match = null;
+		for (const option of select.options) {
+			if (baseLanguage(option.value) === base) { match = option; break; }
+		}
+		if (match) {
+			select.value = match.value;
+			setLangStatus(I18N.source_lang_subtitle + ': ' + match.textContent + ' (' + match.value + ')', 'ok');
+		} else {
+			setLangStatus(I18N.source_lang_subtitle + ': ' + code, 'ok');
+		}
+		renderEstimate();
+		submitButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	}
+
 	submitButton.addEventListener('click', async () => {
 		if (!currentFile || !currentKind) return;
 		const langScope = currentKind === 'media' ? transcribeOptions : translateOptions;
@@ -615,4 +640,19 @@
 	});
 
 	wireDropzone();
+
+	(function () {
+		let raw = sessionStorage.getItem('ai_newjob_pending');
+		if (!raw) return;
+		sessionStorage.removeItem('ai_newjob_pending');
+		let saved;
+		try {
+			saved = JSON.parse(raw);
+		} catch (e) {
+			return;
+		}
+		if (!saved || !saved.content || !saved.name) return;
+		pendingHandoffLang = saved.lang || null;
+		onFile(new File([saved.content], saved.name, { type: 'text/plain' }));
+	})();
 })();
