@@ -8,7 +8,7 @@
 			<button id="tab-subtitles" class="seg-btn" type="button" aria-pressed="true">{{ @search.tab_subtitles }}</button>
 			<button id="tab-features" class="seg-btn" type="button" aria-pressed="false">{{ @search.tab_features }}</button>
 		</div>
-		<form id="search-form">
+		<form id="search-form" data-imdb-prefill="{{ @search_imdb_prefill }}" data-imdb-kind="{{ @search_imdb_kind }}">
 			<div class="search-row">
 				<input type="search" id="search-query" placeholder="{{ @search.placeholder_subtitles }}" aria-label="{{ @search.placeholder_subtitles }}" autocomplete="off" dir="auto">
 				<button id="search-submit" class="btn btn-primary" type="submit"><svg class="btn-icon" aria-hidden="true"><use href="#icon-search"/></svg><span class="btn-label">{{ @search.submit }}</span></button>

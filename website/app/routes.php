@@ -18,6 +18,8 @@ return [
     'GET /buy' => 'Controllers\Credits->index',
     'GET /new' => 'Controllers\Job->create',
     'GET /search' => 'Controllers\Search->index',
+    'GET /search/imdb/@id' => 'Controllers\Search->imdb',
+    'GET /search/imdb/parent/@id' => 'Controllers\Search->imdbParent',
     'GET /jobs' => 'Controllers\Job->index',
     'GET /jobs/@type/@id' => 'Controllers\Job->show',
 ];

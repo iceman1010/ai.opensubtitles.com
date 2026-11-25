@@ -436,6 +436,17 @@
 		});
 	}
 
+	function applyImdbPrefill() {
+		var imdb = el('search-form').dataset.imdbPrefill;
+		if (!imdb || sessionStorage.getItem('ai_resume_search')) return;
+		setMode('subtitles');
+		state.imdbKind = el('search-form').dataset.imdbKind === 'parent_imdb_id' ? 'parent_imdb_id' : 'imdb_id';
+		el('search-imdb').value = imdb;
+		el('search-advanced').hidden = false;
+		state.page = 1;
+		runSearch();
+	}
+
 	async function resumeSearch() {
 		var raw = sessionStorage.getItem('ai_resume_search');
 		if (!raw) return;
@@ -474,5 +485,8 @@
 
 	loadLanguages();
 	bind();
-	loadLanguages().then(resumeSearch);
+	loadLanguages().then(() => {
+		applyImdbPrefill();
+		return resumeSearch();
+	});
 })();
