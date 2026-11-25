@@ -28,14 +28,18 @@
 
 		if (!window.AI.loggedIn()) {
 			const modal = document.getElementById('support-modal');
+			let ignoreFocus = false;
 			const showModal = () => {
+				if (ignoreFocus) return;
 				if (document.activeElement) document.activeElement.blur();
 				modal.hidden = false;
 				document.getElementById('support-modal-login').focus();
 			};
 			const hideModal = () => {
+				ignoreFocus = true;
 				modal.hidden = true;
 				emailInput.focus();
+				setTimeout(() => { ignoreFocus = false; }, 0);
 			};
 			form.addEventListener('focusin', showModal);
 			form.addEventListener('click', (e) => {
