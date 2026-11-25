@@ -148,4 +148,15 @@ file deployed next to `config.php` (not via git).
   subsrt-ts): format badge, cue count, duration, text/cue-number search.
   Non-subtitle content falls back to the raw text view. The font-size buttons
   scale both views.
+- Deep links & handoff state: `/search/imdb/{id}`, `/search/imdb/parent/{id}`
+  (imdb_id with or without the `tt` prefix — normalized server-side in
+  `Search::deepLink()`) and `/search/file/{file_id}` (single-subtitle detail
+  page, noindex) are render-only routes reusing the search/new-job pages; ids
+  come from API responses (`feature_details.imdb_id`, `files[].file_id`;
+  public URL patterns documented in `ui/md/search.md`). Cross-page state
+  rides sessionStorage: `ai_resume_search` (search login-resume),
+  `ai_subtitle_pending` + `ai_redirect_after_login` (anonymous detail-page
+  actions resume after login), `ai_newjob_pending` (Translate button hands
+  the subtitle to /new, which builds an in-memory File and skips AI language
+  detection).
 - Local dev runs on whatever PHP is installed; production target is PHP 8.3+.
