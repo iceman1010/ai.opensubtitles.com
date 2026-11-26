@@ -373,12 +373,31 @@
 		qsa('.pagination').forEach((pag) => { pag.hidden = true; });
 	}
 
-	function keepViewOnPagination(btn) {
+	function prefersReducedMotion() {
+		return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	}
+
+	function keepViewOnPagination(btn, barTopBefore) {
 		const pag = btn.closest('.pagination');
-		if (!pag) return;
-		const header = document.querySelector('.site-header');
-		const offset = header ? header.offsetHeight : 0;
-		window.scrollTo({ top: pag.getBoundingClientRect().top + window.scrollY - offset });
+		if (!pag || barTopBefore == null) return;
+		const delta = pag.getBoundingClientRect().top - barTopBefore;
+		if (delta) window.scrollBy(0, delta);
+	}
+
+	const FADE_MS = 300;
+
+	async function swapResultsPage(refresh) {
+		const grid = el('results-grid');
+		if (prefersReducedMotion()) return refresh();
+		grid.classList.add('is-fading');
+		try {
+			await Promise.all([
+				new Promise((resolve) => setTimeout(resolve, FADE_MS)),
+				Promise.resolve(refresh())
+			]);
+		} finally {
+			grid.classList.remove('is-fading');
+		}
 	}
 
 	function bind() {
@@ -397,11 +416,15 @@
 		el('search-language').addEventListener('change', () => {
 			AI.saveConfig({ lastSearchLanguage: el('search-language').value });
 		});
+		const paginate = (btn) => {
+			const barTop = btn.closest('.pagination').getBoundingClientRect().top;
+			swapResultsPage(runSearch).then(() => keepViewOnPagination(btn, barTop));
+		};
 		qsa('.page-prev').forEach((btn) => btn.addEventListener('click', () => {
-			if (state.page > 1) { state.page--; runSearch().then(() => keepViewOnPagination(btn)); }
+			if (state.page > 1) { state.page--; paginate(btn); }
 		}));
 		qsa('.page-next').forEach((btn) => btn.addEventListener('click', () => {
-			if (state.page < state.totalPages) { state.page++; runSearch().then(() => keepViewOnPagination(btn)); }
+			if (state.page < state.totalPages) { state.page++; paginate(btn); }
 		}));
 		el('results-grid').addEventListener('error', (e) => {
 			const img = e.target;

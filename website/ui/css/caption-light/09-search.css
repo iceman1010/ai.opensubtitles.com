@@ -102,6 +102,17 @@
 }
 
 
+@media (prefers-reduced-motion: no-preference) {
+	#results-grid {
+		transition: opacity 0.3s ease;
+	}
+
+	#results-grid.is-fading {
+		opacity: 0;
+	}
+}
+
+
 .results-empty {
 	color: var(--ink-soft);
 	text-align: center;
