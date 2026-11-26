@@ -282,7 +282,11 @@
 		document.cookie = 'site_locale=' + encodeURIComponent(code) + '; max-age=31536000; path=/; samesite=lax';
 		if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 		e.preventDefault();
-		var target = (code === defaultLocale ? '' : '/' + code) + liveLocalePath();
+		var livePath = liveLocalePath();
+		var target = (code === defaultLocale ? '' : '/' + code) + livePath;
+		if ((livePath === '/search' || livePath.indexOf('/search/') === 0) && location.search) {
+			target += location.search;
+		}
 		location.assign(target);
 	});
 

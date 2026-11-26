@@ -247,9 +247,32 @@
 		el('search-results').hidden = false;
 	}
 
+	const URL_KEYS = ['mode', 'q', 'lang', 'year', 'type', 'imdb', 'parent', 'page'];
+
+	function urlFromParams(params) {
+		const q = new URLSearchParams();
+		if (state.mode === 'features') q.set('mode', 'features');
+		if (params.query) q.set('q', params.query);
+		if (params.languages) q.set('lang', params.languages);
+		if (params.year) q.set('year', params.year);
+		if (params.type) q.set('type', params.type);
+		if (params.imdb_id) q.set('imdb', params.imdb_id);
+		if (params.parent_imdb_id) q.set('parent', params.parent_imdb_id);
+		if (state.page > 1) q.set('page', state.page);
+		const s = q.toString();
+		return s ? '?' + s : '';
+	}
+
+	function syncUrl() {
+		const qs = urlFromParams(buildParams());
+		const target = location.pathname + qs;
+		if (location.search !== qs) history.replaceState(null, '', target);
+	}
+
 	async function runSearch() {
 		const params = buildParams();
 		if (!params.query && !params.imdb_id && !params.parent_imdb_id) return;
+		syncUrl();
 		clearError();
 		setBusy(true);
 		state.lastParams = Object.assign({}, params);
@@ -479,6 +502,33 @@
 		});
 	}
 
+	function applyUrlState() {
+		const p = new URLSearchParams(location.search);
+		if (!URL_KEYS.some((k) => p.has(k))) return false;
+		setMode(p.get('mode') === 'features' ? 'features' : 'subtitles');
+		const query = (p.get('q') || '').trim();
+		const imdb = (p.get('imdb') || '').trim();
+		const parent = (p.get('parent') || '').trim();
+		if (query) el('search-query').value = query;
+		if (imdb || parent) {
+			el('search-imdb').value = imdb || parent;
+			state.imdbKind = parent ? 'parent_imdb_id' : 'imdb_id';
+			el('search-advanced').hidden = false;
+		}
+		const year = parseInt(p.get('year'), 10);
+		if (!isNaN(year)) el('search-year').value = year;
+		const type = p.get('type') || '';
+		if (type) el('search-type').value = type;
+		const lang = p.get('lang') || '';
+		if (lang) {
+			const codes = Array.from(el('search-language').options).map((o) => o.value);
+			if (codes.includes(lang)) el('search-language').value = lang;
+		}
+		state.page = Math.max(1, parseInt(p.get('page'), 10) || 1);
+		runSearch();
+		return true;
+	}
+
 	function applyImdbPrefill() {
 		var imdb = el('search-form').dataset.imdbPrefill;
 		if (!imdb || sessionStorage.getItem('ai_resume_search')) return;
@@ -492,11 +542,11 @@
 
 	async function resumeSearch() {
 		var raw = sessionStorage.getItem('ai_resume_search');
-		if (!raw) return;
+		if (!raw) return false;
 		sessionStorage.removeItem('ai_resume_search');
 		try {
 			var saved = JSON.parse(raw);
-			if (!saved || !saved.params) return;
+			if (!saved || !saved.params) return false;
 			setMode(saved.mode === 'features' ? 'features' : 'subtitles');
 			var p = saved.params;
 			state.imdbKind = saved.imdbKind === 'parent_imdb_id' ? 'parent_imdb_id' : 'imdb_id';
@@ -514,7 +564,10 @@
 			state.page = p.page || 1;
 			await runSearch();
 			if (AI.loggedIn()) replayPendingAction(saved.pending);
-		} catch (e) {}
+			return true;
+		} catch (e) {
+			return false;
+		}
 	}
 
 	function replayPendingAction(pending) {
@@ -529,7 +582,10 @@
 	loadLanguages();
 	bind();
 	loadLanguages().then(() => {
-		applyImdbPrefill();
-		return resumeSearch();
+		return resumeSearch().then((resumed) => {
+			if (resumed) return;
+			if (applyUrlState()) return;
+			applyImdbPrefill();
+		});
 	});
 })();
