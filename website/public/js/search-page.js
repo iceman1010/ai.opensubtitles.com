@@ -192,7 +192,8 @@
 				'</p>' +
 				'<div class="sub-actions">' +
 					'<button class="btn btn-ghost btn-small" data-action="preview" type="button"><svg class="btn-icon" aria-hidden="true"><use href="#icon-eye"/></svg><span class="btn-label">' + esc(i18n.preview) + '</span></button>' +
-					'<button class="btn btn-primary btn-small" data-action="download" type="button"><svg class="btn-icon" aria-hidden="true"><use href="#icon-download"/></svg><span class="btn-label">' + esc(i18n.download) + '</span></button>' +
+					'<button class="btn btn-ghost btn-small" data-action="download" type="button"><svg class="btn-icon" aria-hidden="true"><use href="#icon-download"/></svg><span class="btn-label">' + esc(i18n.download) + '</span></button>' +
+					'<button class="btn btn-primary btn-small" data-action="translate" type="button"><svg class="btn-icon" aria-hidden="true"><use href="#icon-languages"/></svg><span class="btn-label">' + esc(i18n.translate) + '</span></button>' +
 				'</div>' +
 				'</div>' +
 			'</article>';
@@ -262,6 +263,11 @@
 		} finally {
 			setBusy(false);
 		}
+	}
+
+	function localePrefix() {
+		const lp = document.querySelector('meta[name="locale-prefix"]');
+		return lp ? lp.getAttribute('content') || '' : '';
 	}
 
 	function requireLogin(card, action) {
@@ -335,6 +341,20 @@
 			} catch (e) {
 				showError(i18n.download_failed + ' ' + e.message);
 			} finally {
+				setButtonBusy(button, false);
+			}
+		} else if (action === 'translate') {
+			setButtonBusy(button, true, i18n.downloading);
+			try {
+				const content = await fetchSubtitleContent(fileId);
+				sessionStorage.setItem('ai_newjob_pending', JSON.stringify({
+					name: fileName.endsWith('.srt') ? fileName : fileName + '.srt',
+					content: content,
+					lang: card.dataset.lang || ''
+				}));
+				location.href = localePrefix() + '/new';
+			} catch (e) {
+				showError(i18n.download_failed + ' ' + e.message);
 				setButtonBusy(button, false);
 			}
 		}
