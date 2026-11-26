@@ -297,6 +297,11 @@
 	gap: var(--gap);
 }
 
+.search-content h2,
+.search-content p {
+	margin: 0;
+}
+
 
 .search-page:has(#search-results:not([hidden])) + .search-content {
 	display: none;
