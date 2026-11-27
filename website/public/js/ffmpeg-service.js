@@ -10,19 +10,6 @@
 		return next;
 	}
 
-	function loadScript(src) {
-		return new Promise((resolve, reject) => {
-			const existing = document.querySelector('script[data-ffmpeg="1"]');
-			if (existing) return resolve();
-			const script = document.createElement('script');
-			script.src = src;
-			script.dataset.ffmpeg = '1';
-			script.onload = resolve;
-			script.onerror = () => reject(new Error('Failed to load ffmpeg library'));
-			document.head.appendChild(script);
-		});
-	}
-
 	async function blobUrl(path, type) {
 		const res = await fetch(path);
 		if (!res.ok) throw new Error('Failed to fetch ' + path);
@@ -34,7 +21,7 @@
 		if (loadPromise) return loadPromise;
 
 		loadPromise = (async () => {
-			await loadScript(VENDOR + 'ffmpeg.js');
+			await Common.loadScript(VENDOR + 'ffmpeg.js', 'ffmpeg', 'ffmpeg library');
 			const FFmpegClass = (window.FFmpegWASM && window.FFmpegWASM.FFmpeg) || window.FFmpeg;
 
 			const [coreURL, wasmURL] = await Promise.all([

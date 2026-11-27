@@ -3,12 +3,7 @@
 
 	const T = window.BUY_I18N || {};
 
-	function el(tag, className, text) {
-		const node = document.createElement(tag);
-		if (className) node.className = className;
-		if (text !== undefined) node.textContent = text;
-		return node;
-	}
+	const el = Common.make;
 
 	async function loadPackages() {
 		const container = document.getElementById('credit-packages');

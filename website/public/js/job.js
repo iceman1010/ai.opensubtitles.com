@@ -98,12 +98,7 @@
 		setTimeout(poll, currentDelay);
 	}
 
-	function el(tag, className, text) {
-		const node = document.createElement(tag);
-		if (className) node.className = className;
-		if (text !== undefined) node.textContent = text;
-		return node;
-	}
+	const el = Common.make;
 
 	function fmt(n) {
 		return typeof n === 'number' ? Number.isInteger(n) ? String(n) : n.toFixed(1) : '–';

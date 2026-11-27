@@ -9,23 +9,24 @@
 		lastParams: null
 	};
 
-	const el = (id) => document.getElementById(id);
+	const el = Common.el;
 	const qsa = (sel) => document.querySelectorAll(sel);
-	const i18n = Object.assign({}, document.getElementById('search-i18n').dataset);
+	const i18n = Common.i18n('search-i18n');
 	const i18n_placeholder_subtitles = i18n.placeholder_subtitles || 'Search…';
 	const i18n_placeholder_features = i18n.placeholder_features || 'Search…';
-	let langNames = {};
-
-	function esc(value) {
-		return String(value === undefined || value === null ? '' : value)
-			.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-			.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-	}
+	const esc = Common.esc;
+	const displayName = Common.displayName;
+	const langBadge = Common.langBadge;
+	const formatSize = Common.formatSize;
+	const formatDate = Common.formatDate;
+	const posterUrlFor = Common.posterUrlFor;
+	const posterBox = Common.posterBox;
+	const fetchSubtitleContent = Common.fetchSubtitleContent;
+	const setButtonBusy = Common.setButtonBusy;
+	const localePrefix = Common.localePrefix;
 
 	function showError(message) {
-		const box = el('search-error');
-		box.textContent = message;
-		box.hidden = false;
+		Common.showError(el('search-error'), message);
 	}
 
 	function clearError() {
@@ -38,33 +39,17 @@
 		el('search-submit').querySelector('.btn-label').textContent = busy ? i18n.searching : i18n.submit;
 	}
 
-	function formatSize(fileName) {
-		const match = /(\d+(?:[.,]\d+)?)\s?(KB|MB|GB)/i.exec(fileName || '');
-		return match ? match[1] + ' ' + match[2].toUpperCase() : null;
-	}
-
-	function formatDate(iso) {
-		if (!iso) return null;
-		try {
-			return new Date(iso).toLocaleDateString();
-		} catch (e) {
-			return null;
-		}
-	}
-
 	async function loadLanguages() {
 		const select = el('search-language');
+		let list;
 		try {
-			const list = await AI.searchLanguages();
-			select.innerHTML = list.map((lang) =>
-				'<option value="' + esc(lang.language_code) + '">' + esc(displayName(lang.language_code) || lang.language_name) + '</option>'
-			).join('');
-			langNames = {};
-			list.forEach((lang) => { langNames[lang.language_code] = lang.language_name; });
+			list = await Common.loadLangNames();
 		} catch (e) {
-			select.innerHTML = '<option value="en">' + esc(displayName('en') || 'English') + '</option>';
-			langNames = { en: 'English' };
+			list = [{ language_code: 'en', language_name: 'English' }];
 		}
+		select.innerHTML = list.map((lang) =>
+			'<option value="' + esc(lang.language_code) + '">' + esc(displayName(lang.language_code) || lang.language_name) + '</option>'
+		).join('');
 		const saved = AI.getConfig().lastSearchLanguage;
 		const codes = Array.from(select.options).map((o) => o.value);
 		select.value = saved && codes.includes(saved) ? saved : (codes.includes('en') ? 'en' : codes[0]);
@@ -86,66 +71,6 @@
 			params.type = type;
 		}
 		return params;
-	}
-
-	function posterUrlFor(featureId) {
-		const s = String(featureId);
-		return 'https://s8.opensubtitles.com/features/' + s.slice(-1) + '/' + s.slice(-2, -1) + '/' + s.slice(-3, -2) + '/' + s + '.jpg';
-	}
-
-	function posterBox(imgUrl, title) {
-		return imgUrl
-			? '<div class="feature-poster has-img" data-poster="' + esc(imgUrl) + '" data-title="' + esc(title || '') + '"><img class="feature-poster-img" src="' + esc(imgUrl) + '" alt="' + esc(title || '') + '" loading="lazy"></div>'
-			: '<div class="feature-poster poster-empty" aria-hidden="true"><svg class="btn-icon"><use href="#icon-film"/></svg></div>';
-	}
-
-	const FLAGS = '/lib/circle-flags/';
-	const LANG_COUNTRY = {
-		ab: 'ge', af: 'za', sq: 'al', am: 'et', ar: 'sa', an: 'es', hy: 'am', as: 'in', at: 'es',
-		'az-az': 'az', eu: 'es', be: 'by', bn: 'bd', bs: 'ba', br: 'fr', bg: 'bg', my: 'mm', ca: 'es',
-		ze: 'cn', 'zh-ca': 'hk', 'zh-cn': 'cn', 'zh-tw': 'tw', hr: 'hr', cs: 'cz', da: 'dk', pr: 'af',
-		nl: 'nl', en: 'gb', et: 'ee', ex: 'es', fi: 'fi', fr: 'fr', gd: 'gb-sct', gl: 'es', ka: 'ge',
-		de: 'de', el: 'gr', he: 'il', hi: 'in', hu: 'hu', is: 'is', ig: 'ng', id: 'id', ga: 'ie',
-		it: 'it', ja: 'jp', kn: 'in', kk: 'kz', km: 'kh', ko: 'kr', lv: 'lv', lt: 'lt', lb: 'lu',
-		mk: 'mk', ms: 'my', ml: 'in', ma: 'in', mr: 'in', mn: 'mn', me: 'me', nv: 'us', ne: 'np',
-		se: 'sami', no: 'no', oc: 'fr', or: 'in', fa: 'ir', pl: 'pl', 'pt-pt': 'pt', 'pt-br': 'br',
-		pm: 'mz', ps: 'af', ro: 'ro', ru: 'ru', sx: 'in', sr: 'rs', sd: 'pk', si: 'lk', sk: 'sk',
-		sl: 'si', so: 'so', 'az-zb': 'ir', es: 'es', sp: 'es', ea: 'mx', sw: 'tz', sv: 'se', sy: 'sy',
-		tl: 'ph', ta: 'in', tt: 'ru', te: 'in', 'tm-td': 'tl', th: 'th', tr: 'tr', tk: 'tm', uk: 'ua',
-		ur: 'pk', uz: 'uz', vi: 'vn', cy: 'gb-wls'
-	};
-
-	function langFlagSrc(code) {
-		const key = String(code || '').toLowerCase();
-		const nf = window.LangFlag;
-		if (nf) {
-			const flag = nf.flagFor(key, nf.country());
-			if (flag) return FLAGS + flag + '.svg';
-		}
-		return LANG_COUNTRY[key] ? FLAGS + LANG_COUNTRY[key] + '.svg' : null;
-	}
-
-	function displayName(code) {
-		const key = String(code || '').toLowerCase();
-		const loc = document.documentElement.lang || 'en';
-		if (window.Intl && Intl.DisplayNames) {
-			try {
-				const name = new Intl.DisplayNames([loc], { type: 'language' }).of(key);
-				if (name && name !== key) return name;
-			} catch (e) {}
-		}
-		return null;
-	}
-
-	function langName(code) {
-		const key = String(code || '').toLowerCase();
-		return displayName(key) || langNames[key] || key.toUpperCase();
-	}
-
-	function langBadge(code) {
-		const key = String(code || '').toLowerCase();
-		const src = langFlagSrc(key) || FLAGS + 'xx.svg';
-		return '<span class="lang-badge"><img class="lang-flag" src="' + esc(src) + '" alt="' + esc(langName(key)) + '" width="15" height="15" data-lang="' + esc(key) + '">' + esc(langName(key)) + '</span>';
 	}
 
 	function renderSubtitles(data) {
@@ -288,11 +213,6 @@
 		}
 	}
 
-	function localePrefix() {
-		const lp = document.querySelector('meta[name="locale-prefix"]');
-		return lp ? lp.getAttribute('content') || '' : '';
-	}
-
 	function requireLogin(card, action) {
 		if (AI.loggedIn()) return true;
 		sessionStorage.setItem('ai_redirect_after_login', location.pathname + location.search);
@@ -300,36 +220,8 @@
 			var pending = card && action ? { action: action, fileId: card.dataset.fileId, fileName: card.dataset.fileName || '', lang: card.dataset.lang || '' } : null;
 			sessionStorage.setItem('ai_resume_search', JSON.stringify({ params: state.lastParams, mode: state.mode, imdbKind: state.imdbKind, pending: pending }));
 		}
-		var lp = document.querySelector('meta[name="locale-prefix"]');
-		location.href = (lp ? lp.getAttribute('content') || '' : '') + '/login';
+		location.href = localePrefix() + '/login';
 		return false;
-	}
-
-	async function fetchSubtitleContent(fileId) {
-		const data = await AI.downloadSubtitleFile(fileId);
-		if (data && data.link) {
-			const res = await fetchWithRetryPlain(data.link);
-			return res.text();
-		}
-		if (data && data.file) return data.file;
-		throw new Error('No subtitle content in response');
-	}
-
-	async function fetchWithRetryPlain(url) {
-		return fetch(url);
-	}
-
-	function setButtonBusy(button, busy, label) {
-		const span = button.querySelector('.btn-label');
-		if (!span) return;
-		if (busy) {
-			span.dataset.original = span.textContent;
-			span.textContent = label;
-			button.disabled = true;
-		} else {
-			span.textContent = span.dataset.original || span.textContent;
-			button.disabled = false;
-		}
 	}
 
 	async function handleCardAction(card, action, button) {
@@ -579,7 +471,6 @@
 		if (button) handleCardAction(card, pending.action, button);
 	}
 
-	loadLanguages();
 	bind();
 	loadLanguages().then(() => {
 		return resumeSearch().then((resumed) => {

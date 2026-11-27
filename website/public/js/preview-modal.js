@@ -8,35 +8,9 @@
 	let currentContent = '';
 	let lastFocus = null;
 
-	function el(tag, className, text) {
-		const node = document.createElement(tag);
-		if (className) node.className = className;
-		if (text !== undefined) node.textContent = text;
-		return node;
-	}
-
-	function icon(name) {
-		const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-		svg.setAttribute('class', 'btn-icon');
-		svg.setAttribute('aria-hidden', 'true');
-		const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-		use.setAttribute('href', '#icon-' + name);
-		svg.appendChild(use);
-		return svg;
-	}
-
-	function iconBtn(classes, label, iconName, iconOnly) {
-		const btn = el('button', classes);
-		btn.type = 'button';
-		btn.appendChild(icon(iconName));
-		if (iconOnly) {
-			btn.setAttribute('aria-label', label);
-			btn.title = label;
-		} else {
-			btn.appendChild(el('span', 'btn-label', label));
-		}
-		return btn;
-	}
+	const el = Common.make;
+	const icon = Common.icon;
+	const iconBtn = Common.iconBtn;
 
 	function applyFontSize() {
 		modal.pre.style.fontSize = fontSize.toFixed(2) + 'rem';

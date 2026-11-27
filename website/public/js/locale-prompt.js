@@ -132,8 +132,7 @@
 	var geo = geoConfig();
 	if (!geo) return;
 
-	var stored = null;
-	try { stored = localStorage.getItem('cf_country'); } catch (e) {}
+	var stored = Common.storedCountry();
 
 	var hit = pickBrowser(geo.prompts);
 	if (hit) {
@@ -147,15 +146,11 @@
 	}
 
 	if (stored) {
-		offer(stored.toUpperCase());
+		offer(stored);
 		return;
 	}
-	if (!window.fetch) return;
-	fetch('/cdn-cgi/trace').then(function (res) { return res.text(); }).then(function (text) {
-		var match = /(?:^|\n)loc=([A-Za-z]{2})(?:\n|$)/.exec(text || '');
-		if (!match) return;
-		var country = match[1].toUpperCase();
-		try { localStorage.setItem('cf_country', country); } catch (e) {}
+	Common.country(function (country) {
+		if (!country) return;
 		offer(country);
-	}).catch(function () {});
+	});
 })();

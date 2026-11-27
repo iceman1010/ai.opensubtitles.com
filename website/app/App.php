@@ -59,7 +59,7 @@ class App
         // AGENTS.md and website/docs/scripts/README.md before adding a file or bundle here.
         $f3->route('GET /assets/js/@bundle.js', function (\Base $f3, array $args): void {
             $bundles = [
-                'core-head' => ['config.js', 'api.js', 'auth.js'],
+                'core-head' => ['common.js', 'config.js', 'api.js', 'auth.js'],
                 'core-tail' => ['theme-toggle.js', 'nav-menu.js', 'lang-select.js', 'cookie-consent.js', 'locale-prompt.js'],
                 'subsrt' => ['subsrt.iife.js'],
                 'page-search' => ['subtitle-viewer.js', 'preview-modal.js', 'search-page.js'],

@@ -1,13 +1,8 @@
 (function () {
-	function meta(name) {
-		var el = document.querySelector('meta[name="' + name + '"]');
-		return el ? el.content : '';
-	}
-
 	window.SITE = {
-		base: meta('api-base'),
-		apiKey: meta('api-key'),
-		userAgent: meta('api-user-agent') || 'aios v1',
-		debug: meta('app-debug') === '1'
+		base: Common.meta('api-base'),
+		apiKey: Common.meta('api-key'),
+		userAgent: Common.meta('api-user-agent') || 'aios v1',
+		debug: Common.meta('app-debug') === '1'
 	};
 })();

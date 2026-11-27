@@ -5,32 +5,9 @@
 	const T = Object.assign({}, document.getElementById('dash-i18n').dataset);
 	const CHUNK = 10;
 	const API_PAGE = 20;
-
-	function el(tag, className, text) {
-		const node = document.createElement(tag);
-		if (className) node.className = className;
-		if (text !== undefined) node.textContent = text;
-		return node;
-	}
-
-	function icon(name) {
-		const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-		svg.setAttribute('class', 'btn-icon');
-		svg.setAttribute('aria-hidden', 'true');
-		const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-		use.setAttribute('href', '#icon-' + name);
-		svg.appendChild(use);
-		return svg;
-	}
-
-	function iconBtn(classes, label, iconName) {
-		const btn = el('button', classes);
-		btn.type = 'button';
-		btn.setAttribute('aria-label', label);
-		btn.title = label;
-		btn.appendChild(icon(iconName));
-		return btn;
-	}
+	const el = Common.make;
+	const icon = Common.icon;
+	const iconBtn = (classes, label, iconName) => Common.iconBtn(classes, label, iconName, true);
 
 	async function loadCredits() {
 		const el = document.getElementById('credits-value');

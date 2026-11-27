@@ -229,21 +229,12 @@
 	}
 
 	var stored = null;
-	try { stored = localStorage.getItem('cf_country'); } catch (e) {}
-	if (stored) {
-		applyCountry(stored);
+	Common.country(function (country) {
+		if (!country) return;
+		applyCountry(country);
+		stored = country;
 		applySort();
-	} else if (window.fetch) {
-		fetch('/cdn-cgi/trace').then(function (res) { return res.text(); }).then(function (text) {
-			var match = /(?:^|\n)loc=([A-Za-z]{2})(?:\n|$)/.exec(text || '');
-			if (!match) return;
-			var country = match[1].toUpperCase();
-			try { localStorage.setItem('cf_country', country); } catch (e) {}
-			applyCountry(country);
-			stored = country;
-			applySort();
-		}).catch(function () {});
-	}
+	});
 
 	window.addEventListener('resize', function () {
 		updateScrollButtons();

@@ -2,18 +2,12 @@
 	'use strict';
 
 	var CONSENT_KEY = 'cookie_consent';
-	var COUNTRY_KEY = 'cf_country';
 
-	function meta(name) {
-		var el = document.querySelector('meta[name="' + name + '"]');
-		return el ? el.getAttribute('content') : '';
-	}
-
-	var gaId = meta('ga-id');
+	var gaId = Common.meta('ga-id');
 	if (!gaId) return;
 
 	var countries = [];
-	try { countries = JSON.parse(meta('cookie-countries') || '[]'); } catch (e) {}
+	try { countries = JSON.parse(Common.meta('cookie-countries') || '[]'); } catch (e) {}
 
 	function consentDefaults(granted) {
 		var value = granted ? 'granted' : 'denied';
@@ -57,20 +51,7 @@
 		});
 	}
 
-	function resolveCountry(cb) {
-		var cached = null;
-		try { cached = localStorage.getItem(COUNTRY_KEY); } catch (e) {}
-		if (cached) return cb(cached.toUpperCase());
-		if (!window.fetch) return cb('');
-		fetch('/cdn-cgi/trace').then(function (res) { return res.text(); }).then(function (text) {
-			var match = /(?:^|\n)loc=([A-Za-z]{2})(?:\n|$)/.exec(text || '');
-			var cc = match ? match[1].toUpperCase() : '';
-			if (cc) { try { localStorage.setItem(COUNTRY_KEY, cc); } catch (e) {} }
-			cb(cc);
-		}).catch(function () { cb(''); });
-	}
-
-	resolveCountry(function (cc) {
+	Common.country(function (cc) {
 		if (countries.indexOf(cc) === -1) return initGA(true);
 		var consent = storedConsent();
 		if (consent === 'granted') return initGA(true);

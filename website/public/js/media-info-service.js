@@ -2,19 +2,6 @@
 	const VENDOR = '/lib/mediainfo/';
 	const WASM = VENDOR + 'MediaInfoModule.wasm';
 
-	function loadScript(src) {
-		return new Promise((resolve, reject) => {
-			const existing = document.querySelector('script[data-mediainfo="1"]');
-			if (existing) return resolve();
-			const script = document.createElement('script');
-			script.src = src;
-			script.dataset.mediainfo = '1';
-			script.onload = resolve;
-			script.onerror = () => reject(new Error('Failed to load MediaInfo library'));
-			document.head.appendChild(script);
-		});
-	}
-
 	function factory() {
 		const ns = window.MediaInfo;
 		return ns && (ns.mediaInfoFactory || ns.default);
@@ -56,7 +43,7 @@
 	}
 
 	async function analyze(file) {
-		await loadScript(VENDOR + 'mediainfo.min.js');
+		await Common.loadScript(VENDOR + 'mediainfo.min.js', 'mediainfo', 'MediaInfo library');
 		const create = factory();
 		if (typeof create !== 'function') throw new Error('MediaInfo library not available');
 

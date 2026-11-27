@@ -5,127 +5,20 @@
 	const loading = document.getElementById('subtitle-loading');
 	const notFound = document.getElementById('subtitle-notfound');
 	const errorBox = document.getElementById('subtitle-error');
-	const i18n = Object.assign({}, document.getElementById('subtitle-i18n').dataset);
-	let langNames = {};
-
-	function esc(value) {
-		return String(value === undefined || value === null ? '' : value)
-			.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-			.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-	}
-
-	function showError(message) {
-		errorBox.textContent = message;
-		errorBox.hidden = false;
-	}
-
-	function localePrefix() {
-		const lp = document.querySelector('meta[name="locale-prefix"]');
-		return lp ? lp.getAttribute('content') || '' : '';
-	}
-
-	function formatSize(fileName) {
-		const match = /(\d+(?:[.,]\d+)?)\s?(KB|MB|GB)/i.exec(fileName || '');
-		return match ? match[1] + ' ' + match[2].toUpperCase() : null;
-	}
-
-	function formatDate(iso) {
-		if (!iso) return null;
-		try {
-			return new Date(iso).toLocaleDateString();
-		} catch (e) {
-			return null;
-		}
-	}
+	const i18n = Common.i18n('subtitle-i18n');
+	const esc = Common.esc;
+	const formatSize = Common.formatSize;
+	const formatDate = Common.formatDate;
+	const langName = Common.langName;
+	const langBadge = Common.langBadge;
+	const posterUrlFor = Common.posterUrlFor;
+	const posterBox = Common.posterBox;
+	const fetchSubtitleContent = Common.fetchSubtitleContent;
+	const setButtonBusy = Common.setButtonBusy;
+	const localePrefix = Common.localePrefix;
 
 	async function loadLanguages() {
-		try {
-			const list = await AI.searchLanguages();
-			list.forEach((lang) => { langNames[lang.language_code] = lang.language_name; });
-		} catch (e) {}
-	}
-
-	function displayName(code) {
-		const key = String(code || '').toLowerCase();
-		const loc = document.documentElement.lang || 'en';
-		if (window.Intl && Intl.DisplayNames) {
-			try {
-				const name = new Intl.DisplayNames([loc], { type: 'language' }).of(key);
-				if (name && name !== key) return name;
-			} catch (e) {}
-		}
-		return null;
-	}
-
-	function langName(code) {
-		const key = String(code || '').toLowerCase();
-		return displayName(key) || langNames[key] || key.toUpperCase();
-	}
-
-	const FLAGS = '/lib/circle-flags/';
-	const LANG_COUNTRY = {
-		ab: 'ge', af: 'za', sq: 'al', am: 'et', ar: 'sa', an: 'es', hy: 'am', as: 'in', at: 'es',
-		'az-az': 'az', eu: 'es', be: 'by', bn: 'bd', bs: 'ba', br: 'fr', bg: 'bg', my: 'mm', ca: 'es',
-		ze: 'cn', 'zh-ca': 'hk', 'zh-cn': 'cn', 'zh-tw': 'tw', hr: 'hr', cs: 'cz', da: 'dk', pr: 'af',
-		nl: 'nl', en: 'gb', et: 'ee', ex: 'es', fi: 'fi', fr: 'fr', gd: 'gb-sct', gl: 'es', ka: 'ge',
-		de: 'de', el: 'gr', he: 'il', hi: 'in', hu: 'hu', is: 'is', ig: 'ng', id: 'id', ga: 'ie',
-		it: 'it', ja: 'jp', kn: 'in', kk: 'kz', km: 'kh', ko: 'kr', lv: 'lv', lt: 'lt', lb: 'lu',
-		mk: 'mk', ms: 'my', ml: 'in', ma: 'in', mr: 'in', mn: 'mn', me: 'me', nv: 'us', ne: 'np',
-		se: 'sami', no: 'no', oc: 'fr', or: 'in', fa: 'ir', pl: 'pl', 'pt-pt': 'pt', 'pt-br': 'br',
-		pm: 'mz', ps: 'af', ro: 'ro', ru: 'ru', sx: 'in', sr: 'rs', sd: 'pk', si: 'lk', sk: 'sk',
-		sl: 'si', so: 'so', 'az-zb': 'ir', es: 'es', sp: 'es', ea: 'mx', sw: 'tz', sv: 'se', sy: 'sy',
-		tl: 'ph', ta: 'in', tt: 'ru', te: 'in', 'tm-td': 'tl', th: 'th', tr: 'tr', tk: 'tm', uk: 'ua',
-		ur: 'pk', uz: 'uz', vi: 'vn', cy: 'gb-wls'
-	};
-
-	function langFlagSrc(code) {
-		const key = String(code || '').toLowerCase();
-		const nf = window.LangFlag;
-		if (nf) {
-			const flag = nf.flagFor(key, nf.country());
-			if (flag) return FLAGS + flag + '.svg';
-		}
-		return LANG_COUNTRY[key] ? FLAGS + LANG_COUNTRY[key] + '.svg' : null;
-	}
-
-	function langBadge(code) {
-		const key = String(code || '').toLowerCase();
-		const src = langFlagSrc(key) || FLAGS + 'xx.svg';
-		return '<span class="lang-badge"><img class="lang-flag" src="' + esc(src) + '" alt="' + esc(langName(key)) + '" width="15" height="15" data-lang="' + esc(key) + '">' + esc(langName(key)) + '</span>';
-	}
-
-	function posterUrlFor(featureId) {
-		const s = String(featureId);
-		return 'https://s8.opensubtitles.com/features/' + s.slice(-1) + '/' + s.slice(-2, -1) + '/' + s.slice(-3, -2) + '/' + s + '.jpg';
-	}
-
-	function posterBox(imgUrl, title) {
-		return imgUrl
-			? '<div class="feature-poster has-img" data-poster="' + esc(imgUrl) + '" data-title="' + esc(title || '') + '"><img class="feature-poster-img" src="' + esc(imgUrl) + '" alt="' + esc(title || '') + '" loading="lazy"></div>'
-			: '<div class="feature-poster poster-empty" aria-hidden="true"><svg class="btn-icon"><use href="#icon-film"/></svg></div>';
-	}
-
-	async function fetchSubtitleContent(id) {
-		const data = await AI.downloadSubtitleFile(id);
-		if (data && data.link) {
-			const res = await fetch(data.link);
-			return res.text();
-		}
-		if (data && data.file) return data.file;
-		throw new Error('No subtitle content in response');
-	}
-
-	function setButtonBusy(button, busy, label) {
-		const span = button.querySelector('.btn-label');
-		if (!span) return;
-		if (busy) {
-			span.dataset.original = span.textContent;
-			span.textContent = label;
-			button.disabled = true;
-		} else {
-			span.textContent = span.dataset.original || span.textContent;
-			button.disabled = false;
-		}
+		try { await Common.loadLangNames(); } catch (e) {}
 	}
 
 	function requireLogin(action) {
@@ -161,7 +54,7 @@
 					next_match: i18n.next_match
 				}, item.attributes.language);
 			} catch (e) {
-				showError(i18n.download_failed + ' ' + e.message);
+				Common.showError(errorBox, i18n.download_failed + ' ' + e.message);
 			} finally {
 				setButtonBusy(button, false);
 			}
@@ -171,7 +64,7 @@
 				const content = await fetchSubtitleContent(fileId);
 				AI.downloadText(content, fileName);
 			} catch (e) {
-				showError(i18n.download_failed + ' ' + e.message);
+				Common.showError(errorBox, i18n.download_failed + ' ' + e.message);
 			} finally {
 				setButtonBusy(button, false);
 			}
@@ -186,8 +79,8 @@
 				}));
 				location.href = localePrefix() + '/new';
 			} catch (e) {
-				if (e && e.name === 'QuotaExceededError') showError(i18n.stash_failed);
-				else showError(i18n.download_failed + ' ' + e.message);
+				if (e && e.name === 'QuotaExceededError') Common.showError(errorBox, i18n.stash_failed);
+				else Common.showError(errorBox, i18n.download_failed + ' ' + e.message);
 				setButtonBusy(button, false);
 			}
 		}
@@ -253,7 +146,7 @@
 			}
 			render(items[0]);
 		} catch (e) {
-			showError(i18n.error + ' ' + e.message);
+			Common.showError(errorBox, i18n.error + ' ' + e.message);
 		} finally {
 			loading.hidden = true;
 		}

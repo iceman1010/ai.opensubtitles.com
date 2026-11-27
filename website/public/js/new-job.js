@@ -42,8 +42,7 @@
 	const SELECT_LANGUAGE = I18N.select_language || 'Select Language';
 
 	function showError(message) {
-		errorBox.textContent = message;
-		errorBox.hidden = false;
+		Common.showError(errorBox, message);
 	}
 
 	let convertTimerId = null;
@@ -384,9 +383,7 @@
 		return hit ? hit.language_code : '';
 	}
 
-	function esc(value) {
-		return String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-	}
+	const esc = Common.esc;
 
 	function fmtDuration(seconds) {
 		if (!isFinite(seconds) || seconds <= 0) return null;
